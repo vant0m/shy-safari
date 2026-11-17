@@ -11,8 +11,17 @@
   import type { App } from "$lib/app.svelte";
   import { MAX_NAME_LENGTH, type ClassInfo } from "$lib/classes/classList";
   import { classes } from "$lib/classes/classes.svelte";
-  import { className, t } from "$lib/i18n/index.svelte";
+  import { className, t, type UiKey } from "$lib/i18n/index.svelte";
   import { settings } from "$lib/settings/settings.svelte";
+  import {
+    backupFileName,
+    createBackup,
+    MAX_BACKUP_BYTES,
+    parseBackup,
+    restoreBackup,
+    storageEntries,
+    type Backup,
+  } from "$lib/backup/backup";
 
   let { app, onclose }: { app: App; onclose: () => void } = $props();
 
@@ -45,6 +54,46 @@
     renamingId = null;
   }
 
+  let importing = $state<{ backup: Backup; file: string } | null>(null);
+  let importError = $state<UiKey | null>(null);
+  let fileInput = $state<HTMLInputElement>();
+
+  function exportAll() {
+    const backup = createBackup(storageEntries(localStorage));
+    const blob = new Blob([JSON.stringify(backup, null, 2)], {
+      type: "application/json",
+    });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = backupFileName();
+    link.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+
+  async function chooseFile(
+    event: Event & { currentTarget: HTMLInputElement },
+  ) {
+    importError = null;
+    const file = event.currentTarget.files?.[0];
+    event.currentTarget.value = "";
+    if (!file) return;
+    if (file.size > MAX_BACKUP_BYTES) {
+      importError = "backup.error.tooBig";
+      return;
+    }
+    const result = parseBackup(await file.text());
+    if (result.ok) importing = { backup: result.backup, file: file.name };
+    else importError = `backup.error.${result.reason}`;
+  }
+
+  function confirmImport() {
+    if (!importing) return;
+    restoreBackup(localStorage, importing.backup);
+    // Every store read its Class at start-up: begin again from the new data.
+    location.reload();
+  }
+
   function confirmDelete() {
     if (deleting) app.deleteClass(deleting.id);
     deleting = null;
@@ -54,7 +103,8 @@
 <svelte:window
   onkeydown={(event) => {
     if (event.key !== "Escape") return;
-    if (deleting) deleting = null;
+    if (importing) importing = null;
+    else if (deleting) deleting = null;
     else if (renamingId) renamingId = null;
     else onclose();
   }}
@@ -208,8 +258,74 @@
         </svg>
         {t("classes.storage")}
       </p>
+
+      <section class="mt-4 space-y-2 border-t border-slate-200 pt-4">
+        <h2 class="text-sm font-semibold text-slate-900">
+          {t("backup.title")}
+        </h2>
+        <p class="text-xs text-slate-500">{t("backup.hint")}</p>
+        <div class="flex flex-wrap gap-2">
+          <button
+            class="rounded-md border border-slate-300 px-3 py-1.5 text-sm hover:bg-slate-50"
+            onclick={exportAll}>{t("backup.export")}</button
+          >
+          <button
+            class="rounded-md border border-slate-300 px-3 py-1.5 text-sm hover:bg-slate-50"
+            onclick={() => fileInput?.click()}>{t("backup.import")}</button
+          >
+          <input
+            bind:this={fileInput}
+            type="file"
+            accept="application/json,.json"
+            class="hidden"
+            onchange={chooseFile}
+          />
+        </div>
+        {#if importError}
+          <p class="text-sm text-rose-700" role="alert">{t(importError)}</p>
+        {/if}
+      </section>
     </div>
   </div>
+
+  {#if importing}
+    <div
+      class="absolute inset-0 z-10 flex items-center justify-center bg-slate-900/40 p-4"
+      role="presentation"
+      onclick={(event) =>
+        event.target === event.currentTarget && (importing = null)}
+    >
+      <div
+        class="w-full max-w-sm rounded-xl bg-white p-6 shadow-xl"
+        role="alertdialog"
+        aria-modal="true"
+        aria-labelledby="import-title"
+        aria-describedby="import-body"
+      >
+        <h2 id="import-title" class="text-lg font-semibold text-slate-900">
+          {t("backup.confirmTitle")}
+        </h2>
+        <p id="import-body" class="mt-2 text-sm text-slate-600">
+          {t("backup.confirmBody", { file: importing.file })}
+        </p>
+        <div class="mt-5 flex flex-wrap justify-end gap-2">
+          <button
+            class="rounded-full border border-slate-300 px-4 py-2 text-sm hover:bg-slate-50"
+            onclick={() => (importing = null)}
+            {@attach focus}
+          >
+            {t("common.cancel")}
+          </button>
+          <button
+            class="rounded-full bg-rose-600 px-4 py-2 text-sm font-medium text-white hover:bg-rose-700"
+            onclick={confirmImport}
+          >
+            {t("backup.confirmYes")}
+          </button>
+        </div>
+      </div>
+    </div>
+  {/if}
 
   {#if deleting}
     {@const name = className(deleting.name)}

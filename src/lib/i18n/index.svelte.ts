@@ -146,6 +146,22 @@ const en = {
     "classes.deleteOnly":
       "It's your only class, so a new, empty one will take its place.",
     "classes.deleteYes": "Yes, delete",
+    "backup.title": "Back up or move your classes",
+    "backup.hint":
+      "Save every class to a file, then import it on another computer, browser or address.",
+    "backup.export": "Export all classes",
+    "backup.import": "Import a file…",
+    "backup.confirmTitle": "Replace everything on this computer?",
+    "backup.confirmBody":
+      "Every class, animal, collection, note and setting saved here will be replaced by the ones in {file}. This can't be undone. The microphone and its calibration stay as they are.",
+    "backup.confirmYes": "Yes, replace",
+    "backup.error.notJson":
+      "That file couldn't be read. Choose a file exported from Shy Safari.",
+    "backup.error.notBackup": "That file isn't a Shy Safari backup.",
+    "backup.error.newerVersion":
+      "That backup comes from a newer version of Shy Safari. Update this copy first.",
+    "backup.error.empty": "That backup has no classes in it.",
+    "backup.error.tooBig": "That file is too big to be a Shy Safari backup.",
     "settings.title": "Settings",
     "settings.microphone": "Microphone",
     "settings.meter": "Noise Meter",
@@ -774,6 +790,24 @@ const es = {
     "classes.deleteOnly":
       "Es tu única clase, así que una nueva y vacía ocupará su lugar.",
     "classes.deleteYes": "Sí, eliminar",
+    "backup.title": "Guardar o trasladar tus clases",
+    "backup.hint":
+      "Guarda todas las clases en un archivo y luego impórtalo en otra computadora, navegador o dirección.",
+    "backup.export": "Exportar todas las clases",
+    "backup.import": "Importar un archivo…",
+    "backup.confirmTitle": "¿Reemplazar todo en esta computadora?",
+    "backup.confirmBody":
+      "Todas las clases, animales, colecciones, notas y ajustes guardados aquí se reemplazarán por los de {file}. No se puede deshacer. El micrófono y su calibración no cambian.",
+    "backup.confirmYes": "Sí, reemplazar",
+    "backup.error.notJson":
+      "No se pudo leer ese archivo. Elige un archivo exportado desde Shy Safari.",
+    "backup.error.notBackup":
+      "Ese archivo no es una copia de seguridad de Shy Safari.",
+    "backup.error.newerVersion":
+      "Esa copia viene de una versión más reciente de Shy Safari. Actualiza esta primero.",
+    "backup.error.empty": "Esa copia no contiene ninguna clase.",
+    "backup.error.tooBig":
+      "Ese archivo es demasiado grande para ser una copia de Shy Safari.",
     "settings.title": "Ajustes",
     "settings.microphone": "Micrófono",
     "settings.meter": "Medidor de ruido",
@@ -1373,6 +1407,23 @@ const fr = {
     "classes.deleteOnly":
       "C’est votre seule classe : une nouvelle classe vide la remplacera.",
     "classes.deleteYes": "Oui, supprimer",
+    "backup.title": "Sauvegarder ou déplacer vos classes",
+    "backup.hint":
+      "Enregistrez toutes les classes dans un fichier, puis importez-le sur un autre ordinateur, navigateur ou adresse.",
+    "backup.export": "Exporter toutes les classes",
+    "backup.import": "Importer un fichier…",
+    "backup.confirmTitle": "Tout remplacer sur cet ordinateur ?",
+    "backup.confirmBody":
+      "Toutes les classes, animaux, collections, notes et réglages enregistrés ici seront remplacés par ceux de {file}. C’est irréversible. Le micro et sa calibration restent inchangés.",
+    "backup.confirmYes": "Oui, remplacer",
+    "backup.error.notJson":
+      "Impossible de lire ce fichier. Choisissez un fichier exporté depuis Shy Safari.",
+    "backup.error.notBackup": "Ce fichier n’est pas une sauvegarde Shy Safari.",
+    "backup.error.newerVersion":
+      "Cette sauvegarde vient d’une version plus récente de Shy Safari. Mettez d’abord cette copie à jour.",
+    "backup.error.empty": "Cette sauvegarde ne contient aucune classe.",
+    "backup.error.tooBig":
+      "Ce fichier est trop gros pour être une sauvegarde Shy Safari.",
     "settings.title": "Réglages",
     "settings.microphone": "Micro",
     "settings.meter": "Sonomètre",
