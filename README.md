@@ -60,32 +60,57 @@ the meter match your room and your microphone.
 
 ## Running it locally
 
-This project lives in a shared workspace where several agents run dev servers
-at once, so ports are leased rather than hardcoded. From the **workspace
-root**:
+You need [Bun](https://bun.sh) 1.3 or newer (it is both the runtime and the
+package manager here). On Windows, `powershell -c "irm bun.sh/install.ps1 | iex"`;
+on macOS or Linux, `curl -fsSL https://bun.sh/install | bash`.
 
 ```sh
-./scripts/agent-dev.mjs class-noise-level --no-pocketbase
+bun install      # once, and after every pull that changes bun.lock
+bun run dev      # dev server on http://localhost:5173
 ```
 
-Other useful commands, from this directory:
+The microphone only works in a secure context: `localhost` counts, but a dev
+server opened from another machine by IP address does not. To reach the dev
+server through a tunnel or reverse proxy, list its hostname in
+`DEV_ALLOWED_HOSTS` (comma-separated).
+
+Before committing:
 
 ```sh
-bun run check    # typecheck
+bun run check    # svelte-check / TypeScript
 bun test         # unit tests
-bun run lint     # prettier + eslint
+bun run lint     # prettier --check + eslint (bun run format fixes formatting)
 bun run build    # static production build into build/
-bun run build && bunx wrangler dev   # the built site, served the way Cloudflare serves it
 ```
 
-The site is hosted on Cloudflare Workers as static assets (`wrangler.jsonc`), with
-`static/_redirects` and `static/_headers` for redirects and caching.
-`www.shysafari.com` is the canonical origin and `shysafari.com` redirects to it;
-keep it that way, because every class's settings and notes live in that origin's
-localStorage.
+`bun run build && bunx wrangler dev` serves the built site the way Cloudflare
+serves it, `_headers` and `_redirects` included.
 
-Cloudflare Web Analytics is added to the build only when `CF_BEACON_TOKEN` is
-set, which it is only as a build variable on the production Cloudflare build.
+## Hosting it
+
+The build is plain static files, so it can live on any static host. The
+reference setup is Cloudflare Workers static assets (`wrangler.jsonc`), which
+is free and needs no server code. **[docs/hosting.md](docs/hosting.md)** walks
+through deploying your own copy, using your own domain, protecting it with a
+login (Cloudflare Access, no accounts for teachers to create) and the other
+hosts it works on. A French version is in
+[docs/fr/hebergement.md](docs/fr/hebergement.md).
+
+Two things to keep in mind whatever the host:
+
+- **One address only.** Every class's animals, Collection, Notes and settings
+  live in the browser's `localStorage`, which belongs to one exact origin.
+  `example.com` and `www.example.com` are two different stores, so pick one
+  canonical address and redirect the other to it.
+- **HTTPS is required**, because browsers only give the microphone to secure
+  pages.
+
+Build-time variables (all optional):
+
+| Variable          | Effect                                                                                                                                                                             |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `PUBLIC_SITE_URL` | The site's canonical address, e.g. `https://noise.example.org`. Used for canonical links, the sitemap, social previews and the help text. Defaults to `https://www.shysafari.com`. |
+| `CF_BEACON_TOKEN` | Adds Cloudflare Web Analytics. Leave unset for no analytics at all.                                                                                                                |
 
 ## How it is put together
 
@@ -105,7 +130,16 @@ they can be checked without a microphone or a ten-second wait:
   than resetting.
 - `src/lib/session/roll.ts` — the weighted rarity roll.
 
-`CONTEXT.md` defines the vocabulary the code uses. `docs/` holds the
-architecture decisions, the implementation plan, and the brief for drawing the
-reef artwork, whose style rules the savanna, the forest, the jungle and the Arctic follow too; deep
-space, the prehistoric scene, the forest, the jungle and the Arctic each have their own section there.
+## Documentation
+
+- [`CONTEXT.md`](CONTEXT.md) — the vocabulary the code uses (Scene, Creature,
+  Class, Too Loud…).
+- [`docs/hosting.md`](docs/hosting.md) — deploying, domains, access control.
+- [`docs/adr/`](docs/adr/) — architecture decisions and why they were made.
+- [`docs/svg-art-brief.md`](docs/svg-art-brief.md) — the rules every piece of
+  artwork follows.
+- [`docs/fr/`](docs/fr/) — French documentation for teachers and hosts.
+
+The art brief started with the reef; the savanna, the forest, the jungle and
+the Arctic follow its style rules, and deep space, the prehistoric scene, the
+forest, the jungle and the Arctic each have their own section there.

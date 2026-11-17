@@ -11,8 +11,9 @@
     document.documentElement.lang = current().locale;
   });
 
-  // Cloudflare Web Analytics beacon. The token is set only in Vercel's
-  // production environment, so dev servers and local builds don't count visits.
+  // Cloudflare Web Analytics beacon. The token is set only as a build variable
+  // on the production Cloudflare build, so dev servers and local builds (and
+  // self-hosted copies that leave it unset) don't count visits.
   const beacon = import.meta.env.CF_BEACON_TOKEN;
 </script>
 

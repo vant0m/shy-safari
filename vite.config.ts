@@ -5,11 +5,16 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
   server: {
-    allowedHosts: ["class-noise-level.edtechathon.com"],
+    // Hostnames the dev server answers to besides localhost, say behind a
+    // tunnel or reverse proxy: a comma-separated DEV_ALLOWED_HOSTS.
+    allowedHosts: process.env.DEV_ALLOWED_HOSTS?.split(",")
+      .map((host) => host.trim())
+      .filter(Boolean),
   },
   // Expose the Cloudflare Web Analytics token (set only as a build variable on
-  // the production Cloudflare build) to client code.
-  envPrefix: ["VITE_", "CF_BEACON_TOKEN"],
+  // the production Cloudflare build) and the site's own address (set by a
+  // self-hosted copy, see docs/hosting.md) to client code.
+  envPrefix: ["VITE_", "CF_BEACON_TOKEN", "PUBLIC_SITE_URL"],
   plugins: [
     tailwindcss(),
     sveltekit({
