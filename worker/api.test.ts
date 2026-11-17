@@ -125,6 +125,15 @@ describe("the sync API", () => {
     expect((await handleApi(put(0, huge), ctx)).status).toBe(413);
   });
 
+  it("gives the revision without the record", async () => {
+    const ctx = context();
+    const before = await handleApi(get("/api/revision"), ctx);
+    expect(await before.json()).toEqual({ revision: 0 });
+    await handleApi(put(0, bytes(1)), ctx);
+    const after = await handleApi(get("/api/revision"), ctx);
+    expect(await after.json()).toEqual({ revision: 1 });
+  });
+
   it("answers 404 for anything else", async () => {
     expect((await handleApi(get("/api/other"), context())).status).toBe(404);
   });

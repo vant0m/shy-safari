@@ -13,6 +13,7 @@
   import { className, current, t } from "$lib/i18n/index.svelte";
   import { settings } from "$lib/settings/settings.svelte";
   import { stats } from "$lib/stats/stats.svelte";
+  import { sync } from "$lib/sync/sync.svelte";
   import {
     addDays,
     dayOf,
@@ -508,7 +509,10 @@
       <div
         class="mt-5 flex flex-wrap items-start justify-between gap-3 border-t border-slate-200 pt-4"
       >
-        <p class="max-w-md text-xs text-slate-500">{t("stats.note")}</p>
+        <p class="max-w-md text-xs text-slate-500">
+          {t("stats.note")}
+          {#if sync.enabled}{t("sync.statsNote")}{/if}
+        </p>
         <button
           class="rounded-md border border-slate-300 px-3 py-1.5 text-sm text-slate-700 hover:bg-rose-50 hover:text-rose-700"
           onclick={() => (clearing = true)}>{t("stats.clear")}</button

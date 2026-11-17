@@ -7,6 +7,8 @@
   import SceneSelect from "$lib/components/SceneSelect.svelte";
   import Collection from "$lib/components/Collection.svelte";
   import StatsPanel from "$lib/components/StatsPanel.svelte";
+  import SyncConflict from "$lib/components/SyncConflict.svelte";
+  import { sync } from "$lib/sync/sync.svelte";
   import { stats } from "$lib/stats/stats.svelte";
   import ControlBar from "$lib/components/ControlBar.svelte";
   import MicBlocked from "$lib/components/MicBlocked.svelte";
@@ -636,6 +638,10 @@
 
     {#if statsOpen}
       <StatsPanel onclose={() => (statsOpen = false)} />
+    {/if}
+
+    {#if sync.conflict}
+      <SyncConflict conflict={sync.conflict} />
     {/if}
 
     <InfoDrawer bind:open={infoOpen} />

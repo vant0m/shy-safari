@@ -2,6 +2,7 @@
  * The sync API, under `/api/` (docs/adr/0015-sync-through-cloudflare.md):
  *
  * - `GET /api/me` — who is signed in, which also tells the app sync is on;
+ * - `GET /api/revision` — the record's revision (0: none yet), without it;
  * - `GET /api/backup` — the teacher's record (204 if there is none yet);
  * - `PUT /api/backup` — save it, if it still builds on `X-Base-Revision`.
  *
@@ -50,6 +51,10 @@ export async function handleApi(
 
   if (pathname === "/api/me" && request.method === "GET") {
     return json({ email });
+  }
+
+  if (pathname === "/api/revision" && request.method === "GET") {
+    return json({ revision: await store.revision(email) });
   }
 
   if (pathname === "/api/backup" && request.method === "GET") {

@@ -43,7 +43,17 @@ and a way to tell teachers apart.
     sightings, notes or statistics) downloads the teacher's classes
     without asking — the main case, a new or shared computer;
   - a computer whose classes have changed since its last sync, while the
-    server's have too, asks which copy to keep;
+    server's have too, first merges them entry by entry: it remembers a short
+    hash of each entry as of the last sync, so an entry only one side changed
+    is taken from that side. Entries that change on their own all the time
+    (statistics, the arrival counter, the Timer, a Class's settings and
+    Scene, which Class is on screen, seen menus, the language) are settled
+    automatically: statistics by keeping each day's larger figures, the rest
+    by keeping this computer's.
+    Only when both sides changed the same real thing (a Note, a Scene's
+    animals, the class list…) does it ask which copy to keep;
+  - if the server already holds exactly this computer's classes (a save
+    whose answer was lost when the tab closed), it just carries on;
   - a computer last synced by another teacher never uploads on its own: it
     asks first, so one teacher's classes never land in another's record.
 - **When it saves**: when something changed, at most once a minute, and when
@@ -59,9 +69,9 @@ and a way to tell teachers apart.
 
 ## Known limits of this first version
 
-- The whole record is one unit: two computers open at once for the same
-  teacher take turns, and the second to save is asked to choose. Which Class
-  is on screen is part of it, so the two will also switch each other's
-  Class.
+- Merging is per entry, not inside an entry: two computers changing the same
+  Scene's animals for the same Class between syncs must choose.
+- A merge or a download reloads the page, since every store reads its data
+  once at start-up.
 - Deleting a teacher's data is done by the administrator, in D1
   (`DELETE FROM backups WHERE email = ...`).

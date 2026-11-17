@@ -17,6 +17,7 @@ import { Session } from "$lib/session/session.svelte";
 import { sightings } from "$lib/session/sightings.svelte";
 import { settings } from "$lib/settings/settings.svelte";
 import { stats } from "$lib/stats/stats.svelte";
+import { sync } from "$lib/sync/sync.svelte";
 import { ClassTimer } from "$lib/timer/timer.svelte";
 import { today } from "$lib/today.svelte";
 import { untrack } from "svelte";
@@ -209,6 +210,8 @@ export class App {
     );
     const stopTimer = untrack(() => this.timer.run());
     this.restored = true;
+    // Only once the saved Class is back: sync compares it with the server.
+    untrack(() => void sync.start());
     this.#lastTick = performance.now();
     const step = () => {
       const now = performance.now();

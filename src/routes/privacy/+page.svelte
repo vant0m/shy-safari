@@ -17,6 +17,7 @@
   <section class="{card} space-y-4 leading-relaxed text-slate-700">
     <p>{t("privacy.microphone")}</p>
     <p>{t("privacy.local")}</p>
+    <p>{t("privacy.sync")}</p>
     <p>
       {t("privacy.analytics.beforeLink")}<a
         href="https://www.cloudflare.com/privacypolicy/"

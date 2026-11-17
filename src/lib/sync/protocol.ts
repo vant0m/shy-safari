@@ -26,6 +26,11 @@ export interface SavedResponse {
   updatedAt: string;
 }
 
+export interface RevisionResponse {
+  /** 0 when the teacher has nothing saved yet. */
+  revision: number;
+}
+
 export interface ConflictResponse {
   revision: number;
 }

@@ -181,6 +181,41 @@ const en = {
     "stats.quietMinutes": "{m} quiet minutes",
     "stats.goal": "Goal {goal}",
     "stats.level": "noise level",
+    "sync.title": "Saved on your school’s server",
+    "sync.as": "Signed in as {email}.",
+    "sync.status.starting": "Connecting…",
+    "sync.status.synced": "Up to date.",
+    "sync.status.syncedAt": "Up to date, last saved {time}.",
+    "sync.status.saving": "Saving…",
+    "sync.status.offline":
+      "Can’t reach the server right now. Your classes are safe on this computer and will be saved later.",
+    "sync.status.signedOut":
+      "Your sign-in has expired. Reload the page to sign in again: nothing is lost.",
+    "sync.status.tooLarge":
+      "Your classes are too big to save on the server. Export them to a file instead.",
+    "sync.status.conflict": "Waiting for your choice.",
+    "sync.saveNow": "Save now",
+    "sync.savedNote":
+      "Settings are saved on this computer and on your school’s server, under your e-mail. Microphone audio never leaves the device.",
+    "sync.storageNote":
+      "Your classes are saved on this computer and on your school’s server, under {email}, so you’ll find them on any computer where you sign in.",
+    "sync.statsNote":
+      "They are also saved on your school’s server, with your classes.",
+    "sync.conflict.title": "Which classes should we keep?",
+    "sync.conflict.firstSync":
+      "This computer already has classes, and your school’s server has classes saved under {email}. Choose which to keep: the other copy will be replaced.",
+    "sync.conflict.bothChanged":
+      "Your classes changed on this computer and somewhere else since they were last saved. Choose which to keep: the other changes will be lost.",
+    "sync.conflict.otherTeacher":
+      "The classes on this computer were last saved by another teacher. You are signed in as {email}.",
+    "sync.conflict.useServer": "Use the classes saved on the server",
+    "sync.conflict.useServerOther": "Load {email}’s classes",
+    "sync.conflict.startEmpty": "Start with no classes as {email}",
+    "sync.conflict.keepLocal": "Keep this computer’s classes",
+    "sync.conflict.keepLocalOther":
+      "Keep these classes and save them as {email}",
+    "privacy.sync":
+      "If your school runs its own copy of Shy Safari with sync turned on (you sign in to reach it), your classes, settings and statistics are also saved on that school’s Cloudflare account, under the e-mail you signed in with, so you can find them on another computer. The school manages that data. Microphone audio is never sent anywhere.",
     "backup.title": "Back up or move your classes",
     "backup.hint":
       "Save every class to a file, then import it on another computer, browser or address.",
@@ -938,6 +973,41 @@ const es = {
     "stats.quietMinutes": "{m} minutos en calma",
     "stats.goal": "Objetivo {goal}",
     "stats.level": "nivel de ruido",
+    "sync.title": "Guardado en el servidor de tu centro",
+    "sync.as": "Has iniciado sesión como {email}.",
+    "sync.status.starting": "Conectando…",
+    "sync.status.synced": "Al día.",
+    "sync.status.syncedAt": "Al día, guardado por última vez {time}.",
+    "sync.status.saving": "Guardando…",
+    "sync.status.offline":
+      "No se puede contactar con el servidor ahora. Tus clases están a salvo en esta computadora y se guardarán más tarde.",
+    "sync.status.signedOut":
+      "Tu sesión ha caducado. Recarga la página para volver a iniciar sesión: no se pierde nada.",
+    "sync.status.tooLarge":
+      "Tus clases ocupan demasiado para guardarlas en el servidor. Expórtalas a un archivo.",
+    "sync.status.conflict": "Esperando tu elección.",
+    "sync.saveNow": "Guardar ahora",
+    "sync.savedNote":
+      "Los ajustes se guardan en esta computadora y en el servidor de tu centro, con tu correo. El sonido del micrófono nunca sale del dispositivo.",
+    "sync.storageNote":
+      "Tus clases se guardan en esta computadora y en el servidor de tu centro, con {email}, así que las encontrarás en cualquier computadora donde inicies sesión.",
+    "sync.statsNote":
+      "También se guardan en el servidor de tu centro, con tus clases.",
+    "sync.conflict.title": "¿Qué clases conservamos?",
+    "sync.conflict.firstSync":
+      "Esta computadora ya tiene clases, y el servidor de tu centro tiene clases guardadas con {email}. Elige cuáles conservar: la otra copia se reemplazará.",
+    "sync.conflict.bothChanged":
+      "Tus clases han cambiado en esta computadora y en otro lugar desde la última vez que se guardaron. Elige cuáles conservar: los otros cambios se perderán.",
+    "sync.conflict.otherTeacher":
+      "Las clases de esta computadora las guardó por última vez otro docente. Has iniciado sesión como {email}.",
+    "sync.conflict.useServer": "Usar las clases guardadas en el servidor",
+    "sync.conflict.useServerOther": "Cargar las clases de {email}",
+    "sync.conflict.startEmpty": "Empezar sin clases como {email}",
+    "sync.conflict.keepLocal": "Conservar las clases de esta computadora",
+    "sync.conflict.keepLocalOther":
+      "Conservar estas clases y guardarlas como {email}",
+    "privacy.sync":
+      "Si tu centro usa su propia copia de Shy Safari con la sincronización activada (inicias sesión para entrar), tus clases, ajustes y estadísticas también se guardan en la cuenta de Cloudflare de ese centro, con el correo con el que iniciaste sesión, para que las encuentres en otra computadora. El centro gestiona esos datos. El sonido del micrófono nunca se envía a ninguna parte.",
     "backup.title": "Guardar o trasladar tus clases",
     "backup.hint":
       "Guarda todas las clases en un archivo y luego impórtalo en otra computadora, navegador o dirección.",
@@ -1668,6 +1738,42 @@ const fr = {
     "stats.quietMinutes": "{m} minutes calmes",
     "stats.goal": "Objectif {goal}",
     "stats.level": "niveau sonore",
+    "sync.title": "Enregistré sur le serveur de votre établissement",
+    "sync.as": "Connecté en tant que {email}.",
+    "sync.status.starting": "Connexion…",
+    "sync.status.synced": "À jour.",
+    "sync.status.syncedAt": "À jour, dernier enregistrement {time}.",
+    "sync.status.saving": "Enregistrement…",
+    "sync.status.offline":
+      "Le serveur est injoignable pour l’instant. Vos classes sont en sécurité sur cet ordinateur et seront enregistrées plus tard.",
+    "sync.status.signedOut":
+      "Votre connexion a expiré. Rechargez la page pour vous reconnecter : rien n’est perdu.",
+    "sync.status.tooLarge":
+      "Vos classes sont trop volumineuses pour le serveur. Exportez-les plutôt dans un fichier.",
+    "sync.status.conflict": "En attente de votre choix.",
+    "sync.saveNow": "Enregistrer maintenant",
+    "sync.savedNote":
+      "Les réglages sont enregistrés sur cet ordinateur et sur le serveur de votre établissement, sous votre e-mail. Le son du micro ne quitte jamais l’appareil.",
+    "sync.storageNote":
+      "Vos classes sont enregistrées sur cet ordinateur et sur le serveur de votre établissement, sous {email} : vous les retrouverez sur tout ordinateur où vous vous connectez.",
+    "sync.statsNote":
+      "Elles sont aussi enregistrées sur le serveur de votre établissement, avec vos classes.",
+    "sync.conflict.title": "Quelles classes garder ?",
+    "sync.conflict.firstSync":
+      "Cet ordinateur a déjà des classes, et le serveur de votre établissement a des classes enregistrées sous {email}. Choisissez lesquelles garder : l’autre copie sera remplacée.",
+    "sync.conflict.bothChanged":
+      "Vos classes ont changé sur cet ordinateur et ailleurs depuis le dernier enregistrement. Choisissez lesquelles garder : les autres modifications seront perdues.",
+    "sync.conflict.otherTeacher":
+      "Les classes de cet ordinateur ont été enregistrées en dernier par un autre enseignant. Vous êtes connecté en tant que {email}.",
+    "sync.conflict.useServer":
+      "Utiliser les classes enregistrées sur le serveur",
+    "sync.conflict.useServerOther": "Charger les classes de {email}",
+    "sync.conflict.startEmpty": "Commencer sans classe en tant que {email}",
+    "sync.conflict.keepLocal": "Garder les classes de cet ordinateur",
+    "sync.conflict.keepLocalOther":
+      "Garder ces classes et les enregistrer sous {email}",
+    "privacy.sync":
+      "Si votre établissement utilise sa propre copie de Shy Safari avec la synchronisation activée (vous vous connectez pour y accéder), vos classes, réglages et statistiques sont aussi enregistrés sur le compte Cloudflare de cet établissement, sous l’e-mail utilisé pour vous connecter, afin de les retrouver sur un autre ordinateur. L’établissement gère ces données. Le son du micro n’est jamais envoyé nulle part.",
     "backup.title": "Sauvegarder ou déplacer vos classes",
     "backup.hint":
       "Enregistrez toutes les classes dans un fichier, puis importez-le sur un autre ordinateur, navigateur ou adresse.",

@@ -11,9 +11,10 @@
   import type { App } from "$lib/app.svelte";
   import { MAX_NAME_LENGTH, type ClassInfo } from "$lib/classes/classList";
   import { classes } from "$lib/classes/classes.svelte";
-  import { className, t, type UiKey } from "$lib/i18n/index.svelte";
+  import { className, current, t, type UiKey } from "$lib/i18n/index.svelte";
   import { settings } from "$lib/settings/settings.svelte";
   import { stats } from "$lib/stats/stats.svelte";
+  import { sync } from "$lib/sync/sync.svelte";
   import {
     backupFileName,
     createBackup,
@@ -54,6 +55,32 @@
     if (renamingId) classes.rename(renamingId, renameTo);
     renamingId = null;
   }
+
+  const syncStatus = $derived.by(() => {
+    switch (sync.status) {
+      case "synced":
+        return sync.syncedAt
+          ? t("sync.status.syncedAt", {
+              time: new Date(sync.syncedAt).toLocaleString(current().locale, {
+                dateStyle: "short",
+                timeStyle: "short",
+              }),
+            })
+          : t("sync.status.synced");
+      case "saving":
+        return t("sync.status.saving");
+      case "offline":
+        return t("sync.status.offline");
+      case "signed-out":
+        return t("sync.status.signedOut");
+      case "too-large":
+        return t("sync.status.tooLarge");
+      case "conflict":
+        return t("sync.status.conflict");
+      default:
+        return t("sync.status.starting");
+    }
+  });
 
   let importing = $state<{ backup: Backup; file: string } | null>(null);
   let importError = $state<UiKey | null>(null);
@@ -261,8 +288,30 @@
           <rect x="3" y="4" width="18" height="12" rx="2" />
           <path d="M8 20h8M12 16v4" />
         </svg>
-        {t("classes.storage")}
+        {sync.enabled && sync.email
+          ? t("sync.storageNote", { email: sync.email })
+          : t("classes.storage")}
       </p>
+
+      {#if sync.enabled}
+        <section class="mt-4 space-y-2 border-t border-slate-200 pt-4">
+          <h2 class="text-sm font-semibold text-slate-900">
+            {t("sync.title")}
+          </h2>
+          {#if sync.email}
+            <p class="text-xs text-slate-500">
+              {t("sync.as", { email: sync.email })}
+            </p>
+          {/if}
+          <p class="text-sm text-slate-700" role="status">{syncStatus}</p>
+          {#if sync.status === "synced" || sync.status === "offline"}
+            <button
+              class="rounded-md border border-slate-300 px-3 py-1.5 text-sm hover:bg-slate-50"
+              onclick={() => sync.saveNow()}>{t("sync.saveNow")}</button
+            >
+          {/if}
+        </section>
+      {/if}
 
       <section class="mt-4 space-y-2 border-t border-slate-200 pt-4">
         <h2 class="text-sm font-semibold text-slate-900">

@@ -9,6 +9,7 @@
    */
 
   import { classes } from "$lib/classes/classes.svelte";
+  import { sync } from "$lib/sync/sync.svelte";
   import { className, t, tIn, type UiKey } from "$lib/i18n/index.svelte";
   import type { App } from "$lib/app.svelte";
   import {
@@ -279,7 +280,7 @@
     </section>
 
     <p class="mt-6 text-xs text-slate-500">
-      {t("settings.savedNote")}
+      {sync.enabled ? t("sync.savedNote") : t("settings.savedNote")}
     </p>
   </aside>
 
