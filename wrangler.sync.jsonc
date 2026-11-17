@@ -1,0 +1,32 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // The same site as wrangler.jsonc, plus sync: a Worker that runs only for
+  // /api/* and keeps each teacher's classes in D1, keyed by the e-mail
+  // Cloudflare Access signed them in with. See docs/adr/0015-sync-through-cloudflare.md
+  // and docs/hosting.md. Deploy with: bunx wrangler deploy -c wrangler.sync.jsonc
+  "name": "shy-safari",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./build",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    // Only the API runs the Worker; every page and file is served as before.
+    "run_worker_first": ["/api/*"],
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "shy-safari",
+      // Replace with the id printed by: bunx wrangler d1 create shy-safari
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "migrations_dir": "migrations",
+    },
+  ],
+  "vars": {
+    // From Zero Trust → Access → your application. Until both are set, /api/*
+    // answers 503 and the app simply doesn't sync.
+    "ACCESS_TEAM_DOMAIN": "",
+    "ACCESS_AUD": "",
+  },
+}

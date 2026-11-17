@@ -3,6 +3,7 @@
   "name": "shy-safari",
   "compatibility_date": "2026-11-01",
   // Static assets only: no Worker script runs, so requests are free and unlimited.
+  // For sync between computers, deploy wrangler.sync.jsonc instead (ADR 0015).
   // /about is served from about.html (the default html_handling), and
   // static/_redirects and static/_headers carry the rest of the old vercel.json.
   "assets": {
