@@ -9,6 +9,11 @@
   "name": "shy-safari",
   "main": "worker/index.ts",
   "compatibility_date": "2026-11-01",
+  // Only the custom domain, which is behind Cloudflare Access: no workers.dev
+  // address or preview URLs, which aren't (otherwise every deploy turns them
+  // back on).
+  "workers_dev": false,
+  "preview_urls": false,
   "assets": {
     "directory": "./build",
     "binding": "ASSETS",

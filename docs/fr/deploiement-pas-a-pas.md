@@ -134,9 +134,11 @@ $env:PUBLIC_SITE_URL="https://safari.exemple.fr"; bun run build
 bunx wrangler deploy -c wrangler.sync.local.jsonc
 ```
 
-Wrangler affiche une adresse `https://shy-safari.<compte>.workers.dev`. Le
-site y fonctionne déjà, **sans** synchronisation pour l'instant (elle reste
-inactive tant que l'étape 9 n'est pas faite : c'est voulu).
+Le Worker est en ligne, mais sans adresse publique pour l'instant :
+`wrangler.sync.jsonc` désactive exprès les adresses `workers.dev` et
+_Preview URLs_, qui ne passeraient pas par la page de connexion. Le site
+sera visible à l'étape 5, sur votre sous-domaine. La synchronisation reste
+inactive tant que l'étape 9 n'est pas faite : c'est voulu.
 
 ## Étape 5 — Brancher le sous-domaine
 
@@ -149,14 +151,15 @@ inactive tant que l'étape 9 n'est pas faite : c'est voulu).
 
 ## Étape 6 — Fermer les autres adresses
 
-Toujours dans **Domains & Routes** :
-
-- **workers.dev** → **Disable** ;
-- **Preview URLs** → **Disable**.
-
-Ces adresses ne passent pas par la page de connexion : mieux vaut qu'elles
-n'existent pas. (Le Worker refuse de toute façon de synchroniser sans jeton
-Access valide.)
+Rien à faire : `"workers_dev": false` et `"preview_urls": false` dans
+`wrangler.sync.local.jsonc` les gardent désactivées à chaque déploiement.
+Vérifiez seulement dans **Domains & Routes** que **workers.dev** et
+**Preview URLs** apparaissent bien désactivés. (Si votre copie locale date
+d'avant cet ajout et que Wrangler affiche l'avertissement _"workers_dev is
+not in your wrangler.sync.local.jsonc"_, ajoutez ces deux lignes, reprises
+de `wrangler.sync.jsonc`.) Ces adresses ne passent pas par la page de
+connexion ; le Worker refuse de toute façon de synchroniser sans jeton
+Access valide.
 
 ## Étape 7 — Préparer Cloudflare Zero Trust
 

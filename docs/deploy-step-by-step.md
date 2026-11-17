@@ -73,8 +73,10 @@ PUBLIC_SITE_URL=https://safari.example.org bun run build
 bunx wrangler deploy -c wrangler.sync.local.jsonc
 ```
 
-The site works at the printed `workers.dev` address, without sync for now
-(it stays off until step 9, on purpose).
+The Worker is live but has no public address yet: `wrangler.sync.jsonc`
+turns off the `workers.dev` address and preview URLs on purpose, since they
+aren't behind the sign-in page. The site appears in step 5 on your
+subdomain. Sync stays off until step 9, on purpose.
 
 ## Step 5 — Attach the subdomain
 
@@ -84,8 +86,11 @@ certificate. Open https://safari.example.org.
 
 ## Step 6 — Close the other addresses
 
-In **Domains & Routes**, disable **workers.dev** and **Preview URLs**: they
-are not behind the sign-in page.
+Nothing to do: `"workers_dev": false` and `"preview_urls": false` in
+`wrangler.sync.local.jsonc` keep them off on every deploy. Just check in
+**Domains & Routes** that both show as disabled. (If your local copy predates
+this and Wrangler warns _"workers_dev is not in your
+wrangler.sync.local.jsonc"_, add those two lines from `wrangler.sync.jsonc`.)
 
 ## Step 7 — Set up Cloudflare Zero Trust
 
