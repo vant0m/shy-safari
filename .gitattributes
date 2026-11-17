@@ -1,0 +1,9 @@
+# Keep LF in the working tree on every OS, so Prettier (which expects LF)
+# passes on Windows checkouts with core.autocrlf=true too.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.ico binary
+*.woff binary
+*.woff2 binary
