@@ -40,8 +40,24 @@ cp wrangler.sync.jsonc wrangler.sync.local.jsonc
 bunx wrangler d1 create shy-safari
 ```
 
+Wrangler may ask three questions; answer:
+
+| Question                                                                                    | Answer                                                                      |
+| ------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| _For local dev, do you want to connect to the remote resource instead of a local resource?_ | **No** (local development uses a local database)                            |
+| _What binding name would you like to use?_                                                  | **`DB`** (the name the code expects)                                        |
+| _Would you like Wrangler to add it on your behalf?_                                         | **No** (it would add it to `wrangler.jsonc`, the static-only configuration) |
+
 Copy the printed `database_id` into **`wrangler.sync.local.jsonc`**,
 replacing `00000000-0000-0000-0000-000000000000`.
+
+If you answered **Yes** to the last question, Wrangler wrote the id into
+`wrangler.jsonc`: copy it into `wrangler.sync.local.jsonc`, then restore
+`wrangler.jsonc`:
+
+```sh
+git checkout wrangler.jsonc
+```
 
 ## Step 3 — Create the tables
 
@@ -138,14 +154,15 @@ bunx wrangler deploy -c wrangler.sync.local.jsonc
 
 ## Troubleshooting
 
-| Symptom                                    | Cause and fix                                                                                                |
-| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| No "Saved on your school's server" section | Sync is off: a var is empty, or you deployed `wrangler.jsonc`. `/api/me` answering `503` means missing vars. |
-| `/api/me` answers `401` while signed in    | Team domain or AUD tag doesn't match the Access application (no trailing `/` on the team domain).            |
-| "Your sign-in has expired"                 | Reload and sign in again; nothing is lost.                                                                   |
-| "Can't reach the server"                   | Temporary; the app retries, classes stay on the computer.                                                    |
-| "Which classes should we keep?"            | Both computers changed the same thing since the last save; everything else was merged automatically.         |
-| Custom domain won't attach                 | A `safari` DNS record already exists.                                                                        |
-| `wrangler deploy` fails on `database_id`   | Step 2's id wasn't copied into `wrangler.sync.local.jsonc`.                                                  |
+| Symptom                                                                             | Cause and fix                                                                                                |
+| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| No "Saved on your school's server" section                                          | Sync is off: a var is empty, or you deployed `wrangler.jsonc`. `/api/me` answering `503` means missing vars. |
+| `/api/me` answers `401` while signed in                                             | Team domain or AUD tag doesn't match the Access application (no trailing `/` on the team domain).            |
+| "Your sign-in has expired"                                                          | Reload and sign in again; nothing is lost.                                                                   |
+| "Can't reach the server"                                                            | Temporary; the app retries, classes stay on the computer.                                                    |
+| "Which classes should we keep?"                                                     | Both computers changed the same thing since the last save; everything else was merged automatically.         |
+| Custom domain won't attach                                                          | A `safari` DNS record already exists.                                                                        |
+| `The database 00000000-0000-0000-0000-000000000000 could not be found [code: 7404]` | The id isn't in `wrangler.sync.local.jsonc` (often Wrangler put it in `wrangler.jsonc`). See step 2.         |
+| `wrangler deploy` fails on `database_id`                                            | Step 2's id wasn't copied into `wrangler.sync.local.jsonc`.                                                  |
 
 Static-only hosting, without sync: [hosting.md](hosting.md).

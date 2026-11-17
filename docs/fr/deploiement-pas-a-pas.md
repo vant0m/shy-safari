@@ -86,9 +86,26 @@ Puis créez la base :
 bunx wrangler d1 create shy-safari
 ```
 
+Wrangler peut poser trois questions ; répondez :
+
+| Question                                                                                    | Réponse                                                                                              |
+| ------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| _For local dev, do you want to connect to the remote resource instead of a local resource?_ | **No** (en local, on utilise une base locale)                                                        |
+| _What binding name would you like to use?_                                                  | **`DB`** (le nom attendu par le code)                                                                |
+| _Would you like Wrangler to add it on your behalf?_                                         | **No** (il l'ajouterait dans `wrangler.jsonc`, la configuration statique, qui doit rester sans base) |
+
 La commande affiche un bloc contenant `"database_id": "…"`. Ouvrez
 **`wrangler.sync.local.jsonc`** et remplacez la valeur de `database_id`
 (`00000000-0000-0000-0000-000000000000`) par celle affichée.
+
+Si vous avez répondu **Yes** à la dernière question, Wrangler a écrit
+l'identifiant dans `wrangler.jsonc` : recopiez-le dans
+`wrangler.sync.local.jsonc`, puis remettez `wrangler.jsonc` dans son état
+d'origine :
+
+```sh
+git checkout wrangler.jsonc
+```
 
 ## Étape 3 — Créer les tables
 
@@ -245,15 +262,16 @@ Retour arrière : **Workers & Pages → shy-safari → Deployments**, ou
 
 ## Dépannage
 
-| Symptôme                                                                   | Cause probable et solution                                                                                                                                                                                                     |
-| -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Pas de rubrique « Enregistré sur le serveur… » dans _Modifier les classes_ | La synchro est inactive : `ACCESS_TEAM_DOMAIN` ou `ACCESS_AUD` vide, ou déploiement fait avec `wrangler.jsonc` au lieu de `wrangler.sync.local.jsonc`. Ouvrez https://safari.exemple.fr/api/me : `503` = variables manquantes. |
-| `/api/me` répond `401` alors que vous êtes connecté                        | Le domaine d'équipe ou l'AUD tag ne correspond pas à l'application Access : recopiez-les (sans `/` final pour le domaine d'équipe) et redéployez.                                                                              |
-| « Votre connexion a expiré » dans l'app                                    | La session Access est finie : rechargez la page et reconnectez-vous. Rien n'est perdu.                                                                                                                                         |
-| « Le serveur est injoignable »                                             | Problème réseau passager : l'app réessaie seule, les classes restent sur l'ordinateur.                                                                                                                                         |
-| Une question « Quelles classes garder ? » apparaît                         | Les deux ordinateurs ont modifié la même chose (une note, les animaux d'une scène…) depuis le dernier enregistrement. Le reste est fusionné automatiquement.                                                                   |
-| Le domaine personnalisé refuse de s'ajouter                                | Un enregistrement DNS `safari` existe déjà (étape 0).                                                                                                                                                                          |
-| `wrangler deploy` échoue sur `database_id`                                 | L'identifiant de l'étape 2 n'a pas été recopié dans `wrangler.sync.local.jsonc`.                                                                                                                                               |
+| Symptôme                                                                            | Cause probable et solution                                                                                                                                                                                                     |
+| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Pas de rubrique « Enregistré sur le serveur… » dans _Modifier les classes_          | La synchro est inactive : `ACCESS_TEAM_DOMAIN` ou `ACCESS_AUD` vide, ou déploiement fait avec `wrangler.jsonc` au lieu de `wrangler.sync.local.jsonc`. Ouvrez https://safari.exemple.fr/api/me : `503` = variables manquantes. |
+| `/api/me` répond `401` alors que vous êtes connecté                                 | Le domaine d'équipe ou l'AUD tag ne correspond pas à l'application Access : recopiez-les (sans `/` final pour le domaine d'équipe) et redéployez.                                                                              |
+| « Votre connexion a expiré » dans l'app                                             | La session Access est finie : rechargez la page et reconnectez-vous. Rien n'est perdu.                                                                                                                                         |
+| « Le serveur est injoignable »                                                      | Problème réseau passager : l'app réessaie seule, les classes restent sur l'ordinateur.                                                                                                                                         |
+| Une question « Quelles classes garder ? » apparaît                                  | Les deux ordinateurs ont modifié la même chose (une note, les animaux d'une scène…) depuis le dernier enregistrement. Le reste est fusionné automatiquement.                                                                   |
+| Le domaine personnalisé refuse de s'ajouter                                         | Un enregistrement DNS `safari` existe déjà (étape 0).                                                                                                                                                                          |
+| `The database 00000000-0000-0000-0000-000000000000 could not be found [code: 7404]` | L'identifiant n'est pas dans `wrangler.sync.local.jsonc` (souvent : Wrangler l'a mis dans `wrangler.jsonc`). Voir l'étape 2.                                                                                                   |
+| `wrangler deploy` échoue sur `database_id`                                          | L'identifiant de l'étape 2 n'a pas été recopié dans `wrangler.sync.local.jsonc`.                                                                                                                                               |
 
 Version sans synchronisation (site statique seul) :
 [hebergement.md](hebergement.md).
