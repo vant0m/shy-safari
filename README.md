@@ -32,7 +32,8 @@ French documentation: [docs/fr/README.md](docs/fr/README.md).
    which scene, which microphone, how loud is too loud, and how often animals
    arrive. Each scene keeps its own animals, so switching never loses any.
 
-That is the whole app. No account, no sign-in, nothing to install.
+That is the whole app. Nothing to install, and no account or sign-in
+needed — unless a school chooses to add one (see below).
 
 ## Classes, backups and statistics
 
@@ -180,6 +181,8 @@ they can be checked without a microphone or a ten-second wait:
 
 ## Documentation
 
+- [`CHANGELOG.md`](CHANGELOG.md) — what changed, version by version.
+
 - [`CONTEXT.md`](CONTEXT.md) — the vocabulary the code uses (Scene, Creature,
   Class, Too Loud…).
 - [`docs/hosting.md`](docs/hosting.md) — deploying, domains, access control.
@@ -193,3 +196,13 @@ they can be checked without a microphone or a ten-second wait:
 The art brief started with the reef; the savanna, the forest, the jungle and
 the Arctic follow its style rules, and deep space, the prehistoric scene, the
 forest, the jungle and the Arctic each have their own section there.
+
+## Credits and license
+
+Shy Safari was created during the 2026 EdTech-a-thon by
+[Duncan A. Johnson](https://github.com/DuncanAJohnson) and
+[Elliot Roe](https://github.com/ElliotRoe), and published at
+[teacherdotdev/shy-safari](https://github.com/teacherdotdev/shy-safari). This
+copy builds on their work; [`CHANGELOG.md`](CHANGELOG.md) lists what changed
+since. Licensed under the Apache License 2.0 ([`LICENSE.txt`](LICENSE.txt));
+see [`NOTICE`](NOTICE).

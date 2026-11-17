@@ -1,10 +1,10 @@
 /**
  * Everything the teacher chooses, remembered on this computer.
  *
- * Per the workspace AGENTS.md data hierarchy this is localStorage and nothing
- * more: no accounts, no backend, nothing leaves the device. The animals each
- * Scene has earned are kept separately (`session/savedReef.ts`) and only
- * until Reset.
+ * Kept in localStorage, like everything else; a copy with sync turned on
+ * also saves it to the school's server (docs/adr/0015-sync-through-cloudflare.md).
+ * The animals each Scene has earned are kept separately
+ * (`session/savedReef.ts`) and only until Reset.
  *
  * Room settings (the microphone, its calibration, what stays up on screen)
  * are shared; Class settings (the Volume Goal, the Arrival Rate, what Too Loud

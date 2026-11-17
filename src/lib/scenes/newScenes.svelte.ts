@@ -6,7 +6,7 @@
  * offer yet (Pumpkin Hollow before it opens) is still new when it arrives.
  * Kept for this computer rather than per Class: it is the teacher who has
  * seen the menu, not the class. Like the settings, it is localStorage and
- * nothing more.
+ * synced along with the rest where a copy turns sync on.
  */
 
 import { browser } from "$app/environment";

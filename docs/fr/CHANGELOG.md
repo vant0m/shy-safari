@@ -1,0 +1,69 @@
+# Historique des versions
+
+Les changements notables du projet. Format inspiré de
+[Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versions
+[SemVer](https://semver.org/lang/fr/). Version anglaise de référence :
+[../../CHANGELOG.md](../../CHANGELOG.md).
+
+## [1.0.0] — 2026-11-17
+
+Première version maintenue pour un hébergement durable, à partir du prototype
+de l'EdTech-a-thon de Duncan A. Johnson et Elliot Roe
+([teacherdotdev/shy-safari](https://github.com/teacherdotdev/shy-safari)).
+
+### Ajouté
+
+- **Vallée enchantée**, 9e scène : les quatorze créatures de la branche
+  `mythical-scene` branchées, plus un impundulu, un feu follet, un centaure et
+  Pégase ; ambiance, brume lilas quand c'est trop fort, noms, anecdotes et
+  aide en anglais, espagnol et français.
+- **Palier Légendaire** : une créature par scène (lion blanc, dragon de mer
+  feuillu, soucoupe volante, Torosaurus, cerf blanc, panthère noire, orque
+  blanche, Pégase), environ une arrivée sur deux cents, au plus une fois par
+  séance, sous un arc-en-ciel ; rangée et cadre arc-en-ciel dans la
+  Collection.
+- **Réglages par classe** : objectif de volume, fréquence d'arrivée, réaction
+  au bruit et scène propres à chaque classe ; micro et calibration communs.
+  Les réglages existants sont repris, jamais remis à zéro.
+- **Exporter / Importer** toutes les classes dans un fichier JSON.
+- **Statistiques par classe** : temps calme, part du temps sous l'objectif,
+  séances, arrivées, fuites, rares et légendaires, niveau sonore moyen au fil
+  de la journée face à l'objectif, comparatif des classes. 180 jours.
+- **Synchronisation facultative entre ordinateurs** via un Worker Cloudflare
+  et une base D1, sous l'e-mail de connexion Cloudflare Access :
+  récupération silencieuse sur un nouvel ordinateur, fusion automatique des
+  changements faits sur deux ordinateurs, question seulement si les deux ont
+  changé la même chose, jamais de rechargement ni de question pendant une
+  séance.
+- Variables de build `PUBLIC_SITE_URL`, `DEV_ALLOWED_HOSTS`, `BUILD_VERSION`.
+- `bun run dev:sync` pour lancer le Worker de synchronisation en local.
+- Documentation en anglais et en français : lancement local pas à pas,
+  hébergement, Cloudflare Access, déploiement pas à pas sur un sous-domaine
+  avec synchronisation, ADR 0010 à 0015, index des ADR, `NOTICE`.
+
+### Modifié
+
+- La règle de données du projet (« pas de données, puis `localStorage`, puis
+  Supabase seulement si strictement nécessaire ») est abandonnée : le
+  `localStorage` reste le mode par défaut, la synchronisation serveur est une
+  option.
+- L'aide et la page Confidentialité décrivent la synchronisation quand elle
+  est activée.
+- Le README crédite le projet et les auteurs d'origine.
+
+### Corrigé
+
+- Le build pouvait produire une page qui ne démarrait pas (« Cannot read
+  properties of undefined (reading 'data') ») : la version du build est
+  désormais le commit git.
+- `bun run lint` échouait sur tous les fichiers sous Windows (fins de ligne
+  CRLF) : `.gitattributes` impose LF.
+- Les couleurs affichées avant le chargement suivaient les anciens réglages
+  communs au lieu de la classe affichée.
+- Les copies auto-hébergées ne mentionnent plus shysafari.com dans l'aide, le
+  sitemap et les liens.
+
+## [0.0.1] — 2026-11
+
+Le prototype de l'EdTech-a-thon publié sur
+[teacherdotdev/shy-safari](https://github.com/teacherdotdev/shy-safari).

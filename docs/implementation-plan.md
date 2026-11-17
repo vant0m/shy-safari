@@ -1,16 +1,20 @@
 # Implementation plan
 
+> **Historical.** Written for the EdTech-a-thon prototype (0.0.1). Its
+> constraints and instructions no longer apply as written; the current
+> state is in `README.md`, `CHANGELOG.md` and `docs/adr/`.
+
 Read `CONTEXT.md` for vocabulary and `docs/adr/` for the two decisions that are
 easy to accidentally undo. Artwork is a separate task; see
 `docs/svg-art-brief.md`.
 
 ## Stack
 
-Per the workspace `AGENTS.md`: Bun, TypeScript, SvelteKit, Tailwind, ESLint,
-Prettier (blank config), `localStorage` only — no backend, no accounts.
-Rendering is SVG in the DOM (ADR-0002). Run the dev server only via
+Bun, TypeScript, SvelteKit, Tailwind, ESLint, Prettier (blank config).
+~~`localStorage` only — no backend, no accounts.~~ (Retired: see ADR 0015.)
+Rendering is SVG in the DOM (ADR-0002). ~~Run the dev server only via
 `./scripts/agent-dev.mjs class-noise-level --no-pocketbase` from the workspace
-root.
+root.~~ (Now `bun run dev`; see `docs/running-locally.md`.)
 
 ## The numbers in one place
 

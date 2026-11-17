@@ -6,7 +6,8 @@
  * on the savanna, a sign on the reef, a readout panel in deep space, a stone
  * slab in the prehistoric Scene, a trail sign in the forest, a bamboo-framed board in the jungle). Each Class has
  * its own (`classes.svelte.ts`), so third period's instructions wait for third
- * period. Like the settings, it is localStorage and nothing more.
+ * period. Like the settings, it is kept in localStorage (and synced where a
+ * copy turns sync on).
  *
  * Positions and sizes are fractions of the screen, and drawn strokes are
  * fractions of their Note, so everything keeps its place when the window is

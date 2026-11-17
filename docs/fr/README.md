@@ -139,3 +139,13 @@ décisions d'architecture dans [`docs/adr/`](../adr/) (en anglais).
 Voir le guide complet : **[hebergement.md](hebergement.md)** (Cloudflare,
 domaine personnalisé, accès réservé par Cloudflare Access sans création de
 compte pour les enseignants, autres hébergeurs).
+
+## Crédits et licence
+
+Shy Safari a été créé pendant l'EdTech-a-thon 2026 par
+[Duncan A. Johnson](https://github.com/DuncanAJohnson) et
+[Elliot Roe](https://github.com/ElliotRoe), et publié sur
+[teacherdotdev/shy-safari](https://github.com/teacherdotdev/shy-safari). Cette
+copie s'appuie sur leur travail ; l'[historique des versions](CHANGELOG.md)
+liste les changements depuis. Licence Apache 2.0
+([`LICENSE.txt`](../../LICENSE.txt)) ; voir [`NOTICE`](../../NOTICE).
