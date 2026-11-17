@@ -174,6 +174,8 @@ const en = {
     "preview.unlocks": "Unlocks {date}",
     "settings.savedNote":
       "Settings are saved on this computer only. Microphone audio never leaves the device.",
+    "settings.perClass":
+      "The volume goal, what happens when it gets too loud, how often animals arrive and the scene are saved for each class. Now showing: {name}.",
     "goal.silent.label": "Silent",
     "goal.silent.hint": "No talking at all",
     "goal.independent.label": "Independent",
@@ -800,6 +802,8 @@ const es = {
     "preview.unlocks": "Se desbloquea el {date}",
     "settings.savedNote":
       "Los ajustes se guardan solo en esta computadora. El sonido del micrófono nunca sale del dispositivo.",
+    "settings.perClass":
+      "El objetivo de volumen, lo que pasa cuando hay demasiado ruido, la frecuencia de llegada y la escena se guardan para cada clase. Clase actual: {name}.",
     "goal.silent.label": "Silencio",
     "goal.silent.hint": "Nada de hablar",
     "goal.independent.label": "Individual",
@@ -1397,6 +1401,8 @@ const fr = {
     "preview.unlocks": "Débloqué le {date}",
     "settings.savedNote":
       "Les réglages sont enregistrés sur cet ordinateur uniquement. Le son du micro ne quitte jamais l’appareil.",
+    "settings.perClass":
+      "L’objectif de volume, la réaction au bruit, la fréquence d’arrivée et la scène sont enregistrés pour chaque classe. Classe affichée : {name}.",
     "goal.silent.label": "Silence",
     "goal.silent.hint": "Personne ne parle",
     "goal.independent.label": "Travail seul",

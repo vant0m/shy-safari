@@ -12,6 +12,7 @@
   import { MAX_NAME_LENGTH, type ClassInfo } from "$lib/classes/classList";
   import { classes } from "$lib/classes/classes.svelte";
   import { className, t } from "$lib/i18n/index.svelte";
+  import { settings } from "$lib/settings/settings.svelte";
 
   let { app, onclose }: { app: App; onclose: () => void } = $props();
 
@@ -27,7 +28,8 @@
   function add(event: SubmitEvent) {
     event.preventDefault();
     if (!newName.trim()) return;
-    classes.add(newName);
+    const id = classes.add(newName);
+    if (id) settings.copyTo(id);
     newName = "";
   }
 

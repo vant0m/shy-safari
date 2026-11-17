@@ -1,11 +1,11 @@
 /**
  * The teacher's Classes, remembered on this computer.
  *
- * Each Class keeps its own animals in every Scene, its own Collection, and
- * its own Notes and Timer, so second period never inherits what third period
- * earned or was told, and Reset only empties the Class on screen. Settings —
- * the microphone, calibration, goal and Arrival Rate — belong to the room,
- * not the class, and stay shared.
+ * Each Class keeps its own animals in every Scene, its own Collection, its
+ * own Notes and Timer, and its own Volume Goal, Arrival Rate, Too Loud choice
+ * and Scene, so second period never inherits what third period earned or was
+ * told, and Reset only empties the Class on screen. The microphone and its
+ * calibration belong to the room and stay shared (`settings/stored.ts`).
  *
  * Everything a Class keeps is stored under its own prefix, so deleting it is
  * a matter of removing every key that starts with it.
@@ -88,12 +88,22 @@ class Classes {
     return prefix(this.currentId) + part;
   }
 
+  /** Where any Class keeps `part`. */
+  storageKeyFor(classId: string, part: string) {
+    return prefix(classId) + part;
+  }
+
   select(id: string) {
     this.#set(selectClass(this.#list, id));
   }
 
-  add(name: string) {
-    this.#set(addClass(this.#list, newId(), name));
+  /** Adds a Class and returns its id, or null if the name was refused. */
+  add(name: string): string | null {
+    const id = newId();
+    const list = addClass(this.#list, id, name);
+    if (list === this.#list) return null;
+    this.#set(list);
+    return id;
   }
 
   rename(id: string, name: string) {

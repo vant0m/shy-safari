@@ -8,7 +8,8 @@
    * to it.
    */
 
-  import { t, tIn, type UiKey } from "$lib/i18n/index.svelte";
+  import { classes } from "$lib/classes/classes.svelte";
+  import { className, t, tIn, type UiKey } from "$lib/i18n/index.svelte";
   import type { App } from "$lib/app.svelte";
   import {
     ARRIVAL_RATE_PRESETS,
@@ -59,6 +60,9 @@
         onclick={onclose}>{t("common.close")}</button
       >
     </div>
+    <p class="mt-2 text-xs text-slate-500">
+      {t("settings.perClass", { name: className(classes.current.name) })}
+    </p>
 
     <section class="mt-6 space-y-3">
       <h2 class="text-sm font-semibold tracking-wide text-slate-500 uppercase">

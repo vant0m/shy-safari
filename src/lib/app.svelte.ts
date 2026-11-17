@@ -88,8 +88,9 @@ export class App {
 
   /**
    * Switch Class, say when third period arrives. Its animals, Collection,
-   * Notes and Timer come back, and the last class's are kept for it; the
-   * Session waits for Start, so the new class begins together.
+   * Notes, Timer, settings and Scene come back, and the last class's are
+   * kept for it; the Session waits for Start, so the new class begins
+   * together.
    */
   useClass(id: string) {
     if (id === classes.currentId) return;
@@ -107,10 +108,19 @@ export class App {
     this.#enterClass();
   }
 
+  /**
+   * The Class on screen has changed: bring back its Collection, Notes and
+   * settings, and the Scene it was last on (each Class keeps its own Volume
+   * Goal, Arrival Rate, Too Loud choice and Scene).
+   */
   #enterClass() {
     sightings.reload();
     notes.reload();
+    settings.reload();
     this.monitor.reset();
+    this.useScene(
+      isAvailable(settings.scene, today.day) ? settings.scene : DEFAULT_SCENE,
+    );
     this.session.useClass(settings.arrivalIntervalMs);
   }
 

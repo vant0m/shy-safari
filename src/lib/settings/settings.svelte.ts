@@ -5,233 +5,205 @@
  * more: no accounts, no backend, nothing leaves the device. The animals each
  * Scene has earned are kept separately (`session/savedReef.ts`) and only
  * until Reset.
+ *
+ * Room settings (the microphone, its calibration, what stays up on screen)
+ * are shared; Class settings (the Volume Goal, the Arrival Rate, what Too Loud
+ * does and the Scene) belong to the Class on screen. See `stored.ts` and
+ * docs/adr/0010-settings-per-class.md.
  */
 
 import { browser } from "$app/environment";
 import type { Calibration } from "$lib/audio/calibration";
-import { DEFAULT_SCENE, SCENE_IDS, type SceneId } from "$lib/scenes/types";
+import { classes } from "$lib/classes/classes.svelte";
+import type { SceneId } from "$lib/scenes/types";
+import {
+  ARRIVAL_RATE_PRESETS,
+  CLASS_DEFAULTS,
+  clampArrivalMinutes,
+  clampVolumeGoal,
+  parseClass,
+  parseRoom,
+  ROOM_DEFAULTS,
+  VOLUME_GOAL_PRESETS,
+  type ArrivalRatePreset,
+  type ClassSettings,
+  type LoudResponse,
+  type RoomSettings,
+  type VolumeGoalPreset,
+} from "./stored";
 
-export type VolumeGoalPreset = "silent" | "independent" | "partner" | "custom";
-export type ArrivalRatePreset = "relaxed" | "normal" | "lively" | "custom";
+export {
+  ARRIVAL_RATE_PRESETS,
+  MAX_ARRIVAL_MINUTES,
+  MIN_ARRIVAL_MINUTES,
+  VOLUME_GOAL_PRESETS,
+  type ArrivalRatePreset,
+  type LoudResponse,
+  type VolumeGoalPreset,
+} from "./stored";
+
 /**
- * What Too Loud does to the Creatures already out: hold still until the room
- * settles, or start running away. See docs/adr/0003-animals-can-run-away.md.
+ * The room's settings. Before Classes had settings of their own this record
+ * held every setting, so it may still carry the old shared Class settings:
+ * they are left in place for any Class that has yet to save its own.
  */
-export type LoudResponse = "flee" | "pause";
+const ROOM_KEY = "class-noise-level:settings";
+/** What each Class keeps its settings under (`classes.storageKey`). */
+export const CLASS_SETTINGS_PART = "settings";
 
-export const VOLUME_GOAL_PRESETS: Record<
-  Exclude<VolumeGoalPreset, "custom">,
-  { goal: number }
-> = {
-  silent: { goal: 15 },
-  independent: { goal: 30 },
-  partner: { goal: 50 },
-};
-
-export const ARRIVAL_RATE_PRESETS: Record<
-  Exclude<ArrivalRatePreset, "custom">,
-  { minutes: number }
-> = {
-  relaxed: { minutes: 8 },
-  normal: { minutes: 5 },
-  lively: { minutes: 2 },
-};
-
-/** Bounds on a typed-in Arrival Rate, in whole minutes. */
-export const MIN_ARRIVAL_MINUTES = 1;
-export const MAX_ARRIVAL_MINUTES = 60;
-
-const STORAGE_KEY = "class-noise-level:settings";
-
-interface StoredSettings {
-  scene: SceneId;
-  deviceId: string;
-  calibration: Calibration | null;
-  volumeGoalPreset: VolumeGoalPreset;
-  volumeGoal: number;
-  arrivalRatePreset: ArrivalRatePreset;
-  arrivalMinutes: number;
-  loudResponse: LoudResponse;
-  /** Keep the Noise Meter up over the Scene, not just in Settings. */
-  showMeter: boolean;
-  /** Keep a count of the Creatures that have arrived up over the Scene. */
-  showCounter: boolean;
+function readJson(key: string): unknown {
+  if (!browser) return null;
+  try {
+    return JSON.parse(localStorage.getItem(key) ?? "null");
+  } catch {
+    return null;
+  }
 }
 
-const DEFAULTS: StoredSettings = {
-  scene: DEFAULT_SCENE,
-  deviceId: "",
-  calibration: null,
-  volumeGoalPreset: "independent",
-  volumeGoal: VOLUME_GOAL_PRESETS.independent.goal,
-  arrivalRatePreset: "normal",
-  arrivalMinutes: ARRIVAL_RATE_PRESETS.normal.minutes,
-  loudResponse: "flee",
-  showMeter: false,
-  showCounter: false,
-};
-
-function read(): StoredSettings {
-  if (!browser) return { ...DEFAULTS };
+function writeJson(key: string, value: unknown) {
+  if (!browser) return;
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return { ...DEFAULTS };
-    const stored = JSON.parse(raw) as Partial<StoredSettings>;
-    // Settings saved before the rate could be typed in only have the preset;
-    // carry its minutes over rather than resetting the teacher to Normal.
-    if (stored.arrivalMinutes === undefined && stored.arrivalRatePreset) {
-      stored.arrivalMinutes =
-        stored.arrivalRatePreset === "custom"
-          ? DEFAULTS.arrivalMinutes
-          : ARRIVAL_RATE_PRESETS[stored.arrivalRatePreset]?.minutes;
-    }
-    // A Scene this version no longer has falls back to the default.
-    if (stored.scene && !SCENE_IDS.includes(stored.scene)) delete stored.scene;
-    return { ...DEFAULTS, ...stored };
+    localStorage.setItem(key, JSON.stringify(value));
   } catch {
-    return { ...DEFAULTS };
+    // A teacher browsing privately still gets a working app, just a
+    // forgetful one. Losing settings is not worth breaking the Session for.
   }
+}
+
+function readClass(legacy: unknown): ClassSettings {
+  if (!browser) return { ...CLASS_DEFAULTS };
+  return parseClass(readJson(classes.storageKey(CLASS_SETTINGS_PART)), legacy);
 }
 
 class Settings {
-  #stored = $state<StoredSettings>(read());
+  /** The room record as saved, old shared Class settings and all. */
+  #legacy: unknown = readJson(ROOM_KEY);
+  #room = $state<RoomSettings>(
+    browser ? parseRoom(this.#legacy) : { ...ROOM_DEFAULTS },
+  );
+  #class = $state<ClassSettings>(readClass(this.#legacy));
 
-  #save() {
-    if (!browser) return;
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.#stored));
-    } catch {
-      // A teacher browsing privately still gets a working app, just a
-      // forgetful one. Losing settings is not worth breaking the Session for.
-    }
+  /** Switch to the Class now on screen's settings. */
+  reload() {
+    this.#class = readClass(this.#legacy);
+  }
+
+  /**
+   * Give a newly added Class the settings of the one on screen, so a teacher
+   * who has tuned the goal for this room doesn't start from scratch.
+   */
+  copyTo(classId: string) {
+    writeJson(
+      classes.storageKeyFor(classId, CLASS_SETTINGS_PART),
+      $state.snapshot(this.#class),
+    );
+  }
+
+  #setRoom(change: Partial<RoomSettings>) {
+    this.#room = { ...this.#room, ...change };
+    const legacy =
+      this.#legacy && typeof this.#legacy === "object" ? this.#legacy : {};
+    writeJson(ROOM_KEY, { ...legacy, ...this.#room });
+  }
+
+  #setClass(change: Partial<ClassSettings>) {
+    this.#class = { ...this.#class, ...change };
+    writeJson(classes.storageKey(CLASS_SETTINGS_PART), this.#class);
   }
 
   get scene() {
-    return this.#stored.scene;
+    return this.#class.scene;
   }
 
   set scene(value: SceneId) {
-    this.#stored = { ...this.#stored, scene: value };
-    this.#save();
+    if (value === this.#class.scene) return;
+    this.#setClass({ scene: value });
   }
 
   get deviceId() {
-    return this.#stored.deviceId;
+    return this.#room.deviceId;
   }
 
   set deviceId(value: string) {
-    if (value === this.#stored.deviceId) return;
+    if (value === this.#room.deviceId) return;
     // A calibration belongs to the microphone it was measured on, so
     // switching device throws it away rather than silently misreading.
-    this.#stored = { ...this.#stored, deviceId: value, calibration: null };
-    this.#save();
+    this.#setRoom({ deviceId: value, calibration: null });
   }
 
   get calibration() {
-    return this.#stored.calibration;
+    return this.#room.calibration;
   }
 
   set calibration(value: Calibration | null) {
-    this.#stored = { ...this.#stored, calibration: value };
-    this.#save();
+    this.#setRoom({ calibration: value });
   }
 
   get volumeGoal() {
-    return this.#stored.volumeGoal;
+    return this.#class.volumeGoal;
   }
 
   get volumeGoalPreset() {
-    return this.#stored.volumeGoalPreset;
+    return this.#class.volumeGoalPreset;
   }
 
   useVolumeGoalPreset(preset: Exclude<VolumeGoalPreset, "custom">) {
-    this.#stored = {
-      ...this.#stored,
+    this.#setClass({
       volumeGoalPreset: preset,
       volumeGoal: VOLUME_GOAL_PRESETS[preset].goal,
-    };
-    this.#save();
+    });
   }
 
   setVolumeGoal(goal: number) {
-    const clamped = Math.max(1, Math.min(99, Math.round(goal)));
-    const matching = (
-      Object.keys(VOLUME_GOAL_PRESETS) as Exclude<VolumeGoalPreset, "custom">[]
-    ).find((preset) => VOLUME_GOAL_PRESETS[preset].goal === clamped);
-    this.#stored = {
-      ...this.#stored,
-      volumeGoal: clamped,
-      volumeGoalPreset: matching ?? "custom",
-    };
-    this.#save();
+    this.#setClass(clampVolumeGoal(goal));
   }
 
   get arrivalRatePreset() {
-    return this.#stored.arrivalRatePreset;
+    return this.#class.arrivalRatePreset;
   }
 
   get arrivalMinutes() {
-    return this.#stored.arrivalMinutes;
+    return this.#class.arrivalMinutes;
   }
 
   useArrivalRatePreset(preset: Exclude<ArrivalRatePreset, "custom">) {
-    this.#stored = {
-      ...this.#stored,
+    this.#setClass({
       arrivalRatePreset: preset,
       arrivalMinutes: ARRIVAL_RATE_PRESETS[preset].minutes,
-    };
-    this.#save();
+    });
   }
 
   setArrivalMinutes(minutes: number) {
     if (!Number.isFinite(minutes)) return;
-    const clamped = Math.max(
-      MIN_ARRIVAL_MINUTES,
-      Math.min(MAX_ARRIVAL_MINUTES, Math.round(minutes)),
-    );
-    const matching = (
-      Object.keys(ARRIVAL_RATE_PRESETS) as Exclude<
-        ArrivalRatePreset,
-        "custom"
-      >[]
-    ).find((preset) => ARRIVAL_RATE_PRESETS[preset].minutes === clamped);
-    this.#stored = {
-      ...this.#stored,
-      arrivalMinutes: clamped,
-      arrivalRatePreset: matching ?? "custom",
-    };
-    this.#save();
+    this.#setClass(clampArrivalMinutes(minutes));
   }
 
   get loudResponse() {
-    return this.#stored.loudResponse;
+    return this.#class.loudResponse;
   }
 
   set loudResponse(value: LoudResponse) {
-    this.#stored = { ...this.#stored, loudResponse: value };
-    this.#save();
+    this.#setClass({ loudResponse: value });
   }
 
   get showMeter() {
-    return this.#stored.showMeter;
+    return this.#room.showMeter;
   }
 
   set showMeter(value: boolean) {
-    this.#stored = { ...this.#stored, showMeter: value };
-    this.#save();
+    this.#setRoom({ showMeter: value });
   }
 
   get showCounter() {
-    return this.#stored.showCounter;
+    return this.#room.showCounter;
   }
 
   set showCounter(value: boolean) {
-    this.#stored = { ...this.#stored, showCounter: value };
-    this.#save();
+    this.#setRoom({ showCounter: value });
   }
 
   get arrivalIntervalMs() {
-    return this.#stored.arrivalMinutes * 60_000;
+    return this.#class.arrivalMinutes * 60_000;
   }
 }
 
