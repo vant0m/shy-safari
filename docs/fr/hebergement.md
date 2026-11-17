@@ -137,9 +137,11 @@ Mise en place (une fois, par l'administrateur) :
    (jusqu'à 50 utilisateurs ; une carte ou PayPal est demandé mais rien n'est
    débité sur l'offre Free). Le nom d'équipe peut être imposé : n'importe
    lequel convient.
-3. **Settings → Authentication → Login methods** : _One-time PIN_ est présent
-   par défaut. Ajoutez Google ou Microsoft (Azure AD) ici si besoin.
-4. **Access → Applications → Add an application → Self-hosted** :
+3. **Integrations → Identity providers → Add new identity provider →
+   One-time PIN** (il n'est plus activé d'office sur les nouveaux comptes).
+   Ajoutez Google ou Microsoft (Azure AD) ici si besoin.
+4. **Access controls → Applications → Create new application → Public DNS**
+   (selon la version : _Self-hosted and private → Add public hostname_) :
    - Application name : `Shy Safari`.
    - Session duration : par ex. `1 month`.
    - Application domain : votre hôte canonique, par ex. `www.exemple.fr`.

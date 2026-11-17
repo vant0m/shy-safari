@@ -131,9 +131,12 @@ Setting it up (once, by the administrator):
 2. Open **Zero Trust** from the dashboard and pick the Free plan (up to 50
    users; a card or PayPal is asked for but not charged on Free). The team
    name may be set for you; any name works.
-3. **Settings → Authentication → Login methods**: _One-time PIN_ is there by
-   default. Add Google or Microsoft (Azure AD) here if you want those.
-4. **Access → Applications → Add an application → Self-hosted**:
+3. **Integrations → Identity providers → Add new identity provider →
+   One-time PIN** (new accounts no longer have it by default). Add Google or
+   Microsoft (Azure AD) here if you want those.
+4. **Access controls → Applications → Create new application → Public DNS**
+   (in some dashboard versions: _Self-hosted and private → Add public
+   hostname_):
    - Application name: `Shy Safari`.
    - Session duration: e.g. `1 month`.
    - Application domain: your canonical host, e.g. `www.example.org`. Add a

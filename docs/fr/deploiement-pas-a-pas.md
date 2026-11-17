@@ -167,27 +167,38 @@ Access valide.)
    Account / Plan**). Le **nom d'équipe** peut être proposé ou imposé
    automatiquement : peu importe lequel, il ne sert qu'à l'adresse de la page
    de connexion.
-2. Notez votre **domaine d'équipe** : `https://<nom-d-equipe>.cloudflareaccess.com`.
-   Il est visible dans **Settings** (rubrique _Team name and domain_ ;
-   l'emplacement exact varie selon les versions du tableau de bord).
-3. **Settings → Authentication → Login methods** : vérifiez que
-   **One-time PIN** est présent (il l'est par défaut).
+2. **Ajoutez la connexion par code e-mail** (elle n'est plus activée
+   d'office sur les nouveaux comptes) : **Zero Trust → Integrations →
+   Identity providers → Add new identity provider → One-time PIN**.
+3. Le **domaine d'équipe** (`https://<nom-d-equipe>.cloudflareaccess.com`) se
+   récupère le plus simplement à l'étape 10 : c'est l'adresse de la page de
+   connexion qui s'affiche dans le navigateur.
 
 ## Étape 8 — Créer l'application Access
 
-1. **Zero Trust → Access → Applications → Add an application →
-   Self-hosted**.
+1. **Zero Trust → Access controls → Applications → Create new
+   application**. Parmi les types proposés, choisissez **Public DNS**
+   (application sur un nom d'hôte public ; selon la version du tableau de
+   bord, l'intitulé peut être _Self-hosted and private → Add public
+   hostname_). Ne prenez pas **Workers** : ce type protège le Worker par son
+   nom et sa transmission du jeton au Worker n'est pas documentée ;
+   **Public DNS** est le cas documenté.
 2. **Application name** : `Shy Safari`.
-3. **Session duration** : `1 month` (l'ordinateur de classe ne redemande pas
-   le code chaque matin).
-4. **Application domain** : sous-domaine `safari`, domaine `exemple.fr`.
-5. **Policy** :
+3. **Domain** : sous-domaine `safari`, domaine `exemple.fr` (dans la liste
+   déroulante des domaines).
+4. **Access policies → Create a new policy** :
    - Action : **Allow** ;
    - Include : **Emails** (l'adresse de chaque enseignant), ou **Emails
      ending in** `@votre-etablissement.fr` pour tout un domaine.
-6. Enregistrez.
-7. Rouvrez l'application et copiez son **Application Audience (AUD) Tag**
-   (dans _Overview_ ou _Additional settings_) : une longue chaîne
+     Le code n'est envoyé qu'aux adresses autorisées par une policy.
+5. **Identity providers** / **Login methods** de l'application : cochez
+   **One-time PIN** (décochez les autres si vous ne voulez que le code par
+   e-mail).
+6. **Session Duration** : `1 month` (l'ordinateur de classe ne redemande pas
+   le code chaque matin).
+7. **Create**.
+8. Rouvrez l'application (**Edit**) et, dans **Additional settings**,
+   copiez l'**Application Audience (AUD) Tag** : une longue chaîne
    hexadécimale.
 
 À partir de maintenant, https://safari.exemple.fr demande la connexion.
@@ -228,6 +239,13 @@ votre ordinateur, dans le fichier ignoré par Git.
      animaux, puis cliquez sur **Enregistrer maintenant** ;
    - sur le second, connectez-vous avec la même adresse : la classe apparaît
      automatiquement (la page se recharge une fois).
+
+   Le **domaine d'équipe** à mettre dans `ACCESS_TEAM_DOMAIN` (étape 9) est
+   le début de l'adresse de la page de connexion :
+   `https://<nom-d-equipe>.cloudflareaccess.com` (sans rien après). Si vous
+   ne l'aviez pas encore, faites d'abord le point 1 ci-dessus pour le lire,
+   remplissez l'étape 9, puis revenez ici.
+
 4. Les journaux de connexion sont dans **Zero Trust → Logs → Access**.
 
 ## Mettre à jour

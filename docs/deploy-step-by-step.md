@@ -94,20 +94,29 @@ are not behind the sign-in page.
    charged while you stay on Free (check **Settings → Account / Plan**). The
    **team name** may be suggested or set for you: any name works, it only
    appears in the sign-in page's address.
-2. Note your **team domain**, `https://<team>.cloudflareaccess.com`
-   (**Settings**, _Team name and domain_; the exact place varies between
-   dashboard versions).
-3. **Settings → Authentication → Login methods**: **One-time PIN** is there
-   by default.
+2. **Add sign-in by e-mailed code** (new accounts no longer get it by
+   default): **Zero Trust → Integrations → Identity providers → Add new
+   identity provider → One-time PIN**.
+3. The **team domain** (`https://<team>.cloudflareaccess.com`) is easiest to
+   read in step 10: it is the address of the sign-in page in the browser.
 
 ## Step 8 — Create the Access application
 
-1. **Access → Applications → Add an application → Self-hosted**.
-2. Name `Shy Safari`, **session duration** `1 month`, **application domain**
-   `safari` + `example.org`.
-3. Policy: **Allow**, include **Emails** (each teacher) or **Emails ending
-   in** `@your-school.org`.
-4. Save, reopen it and copy its **Application Audience (AUD) Tag**.
+1. **Zero Trust → Access controls → Applications → Create new
+   application**, type **Public DNS** (an app on a public hostname; some
+   dashboard versions call it _Self-hosted and private → Add public
+   hostname_). Not **Workers**: that type protects the Worker by name, and
+   how it passes the token to the Worker isn't documented; **Public DNS** is
+   the documented case.
+2. Name `Shy Safari`; **Domain** `safari` + `example.org`.
+3. **Access policies → Create a new policy**: **Allow**, include **Emails**
+   (each teacher) or **Emails ending in** `@your-school.org`. Codes are only
+   sent to addresses a policy allows.
+4. Login methods for the app: tick **One-time PIN** (untick the others if you
+   only want e-mailed codes).
+5. **Session Duration** `1 month`, then **Create**.
+6. Reopen it (**Edit**) and copy the **Application Audience (AUD) Tag** from
+   **Additional settings**.
 
 ## Step 9 — Turn sync on
 
@@ -133,6 +142,12 @@ values aren't secret, and they stay on your computer in the ignored file.
 3. **Two computers**: create a named class on one and press **Save now**;
    sign in on the other with the same address: the class appears (the page
    reloads once).
+
+   The **team domain** for `ACCESS_TEAM_DOMAIN` (step 9) is the start of the
+   sign-in page's address, `https://<team>.cloudflareaccess.com` (nothing
+   after it). If you didn't have it yet, do point 1 to read it, fill in step
+   9, then come back.
+
 4. Sign-in logs: **Zero Trust → Logs → Access**.
 
 ## Updating
