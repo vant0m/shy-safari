@@ -16,6 +16,7 @@ import { DEFAULT_SCENE, type SceneId } from "$lib/scenes/types";
 import { Session } from "$lib/session/session.svelte";
 import { sightings } from "$lib/session/sightings.svelte";
 import { settings } from "$lib/settings/settings.svelte";
+import { stats } from "$lib/stats/stats.svelte";
 import { ClassTimer } from "$lib/timer/timer.svelte";
 import { today } from "$lib/today.svelte";
 import { untrack } from "svelte";
@@ -94,6 +95,8 @@ export class App {
    */
   useClass(id: string) {
     if (id === classes.currentId) return;
+    // What was recorded so far belongs to the class that is leaving.
+    stats.flush();
     this.timer.useClass(() => classes.select(id));
     this.#enterClass();
   }
@@ -104,6 +107,7 @@ export class App {
       classes.remove(id);
       return;
     }
+    stats.flush();
     this.timer.useClass(() => classes.remove(id));
     this.#enterClass();
   }
@@ -117,6 +121,7 @@ export class App {
     sightings.reload();
     notes.reload();
     settings.reload();
+    stats.reload();
     this.monitor.reset();
     this.useScene(
       isAvailable(settings.scene, today.day) ? settings.scene : DEFAULT_SCENE,
@@ -176,6 +181,7 @@ export class App {
     this.paused = false;
     this.monitor.reset();
     this.session.start(settings.arrivalIntervalMs);
+    stats.sessionStarted();
   }
 
   resetSession() {
@@ -229,6 +235,13 @@ export class App {
           settings.arrivalIntervalMs,
           settings.loudResponse === "flee",
         );
+        if (this.session.running) {
+          stats.observe(
+            delta,
+            this.monitor.state === "quiet",
+            this.monitor.level,
+          );
+        }
       }
       // The tab is hidden, so its own interval may be held back: keep the
       // Timer's chime on time from the floating window's frames instead.
@@ -237,7 +250,17 @@ export class App {
     };
     this.#frame = requestFrame(step);
 
+    // Write the statistics down when the tab is hidden or closed, not only
+    // every half-minute.
+    const flush = () => stats.flush();
+    const onVisibility = () => document.hidden && flush();
+    document.addEventListener("visibilitychange", onVisibility);
+    window.addEventListener("pagehide", flush);
+
     return () => {
+      document.removeEventListener("visibilitychange", onVisibility);
+      window.removeEventListener("pagehide", flush);
+      flush();
       cancelFrame(this.#frame);
       stopTimer();
       stopToday();

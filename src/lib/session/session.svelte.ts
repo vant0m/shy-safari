@@ -31,6 +31,7 @@ import {
   saveLegends,
   saveReef,
 } from "./savedReef";
+import { stats } from "$lib/stats/stats.svelte";
 import { sightings } from "./sightings.svelte";
 
 /** One Creature actually in the water, and where it first appears. */
@@ -220,6 +221,7 @@ export class Session {
       scared.push(pick.id);
     }
     if (scared.length === 0) return;
+    stats.fled(scared.length);
     this.fleeing = [...this.fleeing, ...scared];
     this.#save();
   }
@@ -256,6 +258,7 @@ export class Session {
     this.#save();
     saveArrived(this.arrived);
     sightings.record(this.#sceneId, def.slug);
+    stats.arrived(def.tier);
     if (def.tier === "legendary") {
       this.#legends = [...this.#legends, def.slug];
       saveLegends(this.#sceneId, this.#legends);

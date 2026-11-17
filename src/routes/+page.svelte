@@ -6,6 +6,7 @@
   import ScenePicker from "$lib/components/ScenePicker.svelte";
   import SceneSelect from "$lib/components/SceneSelect.svelte";
   import Collection from "$lib/components/Collection.svelte";
+  import StatsPanel from "$lib/components/StatsPanel.svelte";
   import ControlBar from "$lib/components/ControlBar.svelte";
   import MicBlocked from "$lib/components/MicBlocked.svelte";
   import NotesLayer from "$lib/components/notes/NotesLayer.svelte";
@@ -74,6 +75,7 @@
 
   let settingsOpen = $state(false);
   let collectionOpen = $state(false);
+  let statsOpen = $state(false);
   let infoOpen = $state(false);
   let classesOpen = $state(false);
   let classMenuOpen = $state(false);
@@ -468,7 +470,10 @@
       {#key classes.currentId}
         <Timer
           timer={app.timer}
-          controlsVisible={controlsVisible || settingsOpen || collectionOpen}
+          controlsVisible={controlsVisible ||
+            settingsOpen ||
+            collectionOpen ||
+            statsOpen}
         />
       {/key}
     {/if}
@@ -549,7 +554,7 @@
     {#if app.listening}
       <ControlBar
         {app}
-        visible={controlsVisible || settingsOpen || collectionOpen}
+        visible={controlsVisible || settingsOpen || collectionOpen || statsOpen}
         onopensettings={() => (settingsOpen = true)}
       />
 
@@ -564,6 +569,24 @@
       >
         <div class="pointer-events-auto flex gap-2">
           <ScenePicker {app} bind:open={sceneMenuOpen} />
+          <button
+            class="grid size-11 place-items-center rounded-full bg-white/95 text-slate-700 shadow-lg hover:bg-white"
+            aria-label={t("stats.open")}
+            title={t("stats.open")}
+            onclick={() => (statsOpen = true)}
+          >
+            <svg
+              viewBox="0 0 24 24"
+              class="size-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.2"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <path d="M4 20h16M7 16v-5M12 16V6M17 16v-8" />
+            </svg>
+          </button>
           <button
             class="grid size-11 place-items-center rounded-full bg-white/95 text-slate-700 shadow-lg hover:bg-white"
             aria-label={tIn(app.scene.id, "controls.animals")}
@@ -604,6 +627,10 @@
 
     {#if collectionOpen}
       <Collection {app} onclose={() => (collectionOpen = false)} />
+    {/if}
+
+    {#if statsOpen}
+      <StatsPanel onclose={() => (statsOpen = false)} />
     {/if}
 
     <InfoDrawer bind:open={infoOpen} />

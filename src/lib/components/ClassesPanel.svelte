@@ -13,6 +13,7 @@
   import { classes } from "$lib/classes/classes.svelte";
   import { className, t, type UiKey } from "$lib/i18n/index.svelte";
   import { settings } from "$lib/settings/settings.svelte";
+  import { stats } from "$lib/stats/stats.svelte";
   import {
     backupFileName,
     createBackup,
@@ -89,6 +90,8 @@
 
   function confirmImport() {
     if (!importing) return;
+    // Nothing from this visit may be written over what is imported.
+    stats.freeze();
     restoreBackup(localStorage, importing.backup);
     // Every store read its Class at start-up: begin again from the new data.
     location.reload();
