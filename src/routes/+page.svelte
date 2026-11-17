@@ -7,6 +7,7 @@
   import SceneSelect from "$lib/components/SceneSelect.svelte";
   import Collection from "$lib/components/Collection.svelte";
   import StatsPanel from "$lib/components/StatsPanel.svelte";
+  import { stats } from "$lib/stats/stats.svelte";
   import ControlBar from "$lib/components/ControlBar.svelte";
   import MicBlocked from "$lib/components/MicBlocked.svelte";
   import NotesLayer from "$lib/components/notes/NotesLayer.svelte";
@@ -573,7 +574,11 @@
             class="grid size-11 place-items-center rounded-full bg-white/95 text-slate-700 shadow-lg hover:bg-white"
             aria-label={t("stats.open")}
             title={t("stats.open")}
-            onclick={() => (statsOpen = true)}
+            onclick={() => {
+              // What the loop gathered since its last write belongs in too.
+              stats.flush();
+              statsOpen = true;
+            }}
           >
             <svg
               viewBox="0 0 24 24"

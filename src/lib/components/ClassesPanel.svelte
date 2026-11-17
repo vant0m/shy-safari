@@ -60,6 +60,8 @@
   let fileInput = $state<HTMLInputElement>();
 
   function exportAll() {
+    // Include what the statistics recorder has not written down yet.
+    stats.flush();
     const backup = createBackup(storageEntries(localStorage));
     const blob = new Blob([JSON.stringify(backup, null, 2)], {
       type: "application/json",

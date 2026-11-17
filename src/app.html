@@ -24,11 +24,18 @@
     <script>
       // The page is prerendered without a Scene, which appears only once the
       // saved one is known. Until then, paint the saved Scene's colours so a
-      // reload doesn't flash. Keep in step with settings.svelte.ts.
+      // reload doesn't flash. Keep in step with settings.svelte.ts: the Scene
+      // is the Class on screen's, and a Class that has not saved settings of
+      // its own still uses the old shared record's.
       try {
-        var saved = JSON.parse(
-          localStorage.getItem("class-noise-level:settings") || "{}",
-        ).scene;
+        var read = function (key) {
+          return JSON.parse(localStorage.getItem(key) || "null") || {};
+        };
+        var classId = read("class-noise-level:classes").currentId;
+        var saved =
+          (classId &&
+            read("class-noise-level:class:" + classId + ":settings").scene) ||
+          read("class-noise-level:settings").scene;
         if (saved) document.documentElement.dataset.scene = saved;
       } catch (e) {}
     </script>

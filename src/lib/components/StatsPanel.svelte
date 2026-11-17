@@ -29,9 +29,6 @@
   type Range = "today" | "week" | "month" | "all";
   const RANGES: Range[] = ["today", "week", "month", "all"];
 
-  // What the loop has gathered since its last write belongs in here too.
-  stats.flush();
-
   let classId = $state(classes.currentId);
   let range = $state<Range>("week");
   let clearing = $state(false);
