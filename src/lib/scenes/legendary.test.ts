@@ -8,6 +8,7 @@ import { ARCTIC_ROSTER } from "./arctic/roster";
 import { FOREST_ROSTER } from "./forest/roster";
 import { HALLOWEEN_ROSTER } from "./halloween/roster";
 import { JUNGLE_ROSTER } from "./jungle/roster";
+import { MYTHICAL_ROSTER } from "./mythical/roster";
 import { PREHISTORIC_ROSTER } from "./prehistoric/roster";
 import { REEF_ROSTER } from "./reef/roster";
 import { SAVANNA_ROSTER } from "./savanna/roster";
@@ -22,6 +23,7 @@ const ALWAYS_ON: Record<string, CreatureDef[]> = {
   forest: FOREST_ROSTER,
   jungle: JUNGLE_ROSTER,
   arctic: ARCTIC_ROSTER,
+  mythical: MYTHICAL_ROSTER,
 };
 
 const legends = (roster: CreatureDef[]) =>

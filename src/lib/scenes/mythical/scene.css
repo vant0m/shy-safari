@@ -1,0 +1,186 @@
+/* The mythical Scene's own styles: its Ambient Life, its page colour and its
+   Too Loud mist. Its Creatures use the shared part classes (routes/layout.css,
+   scenes/savanna/creatures.css, scenes/space/creatures.css) at their usual
+   pace. Every class here is prefixed `mythical-`, so nothing leaks into
+   another Scene. */
+
+/* --- Ambient Life -------------------------------------------------------- */
+
+@keyframes mythical-falls {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 calc(8 * var(--wu));
+  }
+}
+
+@keyframes mythical-glint {
+  0%,
+  100% {
+    transform: translateX(calc(-1.5 * var(--wu)));
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateX(calc(1.5 * var(--wu)));
+    opacity: 0.65;
+  }
+}
+
+@keyframes mythical-glimmer {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translate(-50%, 0) scale(0.4);
+  }
+  40%,
+  55% {
+    opacity: 0.9;
+    transform: translate(-50%, calc(-0.8 * var(--wu))) scale(1);
+  }
+}
+
+@keyframes mythical-petals {
+  from {
+    transform: translate(0, -20%) rotate(0deg);
+    opacity: 0;
+  }
+  15%,
+  80% {
+    opacity: 0.85;
+  }
+  to {
+    transform: translate(calc(14 * var(--wu)), 40%) rotate(12deg);
+    opacity: 0;
+  }
+}
+
+.mythical-petals > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.mythical-falls {
+  /* Pale streaks of falling water, soft at their ends, over the painted
+     falls in the backdrop. */
+  border-radius: calc(0.5 * var(--wu));
+  background:
+    linear-gradient(
+      to right,
+      transparent 10%,
+      rgb(255 255 255 / 0.6) 18%,
+      transparent 28%,
+      transparent 52%,
+      rgb(255 255 255 / 0.5) 60%,
+      transparent 70%
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      rgb(255 255 255 / 0) 0,
+      rgb(255 255 255 / 0.55) calc(1.5 * var(--wu)),
+      rgb(255 255 255 / 0) calc(3 * var(--wu))
+    );
+  background-size:
+    100% 100%,
+    100% calc(3 * var(--wu));
+  opacity: 0.65;
+  animation: mythical-falls 3.5s linear infinite;
+}
+
+.mythical-glint {
+  height: calc(0.35 * var(--wu));
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.8);
+  animation: mythical-glint ease-in-out infinite;
+}
+
+.mythical-glimmer {
+  width: calc(0.6 * var(--wu));
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    #fffbe6,
+    rgb(255 209 102 / 0.7) 45%,
+    rgb(255 209 102 / 0)
+  );
+  opacity: 0;
+  animation: mythical-glimmer 5s ease-in-out infinite;
+}
+
+.mythical-petals {
+  opacity: 0;
+  animation: mythical-petals linear infinite;
+}
+
+/* --- The page and Too Loud ---------------------------------------------- */
+
+html:has(.scene-stage[data-scene="mythical"]),
+html:has(.scene-stage[data-scene="mythical"]) body {
+  background: #9cc667;
+}
+
+/* Before the Scene mounts, a rough copy of its backdrop, so a reload of a
+   saved enchanted valley doesn't flash the savanna (see app.html). */
+html[data-scene="mythical"]:not(:has(.scene-stage)) body {
+  background: linear-gradient(
+    #86b9e6 0%,
+    #bcdaf0 30%,
+    #9fc4aa 50%,
+    #a6d2e6 54%,
+    #74b3d4 61%,
+    #bcdb86 63%,
+    #9cc667 100%
+  );
+}
+
+/* Too Loud: an enchanted mist. A lilac haze rises off the lake and the
+   meadow and the colour drains out of the valley. Drawn once, as a still
+   gradient: nothing in it moves, so it never becomes a show. */
+.scene-stage[data-scene="mythical"][data-murky="true"] {
+  filter: saturate(0.6) brightness(0.9) blur(1px);
+}
+
+.scene-stage[data-scene="mythical"] .too-loud-veil {
+  background:
+    radial-gradient(
+      ellipse 60% 30% at 30% 70%,
+      rgb(236 229 242 / 0.9),
+      rgb(236 229 242 / 0)
+    ),
+    radial-gradient(
+      ellipse 55% 28% at 75% 62%,
+      rgb(220 210 240 / 0.85),
+      rgb(220 210 240 / 0)
+    ),
+    linear-gradient(
+      to top,
+      #e6def2 0%,
+      #e6def2 35%,
+      rgb(200 190 225 / 0.6) 100%
+    );
+}
+
+.scene-stage[data-scene="mythical"][data-murky="true"] .too-loud-veil {
+  opacity: 0.5;
+}
+
+/* When creatures run away the freeze and the bolting carry the message, so
+   the mist is only a hint (the veil's own opacity is set in layout.css). */
+.scene-stage[data-scene="mythical"][data-scares="true"][data-murky="true"] {
+  filter: saturate(0.85) brightness(0.96);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mythical-falls,
+  .mythical-glint,
+  .mythical-glimmer,
+  .mythical-petals {
+    animation: none;
+  }
+
+  .mythical-glimmer {
+    opacity: 0.6;
+  }
+}

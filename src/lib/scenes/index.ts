@@ -35,6 +35,10 @@ import * as jungleArt from "./jungle/artwork";
 import jungleIcon from "./jungle/icon.svg";
 import { JUNGLE_NOTE } from "./jungle/note";
 import { JUNGLE_ROSTER } from "./jungle/roster";
+import MythicalAmbient from "./mythical/AmbientLife.svelte";
+import * as mythicalArt from "./mythical/artwork";
+import mythicalIcon from "./mythical/icon.svg";
+import { MYTHICAL_ROSTER } from "./mythical/roster";
 import type { DepartureStyle } from "./motion";
 import PrehistoricAmbient from "./prehistoric/AmbientLife.svelte";
 import * as prehistoricArt from "./prehistoric/artwork";
@@ -240,6 +244,29 @@ export const SCENES: Record<SceneId, SceneDef> = {
     departure: "run",
     whilePaused: "listen",
     note: ARCTIC_NOTE,
+  },
+  mythical: {
+    id: "mythical",
+    icon: mythicalIcon,
+    roster: MYTHICAL_ROSTER,
+    creatureArt: mythicalArt.CREATURE_ART,
+    listeningArt: mythicalArt.LISTENING_ART,
+    ambientArt: mythicalArt.AMBIENT_ART,
+    Ambient: MythicalAmbient,
+    depthFade: false,
+    // A cloud in the valley's sky, as on the savanna: the backdrop keeps the
+    // middle of the sky clear for it.
+    note: {
+      Art: SavannaNoteArt,
+      writing: (width, height) => cloudShape(width, height).writing,
+      surface: (width, height) => cloudShape(width, height).writing,
+      inks: { dark: "#2b2b3a", ...PEN_COLOURS },
+      home: { x: 0.3, y: 0.08, width: 0.4, height: 0.3 },
+    },
+    // The creatures run; the will-o'-the-wisp fades (`CreatureDef.departure`).
+    departure: "run",
+    whilePaused: "listen",
+    isNew: true,
   },
   halloween: {
     id: "halloween",

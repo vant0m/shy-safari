@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="2 2 150 92">
+  <!-- The lightning bird of Zulu and Xhosa stories: black and white, with
+       a storm's gold running through its feathers. -->
+  <g class="part-wings part-wings-far" style="transform-box: fill-box; transform-origin: 70% 95%">
+    <path d="M82 52 C 78 36, 82 18, 94 6 C 98 14, 98 22, 96 28 L 104 16 C 106 26, 104 36, 98 44 L 108 36 C 108 46, 100 54, 90 58 Z" fill="#3a4250"/>
+    <path d="M82 52 C 78 36, 82 18, 94 6 C 98 14, 98 22, 96 28 L 104 16 C 106 26, 104 36, 98 44 L 108 36 C 108 46, 100 54, 90 58 Z" fill="#2b2b3a" opacity="0.3"/>
+  </g>
+  <!-- A long tail, its feathers cut like lightning. -->
+  <g class="part-tail" style="transform-box: fill-box; transform-origin: 100% 30%">
+    <path d="M62 60 L 40 58 L 48 64 L 16 66 L 30 70 L 4 78 L 36 76 L 28 82 L 60 70 Z" fill="#3a4250"/>
+    <path d="M48 64 L 16 66 L 30 70 L 4 78 L 14 77 L 34 70.5 L 22 67.5 L 50 66 Z" fill="#ffd166"/>
+  </g>
+  <!-- Body: black above, white below. -->
+  <path d="M58 64 C 58 50, 74 42, 94 42 C 112 42, 124 48, 126 58 C 128 70, 114 78, 94 78 C 74 78, 58 74, 58 64 Z" fill="#3a4250"/>
+  <path d="M64 70 C 72 76, 84 78, 96 78 C 112 78, 124 72, 126 62 C 116 68, 102 70, 90 70 C 80 70, 72 70, 64 70 Z" fill="#f4f1de"/>
+  <path d="M70 52 C 80 46, 96 45, 110 48 C 96 48, 84 50, 74 56 Z" fill="#ffffff" opacity="0.15"/>
+  <!-- Legs tucked up in flight. -->
+  <path d="M90 77 L 88 86 L 84 90 L 90 89 L 94 84 L 95 78 Z M102 77 L 101 86 L 97 90 L 103 89 L 106 84 L 107 78 Z" fill="#ff9f5a"/>
+  <!-- Head: a white face, a strong orange bill. -->
+  <path d="M112 48 C 112 34, 122 26, 132 28 C 140 30, 144 38, 142 46 C 140 54, 130 58, 122 58 C 116 58, 112 54, 112 48 Z" fill="#3a4250"/>
+  <path d="M124 36 C 132 34, 140 38, 141 45 C 140 52, 132 56, 124 54 C 120 50, 120 40, 124 36 Z" fill="#f4f1de"/>
+  <path d="M140 40 C 145 39, 150 41, 152 44 C 150 46, 146 48, 140 48 Z" fill="#ff9f5a"/>
+  <path d="M140 44.5 C 144 45, 148 45, 152 44 C 150 46, 146 48, 140 48 Z" fill="#2b2b3a" opacity="0.25"/>
+  <!-- A crest of three gold sparks. -->
+  <path d="M122 30 L 116 18 L 124 24 L 124 12 L 130 24 L 136 16 L 134 29 Z" fill="#ffd166"/>
+  <ellipse cx="128" cy="49" rx="3.6" ry="2.2" fill="#ff7a8a" opacity="0.55"/>
+  <circle cx="133" cy="41" r="3.6" fill="#2b2b3a"/>
+  <circle cx="131.9" cy="39.9" r="1.05" fill="#ffffff"/>
+  <!-- Near wing, raised, with a bolt of gold across it. -->
+  <g class="part-wings" style="transform-box: fill-box; transform-origin: 60% 95%">
+    <path d="M74 56 C 66 40, 66 20, 76 4 C 82 12, 84 22, 82 30 L 92 14 C 96 26, 94 38, 88 46 L 100 38 C 102 50, 94 60, 82 64 Z" fill="#3a4250"/>
+    <path d="M76 4 C 82 12, 84 22, 82 30 L 92 14 C 96 26, 94 38, 88 46 L 100 38 C 102 50, 94 60, 82 64 L 80 58 C 90 54, 96 48, 96 44 L 84 50 C 90 40, 92 30, 90 22 L 80 36 C 82 26, 80 14, 76 4 Z" fill="#f4f1de"/>
+    <path d="M70 30 L 80 30 L 74 40 L 86 40 L 72 56 L 76 44 L 66 44 Z" fill="#ffd166"/>
+  </g>
+</svg>

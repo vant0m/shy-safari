@@ -65,6 +65,8 @@ const en = {
     "scene.jungle.hint": "Sloths, toucans and jaguars",
     "scene.arctic.name": "Arctic",
     "scene.arctic.hint": "Polar bears, seals and narwhals",
+    "scene.mythical.name": "Enchanted valley",
+    "scene.mythical.hint": "Unicorns, dragons and mermaids",
     "scene.halloween.name": "Halloween",
     "scene.halloween.hint": "Bats, ghosts and jack-o'-lanterns",
     "hollow.limited": "Limited time",
@@ -281,7 +283,7 @@ const en = {
     "about.photoAlt": "Participants of the 2026 EdTech-a-thon",
     "about.purposeTitle": "What it does",
     "about.purpose":
-      "Put the savanna, the coral reef, deep space, the age of dinosaurs, the forest, the jungle or the Arctic up on the board and press Start. While the class stays under the volume goal, animals come out one at a time. If it gets too loud, they run away. You can change that in Settings so the scene just pauses until it's quiet again. Most animals are common, a few are rare, and the class can look back at every one they've spotted.",
+      "Put the savanna, the coral reef, deep space, the age of dinosaurs, the forest, the jungle, the Arctic or an enchanted valley up on the board and press Start. While the class stays under the volume goal, animals come out one at a time. If it gets too loud, they run away. You can change that in Settings so the scene just pauses until it's quiet again. Most animals are common, a few are rare, and the class can look back at every one they've spotted.",
     "about.promiseTitle": "No catch",
     "about.promise":
       "It's free. There's no paid version and no ads, and we don't collect personal information about you or your students.",
@@ -308,9 +310,9 @@ const en = {
       "A free classroom noise level monitor that rewards quiet instead of punishing noise.",
     "guide.whatTitle": "What it is",
     "guide.what":
-      "Shy Safari is a classroom noise monitor that runs in a web browser. Put it on the projector or interactive whiteboard and it shows a calm savanna, coral reef, night sky in deep space, Cretaceous floodplain, woodland clearing, rainforest jungle or Arctic sea ice. It listens to how loud the room is through the computer's microphone, and while the class stays under the volume goal, shy animals come out one at a time. It is the opposite of a bouncing noise meter: there is no score, no needle and no red warning light, so nothing makes being loud more interesting than being quiet.",
+      "Shy Safari is a classroom noise monitor that runs in a web browser. Put it on the projector or interactive whiteboard and it shows a calm savanna, coral reef, night sky in deep space, Cretaceous floodplain, woodland clearing, rainforest jungle, Arctic sea ice or an enchanted valley. It listens to how loud the room is through the computer's microphone, and while the class stays under the volume goal, shy animals come out one at a time. It is the opposite of a bouncing noise meter: there is no score, no needle and no red warning light, so nothing makes being loud more interesting than being quiet.",
     "guide.useTitle": "Using it in class",
-    "guide.use.open": `Open ${SITE_HOST} on the computer connected to your projector, pick the savanna, the coral reef, deep space, the prehistoric scene, the forest, the jungle or the Arctic, and press Start. The browser asks to use the microphone.`,
+    "guide.use.open": `Open ${SITE_HOST} on the computer connected to your projector, pick the savanna, the coral reef, deep space, the prehistoric scene, the forest, the jungle, the Arctic or the enchanted valley, and press Start. The browser asks to use the microphone.`,
     "guide.use.goal":
       "Set the volume goal for the activity: Silent, Independent (quiet whispers) or Partner work (conversation voices), or drag the line on the meter to anywhere in between.",
     "guide.use.rate":
@@ -322,14 +324,14 @@ const en = {
       "Calibration is optional. Five seconds of silence and five seconds of normal talking teach the app what your room and your microphone sound like.",
     "guide.tooLoudTitle": "What happens when it gets too loud",
     "guide.tooLoud":
-      "The scene clouds over, with a dusty haze on the savanna, murky water on the reef, interference in deep space, mist off the river in the prehistoric scene, fog between the trees in the forest, a tropical downpour in the jungle and a whiteout of blowing snow in the Arctic, and no new animals come out. What happens next is your choice:",
+      "The scene clouds over, with a dusty haze on the savanna, murky water on the reef, interference in deep space, mist off the river in the prehistoric scene, fog between the trees in the forest, a tropical downpour in the jungle, a whiteout of blowing snow in the Arctic and a lilac mist in the enchanted valley, and no new animals come out. What happens next is your choice:",
     "guide.tooLoud.flee":
       "Animals run away (the default). The scene freezes and, while the room stays too loud, one animal and then a few more every five seconds run off the edge of the screen. In deep space, they fade out into static instead.",
     "guide.tooLoud.pause":
       "Pause the scene. The animals hold still, nothing is taken away, and progress toward the next animal waits until the room is calm again.",
     "guide.animalsTitle": "The animals",
     "guide.animals":
-      "The savanna has 18 animals, from meerkats and zebras to giraffes, hippos and rhinos, with lions, leopards and elephants as the rare ones. The coral reef has 19, from clownfish and seahorses to sea turtles and octopuses, with hammerhead sharks, manta rays and whale sharks as the rare ones. Deep space has 18 sightings for older students, from satellites, asteroids and astronauts to the space station, comets and Saturn-like planets, with a spiral galaxy, a black hole, a pulsar and a ring nebula as the rare ones. The prehistoric scene has 18 animals from the very end of the age of dinosaurs, drawn with up-to-date science, from small mammals, lizards and feathered raptors to Triceratops and Ankylosaurus, with Tyrannosaurus, Quetzalcoatlus and the giant Alamosaurus as the rare ones. The forest has 18 woodland animals, from chipmunks, robins and hedgehogs to raccoons, foxes and deer, with a gray wolf, a black bear and a moose as the rare ones. The jungle has 18 rainforest animals, from poison dart frogs, toucans and capuchin monkeys to sloths, macaws and orangutans, with jaguars, gorillas and tigers as the rare ones. The Arctic has 18 animals, from lemmings, puffins and arctic foxes to caribou, walruses and belugas, with polar bears, narwhals and bowhead whales as the rare ones. Each scene also hides one legendary animal: a white lion, a leafy seadragon, a flying saucer, a Torosaurus, a white stag, a black panther and a white orca. About one arrival in two hundred is legendary, and it comes at most once a session. Common animals turn up often and rare ones are a real event that many sessions will not see at all. Each scene keeps its own animals, and the collection remembers every animal the class has spotted.",
+      "The savanna has 18 animals, from meerkats and zebras to giraffes, hippos and rhinos, with lions, leopards and elephants as the rare ones. The coral reef has 19, from clownfish and seahorses to sea turtles and octopuses, with hammerhead sharks, manta rays and whale sharks as the rare ones. Deep space has 18 sightings for older students, from satellites, asteroids and astronauts to the space station, comets and Saturn-like planets, with a spiral galaxy, a black hole, a pulsar and a ring nebula as the rare ones. The prehistoric scene has 18 animals from the very end of the age of dinosaurs, drawn with up-to-date science, from small mammals, lizards and feathered raptors to Triceratops and Ankylosaurus, with Tyrannosaurus, Quetzalcoatlus and the giant Alamosaurus as the rare ones. The forest has 18 woodland animals, from chipmunks, robins and hedgehogs to raccoons, foxes and deer, with a gray wolf, a black bear and a moose as the rare ones. The jungle has 18 rainforest animals, from poison dart frogs, toucans and capuchin monkeys to sloths, macaws and orangutans, with jaguars, gorillas and tigers as the rare ones. The Arctic has 18 animals, from lemmings, puffins and arctic foxes to caribou, walruses and belugas, with polar bears, narwhals and bowhead whales as the rare ones. The enchanted valley has 18 creatures from the world’s stories, from fairies, moon rabbits and kitsune to mermaids, griffins, centaurs and unicorns, with a phoenix, a bakunawa and a dragon as the rare ones. Each scene also hides one legendary animal: a white lion, a leafy seadragon, a flying saucer, a Torosaurus, a white stag, a black panther, a white orca and Pegasus. About one arrival in two hundred is legendary, and it comes at most once a session. Common animals turn up often and rare ones are a real event that many sessions will not see at all. Each scene keeps its own animals, and the collection remembers every animal the class has spotted.",
     "guide.forTitle": "Who it is for",
     "guide.for":
       "Teachers of any grade who want a calm, visual cue for voice levels during independent work, reading time, tests, centers or group work. The whole class shares one screen, and students need nothing at all.",
@@ -482,6 +484,24 @@ const en = {
     narwhal: "Narwhal",
     "bowhead-whale": "Bowhead whale",
     "white-orca": "White orca",
+    fairy: "Fairy",
+    "moon-rabbit": "Moon rabbit",
+    carbunclo: "Carbuncle",
+    "fire-salamander": "Fire salamander",
+    "will-o-the-wisp": "Will-o’-the-wisp",
+    boto: "Boto",
+    "baby-dragon": "Baby dragon",
+    kitsune: "Kitsune",
+    mermaid: "Mermaid",
+    impundulu: "Impundulu",
+    griffin: "Griffin",
+    centaur: "Centaur",
+    unicorn: "Unicorn",
+    qilin: "Qilin",
+    phoenix: "Phoenix",
+    bakunawa: "Bakunawa",
+    dragon: "Dragon",
+    pegasus: "Pegasus",
     "harvest-mouse": "Harvest mouse",
     "garden-spider": "Garden spider",
     toad: "Toad",
@@ -516,6 +536,41 @@ const en = {
       "A black panther is a jaguar or leopard with extra-dark fur. Its spots are still there, just hard to see.",
     "white-orca":
       "Pure white orcas are so rare that scientists give each one a name; the first famous one was called Iceberg.",
+    // The enchanted valley's creatures.
+    fairy:
+      "Stories of fairies are told all over Europe; in Ireland they were said to live inside grassy hills.",
+    "moon-rabbit":
+      "In China, Japan and Korea people see a rabbit in the moon’s markings, pounding rice or medicine.",
+    carbunclo:
+      "The carbuncle comes from South American mining legends: a small creature with a glowing red gem on its head.",
+    "fire-salamander":
+      "Real fire salamanders hide in damp logs; people saw them run from logs on the fire and thought they lived in flames.",
+    "will-o-the-wisp":
+      "Real lights do flicker over marshes at night, probably from gas made by rotting plants catching fire.",
+    boto: "The boto is a real pink river dolphin of the Amazon. In stories it comes ashore at night as a man in a white hat.",
+    "baby-dragon":
+      "Dragons hatch from eggs in stories from Wales to China, and the egg can take a thousand years.",
+    kitsune:
+      "In Japanese stories a kitsune is a clever fox spirit that grows an extra tail every hundred years, up to nine.",
+    mermaid:
+      "Sailors’ tales of mermaids may come from seeing manatees and dugongs from far away.",
+    impundulu:
+      "In Zulu and Xhosa stories the impundulu is a lightning bird that brings thunder with the beat of its wings.",
+    griffin:
+      "A griffin is half eagle, half lion. Some think the legend began with dinosaur skulls found in Central Asia.",
+    centaur:
+      "In ancient Greek stories the centaur Chiron was a wise teacher of heroes.",
+    unicorn: "The unicorn is Scotland’s national animal.",
+    qilin:
+      "In Chinese stories the gentle qilin appears only when a wise and kind ruler is born.",
+    phoenix:
+      "The phoenix of ancient stories lives for hundreds of years, then is reborn from its own ashes.",
+    bakunawa:
+      "In Philippine myth the bakunawa, a giant sea serpent, tries to swallow the moon: that is an eclipse.",
+    dragon:
+      "European dragons breathe fire; Chinese dragons bring rain and good luck.",
+    pegasus:
+      "In Greek myth Pegasus, the winged horse, became a constellation you can still find in the autumn sky.",
     didelphodon:
       "A marsupial relative with the strongest bite, for its size, of any mammal known.",
     palaeosaniwa:
@@ -733,6 +788,8 @@ const es = {
     "scene.jungle.hint": "Perezosos, tucanes y jaguares",
     "scene.arctic.name": "Ártico",
     "scene.arctic.hint": "Osos polares, focas y narvales",
+    "scene.mythical.name": "Valle encantado",
+    "scene.mythical.hint": "Unicornios, dragones y sirenas",
     "scene.halloween.name": "Halloween",
     "scene.halloween.hint": "Murciélagos, fantasmas y calabazas",
     "hollow.limited": "Por tiempo limitado",
@@ -955,7 +1012,7 @@ const es = {
     "about.photoAlt": "Participantes del EdTech-a-thon 2026",
     "about.purposeTitle": "Qué hace",
     "about.purpose":
-      "Proyecta la sabana, el arrecife de coral, el espacio profundo, la era de los dinosaurios, el bosque, la selva o el Ártico y pulsa Empezar. Mientras la clase no pase del límite de volumen, los animales van saliendo de uno en uno. Si hay demasiado ruido, huyen. Puedes cambiarlo en Ajustes para que la escena solo se pause hasta que vuelva el silencio. La mayoría de los animales son comunes, unos pocos son raros, y la clase puede volver a ver todos los que ha encontrado.",
+      "Proyecta la sabana, el arrecife de coral, el espacio profundo, la era de los dinosaurios, el bosque, la selva, el Ártico o el valle encantado y pulsa Empezar. Mientras la clase no pase del límite de volumen, los animales van saliendo de uno en uno. Si hay demasiado ruido, huyen. Puedes cambiarlo en Ajustes para que la escena solo se pause hasta que vuelva el silencio. La mayoría de los animales son comunes, unos pocos son raros, y la clase puede volver a ver todos los que ha encontrado.",
     "about.promiseTitle": "Sin trampa",
     "about.promise":
       "Es gratis. No hay versión de pago ni anuncios, y no recopilamos datos personales tuyos ni de tus alumnos.",
@@ -982,9 +1039,9 @@ const es = {
       "Un medidor de ruido gratuito para el aula que premia el silencio en lugar de castigar el ruido.",
     "guide.whatTitle": "Qué es",
     "guide.what":
-      "Shy Safari es un medidor de ruido para el aula que funciona en el navegador. Ponlo en el proyector o en la pizarra digital y muestra una sabana, un arrecife de coral, un cielo del espacio profundo, una llanura del Cretácico, un claro del bosque, una selva tropical o el hielo ártico tranquilos. Escucha lo fuerte que suena la clase a través del micrófono del ordenador y, mientras la clase se mantiene por debajo del límite de volumen, van apareciendo animales tímidos uno a uno. Es lo contrario de un medidor de ruido que salta: no hay puntuación, ni aguja, ni luz roja de aviso, así que hacer ruido nunca resulta más interesante que estar en silencio.",
+      "Shy Safari es un medidor de ruido para el aula que funciona en el navegador. Ponlo en el proyector o en la pizarra digital y muestra una sabana, un arrecife de coral, un cielo del espacio profundo, una llanura del Cretácico, un claro del bosque, una selva tropical, el hielo ártico o un valle encantado tranquilos. Escucha lo fuerte que suena la clase a través del micrófono del ordenador y, mientras la clase se mantiene por debajo del límite de volumen, van apareciendo animales tímidos uno a uno. Es lo contrario de un medidor de ruido que salta: no hay puntuación, ni aguja, ni luz roja de aviso, así que hacer ruido nunca resulta más interesante que estar en silencio.",
     "guide.useTitle": "Cómo usarlo en clase",
-    "guide.use.open": `Abre ${SITE_HOST} en el ordenador conectado al proyector, elige la sabana, el arrecife de coral, el espacio profundo, la prehistoria, el bosque, la selva o el Ártico y pulsa Empezar. El navegador pedirá permiso para usar el micrófono.`,
+    "guide.use.open": `Abre ${SITE_HOST} en el ordenador conectado al proyector, elige la sabana, el arrecife de coral, el espacio profundo, la prehistoria, el bosque, la selva, el Ártico o el valle encantado y pulsa Empezar. El navegador pedirá permiso para usar el micrófono.`,
     "guide.use.goal":
       "Elige el límite de volumen para la actividad: Silencio, Individual (solo susurros) o En parejas (voz de conversación), o arrastra la línea del medidor a cualquier punto intermedio.",
     "guide.use.rate":
@@ -996,14 +1053,14 @@ const es = {
       "La calibración es opcional. Cinco segundos de silencio y cinco segundos de conversación normal le enseñan a la aplicación cómo suenan tu aula y tu micrófono.",
     "guide.tooLoudTitle": "Qué pasa cuando hay demasiado ruido",
     "guide.tooLoud":
-      "La escena se nubla, con una neblina de polvo en la sabana, agua turbia en el arrecife, interferencias en el espacio profundo, niebla del río en la prehistoria, niebla entre los árboles en el bosque, un aguacero tropical en la selva y una ventisca que lo deja todo blanco en el Ártico, y no aparecen animales nuevos. Lo que pasa después lo eliges tú:",
+      "La escena se nubla, con una neblina de polvo en la sabana, agua turbia en el arrecife, interferencias en el espacio profundo, niebla del río en la prehistoria, niebla entre los árboles en el bosque, un aguacero tropical en la selva, una ventisca que lo deja todo blanco en el Ártico y una bruma lila en el valle encantado, y no aparecen animales nuevos. Lo que pasa después lo eliges tú:",
     "guide.tooLoud.flee":
       "Los animales huyen (la opción por defecto). La escena se congela y, mientras siga habiendo demasiado ruido, un animal y luego unos cuantos más cada cinco segundos salen corriendo de la pantalla. En el espacio profundo, en cambio, se desvanecen entre la estática.",
     "guide.tooLoud.pause":
       "Pausar la escena. Los animales se quedan quietos, no se pierde nada y el progreso hacia el siguiente animal espera a que la clase vuelva a estar en calma.",
     "guide.animalsTitle": "Los animales",
     "guide.animals":
-      "La sabana tiene 18 animales, desde suricatas y cebras hasta jirafas, hipopótamos y rinocerontes, con leones, leopardos y elefantes como los más raros. El arrecife de coral tiene 19, desde peces payaso y caballitos de mar hasta tortugas marinas y pulpos, con tiburones martillo, mantarrayas y tiburones ballena como los más raros. El espacio profundo tiene 18 avistamientos pensados para estudiantes mayores, desde satélites, asteroides y astronautas hasta la estación espacial, cometas y planetas como Saturno, con una galaxia espiral, un agujero negro, un púlsar y una nebulosa anular como los más raros. La prehistoria tiene 18 animales del final de la era de los dinosaurios, dibujados según la ciencia actual, desde pequeños mamíferos, lagartos y raptores con plumas hasta Triceratops y Ankylosaurus, con Tyrannosaurus, Quetzalcoatlus y el gigantesco Alamosaurus como los más raros. El bosque tiene 18 animales, desde ardillas listadas, petirrojos y erizos hasta mapaches, zorros y ciervos, con un lobo gris, un oso negro y un alce como los más raros. La selva tiene 18 animales de la selva tropical, desde ranas venenosas, tucanes y monos capuchinos hasta perezosos, guacamayos y orangutanes, con jaguares, gorilas y tigres como los más raros. El Ártico tiene 18 animales, desde lemmings, frailecillos y zorros árticos hasta caribúes, morsas y belugas, con osos polares, narvales y ballenas de Groenlandia como los más raros. Además, cada escena esconde un animal legendario: un león blanco, un dragón de mar foliáceo, un platillo volante, un Torosaurus, un ciervo blanco, una pantera negra y una orca blanca. Más o menos una llegada de cada doscientas es legendaria, y como mucho una vez por sesión. Los animales comunes aparecen a menudo y los raros son todo un acontecimiento que muchas sesiones no llegan a ver. Cada escena guarda sus propios animales, y la colección recuerda todos los que la clase ha visto.",
+      "La sabana tiene 18 animales, desde suricatas y cebras hasta jirafas, hipopótamos y rinocerontes, con leones, leopardos y elefantes como los más raros. El arrecife de coral tiene 19, desde peces payaso y caballitos de mar hasta tortugas marinas y pulpos, con tiburones martillo, mantarrayas y tiburones ballena como los más raros. El espacio profundo tiene 18 avistamientos pensados para estudiantes mayores, desde satélites, asteroides y astronautas hasta la estación espacial, cometas y planetas como Saturno, con una galaxia espiral, un agujero negro, un púlsar y una nebulosa anular como los más raros. La prehistoria tiene 18 animales del final de la era de los dinosaurios, dibujados según la ciencia actual, desde pequeños mamíferos, lagartos y raptores con plumas hasta Triceratops y Ankylosaurus, con Tyrannosaurus, Quetzalcoatlus y el gigantesco Alamosaurus como los más raros. El bosque tiene 18 animales, desde ardillas listadas, petirrojos y erizos hasta mapaches, zorros y ciervos, con un lobo gris, un oso negro y un alce como los más raros. La selva tiene 18 animales de la selva tropical, desde ranas venenosas, tucanes y monos capuchinos hasta perezosos, guacamayos y orangutanes, con jaguares, gorilas y tigres como los más raros. El Ártico tiene 18 animales, desde lemmings, frailecillos y zorros árticos hasta caribúes, morsas y belugas, con osos polares, narvales y ballenas de Groenlandia como los más raros. El valle encantado tiene 18 criaturas de las leyendas del mundo, desde hadas, conejos de la luna y kitsunes hasta sirenas, grifos, centauros y unicornios, con un fénix, una bakunawa y un dragón como los más raros. Además, cada escena esconde un animal legendario: un león blanco, un dragón de mar foliáceo, un platillo volante, un Torosaurus, un ciervo blanco, una pantera negra, una orca blanca y Pegaso. Más o menos una llegada de cada doscientas es legendaria, y como mucho una vez por sesión. Los animales comunes aparecen a menudo y los raros son todo un acontecimiento que muchas sesiones no llegan a ver. Cada escena guarda sus propios animales, y la colección recuerda todos los que la clase ha visto.",
     "guide.forTitle": "Para quién es",
     "guide.for":
       "Para docentes de cualquier etapa que quieren una señal visual y tranquila del nivel de voz durante el trabajo individual, la lectura, los exámenes, los rincones o el trabajo en grupo. Toda la clase comparte una pantalla y el alumnado no necesita nada.",
@@ -1189,6 +1246,24 @@ const es = {
     narwhal: "Narval",
     "bowhead-whale": "Ballena de Groenlandia",
     "white-orca": "Orca blanca",
+    fairy: "Hada",
+    "moon-rabbit": "Conejo de la luna",
+    carbunclo: "Carbunclo",
+    "fire-salamander": "Salamandra de fuego",
+    "will-o-the-wisp": "Fuego fatuo",
+    boto: "Boto",
+    "baby-dragon": "Dragoncito",
+    kitsune: "Kitsune",
+    mermaid: "Sirena",
+    impundulu: "Impundulu",
+    griffin: "Grifo",
+    centaur: "Centauro",
+    unicorn: "Unicornio",
+    qilin: "Qilin",
+    phoenix: "Fénix",
+    bakunawa: "Bakunawa",
+    dragon: "Dragón",
+    pegasus: "Pegaso",
     "harvest-mouse": "Ratón espiguero",
     "garden-spider": "Araña de jardín",
     toad: "Sapo",
@@ -1222,6 +1297,41 @@ const es = {
       "Una pantera negra es un jaguar o un leopardo de pelaje muy oscuro. Sus manchas siguen ahí, solo que cuesta verlas.",
     "white-orca":
       "Las orcas blancas son tan raras que los científicos ponen nombre a cada una; la primera famosa se llamaba Iceberg.",
+    // The enchanted valley's creatures.
+    fairy:
+      "Las historias de hadas se cuentan por toda Europa; en Irlanda se decía que vivían dentro de colinas de hierba.",
+    "moon-rabbit":
+      "En China, Japón y Corea se ve un conejo en las manchas de la luna, machacando arroz o medicinas.",
+    carbunclo:
+      "El carbunclo viene de leyendas mineras de Sudamérica: un animalito con una gema roja brillante en la cabeza.",
+    "fire-salamander":
+      "Las salamandras de verdad se esconden en troncos húmedos; al verlas huir de la leña ardiendo, se creyó que vivían en el fuego.",
+    "will-o-the-wisp":
+      "Sobre los pantanos sí titilan luces de noche, probablemente gas de plantas podridas que se enciende.",
+    boto: "El boto es un delfín rosado de verdad del Amazonas. En las leyendas sale del río de noche como un hombre con sombrero blanco.",
+    "baby-dragon":
+      "En historias de Gales a China los dragones salen de huevos, y un huevo puede tardar mil años.",
+    kitsune:
+      "En los cuentos japoneses, la kitsune es un zorro espíritu muy listo al que le sale una cola cada cien años, hasta nueve.",
+    mermaid:
+      "Las sirenas de los marineros quizá eran manatíes y dugongos vistos de lejos.",
+    impundulu:
+      "En las historias zulúes y xhosas, el impundulu es un pájaro del rayo que trae el trueno al batir las alas.",
+    griffin:
+      "El grifo es mitad águila, mitad león. Hay quien cree que la leyenda nació de cráneos de dinosaurio hallados en Asia Central.",
+    centaur:
+      "En los mitos griegos, el centauro Quirón era un sabio maestro de héroes.",
+    unicorn: "El unicornio es el animal nacional de Escocia.",
+    qilin:
+      "En los cuentos chinos, el amable qilin solo aparece cuando nace un gobernante sabio y bondadoso.",
+    phoenix:
+      "El fénix de las historias antiguas vive cientos de años y luego renace de sus propias cenizas.",
+    bakunawa:
+      "En el mito filipino, la bakunawa, una serpiente marina gigante, intenta tragarse la luna: eso es un eclipse.",
+    dragon:
+      "Los dragones europeos escupen fuego; los chinos traen la lluvia y la buena suerte.",
+    pegasus:
+      "En el mito griego, Pegaso, el caballo alado, se convirtió en una constelación que aún se ve en el cielo de otoño.",
     didelphodon:
       "Un pariente de los marsupiales con la mordida más fuerte, para su tamaño, de todos los mamíferos conocidos.",
     palaeosaniwa: "Un gran lagarto cazador, pariente de los varanos actuales.",
@@ -1375,6 +1485,8 @@ const fr = {
     "scene.jungle.hint": "Paresseux, toucans et jaguars",
     "scene.arctic.name": "Arctique",
     "scene.arctic.hint": "Ours polaires, phoques et narvals",
+    "scene.mythical.name": "Vallée enchantée",
+    "scene.mythical.hint": "Licornes, dragons et sirènes",
     "scene.halloween.name": "Halloween",
     "scene.halloween.hint": "Chauves-souris, fantômes et citrouilles",
     "hollow.limited": "Édition limitée",
@@ -1596,7 +1708,7 @@ const fr = {
     "about.photoAlt": "Participants de l’EdTech-a-thon 2026",
     "about.purposeTitle": "Ce qu’il fait",
     "about.purpose":
-      "Affichez la savane, le récif de corail, l’espace profond, l’ère des dinosaures, la forêt, la jungle ou l’Arctique au tableau et appuyez sur Commencer. Tant que la classe reste sous l’objectif de volume, les animaux sortent un par un. S’il y a trop de bruit, ils s’enfuient. Vous pouvez changer ça dans les réglages pour que la scène se mette simplement en pause jusqu’au retour du calme. La plupart des animaux sont communs, quelques-uns sont rares, et la classe peut revoir tous ceux qu’elle a aperçus.",
+      "Affichez la savane, le récif de corail, l’espace profond, l’ère des dinosaures, la forêt, la jungle, l’Arctique ou une vallée enchantée au tableau et appuyez sur Commencer. Tant que la classe reste sous l’objectif de volume, les animaux sortent un par un. S’il y a trop de bruit, ils s’enfuient. Vous pouvez changer ça dans les réglages pour que la scène se mette simplement en pause jusqu’au retour du calme. La plupart des animaux sont communs, quelques-uns sont rares, et la classe peut revoir tous ceux qu’elle a aperçus.",
     "about.promiseTitle": "Gratuit, vraiment",
     "about.promise":
       "C’est gratuit. Il n’y a ni version payante ni publicité, et nous ne collectons aucune donnée personnelle sur vous ou vos élèves.",
@@ -1625,9 +1737,9 @@ const fr = {
       "Un sonomètre gratuit pour la classe qui récompense le calme au lieu de punir le bruit.",
     "guide.whatTitle": "Ce que c'est",
     "guide.what":
-      "Shy Safari est un sonomètre pour la classe qui fonctionne dans le navigateur. Affichez-le au vidéoprojecteur ou sur le tableau interactif : il montre une savane, un récif de corail, un ciel de l'espace profond, une plaine du Crétacé, une clairière en forêt, une jungle tropicale ou une banquise arctique paisibles. Il écoute le niveau sonore de la salle grâce au micro de l'ordinateur et, tant que la classe reste sous l'objectif de volume, des animaux timides sortent un par un. C'est le contraire d'un sonomètre qui s'agite : pas de score, pas d'aiguille, pas de voyant rouge, donc rien ne rend le bruit plus intéressant que le calme.",
+      "Shy Safari est un sonomètre pour la classe qui fonctionne dans le navigateur. Affichez-le au vidéoprojecteur ou sur le tableau interactif : il montre une savane, un récif de corail, un ciel de l'espace profond, une plaine du Crétacé, une clairière en forêt, une jungle tropicale, une banquise arctique ou une vallée enchantée paisibles. Il écoute le niveau sonore de la salle grâce au micro de l'ordinateur et, tant que la classe reste sous l'objectif de volume, des animaux timides sortent un par un. C'est le contraire d'un sonomètre qui s'agite : pas de score, pas d'aiguille, pas de voyant rouge, donc rien ne rend le bruit plus intéressant que le calme.",
     "guide.useTitle": "L'utiliser en classe",
-    "guide.use.open": `Ouvrez ${SITE_HOST} sur l'ordinateur relié au vidéoprojecteur, choisissez la savane, le récif de corail, l'espace profond, la préhistoire, la forêt, la jungle ou l'Arctique, puis appuyez sur Commencer. Le navigateur demande l'accès au micro.`,
+    "guide.use.open": `Ouvrez ${SITE_HOST} sur l'ordinateur relié au vidéoprojecteur, choisissez la savane, le récif de corail, l'espace profond, la préhistoire, la forêt, la jungle, l'Arctique ou la vallée enchantée, puis appuyez sur Commencer. Le navigateur demande l'accès au micro.`,
     "guide.use.goal":
       "Réglez l'objectif de volume pour l'activité : Silence, Travail seul (chuchotements) ou En binôme (voix de conversation), ou faites glisser la ligne du sonomètre n'importe où entre les deux.",
     "guide.use.rate":
@@ -1639,14 +1751,14 @@ const fr = {
       "L'étalonnage est facultatif. Cinq secondes de silence et cinq secondes de conversation normale apprennent à l'application comment sonnent votre salle et votre micro.",
     "guide.tooLoudTitle": "Ce qui se passe quand c'est trop bruyant",
     "guide.tooLoud":
-      "La scène se trouble, avec une brume de poussière sur la savane, une eau trouble sur le récif, des interférences dans l'espace profond, de la brume sur la rivière à la préhistoire, du brouillard entre les arbres en forêt, une averse tropicale dans la jungle et un blizzard tout blanc dans l'Arctique, et aucun nouvel animal ne sort. La suite dépend de votre choix :",
+      "La scène se trouble, avec une brume de poussière sur la savane, une eau trouble sur le récif, des interférences dans l'espace profond, de la brume sur la rivière à la préhistoire, du brouillard entre les arbres en forêt, une averse tropicale dans la jungle, un blizzard tout blanc dans l'Arctique et une brume lilas dans la vallée enchantée, et aucun nouvel animal ne sort. La suite dépend de votre choix :",
     "guide.tooLoud.flee":
       "Les animaux s'enfuient (par défaut). La scène se fige et, tant que la salle reste trop bruyante, un animal puis quelques autres toutes les cinq secondes s'enfuient hors de l'écran. Dans l'espace profond, ils se dissolvent plutôt dans les parasites.",
     "guide.tooLoud.pause":
       "Mettre la scène en pause. Les animaux restent immobiles, rien n'est perdu, et la progression vers le prochain animal attend que la classe se calme.",
     "guide.animalsTitle": "Les animaux",
     "guide.animals":
-      "La savane compte 18 animaux, des suricates et des zèbres aux girafes, hippopotames et rhinocéros, avec les lions, les léopards et les éléphants parmi les plus rares. Le récif de corail en compte 19, des poissons-clowns et hippocampes aux tortues marines et pieuvres, avec les requins-marteaux, les raies manta et les requins-baleines parmi les plus rares. L'espace profond compte 18 observations pour les plus grands, des satellites, astéroïdes et astronautes à la station spatiale, aux comètes et aux planètes comme Saturne, avec une galaxie spirale, un trou noir, un pulsar et une nébuleuse annulaire parmi les plus rares. La préhistoire compte 18 animaux de la toute fin de l'ère des dinosaures, dessinés d'après la science actuelle, des petits mammifères, lézards et raptors à plumes aux Triceratops et Ankylosaurus, avec Tyrannosaurus, Quetzalcoatlus et le géant Alamosaurus parmi les plus rares. La forêt compte 18 animaux, des tamias, rouges-gorges et hérissons aux ratons laveurs, renards et cerfs, avec un loup gris, un ours noir et un élan parmi les plus rares. La jungle compte 18 animaux de la forêt tropicale, des grenouilles venimeuses, toucans et capucins aux paresseux, aras et orangs-outans, avec les jaguars, les gorilles et les tigres parmi les plus rares. L'Arctique compte 18 animaux, des lemmings, macareux et renards arctiques aux caribous, morses et bélugas, avec les ours polaires, les narvals et les baleines boréales parmi les plus rares. Chaque scène cache aussi un animal légendaire : un lion blanc, un dragon de mer feuillu, une soucoupe volante, un Torosaurus, un cerf blanc, une panthère noire et une orque blanche. Environ une arrivée sur deux cents est légendaire, et au plus une fois par séance. Les animaux communs arrivent souvent et les plus rares sont un vrai événement que beaucoup de séances ne verront pas. Chaque scène garde ses propres animaux, et la collection se souvient de tous ceux que la classe a aperçus.",
+      "La savane compte 18 animaux, des suricates et des zèbres aux girafes, hippopotames et rhinocéros, avec les lions, les léopards et les éléphants parmi les plus rares. Le récif de corail en compte 19, des poissons-clowns et hippocampes aux tortues marines et pieuvres, avec les requins-marteaux, les raies manta et les requins-baleines parmi les plus rares. L'espace profond compte 18 observations pour les plus grands, des satellites, astéroïdes et astronautes à la station spatiale, aux comètes et aux planètes comme Saturne, avec une galaxie spirale, un trou noir, un pulsar et une nébuleuse annulaire parmi les plus rares. La préhistoire compte 18 animaux de la toute fin de l'ère des dinosaures, dessinés d'après la science actuelle, des petits mammifères, lézards et raptors à plumes aux Triceratops et Ankylosaurus, avec Tyrannosaurus, Quetzalcoatlus et le géant Alamosaurus parmi les plus rares. La forêt compte 18 animaux, des tamias, rouges-gorges et hérissons aux ratons laveurs, renards et cerfs, avec un loup gris, un ours noir et un élan parmi les plus rares. La jungle compte 18 animaux de la forêt tropicale, des grenouilles venimeuses, toucans et capucins aux paresseux, aras et orangs-outans, avec les jaguars, les gorilles et les tigres parmi les plus rares. L'Arctique compte 18 animaux, des lemmings, macareux et renards arctiques aux caribous, morses et bélugas, avec les ours polaires, les narvals et les baleines boréales parmi les plus rares. La vallée enchantée compte 18 créatures des légendes du monde entier, des fées, lapins de la lune et kitsunes aux sirènes, griffons, centaures et licornes, avec un phénix, un bakunawa et un dragon parmi les plus rares. Chaque scène cache aussi un animal légendaire : un lion blanc, un dragon de mer feuillu, une soucoupe volante, un Torosaurus, un cerf blanc, une panthère noire, une orque blanche et Pégase. Environ une arrivée sur deux cents est légendaire, et au plus une fois par séance. Les animaux communs arrivent souvent et les plus rares sont un vrai événement que beaucoup de séances ne verront pas. Chaque scène garde ses propres animaux, et la collection se souvient de tous ceux que la classe a aperçus.",
     "guide.forTitle": "Pour qui",
     "guide.for":
       "Pour les enseignants de tous niveaux qui veulent un repère visuel et apaisant du niveau de voix pendant le travail autonome, la lecture, les évaluations, les ateliers ou le travail de groupe. Toute la classe partage un seul écran et les élèves n'ont besoin de rien.",
@@ -1833,6 +1945,24 @@ const fr = {
     narwhal: "Narval",
     "bowhead-whale": "Baleine boréale",
     "white-orca": "Orque blanche",
+    fairy: "Fée",
+    "moon-rabbit": "Lapin de la lune",
+    carbunclo: "Escarboucle",
+    "fire-salamander": "Salamandre de feu",
+    "will-o-the-wisp": "Feu follet",
+    boto: "Boto",
+    "baby-dragon": "Bébé dragon",
+    kitsune: "Kitsune",
+    mermaid: "Sirène",
+    impundulu: "Impundulu",
+    griffin: "Griffon",
+    centaur: "Centaure",
+    unicorn: "Licorne",
+    qilin: "Qilin",
+    phoenix: "Phénix",
+    bakunawa: "Bakunawa",
+    dragon: "Dragon",
+    pegasus: "Pégase",
     "harvest-mouse": "Rat des moissons",
     "garden-spider": "Épeire des jardins",
     toad: "Crapaud",
@@ -1866,6 +1996,41 @@ const fr = {
       "Une panthère noire est un jaguar ou un léopard au pelage très foncé. Ses taches sont toujours là, simplement difficiles à voir.",
     "white-orca":
       "Les orques blanches sont si rares que les scientifiques donnent un nom à chacune ; la première célèbre s’appelait Iceberg.",
+    // The enchanted valley's creatures.
+    fairy:
+      "On raconte des histoires de fées dans toute l’Europe ; en Irlande, on disait qu’elles vivaient dans les collines.",
+    "moon-rabbit":
+      "En Chine, au Japon et en Corée, on voit un lapin dans les taches de la lune, qui pile du riz ou des remèdes.",
+    carbunclo:
+      "L’escarboucle vient de légendes de mineurs d’Amérique du Sud : une petite bête avec une gemme rouge qui brille sur la tête.",
+    "fire-salamander":
+      "Les vraies salamandres se cachent dans les bûches humides ; en les voyant fuir du feu, on a cru qu’elles vivaient dans les flammes.",
+    "will-o-the-wisp":
+      "Des lueurs dansent vraiment la nuit sur les marais, sans doute du gaz de plantes pourries qui s’enflamme.",
+    boto: "Le boto est un vrai dauphin rose d’Amazonie. Dans les contes, il sort du fleuve la nuit sous la forme d’un homme au chapeau blanc.",
+    "baby-dragon":
+      "Du pays de Galles à la Chine, les dragons des contes naissent d’un œuf, qui peut mettre mille ans à éclore.",
+    kitsune:
+      "Dans les contes japonais, la kitsune est un renard esprit très malin qui gagne une queue tous les cent ans, jusqu’à neuf.",
+    mermaid:
+      "Les sirènes des marins étaient peut-être des lamantins et des dugongs aperçus de loin.",
+    impundulu:
+      "Dans les récits zoulous et xhosas, l’impundulu est un oiseau-éclair qui fait gronder le tonnerre en battant des ailes.",
+    griffin:
+      "Le griffon est mi-aigle, mi-lion. Certains pensent que la légende est née de crânes de dinosaures trouvés en Asie centrale.",
+    centaur:
+      "Dans la mythologie grecque, le centaure Chiron était le sage maître des héros.",
+    unicorn: "La licorne est l’animal national de l’Écosse.",
+    qilin:
+      "Dans les contes chinois, le doux qilin n’apparaît qu’à la naissance d’un souverain sage et bon.",
+    phoenix:
+      "Le phénix des récits anciens vit des centaines d’années, puis renaît de ses propres cendres.",
+    bakunawa:
+      "Dans la mythologie philippine, le bakunawa, un serpent de mer géant, tente d’avaler la lune : c’est une éclipse.",
+    dragon:
+      "Les dragons européens crachent du feu ; les dragons chinois apportent la pluie et la chance.",
+    pegasus:
+      "Dans la mythologie grecque, Pégase, le cheval ailé, est devenu une constellation qu’on voit encore dans le ciel d’automne.",
     didelphodon:
       "Un cousin des marsupiaux doté de la morsure la plus puissante, pour sa taille, de tous les mammifères connus.",
     palaeosaniwa: "Un grand lézard chasseur, parent des varans actuels.",

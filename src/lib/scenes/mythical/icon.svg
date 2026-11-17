@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <defs><clipPath id="icon-mythical-tile"><rect width="48" height="48" rx="11"/></clipPath></defs>
+  <g clip-path="url(#icon-mythical-tile)">
+    <rect width="48" height="48" fill="#a9d1ef"/>
+    <path d="M0 30 C 10 24, 18 22, 26 24 C 34 26, 40 24, 48 22 L 48 48 L 0 48 Z" fill="#9fc4aa"/>
+    <path d="M0 34 L 48 34 L 48 40 L 0 40 Z" fill="#8cc4dc"/>
+    <path d="M0 40 C 16 38, 32 39, 48 40 L 48 48 L 0 48 Z" fill="#acd176"/>
+    <rect x="29" y="14" width="10" height="12" fill="#ece5f2"/>
+    <rect x="32" y="9" width="4" height="17" fill="#ece5f2"/>
+    <path d="M31.5 10 L 34 4 L 36.5 10 Z" fill="#e48aa8"/>
+    <path d="M28 15 L 30.5 10 L 33 15 Z M35 15 L 37.5 10 L 40 15 Z" fill="#9a8fd0"/>
+    <path d="M10 10 L 11.2 13.8 L 15 15 L 11.2 16.2 L 10 20 L 8.8 16.2 L 5 15 L 8.8 13.8 Z" fill="#ffd166"/>
+    <path d="M19 6 L 19.6 7.9 L 21.5 8.5 L 19.6 9.1 L 19 11 L 18.4 9.1 L 16.5 8.5 L 18.4 7.9 Z" fill="#ffffff"/>
+  </g>
+</svg>

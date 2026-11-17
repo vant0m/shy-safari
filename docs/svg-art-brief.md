@@ -689,3 +689,32 @@ no Universal monster make-up (no flat-topped head with neck bolts, no
 widow's peak); nothing from _Hocus Pocus_. The finale, Jack O. Lantern, a
 gentle giant of vines and autumn leaves with a glowing carved-pumpkin head,
 comes from public-domain folklore: the Green Man and Stingy Jack's lantern.
+
+## 15. The enchanted valley
+
+The mythical Scene (`src/lib/scenes/mythical/`) is creatures from the world's
+stories in a storybook valley: a flowery meadow, a lake fed by a waterfall
+from a gorge on the left, a castle on a far hill, a blossom tree and a silver
+birch framing the sides. It is drawn in the §1 style, eye, blush and all, and
+follows §2 as written; ids are prefixed with the slug (§2.5), and the
+backdrop's with `mythical-backdrop-`.
+
+- **The Roster comes from many traditions on purpose** (`mythical/roster.ts`):
+  the kitsune and the qilin from East Asia, the moon rabbit from China, Japan
+  and Korea, the bakunawa from the Philippines, the boto from the Amazon, the
+  carbuncle from South American mining legends, the impundulu from Zulu and
+  Xhosa stories, the griffin and the centaur from the ancient Mediterranean,
+  and the fairy, the unicorn and the will-o'-the-wisp from European folk
+  tales. Pegasus is its Legendary.
+- **The backdrop reuses the shared bands.** The meadow is the savanna's plain
+  and the lake is the Arctic's open water (`scenes/motion.ts`), so ground
+  creatures stand with their feet on the bottom of their viewBox and the
+  swimmers (the boto, the mermaid, the bakunawa) are drawn from the waterline
+  up, as the Arctic's whales are.
+- **Spirit-like creatures fade** rather than run (`departure: "fade"` on the
+  will-o'-the-wisp).
+- **Ambient Life** is the waterfall's streaks, glints drifting on the lake,
+  blossom falling from the tree and specks of fairy light over the meadow.
+  **Too Loud** is a lilac mist rising off the lake (`mythical/scene.css`).
+- **The Note** is a cloud in the valley's sky, drawn as on the savanna; the
+  backdrop keeps the middle of the sky clear for it.
