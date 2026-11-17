@@ -1,7 +1,8 @@
 # Shy Safari — documentation en français
 
 Une scène paisible au vidéoprojecteur — savane, récif de corail, espace
-profond, préhistoire, forêt, jungle, Arctique — où des animaux timides sortent
+profond, préhistoire, forêt, jungle, Arctique, vallée enchantée — où des
+animaux timides sortent
 tant que la classe reste calme. Si la salle devient trop bruyante, ils restent
 cachés (ou s'enfuient, selon le réglage) jusqu'au retour du calme.
 
@@ -26,9 +27,32 @@ rouge. Rien ne rend le bruit plus intéressant que le calme.
    regroupe tout : scène, micro, seuil « trop fort », rythme d'arrivée.
 
 **Classes.** Créez une classe par groupe (« 6e B », « CM2 »…). Chaque classe
-garde ses propres animaux dans chaque scène, sa Collection, ses Notes et son
-Minuteur ; changer de classe ne mélange jamais rien. Supprimer une classe
-efface tout ce qu'elle gardait.
+garde ses propres animaux dans chaque scène, sa Collection, ses Notes, son
+Minuteur **et ses propres réglages** : objectif de volume, fréquence
+d'arrivée, réaction au bruit et dernière scène utilisée. Le micro et sa
+calibration appartiennent à la salle et restent communs. Changer de classe ne
+mélange jamais rien ; supprimer une classe efface tout ce qu'elle gardait.
+
+**Sauvegarde.** Dans le panneau Classes, « Exporter toutes les classes »
+enregistre un fichier JSON ; « Importer un fichier… » le restaure sur un autre
+ordinateur, navigateur ou adresse (cela remplace tout, sauf le micro et sa
+calibration).
+
+**Rareté.** Communs 60, peu communs 30, rares 10 et légendaires 0,5 (environ
+0,5 % des arrivées). Chaque scène cache un animal légendaire (lion blanc,
+dragon de mer feuillu, soucoupe volante, Torosaurus, cerf blanc, panthère
+noire, orque blanche, Pégase) : il arrive au plus une fois par séance, sous un
+arc-en-ciel.
+
+**Statistiques.** Le bouton en forme de graphique affiche, par classe : temps
+calme, part du temps sous l'objectif, arrivées, fuites, niveau sonore moyen au
+fil de la journée (comparé à l'objectif) et un comparatif de toutes les
+classes. Réservé à l'enseignant, conservé 180 jours sur cet ordinateur. Le
+niveau est l'échelle 0–100 du sonomètre, pas des décibels.
+
+**Accès réservé.** Il se règle devant le site, pas dans l'app : Cloudflare
+Access avec un code envoyé par e-mail, configuré par l'administrateur de
+l'hébergement (voir [hebergement.md](hebergement.md)).
 
 **Notes.** Écrivez ou dessinez une consigne qui s'intègre au décor (un nuage
 dans la savane, un panneau sur le récif…).

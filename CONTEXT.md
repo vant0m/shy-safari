@@ -5,9 +5,9 @@ no decisions, no specification. Decisions live in `docs/adr/`.
 
 ## Scene
 
-The calm world on screen. The teacher chooses between seven Scenes: the
+The calm world on screen. The teacher chooses between eight Scenes: the
 savanna, the coral reef, deep space, the prehistoric floodplain, the
-forest, the jungle and the Arctic sea ice, and for a few weeks around
+forest, the jungle, the Arctic sea ice and the enchanted valley, and for a few weeks around
 Halloween an eighth, Pumpkin Hollow, a Limited-time Scene. A Scene
 is a backdrop, its Ambient Life, the Roster of Creatures that can live in it,
 and its Departure. Each
@@ -53,8 +53,10 @@ it, that promise carries over to the next days.
 
 ## Rarity Tier
 
-How likely a Creature is to be the next one to arrive: Common, Uncommon or
-Rare. A Rare Creature may not appear at all in a given Session. Tier is a
+How likely a Creature is to be the next one to arrive: Common, Uncommon,
+Rare or Legendary. A Rare Creature may not appear at all in a given Session.
+Each always-on Scene has exactly one Legendary Creature, which comes in about
+one arrival in two hundred and at most once per Session. Tier is a
 property of the Creature; it never changes during a Session and is never
 unlocked or gated.
 
@@ -97,8 +99,8 @@ outlives Reset.
 ## Class
 
 A group of students the teacher names, such as "2nd period". Each Class has
-its own Creatures in every Scene, its own Collection, and its own Notes and
-Timer, so one Class never sees what another earned or was told, and Reset
+its own Creatures in every Scene, its own Collection, its own Notes and
+Timer, its own Class Settings and its own Statistics, so one Class never sees what another earned or was told, and Reset
 empties only the Class on screen.
 Switching Class ends the Session until the teacher presses start again.
 Deleting a Class removes everything it kept. There is always at least one.
@@ -171,3 +173,23 @@ chime rings the room is not judged: the teacher's own bell is never Too Loud
 and never makes a Creature Run Away. Each Class has its own Timer: switching
 Class pauses the one on screen, and it waits for that Class to come back.
 Changing Scene leaves it running.
+
+## Class Settings
+
+The settings that belong to a Class rather than the room: the Volume Goal,
+the Arrival Rate, whether Too Loud makes Creatures Run Away or pauses the
+Scene, and the Scene the Class was last on. The microphone and its
+Calibration are Room Settings, shared by every Class.
+
+## Backup
+
+A file holding everything this browser has saved for Shy Safari, every Class
+included, but not the microphone or its Calibration. Importing a Backup
+replaces what is there.
+
+## Statistics
+
+What the teacher can look back on for a Class: time Quiet and Too Loud while
+a Session ran, Starts, arrivals, Creatures that Ran Away, and the noise level
+through the day on the meter's 0–100 scale. Teacher-facing only; never shown
+on the Scene.

@@ -1,5 +1,8 @@
 # Each Class keeps its own animals; the room keeps the settings
 
+> Partly superseded by [0010](0010-settings-per-class.md): the Volume Goal,
+> the Arrival Rate, what Too Loud does and the Scene are now per Class.
+
 A teacher who sees several groups a day in one room could not keep their
 animals apart: third period walked in to the reef second period had earned,
 and resetting for them threw second period's away. So the teacher can now

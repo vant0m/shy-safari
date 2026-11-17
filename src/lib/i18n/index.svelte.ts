@@ -130,7 +130,8 @@ const en = {
     "classes.change": "Change class",
     "classes.unnamed": "My class",
     "classes.edit": "Edit classes",
-    "classes.hint": "Each class keeps its own animals and its own collection.",
+    "classes.hint":
+      "Each class keeps its own animals, collection, notes, timer, settings and statistics.",
     "classes.storage":
       "Your classes are saved in this browser, on this computer only. They will not show up on another computer or browser, and clearing your browser data deletes them.",
     "classes.current": "On screen",
@@ -887,7 +888,7 @@ const es = {
     "classes.unnamed": "Mi clase",
     "classes.edit": "Editar clases",
     "classes.hint":
-      "Cada clase guarda sus propios animales y su propia colección.",
+      "Cada clase guarda sus propios animales, colección, notas, temporizador, ajustes y estadísticas.",
     "classes.storage":
       "Tus clases se guardan en este navegador, solo en esta computadora. No aparecerán en otra computadora ni en otro navegador, y al borrar los datos del navegador se eliminan.",
     "classes.current": "En pantalla",
@@ -1617,7 +1618,7 @@ const fr = {
     "classes.unnamed": "Ma classe",
     "classes.edit": "Modifier les classes",
     "classes.hint":
-      "Chaque classe garde ses propres animaux et sa propre collection.",
+      "Chaque classe garde ses propres animaux, sa collection, ses notes, son minuteur, ses réglages et ses statistiques.",
     "classes.storage":
       "Vos classes sont enregistrées dans ce navigateur, sur cet ordinateur uniquement. Elles n’apparaîtront pas sur un autre ordinateur ou navigateur, et effacer les données du navigateur les supprime.",
     "classes.current": "À l’écran",

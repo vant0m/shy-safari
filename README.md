@@ -1,7 +1,7 @@
 # Shy Safari
 
 A calm scene on the classroom projector — a savanna, a coral reef, deep
-space, the age of dinosaurs, a woodland clearing, the jungle or the Arctic — where animals (or, in deep space, sightings
+space, the age of dinosaurs, a woodland clearing, the jungle, the Arctic or an enchanted valley — where animals (or, in deep space, sightings
 through a telescope) come out the longer the room stays quiet. The animals are shy: if the room is too loud,
 they stay hidden until it is calm again.
 
@@ -9,7 +9,11 @@ It is the opposite of a noise meter. There is no bouncing, no score, no red
 warning light — nothing that makes being loud more interesting than being
 quiet. The class starts with an empty scene. The first animal comes out
 after 10–20 quiet seconds, as a taste of what is coming; after that, every few
-minutes of quiet working brings another one. Some of them are rare.
+minutes of quiet working brings another one. Some of them are rare, and each
+scene hides one legendary creature that comes in about one arrival in two
+hundred, with a rainbow.
+
+French documentation: [docs/fr/README.md](docs/fr/README.md).
 
 ## What a teacher does
 
@@ -20,7 +24,8 @@ minutes of quiet working brings another one. Some of them are rare.
    turtles, sharks), **Deep space** (satellites, comets, galaxies),
    **Prehistoric** (T. rex, Triceratops, feathered raptors), **Forest**
    (squirrels, foxes, deer), **Jungle** (sloths, toucans, jaguars) or
-   **Arctic** (polar bears, seals, narwhals) first if you like. Deep space and
+   **Arctic** (polar bears, seals, narwhals) or the **Enchanted valley**
+   (unicorns, dragons, mermaids) first if you like. Deep space and
    the prehistoric scene are drawn to appeal to older students too.
 2. Press **Start**. The class begins earning animals.
 3. Move the mouse to bring up the controls. **Settings** has everything:
@@ -28,6 +33,32 @@ minutes of quiet working brings another one. Some of them are rare.
    arrive. Each scene keeps its own animals, so switching never loses any.
 
 That is the whole app. No account, no sign-in, nothing to install.
+
+## Classes, backups and statistics
+
+- **Classes.** A teacher who sees several groups names a class for each
+  ("2nd period"). Each class keeps its own animals in every scene, its own
+  Collection, Notes and Timer, **and its own settings**: volume goal, arrival
+  rate, what happens when it is too loud, and the scene it was last on. The
+  microphone and its calibration belong to the room and are shared
+  ([docs/adr/0010](docs/adr/0010-settings-per-class.md)).
+- **Export / Import.** The Classes panel saves every class to a JSON file
+  and restores it on another computer, browser or address. Import replaces
+  what is there and keeps this computer's microphone settings
+  ([docs/adr/0011](docs/adr/0011-backup-export-import.md)).
+- **Rarity.** Common 60, uncommon 30, rare 10 and legendary 0.5 (about
+  0.5% of arrivals). A rare comes at most once while it is on screen; a
+  legendary at most once per session, and it arrives under a rainbow
+  ([docs/adr/0012](docs/adr/0012-legendary-tier.md)).
+- **Statistics.** The chart button opens each class's quiet time, share of
+  time under the goal, arrivals, creatures that ran away, the average noise
+  level through the day against the goal, and a comparison of every class.
+  Teacher-facing only, kept on this computer for 180 days
+  ([docs/adr/0014](docs/adr/0014-class-statistics.md)).
+- **Access control** is done in front of the site, not in it: Cloudflare
+  Access with e-mailed one-time codes, set up by whoever administers the
+  hosting ([docs/hosting.md](docs/hosting.md#restricting-access-with-cloudflare-access),
+  [docs/adr/0013](docs/adr/0013-access-via-cloudflare-access.md)).
 
 ## How it decides the room is too loud
 
@@ -129,13 +160,16 @@ they can be checked without a microphone or a ten-second wait:
 - `src/lib/session/arrivalClock.ts` — banking quiet time, and pausing rather
   than resetting.
 - `src/lib/session/roll.ts` — the weighted rarity roll.
+- `src/lib/settings/stored.ts` — the room / class split of the settings.
+- `src/lib/backup/backup.ts` — export and import.
+- `src/lib/stats/statsData.ts` — recording and summing statistics.
 
 ## Documentation
 
 - [`CONTEXT.md`](CONTEXT.md) — the vocabulary the code uses (Scene, Creature,
   Class, Too Loud…).
 - [`docs/hosting.md`](docs/hosting.md) — deploying, domains, access control.
-- [`docs/adr/`](docs/adr/) — architecture decisions and why they were made.
+- [`docs/adr/`](docs/adr/README.md) — architecture decisions and why they were made.
 - [`docs/svg-art-brief.md`](docs/svg-art-brief.md) — the rules every piece of
   artwork follows.
 - [`docs/fr/`](docs/fr/) — French documentation for teachers and hosts.
