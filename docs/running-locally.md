@@ -93,8 +93,9 @@ bun run build
 bun run preview
 ```
 
-Open **http://localhost:4173**. To serve it exactly as Cloudflare does
-(`static/_headers` and `static/_redirects` applied):
+Open **http://localhost:4173**. To serve the files the way the Cloudflare
+Worker does (caching from `static/_headers`, redirects from
+`static/_redirects`, the 404 page):
 
 ```sh
 bun run build
@@ -102,6 +103,12 @@ bunx wrangler dev
 ```
 
 and open the address it prints (normally **http://localhost:8787**).
+
+`wrangler dev` simulates **only the Worker** and its files. Anything set up in
+the Cloudflare dashboard in front of the Worker does not exist locally: **no
+Cloudflare Access sign-in page**, no bare-domain-to-`www` redirect, no custom
+domain or HTTPS. To test Access you have to deploy (see
+[hosting.md](hosting.md#checking-that-access-works)).
 
 After a new `bun run build`, **restart** `bun run preview`: a preview server
 that was already running keeps serving the old files, and the page can stay

@@ -150,6 +150,23 @@ Mise en place (une fois, par l'administrateur) :
    enseignants en modifiant la règle. Un retrait prend effet à la fin de la
    session en cours (ou tout de suite via **Revoke existing tokens**).
 
+### Vérifier que l'accès est bien protégé
+
+Cloudflare Access fonctionne chez Cloudflare, devant le site : il n'apparaît
+jamais en local, ni avec `bun run dev` ni avec `bunx wrangler dev`. Pour le
+voir :
+
+1. Déployez (option A ou B). Pour essayer sans toucher au site des
+   enseignants, déployez une copie de test sous un autre nom :
+   `bunx wrangler deploy --name shy-safari-test`, et protégez son adresse
+   `workers.dev` comme à l'étape 1 ci-dessus.
+2. Ouvrez l'adresse protégée dans une **fenêtre de navigation privée** (sans
+   session Cloudflare déjà ouverte) : la page de connexion Cloudflare doit
+   s'afficher avant l'app.
+3. Saisissez une adresse autorisée : le code arrive par e-mail, et l'app
+   s'ouvre. Avec une adresse non autorisée, Cloudflare refuse l'accès.
+4. **Zero Trust → Logs → Access** liste chaque tentative, acceptée ou refusée.
+
 Remarques :
 
 - Les pages « À propos » et « Confidentialité » sont protégées aussi. Pour les

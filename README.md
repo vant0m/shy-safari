@@ -118,8 +118,10 @@ bun run lint     # prettier --check + eslint (bun run format fixes formatting)
 bun run build    # static production build into build/
 ```
 
-`bun run build && bunx wrangler dev` serves the built site the way Cloudflare
-serves it, `_headers` and `_redirects` included.
+`bun run build && bunx wrangler dev` serves the built site the way the
+Cloudflare Worker does, `_headers` and `_redirects` included. It does not
+simulate what is configured in front of the Worker, such as Cloudflare Access
+or redirect rules.
 
 ## Hosting it
 

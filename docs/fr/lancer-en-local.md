@@ -114,9 +114,9 @@ bun run build
 bun run preview
 ```
 
-Ouvrez **http://localhost:4173**. Pour reproduire exactement le comportement
-de Cloudflare (en-têtes de cache, redirections de `static/_headers` et
-`static/_redirects`) :
+Ouvrez **http://localhost:4173**. Pour servir les fichiers comme le fait le
+Worker Cloudflare (en-têtes de cache de `static/_headers`, redirections de
+`static/_redirects`, page 404) :
 
 ```sh
 bun run build
@@ -124,6 +124,13 @@ bunx wrangler dev
 ```
 
 puis ouvrez l'adresse affichée (normalement **http://localhost:8787**).
+
+`wrangler dev` ne simule **que le Worker** et ses fichiers. Tout ce qui se
+règle dans le tableau de bord Cloudflare, devant le Worker, n'existe pas en
+local : **pas de page de connexion Cloudflare Access**, pas de redirection du
+domaine nu vers `www`, pas de domaine personnalisé ni de HTTPS. Pour tester
+Access, il faut déployer (voir
+[hebergement.md](hebergement.md#vérifier-que-laccès-est-bien-protégé)).
 
 Après un nouveau `bun run build`, **relancez** `bun run preview` : un serveur
 de preview déjà démarré continue de servir les anciens fichiers et la page

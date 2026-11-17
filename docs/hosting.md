@@ -145,6 +145,22 @@ Setting it up (once, by the administrator):
    editing the policy. Removing someone takes effect when their current
    session runs out (or immediately, via **Revoke existing tokens**).
 
+### Checking that access works
+
+Cloudflare Access runs at Cloudflare, in front of the site: it never appears
+locally, neither with `bun run dev` nor with `bunx wrangler dev`. To see it:
+
+1. Deploy (option A or B). To try it without touching the teachers' site,
+   deploy a test copy under another name:
+   `bunx wrangler deploy --name shy-safari-test`, and protect its
+   `workers.dev` address as in step 1 above.
+2. Open the protected address in a **private window** (with no Cloudflare
+   session already open): the Cloudflare sign-in page must appear before the
+   app.
+3. Enter an allowed address: the code arrives by e-mail and the app opens.
+   With an address that isn't allowed, Cloudflare refuses access.
+4. **Zero Trust → Logs → Access** lists every attempt, allowed or denied.
+
 Notes:
 
 - The about and privacy pages are protected too. If you want them public,
