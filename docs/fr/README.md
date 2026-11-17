@@ -93,6 +93,8 @@ transmis.
 
 ## Développer
 
+Guide pas à pas complet : **[lancer-en-local.md](lancer-en-local.md)**.
+
 Prérequis : [Bun](https://bun.sh) 1.3 ou plus (sous Windows :
 `powershell -c "irm bun.sh/install.ps1 | iex"`).
 

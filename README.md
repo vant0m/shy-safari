@@ -91,6 +91,10 @@ the meter match your room and your microphone.
 
 ## Running it locally
 
+A step-by-step guide, from installing the tools to testing the production
+build, is in [docs/running-locally.md](docs/running-locally.md) (French:
+[docs/fr/lancer-en-local.md](docs/fr/lancer-en-local.md)). The short version:
+
 You need [Bun](https://bun.sh) 1.3 or newer (it is both the runtime and the
 package manager here). On Windows, `powershell -c "irm bun.sh/install.ps1 | iex"`;
 on macOS or Linux, `curl -fsSL https://bun.sh/install | bash`.
