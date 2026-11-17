@@ -137,4 +137,14 @@ export const SAVANNA_ROSTER: CreatureDef[] = [
     motion: "graze",
     parts: ["part-tail", "part-fin"],
   },
+
+  // Legendary: about one arrival in two hundred, and at most once a
+  // Session (docs/adr/0012-legendary-tier.md). A white lion: a rare pale coat, not albino. Once a Session, at most.
+  {
+    slug: "white-lion",
+    tier: "legendary",
+    width: 180,
+    motion: "trot",
+    parts: ["part-tail", "part-ears"],
+  },
 ];

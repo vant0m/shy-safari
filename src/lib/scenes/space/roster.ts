@@ -147,4 +147,14 @@ export const SPACE_ROSTER: CreatureDef[] = [
     motion: "loom",
     parts: ["part-pulse"],
   },
+
+  // Legendary: about one arrival in two hundred, and at most once a
+  // Session (docs/adr/0012-legendary-tier.md). A flying saucer: the one sighting no telescope has ever confirmed.
+  {
+    slug: "flying-saucer",
+    tier: "legendary",
+    width: 170,
+    motion: "coast",
+    parts: ["part-pulse"],
+  },
 ];

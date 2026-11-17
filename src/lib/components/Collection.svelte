@@ -28,12 +28,17 @@
   } from "$lib/scenes/halloween/calendar";
   import { unlocksIn } from "$lib/scenes/halloween/wording";
   import { today } from "$lib/today.svelte";
-  import type { RarityTier, SceneId } from "$lib/scenes/types";
+  import {
+    RARITY_TIERS,
+    type RarityTier,
+    type SceneId,
+  } from "$lib/scenes/types";
   import { TIER_WEIGHTS } from "$lib/session/roll";
   import { sightings } from "$lib/session/sightings.svelte";
   import { classes } from "$lib/classes/classes.svelte";
   import {
     className,
+    current,
     creatureFact,
     creatureName,
     t,
@@ -47,13 +52,22 @@
   let sceneId = $state<SceneId>(app.scene.id);
   const scene = $derived(SCENES[sceneId]);
 
-  const TIERS: RarityTier[] = ["common", "uncommon", "rare"];
-
   const totalWeight = Object.values(TIER_WEIGHTS).reduce((a, b) => a + b, 0);
 
+  /** Whole percents, except a Legendary's half a percent, which keeps it. */
   function chance(tier: RarityTier) {
-    return Math.round((TIER_WEIGHTS[tier] / totalWeight) * 100);
+    const percent = (TIER_WEIGHTS[tier] / totalWeight) * 100;
+    return percent.toLocaleString(current().locale, {
+      maximumFractionDigits: percent < 1 ? 1 : 0,
+    });
   }
+
+  const CARD_STYLE: Record<RarityTier, string> = {
+    common: "border-slate-200",
+    uncommon: "border-slate-200",
+    rare: "border-amber-300 bg-amber-50",
+    legendary: "legendary-card",
+  };
 
   /** The Scenes on offer today, and always the one on screen. */
   const tabs = $derived(
@@ -176,7 +190,7 @@
     </div>
 
     <div class="min-h-0 flex-1 overflow-y-auto px-4 pb-4 sm:px-6 sm:pb-6">
-      {#each TIERS as tier (tier)}
+      {#each RARITY_TIERS as tier (tier)}
         {@const defs = scene.roster.filter((def) => def.tier === tier)}
         {#if defs.length > 0}
           <section class="mt-4 first:mt-0">
@@ -232,10 +246,9 @@
                   <!-- A Creature with a fact to tell shows it on hover. -->
                   <li
                     title={creatureFact(def.slug)}
-                    class="flex min-w-0 flex-col items-center rounded-lg border p-2 text-center {tier ===
-                    'rare'
-                      ? 'border-amber-300 bg-amber-50'
-                      : 'border-slate-200'}"
+                    class="flex min-w-0 flex-col items-center rounded-lg border p-2 text-center {CARD_STYLE[
+                      tier
+                    ]}"
                   >
                     <div
                       class="flex h-12 w-full items-center justify-center"
@@ -279,6 +292,23 @@
 </div>
 
 <style>
+  /* A rainbow frame, from the shared palette, round the one Legendary. */
+  .legendary-card {
+    border: 2px solid transparent;
+    background:
+      linear-gradient(#fffdf5, #fffdf5) padding-box,
+      linear-gradient(
+          120deg,
+          #ef476f,
+          #ff9f5a,
+          #ffd166,
+          #3fae6d,
+          #3fa9c9,
+          #a06cd5
+        )
+        border-box;
+  }
+
   .unseen {
     filter: brightness(0);
     opacity: 0.2;

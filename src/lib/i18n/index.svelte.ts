@@ -254,6 +254,10 @@ const en = {
     "chance.common": "{percent}% of arrivals are common",
     "chance.uncommon": "{percent}% of arrivals are uncommon",
     "chance.rare": "{percent}% of arrivals are rare",
+    "tier.legendary": "Legendary",
+    "chance.legendary.label": "Chance of the legendary animal",
+    "chance.legendary":
+      "{percent}% of arrivals are legendary, and it comes at most once a session",
     "blocked.title": "The animals need to hear the room",
     "blocked.denied":
       "This browser blocked access to the microphone. Click the padlock or camera icon in the address bar, allow the microphone, then try again.",
@@ -325,7 +329,7 @@ const en = {
       "Pause the scene. The animals hold still, nothing is taken away, and progress toward the next animal waits until the room is calm again.",
     "guide.animalsTitle": "The animals",
     "guide.animals":
-      "The savanna has 17 animals, from meerkats and zebras to giraffes, hippos and rhinos, with lions, leopards and elephants as the rare ones. The coral reef has 18, from clownfish and seahorses to sea turtles and octopuses, with hammerhead sharks, manta rays and whale sharks as the rare ones. Deep space has 17 sightings for older students, from satellites, asteroids and astronauts to the space station, comets and Saturn-like planets, with a spiral galaxy, a black hole, a pulsar and a ring nebula as the rare ones. The prehistoric scene has 17 animals from the very end of the age of dinosaurs, drawn with up-to-date science, from small mammals, lizards and feathered raptors to Triceratops and Ankylosaurus, with Tyrannosaurus, Quetzalcoatlus and the giant Alamosaurus as the rare ones. The forest has 17 woodland animals, from chipmunks, robins and hedgehogs to raccoons, foxes and deer, with a gray wolf, a black bear and a moose as the rare ones. The jungle has 17 rainforest animals, from poison dart frogs, toucans and capuchin monkeys to sloths, macaws and orangutans, with jaguars, gorillas and tigers as the rare ones. The Arctic has 17 animals, from lemmings, puffins and arctic foxes to caribou, walruses and belugas, with polar bears, narwhals and bowhead whales as the rare ones. Common animals turn up often and rare ones are a real event that many sessions will not see at all. Each scene keeps its own animals, and the collection remembers every animal the class has spotted.",
+      "The savanna has 18 animals, from meerkats and zebras to giraffes, hippos and rhinos, with lions, leopards and elephants as the rare ones. The coral reef has 19, from clownfish and seahorses to sea turtles and octopuses, with hammerhead sharks, manta rays and whale sharks as the rare ones. Deep space has 18 sightings for older students, from satellites, asteroids and astronauts to the space station, comets and Saturn-like planets, with a spiral galaxy, a black hole, a pulsar and a ring nebula as the rare ones. The prehistoric scene has 18 animals from the very end of the age of dinosaurs, drawn with up-to-date science, from small mammals, lizards and feathered raptors to Triceratops and Ankylosaurus, with Tyrannosaurus, Quetzalcoatlus and the giant Alamosaurus as the rare ones. The forest has 18 woodland animals, from chipmunks, robins and hedgehogs to raccoons, foxes and deer, with a gray wolf, a black bear and a moose as the rare ones. The jungle has 18 rainforest animals, from poison dart frogs, toucans and capuchin monkeys to sloths, macaws and orangutans, with jaguars, gorillas and tigers as the rare ones. The Arctic has 18 animals, from lemmings, puffins and arctic foxes to caribou, walruses and belugas, with polar bears, narwhals and bowhead whales as the rare ones. Each scene also hides one legendary animal: a white lion, a leafy seadragon, a flying saucer, a Torosaurus, a white stag, a black panther and a white orca. About one arrival in two hundred is legendary, and it comes at most once a session. Common animals turn up often and rare ones are a real event that many sessions will not see at all. Each scene keeps its own animals, and the collection remembers every animal the class has spotted.",
     "guide.forTitle": "Who it is for",
     "guide.for":
       "Teachers of any grade who want a calm, visual cue for voice levels during independent work, reading time, tests, centers or group work. The whole class shares one screen, and students need nothing at all.",
@@ -367,6 +371,7 @@ const en = {
     lion: "Lion",
     leopard: "Leopard",
     elephant: "Elephant",
+    "white-lion": "White lion",
     clownfish: "Clownfish",
     "blue-tang": "Blue tang",
     angelfish: "Angelfish",
@@ -385,6 +390,7 @@ const en = {
     "hammerhead-shark": "Hammerhead shark",
     "manta-ray": "Manta ray",
     "whale-shark": "Whale shark",
+    "leafy-seadragon": "Leafy sea­dragon",
     satellite: "Satellite",
     asteroid: "Asteroid",
     meteor: "Meteor",
@@ -402,6 +408,7 @@ const en = {
     "black-hole": "Black hole",
     pulsar: "Pulsar",
     "ring-nebula": "Ring nebula",
+    "flying-saucer": "Flying saucer",
     // Soft hyphens (\u00AD) mark where a long name may break in the collection.
     didelphodon: "Didelphodon",
     palaeosaniwa: "Palaeosaniwa",
@@ -420,6 +427,7 @@ const en = {
     tyrannosaurus: "Tyranno\u00ADsaurus",
     quetzalcoatlus: "Quetzal\u00ADcoatlus",
     alamosaurus: "Alamosaurus",
+    torosaurus: "Torosaurus",
     chipmunk: "Chipmunk",
     "gray-squirrel": "Gray squirrel",
     robin: "Robin",
@@ -437,6 +445,7 @@ const en = {
     "gray-wolf": "Gray wolf",
     "black-bear": "Black bear",
     moose: "Moose",
+    "white-stag": "White stag",
     "poison-dart-frog": "Poison dart frog",
     "tree-frog": "Red-eyed tree frog",
     butterfly: "Blue morpho",
@@ -454,6 +463,7 @@ const en = {
     jaguar: "Jaguar",
     gorilla: "Gorilla",
     tiger: "Tiger",
+    "black-panther": "Black panther",
     lemming: "Lemming",
     "arctic-hare": "Arctic hare",
     ptarmigan: "Ptarmigan",
@@ -471,6 +481,7 @@ const en = {
     "polar-bear": "Polar bear",
     narwhal: "Narwhal",
     "bowhead-whale": "Bowhead whale",
+    "white-orca": "White orca",
     "harvest-mouse": "Harvest mouse",
     "garden-spider": "Garden spider",
     toad: "Toad",
@@ -491,6 +502,20 @@ const en = {
   },
   // One line about each prehistoric Creature, shown in the collection.
   facts: {
+    "white-lion":
+      "White lions aren’t albino: a rare gene gives them pale fur, and only a few live wild, in South Africa.",
+    "leafy-seadragon":
+      "Leafy seadragons look just like drifting seaweed, and, as with seahorses, the father carries the eggs.",
+    "flying-saucer":
+      "No one has ever proved one is real, but radio telescopes keep listening for signals from other worlds.",
+    torosaurus:
+      "Torosaurus had one of the biggest heads of any land animal ever: almost 3 metres long, frill included.",
+    "white-stag":
+      "A rare gene can make a deer pure white. In old stories, a white stag leads whoever follows it on a quest.",
+    "black-panther":
+      "A black panther is a jaguar or leopard with extra-dark fur. Its spots are still there, just hard to see.",
+    "white-orca":
+      "Pure white orcas are so rare that scientists give each one a name; the first famous one was called Iceberg.",
     didelphodon:
       "A marsupial relative with the strongest bite, for its size, of any mammal known.",
     palaeosaniwa:
@@ -632,6 +657,7 @@ const enScenes = {
     "chance.common.label": "Chance of common sightings",
     "chance.uncommon.label": "Chance of uncommon sightings",
     "chance.rare.label": "Chance of rare sightings",
+    "chance.legendary.label": "Chance of the legendary sighting",
     "blocked.title": "The telescope needs to hear the room",
     "notes.ink.dark": "White",
   },
@@ -901,6 +927,10 @@ const es = {
     "chance.common": "El {percent}% de las llegadas son comunes",
     "chance.uncommon": "El {percent}% de las llegadas son poco comunes",
     "chance.rare": "El {percent}% de las llegadas son raras",
+    "tier.legendary": "Legendarios",
+    "chance.legendary.label": "Probabilidad del animal legendario",
+    "chance.legendary":
+      "El {percent}% de las llegadas son legendarias, y como mucho una vez por sesión",
     "blocked.title": "Los animales necesitan oír el aula",
     "blocked.denied":
       "Este navegador bloqueó el acceso al micrófono. Haz clic en el candado o en el icono de la cámara de la barra de direcciones, permite el micrófono y vuelve a intentarlo.",
@@ -973,7 +1003,7 @@ const es = {
       "Pausar la escena. Los animales se quedan quietos, no se pierde nada y el progreso hacia el siguiente animal espera a que la clase vuelva a estar en calma.",
     "guide.animalsTitle": "Los animales",
     "guide.animals":
-      "La sabana tiene 17 animales, desde suricatas y cebras hasta jirafas, hipopótamos y rinocerontes, con leones, leopardos y elefantes como los más raros. El arrecife de coral tiene 18, desde peces payaso y caballitos de mar hasta tortugas marinas y pulpos, con tiburones martillo, mantarrayas y tiburones ballena como los más raros. El espacio profundo tiene 17 avistamientos pensados para estudiantes mayores, desde satélites, asteroides y astronautas hasta la estación espacial, cometas y planetas como Saturno, con una galaxia espiral, un agujero negro, un púlsar y una nebulosa anular como los más raros. La prehistoria tiene 17 animales del final de la era de los dinosaurios, dibujados según la ciencia actual, desde pequeños mamíferos, lagartos y raptores con plumas hasta Triceratops y Ankylosaurus, con Tyrannosaurus, Quetzalcoatlus y el gigantesco Alamosaurus como los más raros. El bosque tiene 17 animales, desde ardillas listadas, petirrojos y erizos hasta mapaches, zorros y ciervos, con un lobo gris, un oso negro y un alce como los más raros. La selva tiene 17 animales de la selva tropical, desde ranas venenosas, tucanes y monos capuchinos hasta perezosos, guacamayos y orangutanes, con jaguares, gorilas y tigres como los más raros. El Ártico tiene 17 animales, desde lemmings, frailecillos y zorros árticos hasta caribúes, morsas y belugas, con osos polares, narvales y ballenas de Groenlandia como los más raros. Los animales comunes aparecen a menudo y los raros son todo un acontecimiento que muchas sesiones no llegan a ver. Cada escena guarda sus propios animales, y la colección recuerda todos los que la clase ha visto.",
+      "La sabana tiene 18 animales, desde suricatas y cebras hasta jirafas, hipopótamos y rinocerontes, con leones, leopardos y elefantes como los más raros. El arrecife de coral tiene 19, desde peces payaso y caballitos de mar hasta tortugas marinas y pulpos, con tiburones martillo, mantarrayas y tiburones ballena como los más raros. El espacio profundo tiene 18 avistamientos pensados para estudiantes mayores, desde satélites, asteroides y astronautas hasta la estación espacial, cometas y planetas como Saturno, con una galaxia espiral, un agujero negro, un púlsar y una nebulosa anular como los más raros. La prehistoria tiene 18 animales del final de la era de los dinosaurios, dibujados según la ciencia actual, desde pequeños mamíferos, lagartos y raptores con plumas hasta Triceratops y Ankylosaurus, con Tyrannosaurus, Quetzalcoatlus y el gigantesco Alamosaurus como los más raros. El bosque tiene 18 animales, desde ardillas listadas, petirrojos y erizos hasta mapaches, zorros y ciervos, con un lobo gris, un oso negro y un alce como los más raros. La selva tiene 18 animales de la selva tropical, desde ranas venenosas, tucanes y monos capuchinos hasta perezosos, guacamayos y orangutanes, con jaguares, gorilas y tigres como los más raros. El Ártico tiene 18 animales, desde lemmings, frailecillos y zorros árticos hasta caribúes, morsas y belugas, con osos polares, narvales y ballenas de Groenlandia como los más raros. Además, cada escena esconde un animal legendario: un león blanco, un dragón de mar foliáceo, un platillo volante, un Torosaurus, un ciervo blanco, una pantera negra y una orca blanca. Más o menos una llegada de cada doscientas es legendaria, y como mucho una vez por sesión. Los animales comunes aparecen a menudo y los raros son todo un acontecimiento que muchas sesiones no llegan a ver. Cada escena guarda sus propios animales, y la colección recuerda todos los que la clase ha visto.",
     "guide.forTitle": "Para quién es",
     "guide.for":
       "Para docentes de cualquier etapa que quieren una señal visual y tranquila del nivel de voz durante el trabajo individual, la lectura, los exámenes, los rincones o el trabajo en grupo. Toda la clase comparte una pantalla y el alumnado no necesita nada.",
@@ -1026,6 +1056,7 @@ const es = {
       "chance.common.label": "Probabilidad de avistamientos comunes",
       "chance.uncommon.label": "Probabilidad de avistamientos poco comunes",
       "chance.rare.label": "Probabilidad de avistamientos raros",
+      "chance.legendary.label": "Probabilidad del avistamiento legendario",
       "blocked.title": "El telescopio necesita oír el aula",
       "notes.ink.dark": "Blanco",
     },
@@ -1048,6 +1079,7 @@ const es = {
     lion: "León",
     leopard: "Leopardo",
     elephant: "Elefante",
+    "white-lion": "León blanco",
     clownfish: "Pez payaso",
     "blue-tang": "Cirujano azul",
     angelfish: "Pez ángel",
@@ -1066,6 +1098,7 @@ const es = {
     "hammerhead-shark": "Tiburón martillo",
     "manta-ray": "Mantarraya",
     "whale-shark": "Tiburón ballena",
+    "leafy-seadragon": "Dragón de mar foliáceo",
     satellite: "Satélite",
     asteroid: "Asteroide",
     meteor: "Meteoro",
@@ -1083,6 +1116,7 @@ const es = {
     "black-hole": "Agujero negro",
     pulsar: "Púlsar",
     "ring-nebula": "Nebulosa anular",
+    "flying-saucer": "Platillo volante",
     didelphodon: "Didelphodon",
     palaeosaniwa: "Palaeosaniwa",
     basilemys: "Basilemys",
@@ -1100,6 +1134,7 @@ const es = {
     tyrannosaurus: "Tyranno\u00ADsaurus",
     quetzalcoatlus: "Quetzal\u00ADcoatlus",
     alamosaurus: "Alamosaurus",
+    torosaurus: "Torosaurus",
     chipmunk: "Ardilla listada",
     "gray-squirrel": "Ardilla gris",
     robin: "Petirrojo",
@@ -1117,6 +1152,7 @@ const es = {
     "gray-wolf": "Lobo gris",
     "black-bear": "Oso negro",
     moose: "Alce",
+    "white-stag": "Ciervo blanco",
     "poison-dart-frog": "Rana venenosa",
     "tree-frog": "Rana de ojos rojos",
     butterfly: "Mariposa morfo",
@@ -1134,6 +1170,7 @@ const es = {
     jaguar: "Jaguar",
     gorilla: "Gorila",
     tiger: "Tigre",
+    "black-panther": "Pantera negra",
     lemming: "Lemming",
     "arctic-hare": "Liebre ártica",
     ptarmigan: "Perdiz nival",
@@ -1151,6 +1188,7 @@ const es = {
     "polar-bear": "Oso polar",
     narwhal: "Narval",
     "bowhead-whale": "Ballena de Groenlandia",
+    "white-orca": "Orca blanca",
     "harvest-mouse": "Ratón espiguero",
     "garden-spider": "Araña de jardín",
     toad: "Sapo",
@@ -1170,6 +1208,20 @@ const es = {
     "jack-o-lantern": "Jack O. Lantern",
   },
   facts: {
+    "white-lion":
+      "Los leones blancos no son albinos: un gen raro aclara su pelaje, y solo unos pocos viven libres, en Sudáfrica.",
+    "leafy-seadragon":
+      "El dragón de mar foliáceo parece un alga a la deriva y, como en los caballitos de mar, el padre lleva los huevos.",
+    "flying-saucer":
+      "Nadie ha demostrado que existan, pero los radiotelescopios siguen escuchando señales de otros mundos.",
+    torosaurus:
+      "El Torosaurus tenía una de las cabezas más grandes de cualquier animal terrestre: casi 3 metros con su gola.",
+    "white-stag":
+      "Un gen raro puede volver blanco a un ciervo. En los cuentos antiguos, un ciervo blanco guía a quien lo sigue a una aventura.",
+    "black-panther":
+      "Una pantera negra es un jaguar o un leopardo de pelaje muy oscuro. Sus manchas siguen ahí, solo que cuesta verlas.",
+    "white-orca":
+      "Las orcas blancas son tan raras que los científicos ponen nombre a cada una; la primera famosa se llamaba Iceberg.",
     didelphodon:
       "Un pariente de los marsupiales con la mordida más fuerte, para su tamaño, de todos los mamíferos conocidos.",
     palaeosaniwa: "Un gran lagarto cazador, pariente de los varanos actuales.",
@@ -1517,6 +1569,10 @@ const fr = {
     "chance.common": "{percent} % des arrivées sont communes",
     "chance.uncommon": "{percent} % des arrivées sont peu communes",
     "chance.rare": "{percent} % des arrivées sont rares",
+    "tier.legendary": "Légendaires",
+    "chance.legendary.label": "Probabilité de l’animal légendaire",
+    "chance.legendary":
+      "{percent} % des arrivées sont légendaires, et au plus une fois par séance",
     "blocked.title": "Les animaux ont besoin d’entendre la classe",
     "blocked.denied":
       "Ce navigateur a bloqué l’accès au micro. Cliquez sur le cadenas ou l’icône de caméra dans la barre d’adresse, autorisez le micro, puis réessayez.",
@@ -1590,7 +1646,7 @@ const fr = {
       "Mettre la scène en pause. Les animaux restent immobiles, rien n'est perdu, et la progression vers le prochain animal attend que la classe se calme.",
     "guide.animalsTitle": "Les animaux",
     "guide.animals":
-      "La savane compte 17 animaux, des suricates et des zèbres aux girafes, hippopotames et rhinocéros, avec les lions, les léopards et les éléphants parmi les plus rares. Le récif de corail en compte 18, des poissons-clowns et hippocampes aux tortues marines et pieuvres, avec les requins-marteaux, les raies manta et les requins-baleines parmi les plus rares. L'espace profond compte 17 observations pour les plus grands, des satellites, astéroïdes et astronautes à la station spatiale, aux comètes et aux planètes comme Saturne, avec une galaxie spirale, un trou noir, un pulsar et une nébuleuse annulaire parmi les plus rares. La préhistoire compte 17 animaux de la toute fin de l'ère des dinosaures, dessinés d'après la science actuelle, des petits mammifères, lézards et raptors à plumes aux Triceratops et Ankylosaurus, avec Tyrannosaurus, Quetzalcoatlus et le géant Alamosaurus parmi les plus rares. La forêt compte 17 animaux, des tamias, rouges-gorges et hérissons aux ratons laveurs, renards et cerfs, avec un loup gris, un ours noir et un élan parmi les plus rares. La jungle compte 17 animaux de la forêt tropicale, des grenouilles venimeuses, toucans et capucins aux paresseux, aras et orangs-outans, avec les jaguars, les gorilles et les tigres parmi les plus rares. L'Arctique compte 17 animaux, des lemmings, macareux et renards arctiques aux caribous, morses et bélugas, avec les ours polaires, les narvals et les baleines boréales parmi les plus rares. Les animaux communs arrivent souvent et les plus rares sont un vrai événement que beaucoup de séances ne verront pas. Chaque scène garde ses propres animaux, et la collection se souvient de tous ceux que la classe a aperçus.",
+      "La savane compte 18 animaux, des suricates et des zèbres aux girafes, hippopotames et rhinocéros, avec les lions, les léopards et les éléphants parmi les plus rares. Le récif de corail en compte 19, des poissons-clowns et hippocampes aux tortues marines et pieuvres, avec les requins-marteaux, les raies manta et les requins-baleines parmi les plus rares. L'espace profond compte 18 observations pour les plus grands, des satellites, astéroïdes et astronautes à la station spatiale, aux comètes et aux planètes comme Saturne, avec une galaxie spirale, un trou noir, un pulsar et une nébuleuse annulaire parmi les plus rares. La préhistoire compte 18 animaux de la toute fin de l'ère des dinosaures, dessinés d'après la science actuelle, des petits mammifères, lézards et raptors à plumes aux Triceratops et Ankylosaurus, avec Tyrannosaurus, Quetzalcoatlus et le géant Alamosaurus parmi les plus rares. La forêt compte 18 animaux, des tamias, rouges-gorges et hérissons aux ratons laveurs, renards et cerfs, avec un loup gris, un ours noir et un élan parmi les plus rares. La jungle compte 18 animaux de la forêt tropicale, des grenouilles venimeuses, toucans et capucins aux paresseux, aras et orangs-outans, avec les jaguars, les gorilles et les tigres parmi les plus rares. L'Arctique compte 18 animaux, des lemmings, macareux et renards arctiques aux caribous, morses et bélugas, avec les ours polaires, les narvals et les baleines boréales parmi les plus rares. Chaque scène cache aussi un animal légendaire : un lion blanc, un dragon de mer feuillu, une soucoupe volante, un Torosaurus, un cerf blanc, une panthère noire et une orque blanche. Environ une arrivée sur deux cents est légendaire, et au plus une fois par séance. Les animaux communs arrivent souvent et les plus rares sont un vrai événement que beaucoup de séances ne verront pas. Chaque scène garde ses propres animaux, et la collection se souvient de tous ceux que la classe a aperçus.",
     "guide.forTitle": "Pour qui",
     "guide.for":
       "Pour les enseignants de tous niveaux qui veulent un repère visuel et apaisant du niveau de voix pendant le travail autonome, la lecture, les évaluations, les ateliers ou le travail de groupe. Toute la classe partage un seul écran et les élèves n'ont besoin de rien.",
@@ -1644,6 +1700,7 @@ const fr = {
       "chance.common.label": "Probabilité des observations communes",
       "chance.uncommon.label": "Probabilité des observations peu communes",
       "chance.rare.label": "Probabilité des observations rares",
+      "chance.legendary.label": "Probabilité de l’observation légendaire",
       "blocked.title": "Le télescope a besoin d’entendre la classe",
       "notes.ink.dark": "Blanc",
     },
@@ -1666,6 +1723,7 @@ const fr = {
     lion: "Lion",
     leopard: "Léopard",
     elephant: "Éléphant",
+    "white-lion": "Lion blanc",
     clownfish: "Poisson-clown",
     "blue-tang": "Chirurgien bleu",
     angelfish: "Poisson-ange",
@@ -1684,6 +1742,7 @@ const fr = {
     "hammerhead-shark": "Requin-marteau",
     "manta-ray": "Raie manta",
     "whale-shark": "Requin-baleine",
+    "leafy-seadragon": "Dragon de mer feuillu",
     satellite: "Satellite",
     asteroid: "Astéroïde",
     meteor: "Météore",
@@ -1701,6 +1760,7 @@ const fr = {
     "black-hole": "Trou noir",
     pulsar: "Pulsar",
     "ring-nebula": "Nébuleuse annulaire",
+    "flying-saucer": "Soucoupe volante",
     didelphodon: "Didelphodon",
     palaeosaniwa: "Palaeosaniwa",
     basilemys: "Basilemys",
@@ -1718,6 +1778,7 @@ const fr = {
     tyrannosaurus: "Tyranno\u00ADsaurus",
     quetzalcoatlus: "Quetzal\u00ADcoatlus",
     alamosaurus: "Alamosaurus",
+    torosaurus: "Torosaurus",
     chipmunk: "Tamia",
     "gray-squirrel": "Écureuil gris",
     robin: "Rouge-gorge",
@@ -1735,6 +1796,7 @@ const fr = {
     "gray-wolf": "Loup gris",
     "black-bear": "Ours noir",
     moose: "Élan",
+    "white-stag": "Cerf blanc",
     "poison-dart-frog": "Dendrobate",
     "tree-frog": "Rainette aux yeux rouges",
     butterfly: "Morpho bleu",
@@ -1752,6 +1814,7 @@ const fr = {
     jaguar: "Jaguar",
     gorilla: "Gorille",
     tiger: "Tigre",
+    "black-panther": "Panthère noire",
     lemming: "Lemming",
     "arctic-hare": "Lièvre arctique",
     ptarmigan: "Lagopède alpin",
@@ -1769,6 +1832,7 @@ const fr = {
     "polar-bear": "Ours polaire",
     narwhal: "Narval",
     "bowhead-whale": "Baleine boréale",
+    "white-orca": "Orque blanche",
     "harvest-mouse": "Rat des moissons",
     "garden-spider": "Épeire des jardins",
     toad: "Crapaud",
@@ -1788,6 +1852,20 @@ const fr = {
     "jack-o-lantern": "Jack O. Lantern",
   },
   facts: {
+    "white-lion":
+      "Les lions blancs ne sont pas albinos : un gène rare éclaircit leur pelage, et seuls quelques-uns vivent en liberté, en Afrique du Sud.",
+    "leafy-seadragon":
+      "Le dragon de mer feuillu ressemble à une algue qui dérive et, comme chez les hippocampes, c’est le père qui porte les œufs.",
+    "flying-saucer":
+      "Personne n’a jamais prouvé qu’elles existent, mais les radiotélescopes guettent toujours des signaux venus d’autres mondes.",
+    torosaurus:
+      "Le Torosaurus avait l’une des plus grandes têtes de tous les animaux terrestres : près de 3 mètres, collerette comprise.",
+    "white-stag":
+      "Un gène rare peut rendre un cerf tout blanc. Dans les vieux contes, le cerf blanc entraîne qui le suit dans une quête.",
+    "black-panther":
+      "Une panthère noire est un jaguar ou un léopard au pelage très foncé. Ses taches sont toujours là, simplement difficiles à voir.",
+    "white-orca":
+      "Les orques blanches sont si rares que les scientifiques donnent un nom à chacune ; la première célèbre s’appelait Iceberg.",
     didelphodon:
       "Un cousin des marsupiaux doté de la morsure la plus puissante, pour sa taille, de tous les mammifères connus.",
     palaeosaniwa: "Un grand lézard chasseur, parent des varans actuels.",

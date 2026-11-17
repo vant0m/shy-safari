@@ -5,7 +5,9 @@
  * genuine event that many Sessions will not see at all. Common and Uncommon
  * species may arrive more than once — that is what keeps a long work period
  * producing visible arrivals after every species has been seen. Rare species
- * appear at most once each.
+ * appear at most once each while present. A Legendary one is rarer still,
+ * about one arrival in two hundred, and the caller lists it in `present` for
+ * the rest of the Session once it has come, so it never comes twice.
  *
  * Pure: the caller supplies the random source, so the distribution is testable.
  */
@@ -16,10 +18,18 @@ export const TIER_WEIGHTS: Record<RarityTier, number> = {
   common: 60,
   uncommon: 30,
   rare: 10,
+  // Half a percent of every arrival: a Session of an hour at the Normal rate
+  // has about a one-in-twenty chance of seeing it.
+  legendary: 0.5,
 };
 
+/** The tiers that arrive at most once while present. */
+export function isUnique(tier: RarityTier): boolean {
+  return tier === "rare" || tier === "legendary";
+}
+
 function isEligible(creature: CreatureDef, present: string[]): boolean {
-  return creature.tier !== "rare" || !present.includes(creature.slug);
+  return !isUnique(creature.tier) || !present.includes(creature.slug);
 }
 
 export function rollCreature(

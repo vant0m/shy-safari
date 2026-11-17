@@ -718,6 +718,120 @@ html.floating {
   animation: sparkle-twinkle 3s ease-in-out infinite;
 }
 
+/* --- Legendary --------------------------------------------------------- */
+
+/* A Legendary glows through every colour in turn, has a slowly turning ring
+   of colour round it, rainbow sparkles, and a rainbow that arcs up over it as
+   it arrives (Creature.svelte). Rarer than Rare, so louder than Rare — but
+   still nothing that flashes. */
+@keyframes glow-legendary {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 calc(0.9 * var(--wu)) rgb(239 71 111 / 0.95));
+  }
+  17% {
+    filter: drop-shadow(0 0 calc(1.1 * var(--wu)) rgb(255 159 90 / 0.95));
+  }
+  33% {
+    filter: drop-shadow(0 0 calc(0.9 * var(--wu)) rgb(255 209 102 / 1));
+  }
+  50% {
+    filter: drop-shadow(0 0 calc(1.1 * var(--wu)) rgb(63 174 109 / 0.95));
+  }
+  67% {
+    filter: drop-shadow(0 0 calc(0.9 * var(--wu)) rgb(63 169 201 / 0.95));
+  }
+  83% {
+    filter: drop-shadow(0 0 calc(1.1 * var(--wu)) rgb(160 108 213 / 0.95));
+  }
+}
+
+@keyframes glow-legendary-settle {
+  from {
+    filter: drop-shadow(0 0 calc(0.9 * var(--wu)) rgb(255 209 102 / 0.9));
+  }
+  to {
+    filter: drop-shadow(0 0 0 rgb(255 209 102 / 0));
+  }
+}
+
+.creature[data-tier="legendary"]:not(.settled) > svg {
+  animation: glow-legendary 6s linear infinite;
+}
+
+.creature.settled[data-tier="legendary"] > svg {
+  animation: glow-legendary-settle 2s ease-out forwards;
+}
+
+@keyframes legendary-spin {
+  to {
+    transform: translate(-50%, -50%) rotate(1turn);
+  }
+}
+
+.legendary-halo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  pointer-events: none;
+  background: conic-gradient(
+    #ef476f,
+    #ff9f5a,
+    #ffd166,
+    #3fae6d,
+    #3fa9c9,
+    #a06cd5,
+    #ef476f
+  );
+  /* A ring, not a disc, so it frames the animal and never covers it. */
+  mask: radial-gradient(
+    closest-side,
+    transparent 72%,
+    #000 76%,
+    #000 84%,
+    transparent 88%
+  );
+  opacity: 0.55;
+  transform: translate(-50%, -50%);
+  animation: legendary-spin 12s linear infinite;
+}
+
+@keyframes legendary-rainbow {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 10%) scale(0.4);
+  }
+  20%,
+  70% {
+    opacity: 0.9;
+    transform: translate(-50%, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, 0) scale(1.05);
+  }
+}
+
+.legendary-rainbow {
+  position: absolute;
+  bottom: 70%;
+  left: 50%;
+  width: 180%;
+  height: auto;
+  overflow: visible;
+  pointer-events: none;
+  opacity: 0;
+  transform-origin: 50% 100%;
+  animation: legendary-rainbow 7s ease-out forwards;
+}
+
+.legendary-sparkle {
+  filter: drop-shadow(0 0 calc(0.4 * var(--wu)) #fffbe6);
+}
+
 /* In deep space the sparkles round a Rare are star glints, like a
    telescope's diffraction spikes: cool white, and they brighten and fade
    without the twirl, which would look like a cartoon there. */
@@ -1012,6 +1126,20 @@ html.floating {
   .creature[data-tier="rare"]:not(.settled) > svg {
     animation: none;
     filter: drop-shadow(0 0 calc(0.8 * var(--wu)) rgb(255 209 102 / 0.9));
+  }
+
+  .creature[data-tier="legendary"]:not(.settled) > svg {
+    animation: none;
+    filter: drop-shadow(0 0 calc(0.9 * var(--wu)) rgb(255 209 102 / 0.9));
+  }
+
+  /* The ring holds still but stays: it is still Legendary. */
+  .legendary-halo {
+    animation: none;
+  }
+
+  .legendary-rainbow {
+    display: none;
   }
 
   /* Still marked as Rare, just without the flashing. */

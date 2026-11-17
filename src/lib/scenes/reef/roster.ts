@@ -142,4 +142,14 @@ export const REEF_ROSTER: CreatureDef[] = [
     motion: "glide",
     parts: ["part-tail", "part-fin"],
   },
+
+  // Legendary: about one arrival in two hundred, and at most once a
+  // Session (docs/adr/0012-legendary-tier.md). A leafy seadragon, its leaves swaying like the weed it hides in.
+  {
+    slug: "leafy-seadragon",
+    tier: "legendary",
+    width: 130,
+    motion: "hover",
+    parts: ["part-fin"],
+  },
 ];

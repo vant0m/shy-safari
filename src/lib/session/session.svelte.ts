@@ -16,14 +16,21 @@ import {
   createArrivalClock,
   type ArrivalClock,
 } from "./arrivalClock";
-import { rollCreature } from "./roll";
+import { isUnique, rollCreature } from "./roll";
 import {
   advanceScareClock,
   createScareClock,
   fleeCount,
   type ScareClock,
 } from "./scareClock";
-import { loadArrived, loadReef, saveArrived, saveReef } from "./savedReef";
+import {
+  loadArrived,
+  loadLegends,
+  loadReef,
+  saveArrived,
+  saveLegends,
+  saveReef,
+} from "./savedReef";
 import { sightings } from "./sightings.svelte";
 
 /** One Creature actually in the water, and where it first appears. */
@@ -68,6 +75,8 @@ export class Session {
   #roster: CreatureDef[];
   #arrivals: Arrivals | undefined;
   #sceneId: string;
+  /** Legendary Creatures that have come this Session in this Scene. */
+  #legends: string[] = [];
 
   constructor(
     sceneId: string,
@@ -94,6 +103,7 @@ export class Session {
     const restored = loadReef(this.#sceneId, this.#roster);
     this.creatures = restored;
     this.arrived = loadArrived();
+    this.#legends = loadLegends(this.#sceneId);
     this.newestId = null;
     this.fleeing = [];
     this.#nextId = Math.max(0, ...restored.map(({ id }) => id)) + 1;
@@ -142,8 +152,10 @@ export class Session {
     this.fleeing = [];
     this.#clock = createArrivalClock(intervalMs, this.#random);
     this.#scare = createScareClock();
+    this.#legends = [];
     this.#save();
     saveArrived(0);
+    saveLegends(this.#sceneId, []);
   }
 
   /** Fraction of the way to the next arrival — teacher-facing only. */
@@ -181,12 +193,13 @@ export class Session {
 
   /**
    * One of every species in the Scene at once, for trying the app out.
-   * Rares already here are skipped so they still appear at most once.
+   * Rares and Legendaries already here are skipped so they still appear at
+   * most once.
    */
   summonAll() {
     const present = this.creatures.map((creature) => creature.def.slug);
     const defs = this.#available().filter(
-      (def) => def.tier !== "rare" || !present.includes(def.slug),
+      (def) => !isUnique(def.tier) || !present.includes(def.slug),
     );
     const added = defs.map((def) => this.#place(def));
     this.creatures = [...this.creatures, ...added];
@@ -225,7 +238,11 @@ export class Session {
   }
 
   #arrive() {
-    const present = this.creatures.map((creature) => creature.def.slug);
+    // A Legendary that has come this Session counts as here, even once gone.
+    const present = [
+      ...this.creatures.map((creature) => creature.def.slug),
+      ...this.#legends,
+    ];
     const available = this.#available();
     const def = this.#arrivals
       ? this.#arrivals.draw(available, present, this.#random)
@@ -239,6 +256,10 @@ export class Session {
     this.#save();
     saveArrived(this.arrived);
     sightings.record(this.#sceneId, def.slug);
+    if (def.tier === "legendary") {
+      this.#legends = [...this.#legends, def.slug];
+      saveLegends(this.#sceneId, this.#legends);
+    }
   }
 
   /** Anywhere from far to near, unless its motion keeps it to some depths. */

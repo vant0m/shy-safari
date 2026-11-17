@@ -96,6 +96,16 @@
    * the edges so they frame the animal rather than sit on its face, with
    * staggered delays so they never all flash at once.
    */
+  /** The Legendary's colours, red to violet, from the shared palette. */
+  const RAINBOW = [
+    "#ef476f",
+    "#ff9f5a",
+    "#ffd166",
+    "#3fae6d",
+    "#3fa9c9",
+    "#a06cd5",
+  ];
+
   const SPARKLES = [
     { x: 6, y: 10, size: 1, delay: 0 },
     { x: 86, y: 2, size: 0.75, delay: 0.9 },
@@ -112,6 +122,9 @@
    * One brought back from before a refresh has had its minute already.
    */
   const GLISTEN_MS = 60_000;
+  /** A Legendary is a once-in-many-Sessions event: it shimmers for longer. */
+  const LEGEND_GLISTEN_MS = 180_000;
+  const legendary = $derived(creature.def.tier === "legendary");
   const SETTLE_MS = 2000;
   // Only the value it mounts with matters: the timer below takes it from there.
   // svelte-ignore state_referenced_locally
@@ -165,7 +178,10 @@
     resize.observe(scene);
     resize.observe(swimmer);
 
-    const settle = setTimeout(() => (glistening = false), GLISTEN_MS);
+    const settle = setTimeout(
+      () => (glistening = false),
+      creature.def.tier === "legendary" ? LEGEND_GLISTEN_MS : GLISTEN_MS,
+    );
 
     const state =
       motions.get(creature) ??
@@ -352,6 +368,56 @@
           </div>
         </div>
       </div>
+      {#if legendary && glistening}
+        <!-- Behind the animal: a slowly turning ring of every colour. -->
+        <span
+          class="legendary-halo"
+          aria-hidden="true"
+          out:fade={{ duration: SETTLE_MS }}
+        ></span>
+        {#if isNewest}
+          <!-- The arrival itself: a rainbow arcs up over it and fades. -->
+          <svg
+            class="legendary-rainbow"
+            viewBox="-60 -60 120 62"
+            aria-hidden="true"
+          >
+            {#each RAINBOW as colour, i (colour)}
+              <path
+                d="M {-54 + i * 5} 0 A {54 - i * 5} {54 - i * 5} 0 0 1 {54 -
+                  i * 5} 0"
+                fill="none"
+                stroke={colour}
+                stroke-width="5.2"
+              />
+            {/each}
+          </svg>
+        {/if}
+        <span
+          class="absolute inset-0"
+          aria-hidden="true"
+          out:fade={{ duration: SETTLE_MS }}
+        >
+          {#each SPARKLES as sparkle, i (i)}
+            <svg
+              class="sparkle legendary-sparkle"
+              viewBox="-10 -10 20 20"
+              aria-hidden="true"
+              style="
+                left:{sparkle.x}%;
+                top:{sparkle.y}%;
+                width:calc({sparkle.size * 2.6} * var(--wu));
+                animation-delay:{sparkle.delay}s;
+                fill:{RAINBOW[i % RAINBOW.length]};
+              "
+            >
+              <path
+                d="M0 -10 C 1 -2, 2 -1, 10 0 C 2 1, 1 2, 0 10 C -1 2, -2 1, -10 0 C -2 -1, -1 -2, 0 -10 Z"
+              />
+            </svg>
+          {/each}
+        </span>
+      {/if}
       {#if creature.def.tier === "rare" && glistening}
         <span
           class="absolute inset-0"

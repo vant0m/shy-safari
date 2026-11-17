@@ -146,4 +146,14 @@ export const PREHISTORIC_ROSTER: CreatureDef[] = [
     motion: "graze",
     parts: ["part-tail", "part-head"],
   },
+
+  // Legendary: about one arrival in two hundred, and at most once a
+  // Session (docs/adr/0012-legendary-tier.md). Torosaurus, Triceratops' cousin with a frill half as long again.
+  {
+    slug: "torosaurus",
+    tier: "legendary",
+    width: 270,
+    motion: "graze",
+    parts: ["part-tail", "part-head"],
+  },
 ];

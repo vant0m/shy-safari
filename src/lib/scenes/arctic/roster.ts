@@ -145,4 +145,14 @@ export const ARCTIC_ROSTER: CreatureDef[] = [
     motion: "paddle",
     parts: ["part-pulse"],
   },
+
+  // Legendary: about one arrival in two hundred, and at most once a
+  // Session (docs/adr/0012-legendary-tier.md). A white orca, so rare that each one seen is given a name.
+  {
+    slug: "white-orca",
+    tier: "legendary",
+    width: 300,
+    motion: "paddle",
+    parts: [],
+  },
 ];

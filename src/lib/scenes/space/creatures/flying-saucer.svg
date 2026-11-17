@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 92">
+  <defs>
+    <linearGradient id="space-flying-saucer-hull" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e8ecf4"/>
+      <stop offset="0.35" stop-color="#a9b3c8"/>
+      <stop offset="0.7" stop-color="#5a6378"/>
+      <stop offset="1" stop-color="#262b3a"/>
+    </linearGradient>
+    <radialGradient id="space-flying-saucer-dome" cx="0.38" cy="0.35" r="0.7">
+      <stop offset="0" stop-color="#dff8ff" stop-opacity="0.95"/>
+      <stop offset="0.45" stop-color="#7fd4e8" stop-opacity="0.75"/>
+      <stop offset="1" stop-color="#1d5a78" stop-opacity="0.85"/>
+    </radialGradient>
+    <radialGradient id="space-flying-saucer-beam" cx="0.5" cy="0" r="1">
+      <stop offset="0" stop-color="#b7f5d8" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#b7f5d8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="space-flying-saucer-lamp" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#fff6d0"/>
+      <stop offset="0.5" stop-color="#ffd166" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#ffd166" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- A soft beam of light below, breathing. -->
+  <g class="part-pulse" style="transform-origin: 80px 56px; animation-duration: 3.4s">
+    <path d="M62 56 L 98 56 L 116 92 L 44 92 Z" fill="url(#space-flying-saucer-beam)"/>
+  </g>
+  <!-- Glass dome, lit from the upper left. -->
+  <path d="M54 38 C 54 20, 66 10, 80 10 C 94 10, 106 20, 106 38 Z" fill="url(#space-flying-saucer-dome)"/>
+  <path d="M60 32 C 61 22, 68 15, 77 14 C 70 18, 65 24, 63 33 Z" fill="#ffffff" opacity="0.55"/>
+  <!-- The hull: a wide disc, rim catching the light. -->
+  <path d="M4 46 C 4 38, 40 32, 80 32 C 120 32, 156 38, 156 46 C 156 54, 120 60, 80 60 C 40 60, 4 54, 4 46 Z" fill="url(#space-flying-saucer-hull)"/>
+  <path d="M4 46 C 4 54, 40 60, 80 60 C 120 60, 156 54, 156 46 C 140 52, 112 55, 80 55 C 48 55, 20 52, 4 46 Z" fill="#05070f" opacity="0.4"/>
+  <path d="M10 42 C 30 36, 56 34, 80 34 C 104 34, 130 36, 150 42" stroke="#dce8ff" stroke-width="1" fill="none" opacity="0.6"/>
+  <path d="M30 48 C 50 51, 110 51, 130 48" stroke="#05070f" stroke-width="0.8" fill="none" opacity="0.35"/>
+  <!-- Underside: a ring of the engine's glow. -->
+  <path d="M58 57 C 62 62, 98 62, 102 57 C 96 59, 64 59, 58 57 Z" fill="#7fd4e8" opacity="0.8"/>
+  <!-- Running lights round the rim. -->
+  <g class="part-pulse" style="transform-origin: 80px 46px; animation-duration: 2.2s">
+    <circle cx="22" cy="47" r="5" fill="url(#space-flying-saucer-lamp)"/>
+    <circle cx="50" cy="50" r="5" fill="url(#space-flying-saucer-lamp)"/>
+    <circle cx="80" cy="51" r="5" fill="url(#space-flying-saucer-lamp)"/>
+    <circle cx="110" cy="50" r="5" fill="url(#space-flying-saucer-lamp)"/>
+    <circle cx="138" cy="47" r="5" fill="url(#space-flying-saucer-lamp)"/>
+  </g>
+</svg>

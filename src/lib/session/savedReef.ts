@@ -74,6 +74,35 @@ export function saveReef(sceneId: string, creatures: CreatureInstance[]) {
 }
 
 /**
+ * The Legendary Creatures that have already come this Session, per Scene, so
+ * one never comes twice even after it Runs Away. Reset forgets the Scene's.
+ */
+export function loadLegends(sceneId: string): string[] {
+  if (!browser) return [];
+  try {
+    const saved = JSON.parse(
+      localStorage.getItem(storageKey(`${sceneId}:legends`)) ?? "[]",
+    );
+    return Array.isArray(saved)
+      ? saved.filter((slug) => typeof slug === "string")
+      : [];
+  } catch {
+    return [];
+  }
+}
+
+export function saveLegends(sceneId: string, slugs: string[]) {
+  if (!browser) return;
+  try {
+    const key = storageKey(`${sceneId}:legends`);
+    if (slugs.length === 0) localStorage.removeItem(key);
+    else localStorage.setItem(key, JSON.stringify(slugs));
+  } catch {
+    // Browsing privately: it may come again after a refresh, that's all.
+  }
+}
+
+/**
  * How many Creatures have arrived this Session, for the arrival counter. One
  * count for the Class across every Scene, so switching Scene carries it
  * over; Reset clears it, but one that Runs Away never lowers it.

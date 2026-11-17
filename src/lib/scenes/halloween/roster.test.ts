@@ -26,7 +26,7 @@ describe("the Pumpkin Hollow Roster", () => {
         "common",
       );
     }
-    const order = { common: 0, uncommon: 1, rare: 2 };
+    const order = { common: 0, uncommon: 1, rare: 2, legendary: 3 };
     const tiers = NEWCOMERS.map(
       ({ slug }) =>
         order[HALLOWEEN_ROSTER.find((def) => def.slug === slug)!.tier],

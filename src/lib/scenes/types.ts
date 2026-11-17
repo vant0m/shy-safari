@@ -31,7 +31,19 @@ export const SCENE_IDS: SceneId[] = [
 /** What a first visit, and the prerendered page, shows. */
 export const DEFAULT_SCENE: SceneId = "savanna";
 
-export type RarityTier = "common" | "uncommon" | "rare";
+/**
+ * Legendary is the rarest of all: one Creature per Scene, about one arrival
+ * in two hundred, and at most once per Session (docs/adr/0012-legendary-tier.md).
+ */
+export type RarityTier = "common" | "uncommon" | "rare" | "legendary";
+
+/** Every tier, commonest first, for lists that show them in order. */
+export const RARITY_TIERS: RarityTier[] = [
+  "common",
+  "uncommon",
+  "rare",
+  "legendary",
+];
 
 /** The part group classes the animation layer knows how to move. */
 export const ANIMATABLE_PARTS = [

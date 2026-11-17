@@ -19,6 +19,7 @@ describe("the arctic Roster", () => {
       "bowhead-whale",
       "eider",
       "narwhal",
+      "white-orca",
     ]);
   });
 });

@@ -146,4 +146,14 @@ export const FOREST_ROSTER: CreatureDef[] = [
     motion: "graze",
     parts: ["part-ears", "part-head"],
   },
+
+  // Legendary: about one arrival in two hundred, and at most once a
+  // Session (docs/adr/0012-legendary-tier.md). A white stag with golden antlers, straight out of an old story.
+  {
+    slug: "white-stag",
+    tier: "legendary",
+    width: 160,
+    motion: "graze",
+    parts: ["part-tail", "part-ears", "part-head"],
+  },
 ];

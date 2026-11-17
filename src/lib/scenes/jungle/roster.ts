@@ -147,4 +147,14 @@ export const JUNGLE_ROSTER: CreatureDef[] = [
     motion: "trot",
     parts: ["part-tail", "part-ears"],
   },
+
+  // Legendary: about one arrival in two hundred, and at most once a
+  // Session (docs/adr/0012-legendary-tier.md). A black panther: a jaguar whose rosettes only just show.
+  {
+    slug: "black-panther",
+    tier: "legendary",
+    width: 175,
+    motion: "trot",
+    parts: ["part-tail", "part-ears"],
+  },
 ];
