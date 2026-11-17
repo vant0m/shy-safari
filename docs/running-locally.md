@@ -114,6 +114,25 @@ After a new `bun run build`, **restart** `bun run preview`: a preview server
 that was already running keeps serving the old files, and the page can stay
 blank.
 
+## Optional — run the sync Worker locally
+
+To work on sync (`worker/`, `src/lib/sync/`), create a file named `.dev.vars`
+(never committed) with a made-up teacher address:
+
+```sh
+DEV_USER_EMAIL=teacher@example.org
+```
+
+then:
+
+```sh
+bun run dev:sync
+```
+
+It builds the site, creates the local database tables and serves everything
+at **http://localhost:8787** as a signed-in teacher (there is no Access page
+locally). A second browser profile acts as a second computer.
+
 ## Step 7 — Check before committing
 
 ```sh

@@ -193,3 +193,10 @@ What the teacher can look back on for a Class: time Quiet and Too Loud while
 a Session ran, Starts, arrivals, Creatures that Ran Away, and the noise level
 through the day on the meter's 0–100 scale. Teacher-facing only; never shown
 on the Scene.
+
+## Sync
+
+On a copy that turns it on, each teacher's classes are also kept on the
+school's server, under the e-mail they signed in with, so they find them on
+any computer. Changes made on two computers are merged; the teacher is asked
+which classes to keep only when both changed the same thing.

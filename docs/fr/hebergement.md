@@ -12,6 +12,7 @@ Version anglaise : [../hosting.md](../hosting.md).
 - [Option B — Cloudflare, compilé depuis GitHub à chaque push](#option-b--cloudflare-compilé-depuis-github-à-chaque-push)
 - [Votre propre domaine](#votre-propre-domaine)
 - [Restreindre l'accès avec Cloudflare Access](#restreindre-laccès-avec-cloudflare-access)
+- [Synchronisation entre ordinateurs (facultative)](#synchronisation-entre-ordinateurs-facultative)
 - [Autres hébergeurs statiques](#autres-hébergeurs-statiques)
 - [Mettre à jour et revenir en arrière](#mettre-à-jour-et-revenir-en-arrière)
 - [Dépannage](#dépannage)
@@ -178,6 +179,20 @@ Remarques :
   envoyés à quelqu'un qui ne s'est pas connecté. Il ne sépare pas les
   enseignants entre eux dans l'app : chaque navigateur garde ses propres
   classes.
+
+## Synchronisation entre ordinateurs (facultative)
+
+Par défaut, tout reste dans chaque navigateur. Une copie protégée par
+Cloudflare Access peut aussi enregistrer les classes de chaque enseignant
+sur son compte Cloudflare (une base D1), sous l'e-mail utilisé pour se
+connecter : il les retrouve alors sur n'importe quel ordinateur. Il suffit de
+déployer avec `wrangler.sync.jsonc` au lieu de `wrangler.jsonc`. Seules les
+adresses `/api/*` exécutent un Worker ; les pages restent des fichiers
+statiques.
+
+Toute la mise en place, d'un compte Cloudflare vide jusqu'à deux ordinateurs
+synchronisés : **[deploiement-pas-a-pas.md](deploiement-pas-a-pas.md)**.
+Conception et limites : [ADR 0015](../adr/0015-sync-through-cloudflare.md).
 
 ## Autres hébergeurs statiques
 

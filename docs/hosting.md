@@ -12,6 +12,7 @@ French version: [fr/hebergement.md](fr/hebergement.md).
 - [Option B — Cloudflare, built from GitHub on every push](#option-b--cloudflare-built-from-github-on-every-push)
 - [Your own domain](#your-own-domain)
 - [Restricting access with Cloudflare Access](#restricting-access-with-cloudflare-access)
+- [Sync between computers (optional)](#sync-between-computers-optional)
 - [Other static hosts](#other-static-hosts)
 - [Updating and rolling back](#updating-and-rolling-back)
 - [Troubleshooting](#troubleshooting)
@@ -170,6 +171,19 @@ Notes:
 - Access is a real check at Cloudflare's edge: the files are never sent to
   someone who has not signed in. It does not separate teachers from each
   other inside the app — each browser still keeps its own classes.
+
+## Sync between computers (optional)
+
+By default everything stays in each browser. A copy behind Cloudflare Access
+can also save each teacher's classes on its Cloudflare account (a D1
+database), keyed by the e-mail they sign in with, so they find them on any
+computer: deploy with `wrangler.sync.jsonc` instead of `wrangler.jsonc`.
+Only `/api/*` runs a Worker; every page is still served as static files.
+
+The whole setup, from an empty Cloudflare account to two computers in step,
+is in **[deploy-step-by-step.md](deploy-step-by-step.md)** (French:
+[fr/deploiement-pas-a-pas.md](fr/deploiement-pas-a-pas.md)). Design and
+limits: [ADR 0015](adr/0015-sync-through-cloudflare.md).
 
 ## Other static hosts
 

@@ -50,6 +50,13 @@ fil de la journée (comparé à l'objectif) et un comparatif de toutes les
 classes. Réservé à l'enseignant, conservé 180 jours sur cet ordinateur. Le
 niveau est l'échelle 0–100 du sonomètre, pas des décibels.
 
+**Synchronisation (facultative).** Déployée avec `wrangler.sync.jsonc`
+derrière Cloudflare Access, une copie enregistre les classes de chaque
+enseignant sur son compte Cloudflare, sous son e-mail : il les retrouve sur
+tout ordinateur. Les modifications faites sur deux ordinateurs sont
+fusionnées ; une question n'est posée que si les deux ont changé la même
+chose. Guide : [deploiement-pas-a-pas.md](deploiement-pas-a-pas.md).
+
 **Accès réservé.** Il se règle devant le site, pas dans l'app : Cloudflare
 Access avec un code envoyé par e-mail, configuré par l'administrateur de
 l'hébergement (voir [hebergement.md](hebergement.md)).
@@ -85,9 +92,10 @@ micro.
 
 ## Données et vie privée
 
-Il n'y a ni compte ni serveur applicatif. Classes, animaux, Collection, Notes,
-Minuteur et réglages sont stockés dans le `localStorage` du navigateur, sur
-cet ordinateur et pour cette adresse uniquement. Une fenêtre de navigation
+Par défaut, il n'y a ni compte ni serveur applicatif. Classes, animaux,
+Collection, Notes, Minuteur et réglages sont stockés dans le `localStorage` du
+navigateur, sur cet ordinateur et pour cette adresse uniquement (sauf si votre
+établissement a activé la synchronisation : voir ci-dessus). Une fenêtre de navigation
 privée oublie tout à la fermeture. Le son du micro n'est jamais enregistré ni
 transmis.
 

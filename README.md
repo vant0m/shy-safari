@@ -55,6 +55,13 @@ That is the whole app. No account, no sign-in, nothing to install.
   level through the day against the goal, and a comparison of every class.
   Teacher-facing only, kept on this computer for 180 days
   ([docs/adr/0014](docs/adr/0014-class-statistics.md)).
+- **Sync (optional).** A copy deployed with `wrangler.sync.jsonc`
+  behind Cloudflare Access saves each teacher's classes in a D1 database
+  under their sign-in e-mail, so they follow them to any computer;
+  changes made on two computers are merged, and the teacher is asked only
+  when both changed the same thing
+  ([docs/adr/0015](docs/adr/0015-sync-through-cloudflare.md),
+  [docs/deploy-step-by-step.md](docs/deploy-step-by-step.md)).
 - **Access control** is done in front of the site, not in it: Cloudflare
   Access with e-mailed one-time codes, set up by whoever administers the
   hosting ([docs/hosting.md](docs/hosting.md#restricting-access-with-cloudflare-access),
@@ -152,8 +159,9 @@ Build-time variables (all optional):
 ## How it is put together
 
 Svelte 5 and SvelteKit, prerendered to static files with Tailwind for styling.
-There is no backend: settings live in `localStorage` and nothing leaves the
-device.
+By default there is no backend: settings live in `localStorage` and nothing
+leaves the device. The optional sync Worker (`worker/`, `migrations/`) is
+the only server code, and only runs where a copy turns it on.
 
 Each scene is SVG in the DOM rather than video or canvas
 ([docs/adr/0002](docs/adr/0002-svg-dom-scene.md)), so each animal is an
@@ -175,6 +183,8 @@ they can be checked without a microphone or a ten-second wait:
 - [`CONTEXT.md`](CONTEXT.md) — the vocabulary the code uses (Scene, Creature,
   Class, Too Loud…).
 - [`docs/hosting.md`](docs/hosting.md) — deploying, domains, access control.
+- [`docs/deploy-step-by-step.md`](docs/deploy-step-by-step.md) — a subdomain
+  with sign-in and sync, step by step.
 - [`docs/adr/`](docs/adr/README.md) — architecture decisions and why they were made.
 - [`docs/svg-art-brief.md`](docs/svg-art-brief.md) — the rules every piece of
   artwork follows.

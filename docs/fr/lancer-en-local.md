@@ -136,6 +136,26 @@ Après un nouveau `bun run build`, **relancez** `bun run preview` : un serveur
 de preview déjà démarré continue de servir les anciens fichiers et la page
 peut rester blanche.
 
+## Facultatif — lancer le Worker de synchronisation en local
+
+Pour travailler sur la synchronisation (`worker/`, `src/lib/sync/`), créez un
+fichier `.dev.vars` (jamais commité) avec une adresse d'enseignant inventée :
+
+```sh
+DEV_USER_EMAIL=prof@exemple.fr
+```
+
+puis :
+
+```sh
+bun run dev:sync
+```
+
+La commande compile le site, crée les tables de la base locale et sert le
+tout sur **http://localhost:8787** comme un enseignant connecté (il n'y a pas
+de page Access en local). Un second profil de navigateur joue le rôle d'un
+second ordinateur.
+
 ## Étape 7 — Vérifier avant de commiter
 
 ```sh

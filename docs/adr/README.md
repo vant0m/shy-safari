@@ -21,3 +21,4 @@ then says so at the top.
 | 0012 | [The Legendary tier](0012-legendary-tier.md)                                                                                                       |
 | 0013 | [Access via Cloudflare Access](0013-access-via-cloudflare-access.md)                                                                               |
 | 0014 | [Class statistics](0014-class-statistics.md)                                                                                                       |
+| 0015 | [Optional sync through Cloudflare](0015-sync-through-cloudflare.md)                                                                                |

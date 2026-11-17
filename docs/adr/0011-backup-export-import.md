@@ -1,5 +1,9 @@
 # Classes move between computers as a file, not through an account
 
+> Copies that turn on sync ([0015](0015-sync-through-cloudflare.md)) also
+> keep each teacher's classes on the school's Cloudflare account. Export /
+> Import is unchanged and still the way to move classes elsewhere.
+
 Everything a teacher earns lives in one browser's `localStorage`, on one
 origin. That is the point (no accounts, nothing leaves the device), but it
 strands a teacher who gets a new laptop, switches browser, or whose school
