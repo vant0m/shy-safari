@@ -160,9 +160,13 @@ Access valide.)
 
 ## Étape 7 — Préparer Cloudflare Zero Trust
 
-1. Tableau de bord → **Zero Trust**. À la première visite, choisissez un
-   **nom d'équipe** (par ex. `exemple`) et l'offre **Free** (jusqu'à 50
-   utilisateurs ; une carte bancaire peut être demandée sans être débitée).
+1. Tableau de bord → **Zero Trust**. À la première visite, choisissez l'offre
+   **Free** : gratuite jusqu'à 50 utilisateurs. Cloudflare demande quand même
+   un moyen de paiement (carte ou PayPal) pour l'activer ; rien n'est débité
+   tant que vous restez sur l'offre Free (vérifiable dans **Settings →
+   Account / Plan**). Le **nom d'équipe** peut être proposé ou imposé
+   automatiquement : peu importe lequel, il ne sert qu'à l'adresse de la page
+   de connexion.
 2. Notez votre **domaine d'équipe** : `https://<nom-d-equipe>.cloudflareaccess.com`.
    Il est visible dans **Settings** (rubrique _Team name and domain_ ;
    l'emplacement exact varie selon les versions du tableau de bord).

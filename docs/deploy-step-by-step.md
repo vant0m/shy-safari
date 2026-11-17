@@ -89,8 +89,11 @@ are not behind the sign-in page.
 
 ## Step 7 — Set up Cloudflare Zero Trust
 
-1. **Zero Trust**: pick a **team name** and the **Free** plan (up to 50
-   users).
+1. **Zero Trust**: pick the **Free** plan (free up to 50 users). Cloudflare
+   still asks for a payment method (card or PayPal) to turn it on; nothing is
+   charged while you stay on Free (check **Settings → Account / Plan**). The
+   **team name** may be suggested or set for you: any name works, it only
+   appears in the sign-in page's address.
 2. Note your **team domain**, `https://<team>.cloudflareaccess.com`
    (**Settings**, _Team name and domain_; the exact place varies between
    dashboard versions).

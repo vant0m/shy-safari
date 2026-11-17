@@ -128,8 +128,9 @@ Setting it up (once, by the administrator):
 1. Your domain must be on Cloudflare (see above). For the `workers.dev`
    address only, use **Worker → Settings → Domains & Routes → workers.dev →
    Enable Cloudflare Access** instead, and edit the policy it creates.
-2. Open **Zero Trust** from the dashboard (the free plan covers up to 50
-   users; choose a team name when asked).
+2. Open **Zero Trust** from the dashboard and pick the Free plan (up to 50
+   users; a card or PayPal is asked for but not charged on Free). The team
+   name may be set for you; any name works.
 3. **Settings → Authentication → Login methods**: _One-time PIN_ is there by
    default. Add Google or Microsoft (Azure AD) here if you want those.
 4. **Access → Applications → Add an application → Self-hosted**:
