@@ -31,17 +31,22 @@ bunx wrangler whoami
 
 ## Step 2 — Create the database
 
+Your deployment settings go in a **local copy** of the configuration that
+Git ignores, so they never reach GitHub and `git pull` never conflicts:
+
 ```sh
+cp wrangler.sync.jsonc wrangler.sync.local.jsonc
+# PowerShell: Copy-Item wrangler.sync.jsonc wrangler.sync.local.jsonc
 bunx wrangler d1 create shy-safari
 ```
 
-Copy the printed `database_id` into **`wrangler.sync.jsonc`**, replacing
-`00000000-0000-0000-0000-000000000000`.
+Copy the printed `database_id` into **`wrangler.sync.local.jsonc`**,
+replacing `00000000-0000-0000-0000-000000000000`.
 
 ## Step 3 — Create the tables
 
 ```sh
-bunx wrangler d1 migrations apply shy-safari --remote -c wrangler.sync.jsonc
+bunx wrangler d1 migrations apply shy-safari --remote -c wrangler.sync.local.jsonc
 ```
 
 ## Step 4 — First deploy
@@ -49,7 +54,7 @@ bunx wrangler d1 migrations apply shy-safari --remote -c wrangler.sync.jsonc
 ```sh
 PUBLIC_SITE_URL=https://safari.example.org bun run build
 # PowerShell: $env:PUBLIC_SITE_URL="https://safari.example.org"; bun run build
-bunx wrangler deploy -c wrangler.sync.jsonc
+bunx wrangler deploy -c wrangler.sync.local.jsonc
 ```
 
 The site works at the printed `workers.dev` address, without sync for now
@@ -87,7 +92,7 @@ are not behind the sign-in page.
 
 ## Step 9 — Turn sync on
 
-In **`wrangler.sync.jsonc`**:
+In **`wrangler.sync.local.jsonc`**:
 
 ```jsonc
 "vars": {
@@ -96,8 +101,8 @@ In **`wrangler.sync.jsonc`**:
 },
 ```
 
-Then deploy again: `bunx wrangler deploy -c wrangler.sync.jsonc`. These
-values aren't secret, but you may prefer to keep them out of a public repo.
+Then deploy again: `bunx wrangler deploy -c wrangler.sync.local.jsonc`. These
+values aren't secret, and they stay on your computer in the ignored file.
 
 ## Step 10 — Check
 
@@ -116,8 +121,8 @@ values aren't secret, but you may prefer to keep them out of a public repo.
 ```sh
 git pull && bun install
 PUBLIC_SITE_URL=https://safari.example.org bun run build
-bunx wrangler d1 migrations apply shy-safari --remote -c wrangler.sync.jsonc   # if there are new migrations
-bunx wrangler deploy -c wrangler.sync.jsonc
+bunx wrangler d1 migrations apply shy-safari --remote -c wrangler.sync.local.jsonc   # if there are new migrations
+bunx wrangler deploy -c wrangler.sync.local.jsonc
 ```
 
 ## Administering
@@ -125,7 +130,7 @@ bunx wrangler deploy -c wrangler.sync.jsonc
 - Add or remove teachers in the Access policy (**Revoke existing tokens** to
   apply a removal at once).
 - List synced teachers:
-  `bunx wrangler d1 execute shy-safari --remote -c wrangler.sync.jsonc --command "SELECT email, revision, updated_at, size FROM backups"`
+  `bunx wrangler d1 execute shy-safari --remote -c wrangler.sync.local.jsonc --command "SELECT email, revision, updated_at, size FROM backups"`
 - Delete a teacher's data:
   `… --command "DELETE FROM backup_chunks WHERE email = 'x@y'; DELETE FROM backups WHERE email = 'x@y';"`
 - D1 Time Travel keeps 7 days of history on the free plan
@@ -141,6 +146,6 @@ bunx wrangler deploy -c wrangler.sync.jsonc
 | "Can't reach the server"                   | Temporary; the app retries, classes stay on the computer.                                                    |
 | "Which classes should we keep?"            | Both computers changed the same thing since the last save; everything else was merged automatically.         |
 | Custom domain won't attach                 | A `safari` DNS record already exists.                                                                        |
-| `wrangler deploy` fails on `database_id`   | Step 2's id wasn't copied into `wrangler.sync.jsonc`.                                                        |
+| `wrangler deploy` fails on `database_id`   | Step 2's id wasn't copied into `wrangler.sync.local.jsonc`.                                                  |
 
 Static-only hosting, without sync: [hosting.md](hosting.md).

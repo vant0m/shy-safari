@@ -60,6 +60,11 @@
     <p id="sync-conflict-body" class="mt-2 text-sm text-slate-600">
       {message}
     </p>
+    {#if conflict.reason === "other-teacher" && conflict.remote === 0}
+      <p class="mt-2 text-sm text-rose-700">
+        {t("sync.conflict.startEmptyWarning")}
+      </p>
+    {/if}
     <div class="mt-5 flex flex-col gap-2">
       <button
         class="rounded-full bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800 disabled:opacity-50"

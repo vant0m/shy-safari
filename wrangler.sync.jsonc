@@ -3,7 +3,9 @@
   // The same site as wrangler.jsonc, plus sync: a Worker that runs only for
   // /api/* and keeps each teacher's classes in D1, keyed by the e-mail
   // Cloudflare Access signed them in with. See docs/adr/0015-sync-through-cloudflare.md
-  // and docs/hosting.md. Deploy with: bunx wrangler deploy -c wrangler.sync.jsonc
+  // and docs/deploy-step-by-step.md. Copy this file to wrangler.sync.local.jsonc
+  // (ignored by Git), fill in the ids below there, and deploy with:
+  // bunx wrangler deploy -c wrangler.sync.local.jsonc
   "name": "shy-safari",
   "main": "worker/index.ts",
   "compatibility_date": "2026-11-01",

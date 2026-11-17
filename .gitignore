@@ -21,3 +21,5 @@ build
 
 # Wrangler local secrets (sync dev identity)
 .dev.vars
+# Deployment ids for sync (docs/deploy-step-by-step.md)
+wrangler.sync.local.jsonc

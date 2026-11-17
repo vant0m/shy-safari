@@ -56,9 +56,23 @@ and a way to tell teachers apart.
     whose answer was lost when the tab closed), it just carries on;
   - a computer last synced by another teacher never uploads on its own: it
     asks first, so one teacher's classes never land in another's record.
+- **Never in front of the class.** While a lesson runs on a computer (the
+  Session listening, or the Scene floating), sync there only saves. Anything
+  that would reload the page or ask a question — another computer's changes
+  to bring in, a conflict — waits until the lesson stops or the page is next
+  opened; the panel says so.
+- **Which Class is on screen stays on each computer.** It is left out of what
+  is synced, so two computers never switch each other's Class or bounce it
+  back and forth.
 - **When it saves**: when something changed, at most once a minute, and when
-  the tab is hidden. Not reliably on close: browsers cap a request sent while
-  a page closes at about 64 KB.
+  the tab is hidden. Changes that are only routine (statistics, the counter…)
+  are saved at most every five minutes unless the tab is hidden or the
+  teacher presses Save now: D1's free plan allows 100,000 rows written a
+  day, and a save costs roughly 5 to 13. Not reliably on close: browsers cap
+  a request sent while a page closes at about 64 KB.
+- **Key rotation.** The Worker caches Access's public keys for an hour and
+  fetches them again (at most every five minutes) when a token names a key
+  it hasn't seen, so a rotation never signs everyone out.
 - **Errors are never data.** Only a JSON answer from the API counts. A
   missing route (the plain static build), an HTML page, a sign-in redirect
   (an expired Access session) or a network failure means "not now": the app

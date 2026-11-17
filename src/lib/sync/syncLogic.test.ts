@@ -5,7 +5,10 @@ import {
   isPristine,
   keyHashes,
   mergeThreeWay,
+  onlyRoutineChanged,
   shortHash,
+  withCurrentClass,
+  withoutCurrentClass,
   type SyncMeta,
 } from "./syncLogic";
 
@@ -344,5 +347,44 @@ describe("merging two computers' changes", () => {
   it("hashes stably", () => {
     expect(shortHash("abc")).toBe(shortHash("abc"));
     expect(shortHash("abc")).not.toBe(shortHash("abd"));
+  });
+});
+
+describe("what each computer keeps to itself", () => {
+  const list = JSON.stringify({
+    classes: [
+      { id: "c1", name: "6B" },
+      { id: "c2", name: "5A" },
+    ],
+    currentId: "c2",
+  });
+
+  it("leaves the Class on screen out of what is synced", () => {
+    const synced = withoutCurrentClass({ "class-noise-level:classes": list });
+    expect(JSON.parse(synced["class-noise-level:classes"])).toEqual({
+      classes: [
+        { id: "c1", name: "6B" },
+        { id: "c2", name: "5A" },
+      ],
+    });
+  });
+
+  it("puts this computer's Class back, if it still exists", () => {
+    const synced = withoutCurrentClass({ "class-noise-level:classes": list });
+    const back = (id: string) =>
+      JSON.parse(withCurrentClass(synced, id)["class-noise-level:classes"])
+        .currentId;
+    expect(back("c1")).toBe("c1");
+    expect(back("gone")).toBeUndefined();
+  });
+
+  it("tells routine changes from real ones", () => {
+    const base = keyHashes({ "x:c1:stats": "1", "x:c1:notes": "a" });
+    expect(
+      onlyRoutineChanged(base, { "x:c1:stats": "2", "x:c1:notes": "a" }),
+    ).toBe(true);
+    expect(
+      onlyRoutineChanged(base, { "x:c1:stats": "1", "x:c1:notes": "b" }),
+    ).toBe(false);
   });
 });

@@ -134,6 +134,20 @@ describe("verifying an Access token", () => {
     expect(await verifyAccessToken(await sign(rest), options())).toBeNull();
   });
 
+  it("fetches the keys again for a key it hasn't seen (after a rotation)", async () => {
+    let calls = 0;
+    const rotating = async (_team: string, refresh?: boolean) => {
+      calls += 1;
+      return refresh ? [jwk] : [];
+    };
+    const email = await verifyAccessToken(await sign(good()), {
+      ...options(),
+      keys: rotating,
+    });
+    expect(email).toBe("teacher@school.org");
+    expect(calls).toBe(2);
+  });
+
   it("refuses garbage", async () => {
     expect(await verifyAccessToken("not.a.token", options())).toBeNull();
     expect(await verifyAccessToken("", options())).toBeNull();

@@ -16,18 +16,25 @@ export interface Jwk {
   alg?: string;
 }
 
-/** Fetches the team's public keys; injectable so tests need no network. */
-export type KeySource = (teamDomain: string) => Promise<Jwk[]>;
+/**
+ * Fetches the team's public keys; injectable so tests need no network.
+ * `refresh` asks for fresh keys: a token signed with a key not seen yet,
+ * after Access rotated them.
+ */
+export type KeySource = (
+  teamDomain: string,
+  refresh?: boolean,
+) => Promise<Jwk[]>;
 
 const KEY_TTL_MS = 60 * 60 * 1000;
+/** A refresh is honoured at most this often, so bad tokens can't flood it. */
+const REFRESH_MIN_MS = 5 * 60 * 1000;
 let cachedKeys: { team: string; keys: Jwk[]; at: number } | null = null;
 
-export const fetchTeamKeys: KeySource = async (teamDomain) => {
-  if (
-    cachedKeys &&
-    cachedKeys.team === teamDomain &&
-    Date.now() - cachedKeys.at < KEY_TTL_MS
-  ) {
+export const fetchTeamKeys: KeySource = async (teamDomain, refresh = false) => {
+  const age =
+    cachedKeys?.team === teamDomain ? Date.now() - cachedKeys.at : Infinity;
+  if (cachedKeys && age < (refresh ? REFRESH_MIN_MS : KEY_TTL_MS)) {
     return cachedKeys.keys;
   }
   const response = await fetch(`${teamDomain}/cdn-cgi/access/certs`);
@@ -67,7 +74,9 @@ export async function verifyAccessToken(
     const payload = decodeJson(parts[1]);
     if (header.alg !== "RS256" || typeof header.kid !== "string") return null;
 
-    const jwk = (await keys(teamDomain)).find((key) => key.kid === header.kid);
+    const find = (list: Jwk[]) => list.find((key) => key.kid === header.kid);
+    const jwk =
+      find(await keys(teamDomain)) ?? find(await keys(teamDomain, true));
     if (!jwk) return null;
     const key = await crypto.subtle.importKey(
       "jwk",

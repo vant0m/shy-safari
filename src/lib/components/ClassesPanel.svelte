@@ -77,6 +77,8 @@
         return t("sync.status.tooLarge");
       case "conflict":
         return t("sync.status.conflict");
+      case "deferred":
+        return t("sync.status.deferred");
       default:
         return t("sync.status.starting");
     }

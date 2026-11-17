@@ -194,6 +194,10 @@ const en = {
     "sync.status.tooLarge":
       "Your classes are too big to save on the server. Export them to a file instead.",
     "sync.status.conflict": "Waiting for your choice.",
+    "sync.status.deferred":
+      "Changes saved on another computer will be brought in after the lesson, so the scene isn’t interrupted.",
+    "sync.conflict.startEmptyWarning":
+      "Starting with no classes removes this computer’s copy of the other teacher’s classes, including anything they hadn’t saved yet.",
     "sync.saveNow": "Save now",
     "sync.savedNote":
       "Settings are saved on this computer and on your school’s server, under your e-mail. Microphone audio never leaves the device.",
@@ -986,6 +990,10 @@ const es = {
     "sync.status.tooLarge":
       "Tus clases ocupan demasiado para guardarlas en el servidor. Expórtalas a un archivo.",
     "sync.status.conflict": "Esperando tu elección.",
+    "sync.status.deferred":
+      "Los cambios guardados en otra computadora se incorporarán después de la clase, para no interrumpir la escena.",
+    "sync.conflict.startEmptyWarning":
+      "Empezar sin clases borra de esta computadora la copia de las clases del otro docente, incluido lo que aún no se hubiera guardado.",
     "sync.saveNow": "Guardar ahora",
     "sync.savedNote":
       "Los ajustes se guardan en esta computadora y en el servidor de tu centro, con tu correo. El sonido del micrófono nunca sale del dispositivo.",
@@ -1751,6 +1759,10 @@ const fr = {
     "sync.status.tooLarge":
       "Vos classes sont trop volumineuses pour le serveur. Exportez-les plutôt dans un fichier.",
     "sync.status.conflict": "En attente de votre choix.",
+    "sync.status.deferred":
+      "Les modifications enregistrées sur un autre ordinateur seront intégrées après la séance, pour ne pas interrompre la scène.",
+    "sync.conflict.startEmptyWarning":
+      "Commencer sans classe supprime de cet ordinateur la copie des classes de l’autre enseignant, y compris ce qu’il n’avait pas encore enregistré.",
     "sync.saveNow": "Enregistrer maintenant",
     "sync.savedNote":
       "Les réglages sont enregistrés sur cet ordinateur et sur le serveur de votre établissement, sous votre e-mail. Le son du micro ne quitte jamais l’appareil.",

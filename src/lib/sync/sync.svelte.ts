@@ -31,6 +31,9 @@ import {
   isPristine,
   keyHashes,
   mergeThreeWay,
+  onlyRoutineChanged,
+  withCurrentClass,
+  withoutCurrentClass,
   type AskReason,
   type SyncMeta,
 } from "./syncLogic";
@@ -39,6 +42,12 @@ import {
 const META_KEY = "shy-safari-sync";
 const CHECK_MS = 60_000;
 const RETRY_MS = 120_000;
+/**
+ * Statistics and other routine entries change all through a lesson: save
+ * them at most this often (D1's free plan allows 100,000 rows written a
+ * day), unless the tab is being hidden or the teacher asks.
+ */
+const ROUTINE_SAVE_MS = 5 * 60_000;
 
 export type SyncStatus =
   /** No sync on this copy. */
@@ -51,7 +60,13 @@ export type SyncStatus =
   /** The Access session ran out: a reload signs the teacher in again. */
   | "signed-out"
   | "too-large"
-  | "conflict";
+  | "conflict"
+  /**
+   * Another computer saved changes, but a lesson is running here: they are
+   * merged in once it stops, never by reloading the page in front of the
+   * class.
+   */
+  | "deferred";
 
 export interface Conflict {
   reason: AskReason;
@@ -138,9 +153,22 @@ function writeMeta(meta: SyncMeta) {
   }
 }
 
+/** This computer's classes as they are synced (`withoutCurrentClass`). */
 function snapshot(): Backup {
   stats.flush();
-  return createBackup(storageEntries(localStorage));
+  const backup = createBackup(storageEntries(localStorage));
+  return { ...backup, data: withoutCurrentClass(backup.data) };
+}
+
+function currentClassId(): string | null {
+  try {
+    return (
+      JSON.parse(localStorage.getItem("class-noise-level:classes") ?? "null")
+        ?.currentId ?? null
+    );
+  } catch {
+    return null;
+  }
 }
 
 class Sync {
@@ -151,6 +179,14 @@ class Sync {
 
   #timer: ReturnType<typeof setInterval> | null = null;
   #busy = false;
+  #lastPushAt = 0;
+
+  /**
+   * Whether a lesson is running on this computer (set by the app): the
+   * Session listening, or the Scene floating. While it is, sync only saves;
+   * it never reloads the page or asks a question in front of the class.
+   */
+  lessonInProgress: () => boolean = () => false;
 
   /** Whether this copy syncs at all, for wording that depends on it. */
   get enabled() {
@@ -188,13 +224,16 @@ class Sync {
       readMeta()?.email === body.email ? readMeta()!.syncedAt : null;
     this.#timer = setInterval(() => void this.check(), CHECK_MS);
     document.addEventListener("visibilitychange", () => {
-      if (document.hidden) void this.check();
+      if (document.hidden) void this.check(true);
     });
     await this.check();
   }
 
-  /** Compare with the server and act on it. */
-  async check() {
+  /**
+   * Compare with the server and act on it. `urgent` (the tab being hidden, or
+   * the teacher asking) saves even routine changes straight away.
+   */
+  async check(urgent = false) {
     if (!this.email || this.#busy || this.conflict) return;
     if (this.status === "too-large") return;
     this.#busy = true;
@@ -235,12 +274,27 @@ class Sync {
           this.status = "synced";
           return;
         case "pull":
+          if (this.#defer()) return;
           await this.#pull();
           return;
-        case "push":
+        case "push": {
+          const routine =
+            meta?.email === this.email &&
+            meta.keys !== undefined &&
+            onlyRoutineChanged(meta.keys, local.data);
+          if (
+            !urgent &&
+            routine &&
+            Date.now() - this.#lastPushAt < ROUTINE_SAVE_MS
+          ) {
+            this.status = "synced";
+            return;
+          }
           await this.#push(decision.base, local, localHash);
           return;
+        }
         case "ask":
+          if (this.#defer()) return;
           await this.#reconcile(decision.reason, remote, local, localHash);
           return;
       }
@@ -251,7 +305,14 @@ class Sync {
 
   /** Save now, if anything changed. */
   saveNow() {
-    return this.check();
+    return this.check(true);
+  }
+
+  /** During a lesson, leave what would reload or ask for later. */
+  #defer(): boolean {
+    if (!this.lessonInProgress()) return false;
+    this.status = "deferred";
+    return true;
   }
 
   /** The teacher's answer to a conflict. */
@@ -337,10 +398,13 @@ class Sync {
     localHash: string,
     retries = 1,
   ) {
+    if (this.#defer()) return;
     if (remote > 0) {
       const record = await this.#download();
       if (!record) return;
-      const remoteHash = await fingerprint(record.backup.data);
+      // Older records may still carry a Class on screen: compare without it.
+      const remoteData = withoutCurrentClass(record.backup.data);
+      const remoteHash = await fingerprint(remoteData);
       if (remoteHash === localHash) {
         this.#remember(
           record.revision,
@@ -357,7 +421,7 @@ class Sync {
         meta?.email === this.email &&
         meta.keys
       ) {
-        const merged = mergeThreeWay(meta.keys, local.data, record.backup.data);
+        const merged = mergeThreeWay(meta.keys, local.data, remoteData);
         if (merged.ok) {
           const mergedBackup: Backup = { ...local, data: merged.data };
           const mergedHash = await fingerprint(merged.data);
@@ -401,14 +465,14 @@ class Sync {
 
   /** Replace this computer's classes with `backup`, and start again. */
   async #apply(revision: number, backup: Backup, syncedAt: string | null) {
+    const synced = withoutCurrentClass(backup.data);
+    const current = currentClassId();
     stats.freeze();
-    restoreBackup(localStorage, backup);
-    this.#remember(
-      revision,
-      await fingerprint(backup.data),
-      backup.data,
-      syncedAt,
-    );
+    restoreBackup(localStorage, {
+      ...backup,
+      data: withCurrentClass(synced, current),
+    });
+    this.#remember(revision, await fingerprint(synced), synced, syncedAt);
     // Every store read its Class at start-up: begin again from the new data.
     location.reload();
   }
@@ -474,6 +538,7 @@ class Sync {
       return null;
     }
     const updatedAt = result.updatedAt ?? new Date().toISOString();
+    this.#lastPushAt = Date.now();
     this.#remember(result.revision, localHash, local.data, updatedAt);
     this.status = "synced";
     return { revision: result.revision, updatedAt };

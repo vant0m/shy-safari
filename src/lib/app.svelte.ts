@@ -211,6 +211,9 @@ export class App {
     const stopTimer = untrack(() => this.timer.run());
     this.restored = true;
     // Only once the saved Class is back: sync compares it with the server.
+    // While a lesson runs it only saves, never reloads or asks in class.
+    sync.lessonInProgress = () =>
+      (this.listening && this.session.running) || this.floating;
     untrack(() => void sync.start());
     this.#lastTick = performance.now();
     const step = () => {

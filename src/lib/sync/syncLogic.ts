@@ -151,7 +151,7 @@ export function keyHashes(
  * changing one is settled without asking: statistics are combined, the rest
  * keeps this computer's.
  */
-function isRoutine(key: string): boolean {
+export function isRoutine(key: string): boolean {
   return (
     /:(stats|arrived|timer|settings|[a-z]+:legends)$/.test(key) ||
     key === `${STORAGE_PREFIX}seen-scenes` ||
@@ -265,4 +265,56 @@ export function mergeThreeWay(
     if (value !== undefined) data[key] = value;
   }
   return conflicts.length > 0 ? { ok: false, conflicts } : { ok: true, data };
+}
+
+/**
+ * The entries as they are synced: which Class is on screen is left out, so
+ * each computer keeps its own and two open computers never switch each
+ * other's Class (or bounce it back and forth).
+ */
+export function withoutCurrentClass(
+  data: Record<string, string>,
+): Record<string, string> {
+  const key = `${STORAGE_PREFIX}classes`;
+  if (!(key in data)) return data;
+  try {
+    const { currentId: _current, ...rest } = JSON.parse(data[key]);
+    void _current;
+    return { ...data, [key]: JSON.stringify(rest) };
+  } catch {
+    return data;
+  }
+}
+
+/** Put this computer's Class on screen back into synced entries. */
+export function withCurrentClass(
+  data: Record<string, string>,
+  currentId: string | null,
+): Record<string, string> {
+  const key = `${STORAGE_PREFIX}classes`;
+  if (!currentId || !(key in data)) return data;
+  try {
+    const list = JSON.parse(data[key]);
+    const known =
+      Array.isArray(list.classes) &&
+      list.classes.some((info: { id?: string }) => info?.id === currentId);
+    return known
+      ? { ...data, [key]: JSON.stringify({ ...list, currentId }) }
+      : data;
+  } catch {
+    return data;
+  }
+}
+
+/** Whether everything that changed since `base` is routine (`isRoutine`). */
+export function onlyRoutineChanged(
+  base: Record<string, string>,
+  data: Record<string, string>,
+): boolean {
+  const keys = new Set([...Object.keys(base), ...Object.keys(data)]);
+  for (const key of keys) {
+    const now = key in data ? shortHash(data[key]) : undefined;
+    if (now !== base[key] && !isRoutine(key)) return false;
+  }
+  return true;
 }
