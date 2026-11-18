@@ -13,6 +13,8 @@ import type { LimitedCalendar } from "./calendar";
 
 export interface LimitedConfig {
   calendar: LimitedCalendar;
+  /** Its hint in the menus while the calendar is unlocking. */
+  daily: UiKey;
   /** What the Scene's sign says: a Newcomer today, days left, last day. */
   sign: { newToday: UiKey; closesIn: UiKey; lastDay: UiKey };
   /** The Settings button that lines up every character before the class sees them. */
@@ -24,6 +26,7 @@ export interface LimitedConfig {
 export const LIMITED: Partial<Record<SceneId, LimitedConfig>> = {
   halloween: {
     calendar: HALLOWEEN_CALENDAR,
+    daily: "hollow.daily",
     sign: {
       newToday: "hollow.newToday",
       closesIn: "hollow.signClosesIn",
@@ -34,6 +37,7 @@ export const LIMITED: Partial<Record<SceneId, LimitedConfig>> = {
   },
   christmas: {
     calendar: CHRISTMAS_CALENDAR,
+    daily: "chalet.daily",
     sign: {
       newToday: "chalet.newToday",
       closesIn: "chalet.signClosesIn",

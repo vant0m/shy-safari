@@ -14,7 +14,7 @@ export function sceneHint(id: SceneId, day: string | null): string {
   const limited = limitedOf(id);
   if (limited) {
     const now = phase(limited.calendar, day);
-    if (now === "unlocking") return t("hollow.daily");
+    if (now === "unlocking") return t(limited.daily);
     if (now === "countdown") {
       const days = daysLeft(limited.calendar, day!);
       return days === 1 ? t("hollow.lastDay") : t("hollow.closesIn", { days });
