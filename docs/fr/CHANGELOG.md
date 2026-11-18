@@ -9,6 +9,16 @@ Les changements notables du projet. Format inspiré de
 
 ### Ajouté
 
+- **Chalet de Noël**, un second tableau à durée limitée en forme de
+  calendrier de l'Avent (du 1er décembre 2026 au 8 janvier 2027) : une
+  clairière enneigée à l'heure bleue, un chalet aux fenêtres dorées, de la
+  fumée, de la neige et une guirlande lumineuse. Quatre créatures communes,
+  puis un nouveau venu par jour d'école jusqu'au Père Noël le vendredi
+  18 décembre, qui allume le sapin ; « trop fort » éteint les lumières. Dix-sept
+  créatures, dont trois rennes reconnaissables à un signe et Rudolph, avec
+  noms et anecdotes en anglais, espagnol et français
+  ([ADR 0016](../adr/0016-christmas-chalet.md)).
+- `dangle`, un mouvement pour les décorations suspendues à une guirlande.
 - Workflows GitHub Actions, un par vérification (typecheck, tests, lint,
   build), chacun avec son badge dans le README.
 - Captures et GIF du README dans `docs/images/`, et
@@ -16,6 +26,10 @@ Les changements notables du projet. Format inspiré de
 
 ### Modifié
 
+- Les règles des tableaux à durée limitée (calendrier, arrivées des
+  nouveaux venus, panneau, textes des menus, aperçu des personnages) sont
+  partagées dans `src/lib/scenes/limited/` au lieu d'être propres à
+  Pumpkin Hollow. Halloween se comporte comme avant.
 - README (et son miroir français) restructuré : en-tête centré avec logo,
   badges et GIF de la scène ; sections numérotées avec emoji ; principes en
   tête ; une image par fonction ; détails repliables ; encadrés GitHub ;

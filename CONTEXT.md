@@ -7,8 +7,9 @@ no decisions, no specification. Decisions live in `docs/adr/`.
 
 The calm world on screen. The teacher chooses between eight Scenes: the
 savanna, the coral reef, deep space, the prehistoric floodplain, the
-forest, the jungle, the Arctic sea ice and the enchanted valley, and for a few weeks around
-Halloween an eighth, Pumpkin Hollow, a Limited-time Scene. A Scene
+forest, the jungle, the Arctic sea ice and the enchanted valley, and for a
+few weeks a year a Limited-time Scene: Pumpkin Hollow around Halloween, the
+Christmas chalet in Advent. A Scene
 is a backdrop, its Ambient Life, the Roster of Creatures that can live in it,
 and its Departure. Each
 Scene keeps the Creatures it has earned separately, so switching never takes
@@ -35,9 +36,10 @@ one Newcomer on each Unlock Day.
 ## Limited-time Scene
 
 A Scene that is only on offer for a while: Pumpkin Hollow, from the Sunday
-before the two weeks up to Halloween until a week after it. It opens with
-part of its Roster and gains the rest on Unlock Days. After Halloween it
-counts down the days it has left, and then it is gone from every menu and
+before the two weeks up to Halloween until a week after it, and the
+Christmas chalet, from the first day of Advent until the first week of
+January. It opens with part of its Roster and gains the rest on Unlock
+Days. After its big day it counts down the days it has left, and then it is gone from every menu and
 from the Collection, though nothing a Class earned in it is deleted.
 
 ## Unlock Day

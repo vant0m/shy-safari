@@ -62,7 +62,10 @@ salle n'est pas jugée.
 - **Tirage** (`src/lib/session/roll.ts`) : communs 60, peu communs 30, rares
   10, légendaires 0,5. Un rare vient au plus une fois tant qu'il est à l'écran,
   un légendaire au plus une fois par séance
-  ([ADR 0012](../adr/0012-legendary-tier.md)).
+  ([ADR 0012](../adr/0012-legendary-tier.md)). Les tableaux à durée limitée,
+  Pumpkin Hollow et le chalet de Noël, choisissent leurs arrivées selon le
+  calendrier ([ADR 0009](../adr/0009-a-limited-time-scene.md),
+  [ADR 0016](../adr/0016-christmas-chalet.md)).
 
 ## Dessiner la scène
 

@@ -718,3 +718,37 @@ backdrop's with `mythical-backdrop-`.
   **Too Loud** is a lilac mist rising off the lake (`mythical/scene.css`).
 - **The Note** is a cloud in the valley's sky, drawn as on the savanna; the
   backdrop keeps the middle of the sky clear for it.
+
+## 16. The Christmas chalet
+
+A snowy clearing at the foot of a mountain at the blue hour
+(`src/lib/scenes/christmas/`): a log chalet with glowing windows, a wreath
+and string lights on the left, a big Christmas tree on the right, a far fir
+forest along the back of the clearing and a garland of lights strung
+straight across the top. It is drawn in the §1 style, eye, blush and all,
+and follows §2 as written; ids are prefixed with the slug (§2.5), and the
+backdrop's with `christmas-backdrop-`. Christmas reds `#d62839`, greens
+`#2e8b57` and gold `#ffd166` / `#e0b84f` join the palette.
+
+- **The backdrop reuses the shared bands.** The clearing is the savanna's
+  plain; Father Christmas walks the back of it (`stride`), and the bauble and
+  the stocking hang from the garland (`dangle`, `GARLAND` in
+  `scenes/motion.ts`), so their artwork starts at the top of the viewBox with
+  the hook or loop and swings from there (`part-fin`).
+- **The lights are classes in the backdrop**, not separate art:
+  `christmas-window`, `christmas-window-glow`, `christmas-bulb` (in three
+  twinkle groups, `christmas-bulb-0` to `-2`), `christmas-tree-light` and
+  `christmas-star-glow`. `christmas/scene.css` dims them for Too Loud and
+  `christmas/entrance.css` lights the tree for Father Christmas.
+- **Decorations wear the signature face** and fade rather than run.
+- **The reindeer share one drawing**; each is told apart by one mark (a star
+  on the muzzle, a heart on the flank, a lightning bolt on a darker coat) and
+  its collar's colour. Rudolph flies with his legs tucked and his nose glowing
+  (`part-pulse`).
+- **Nothing religious** and nothing that echoes a copyrighted Christmas
+  character: Rudolph is drawn as a plain brown reindeer with a red nose.
+- **Ambient Life** is fine snow behind the Creatures, big slow flakes in
+  front, puffs of smoke from the chimney and a few twinkling stars.
+- **The Note** is the reef's painted board, hung from the garland on red
+  ribbons, with snow on its top and a sprig of holly
+  (`christmas/NoteArt.svelte`).

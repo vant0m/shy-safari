@@ -62,8 +62,10 @@ not judged at all.
 - **Rarity roll** (`src/lib/session/roll.ts`): Common 60, Uncommon 30, Rare
   10, Legendary 0.5. A Rare comes at most once while it is on screen, a
   Legendary at most once per Session ([ADR 0012](adr/0012-legendary-tier.md)).
-  Pumpkin Hollow chooses its own arrivals by the calendar
-  ([ADR 0009](adr/0009-a-limited-time-scene.md)).
+  The limited-time Scenes, Pumpkin Hollow and the Christmas chalet, choose
+  their own arrivals by the calendar
+  ([ADR 0009](adr/0009-a-limited-time-scene.md),
+  [ADR 0016](adr/0016-christmas-chalet.md)).
 
 ## Drawing the Scene
 

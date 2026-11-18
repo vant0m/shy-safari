@@ -22,3 +22,4 @@ then says so at the top.
 | 0013 | [Access via Cloudflare Access](0013-access-via-cloudflare-access.md)                                                                               |
 | 0014 | [Class statistics](0014-class-statistics.md)                                                                                                       |
 | 0015 | [Optional sync through Cloudflare](0015-sync-through-cloudflare.md)                                                                                |
+| 0016 | [The Christmas chalet: a second limited-time Scene, as an Advent calendar](0016-christmas-chalet.md)                                               |

@@ -9,6 +9,15 @@ All notable changes to this project are documented here. The format follows
 
 ### Added
 
+- **Christmas chalet**, a second limited-time Scene run as an Advent
+  calendar (1 December 2026 to 8 January 2027): a snowy clearing at the blue
+  hour with a glowing chalet, chimney smoke, falling snow and a garland of
+  lights. Four Commons, then one Newcomer per school day up to Father
+  Christmas on Friday 18 December, who lights the tree; Too Loud puts the
+  lights out. Seventeen Creatures, including three reindeer told apart by
+  one mark and Rudolph, with names and facts in English, Spanish and French
+  ([ADR 0016](docs/adr/0016-christmas-chalet.md)).
+- `dangle`, a motion for ornaments hanging from a garland.
 - GitHub Actions workflows, one per check (typecheck, tests, lint, build),
   each with its own README badge.
 - README screenshots and GIFs in `docs/images/`, and `docs/how-it-works.md`
@@ -16,6 +25,9 @@ All notable changes to this project are documented here. The format follows
 
 ### Changed
 
+- The limited-time Scene rules (calendar, Newcomer arrivals, sign, menu
+  wording, character preview) are shared in `src/lib/scenes/limited/`
+  instead of being Pumpkin Hollow's own. Halloween behaves as before.
 - README (and its French mirror) restructured: centred masthead with logo,
   badges and a living-scene GIF; numbered sections with emoji; principles up
   front; one picture per feature; collapsible details; GitHub alerts;
