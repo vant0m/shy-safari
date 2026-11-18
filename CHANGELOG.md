@@ -5,6 +5,27 @@ All notable changes to this project are documented here. The format follows
 [Semantic Versioning](https://semver.org/). French version:
 [docs/fr/CHANGELOG.md](docs/fr/CHANGELOG.md).
 
+## [Unreleased]
+
+### Added
+
+- GitHub Actions workflows, one per check (typecheck, tests, lint, build),
+  each with its own README badge.
+- README screenshots and GIFs in `docs/images/`, and `docs/how-it-works.md`
+  (French: `docs/fr/fonctionnement.md`).
+
+### Changed
+
+- README (and its French mirror) restructured: centred masthead with logo,
+  badges and a living-scene GIF; numbered sections with emoji; principles up
+  front; one picture per feature; collapsible details; GitHub alerts;
+  contributors; back-to-top links.
+
+### Fixed
+
+- The README no longer says nothing runs away when it is too loud: animals
+  run away by default (ADR 0003).
+
 ## [1.0.0] — 2026-11-17
 
 First release maintained for long-term hosting, built on the EdTech-a-thon

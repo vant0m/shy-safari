@@ -1,6 +1,6 @@
 # How Shy Safari works
 
-The technical picture behind [README §6](../README.md#6-how-it-works).
+The technical picture behind [README §6](../README.md#how-it-works).
 French version: [fr/fonctionnement.md](fr/fonctionnement.md). Vocabulary:
 [CONTEXT.md](../CONTEXT.md); decisions: [adr/](adr/README.md).
 

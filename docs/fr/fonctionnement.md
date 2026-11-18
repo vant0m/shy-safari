@@ -1,6 +1,6 @@
 # Fonctionnement de Shy Safari
 
-Le détail technique derrière la [section 6 du README](README.md#6-fonctionnement).
+Le détail technique derrière la [section 6 du README](README.md#fonctionnement).
 Version anglaise : [../how-it-works.md](../how-it-works.md). Vocabulaire :
 [CONTEXT.md](../../CONTEXT.md) ; décisions : [ADR](../adr/README.md) (en
 anglais).

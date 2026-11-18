@@ -1,89 +1,130 @@
+<a name="readme-top"></a>
+
+<div align="center">
+
+<img src="../images/logo.svg" alt="Logo de Shy Safari" width="120">
+
 # Shy Safari
 
-Un sonomètre de classe tout en douceur : des animaux timides sortent au
-vidéoprojecteur tant que la salle reste calme.
+_Un sonomètre de classe qui récompense le calme. Criez, et les animaux se cachent._
 
-[English](../../README.md) · [Site en ligne](https://www.shysafari.com) · [Historique des versions](CHANGELOG.md)
+[Installer](#installer) • [Utiliser](#utiliser) • [Fonctionnement](#fonctionnement) • [Site en ligne](https://www.shysafari.com) • [Versions](CHANGELOG.md) • [English](../../README.md)
 
-- [0. État](#0-état)
-- [1. Ce que fait l'application](#1-ce-que-fait-lapplication)
-- [2. Contexte](#2-contexte)
-- [3. Technologies](#3-technologies)
-- [4. Installation](#4-installation)
-- [5. Utilisation](#5-utilisation)
-- [6. Fonctionnement](#6-fonctionnement)
-- [7. Historique des versions](#7-historique-des-versions)
-- [8. Crédits et licence](#8-crédits-et-licence)
+[![Typecheck][badge-typecheck]][ci-typecheck]
+[![Tests][badge-tests]][ci-tests]
+[![Lint][badge-lint]][ci-lint]
+[![Build][badge-build]][ci-build]
 
-## 0. État
+[![Version][badge-version]](CHANGELOG.md)
+[![Licence][badge-license]](../../LICENSE.txt)
+[![Dernier commit][badge-commit]][commits]
 
-[![Typecheck](https://github.com/vant0m/shy-safari/actions/workflows/typecheck.yml/badge.svg)](https://github.com/vant0m/shy-safari/actions/workflows/typecheck.yml)
-[![Tests](https://github.com/vant0m/shy-safari/actions/workflows/tests.yml/badge.svg)](https://github.com/vant0m/shy-safari/actions/workflows/tests.yml)
-[![Lint](https://github.com/vant0m/shy-safari/actions/workflows/lint.yml/badge.svg)](https://github.com/vant0m/shy-safari/actions/workflows/lint.yml)
-[![Build](https://github.com/vant0m/shy-safari/actions/workflows/build.yml/badge.svg)](https://github.com/vant0m/shy-safari/actions/workflows/build.yml)
-[![Version](https://img.shields.io/github/v/tag/vant0m/shy-safari?label=version&sort=semver)](CHANGELOG.md)
-[![Licence](https://img.shields.io/github/license/vant0m/shy-safari?label=licence)](../../LICENSE.txt)
-[![Dernier commit](https://img.shields.io/github/last-commit/vant0m/shy-safari?label=dernier%20commit)](https://github.com/vant0m/shy-safari/commits)
+<img src="../images/scene-alive.gif" alt="La savane, animée par des animaux qui se promènent" width="800">
 
-**Dernière version : [v1.0.0](CHANGELOG.md#100--2026-11-17) (17/11/2026).**
+</div>
 
-## 1. Ce que fait l'application
+---
+
+- [0. 🚦 État](#etat)
+- [1. ✨ Ce que fait l'application](#presentation)
+- [2. 📖 Contexte](#contexte)
+- [3. 🧰 Technologies](#technologies)
+- [4. 🚀 Installer](#installer)
+- [5. 🎮 Utiliser](#utiliser)
+- [6. ⚙️ Fonctionnement](#fonctionnement)
+- [7. 🗓️ Historique des versions](#versions)
+- [8. 🙏 Crédits et licence](#credits)
+
+## <a name="etat"></a>0. 🚦 État
+
+| Vérification                     | État                                                                 |
+| -------------------------------- | -------------------------------------------------------------------- |
+| Typecheck · Tests · Lint · Build | voir les badges ci-dessus (GitHub Actions, un workflow chacun)       |
+| Dernière version                 | **[v1.0.0](CHANGELOG.md#100--2026-11-17)** — 17/11/2026              |
+| En ligne                         | [www.shysafari.com](https://www.shysafari.com) (le projet d'origine) |
+
+<p align="right"><a href="#readme-top">↑ haut de page</a></p>
+
+## <a name="presentation"></a>1. ✨ Ce que fait l'application
 
 Une scène paisible au vidéoprojecteur — savane, récif de corail, espace
 profond, préhistoire, forêt, jungle, Arctique ou vallée enchantée — où des
-animaux sortent tant que la classe reste calme. Si la salle devient trop
-bruyante, ils se cachent ou s'enfuient jusqu'au retour du calme. Tout se passe
-dans le navigateur, rien à installer.
+animaux sortent tant que la classe reste calme. Si c'est trop bruyant, ils se
+cachent ou s'enfuient jusqu'au retour du calme. Tout se passe dans le
+navigateur, rien à installer.
 
-![La savane avec quelques animaux](../../static/og-image.png)
+**Principes**
 
-## 2. Contexte
+- **Le calme est récompensé, le bruit n'est jamais amusant.** Pas de score,
+  pas d'aiguille, pas de voyant rouge
+  ([ADR 0001](../adr/0001-nothing-is-taken-away.md)).
+- **Le son ne quitte jamais l'appareil.** Le micro est mesuré, pas enregistré.
+- **Aucun compte nécessaire.** Un établissement peut ajouter une connexion
+  s'il le souhaite.
+- **Les données d'un établissement restent les siennes.** Dans le navigateur
+  par défaut ; sur son propre compte Cloudflare s'il active la
+  synchronisation.
 
-- **Le problème :** les sonomètres de classe récompensent le bruit. Une
+<p align="right"><a href="#readme-top">↑ haut de page</a></p>
+
+## <a name="contexte"></a>2. 📖 Contexte
+
+- **Le problème :** les sonomètres de classe récompensent le bruit — une
   aiguille qui s'agite ou un voyant rouge rendent le bruit plus intéressant
   que le calme.
-- **L'approche :** l'inverse d'un sonomètre. Pas de score, pas d'aiguille, pas
-  de voyant : une salle calme est peu à peu récompensée par une scène vivante,
-  avec des animaux communs, des rares et un légendaire par scène.
+- **L'approche :** l'inverse d'un sonomètre. Une salle calme est peu à peu
+  récompensée par une scène vivante ; animaux communs, rares et un légendaire
+  par scène donnent envie d'attendre.
 - **Origine :** un prototype créé en trois jours à l'EdTech-a-thon 2026 par
   [Duncan A. Johnson](https://github.com/DuncanAJohnson) et
   [Elliot Roe](https://github.com/ElliotRoe)
   ([teacherdotdev/shy-safari](https://github.com/teacherdotdev/shy-safari)),
   désormais maintenu pour un hébergement durable par des établissements.
-- **Principes :** rien ne doit rendre le bruit plus amusant que le calme
-  ([ADR 0001](../adr/0001-nothing-is-taken-away.md)) ; le son du micro ne
-  quitte jamais l'appareil ; aucun compte nécessaire ; les données d'un
-  établissement restent les siennes.
 
-## 3. Technologies
+<p align="right"><a href="#readme-top">↑ haut de page</a></p>
 
-| Technologie                             | Version | Rôle                                         | Liens                                                                                                            |
-| --------------------------------------- | ------- | -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| Bun                                     | ≥ 1.3   | Runtime, gestionnaire de paquets, tests      | [site](https://bun.sh) · [GitHub](https://github.com/oven-sh/bun)                                                |
-| TypeScript                              | 6       | Langage                                      | [site](https://www.typescriptlang.org) · [GitHub](https://github.com/microsoft/TypeScript)                       |
-| Svelte                                  | 5.56    | Interface                                    | [site](https://svelte.dev) · [GitHub](https://github.com/sveltejs/svelte)                                        |
-| SvelteKit + adapter-static              | 2.63    | Framework, build statique prérendu           | [doc](https://svelte.dev/docs/kit) · [GitHub](https://github.com/sveltejs/kit)                                   |
-| Vite                                    | 8       | Outil de build                               | [site](https://vite.dev) · [GitHub](https://github.com/vitejs/vite)                                              |
-| Tailwind CSS                            | 4.3     | Styles                                       | [site](https://tailwindcss.com) · [GitHub](https://github.com/tailwindlabs/tailwindcss)                          |
-| ESLint · Prettier                       | 10 · 3  | Analyse, formatage                           | [ESLint](https://eslint.org) · [Prettier](https://prettier.io)                                                   |
-| Cloudflare Workers (fichiers statiques) | —       | Hébergement                                  | [doc](https://developers.cloudflare.com/workers/static-assets/)                                                  |
-| Wrangler                                | 4.162   | Outil en ligne de commande Cloudflare        | [doc](https://developers.cloudflare.com/workers/wrangler/) · [GitHub](https://github.com/cloudflare/workers-sdk) |
-| Cloudflare Access · D1 _(facultatif)_   | —       | Connexion, synchronisation entre ordinateurs | [Access](https://developers.cloudflare.com/cloudflare-one/) · [D1](https://developers.cloudflare.com/d1/)        |
+## <a name="technologies"></a>3. 🧰 Technologies
+
+| Technologie                | Version | Rôle                                      | Liens                                                                          |
+| -------------------------- | ------- | ----------------------------------------- | ------------------------------------------------------------------------------ |
+| Bun                        | ≥ 1.3   | Runtime, gestionnaire de paquets, tests   | [site](https://bun.sh) · [GitHub](https://github.com/oven-sh/bun)              |
+| Svelte                     | 5.56    | Interface                                 | [site](https://svelte.dev) · [GitHub](https://github.com/sveltejs/svelte)      |
+| SvelteKit + adapter-static | 2.63    | Framework, build statique prérendu        | [doc](https://svelte.dev/docs/kit) · [GitHub](https://github.com/sveltejs/kit) |
+| Cloudflare Workers         | —       | Hébergement (fichiers statiques, synchro) | [doc](https://developers.cloudflare.com/workers/static-assets/)                |
+
+<details>
+<summary>Tous les outils et services</summary>
+
+| Technologie                           | Version | Rôle                                  | Liens                                                                                                            |
+| ------------------------------------- | ------- | ------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| TypeScript                            | 6       | Langage                               | [site](https://www.typescriptlang.org) · [GitHub](https://github.com/microsoft/TypeScript)                       |
+| Vite                                  | 8       | Outil de build                        | [site](https://vite.dev) · [GitHub](https://github.com/vitejs/vite)                                              |
+| Tailwind CSS                          | 4.3     | Styles                                | [site](https://tailwindcss.com) · [GitHub](https://github.com/tailwindlabs/tailwindcss)                          |
+| ESLint · Prettier                     | 10 · 3  | Analyse, formatage                    | [ESLint](https://eslint.org) · [Prettier](https://prettier.io)                                                   |
+| Wrangler                              | 4.162   | Outil en ligne de commande Cloudflare | [doc](https://developers.cloudflare.com/workers/wrangler/) · [GitHub](https://github.com/cloudflare/workers-sdk) |
+| Cloudflare Access · D1 _(facultatif)_ | —       | Connexion, synchronisation            | [Access](https://developers.cloudflare.com/cloudflare-one/) · [D1](https://developers.cloudflare.com/d1/)        |
+| GitHub Actions                        | —       | Typecheck, tests, lint, build         | [workflows](../../.github/workflows/)                                                                            |
+
+</details>
 
 **Compatibilité**
 
-- Chrome, Edge, Firefox ou Safari récents, sur l'ordinateur relié au
-  vidéoprojecteur. La fenêtre flottante (Picture-in-Picture) demande Chrome ou
-  Edge.
-- Un micro, et **HTTPS** (ou `localhost`) : les navigateurs ne donnent le
-  micro qu'aux pages sécurisées.
+- Chrome, Edge, Firefox ou Safari récents ; la fenêtre flottante
+  (Picture-in-Picture) demande Chrome ou Edge.
 - Interface en anglais, espagnol et français.
-- Fonctionne sans aucun serveur ; la synchronisation entre ordinateurs demande
-  Cloudflare Access et D1 (offres gratuites).
+- Fonctionne sans aucun serveur ; la synchronisation demande Cloudflare Access
+  et D1 (offres gratuites).
 
-## 4. Installation
+> [!IMPORTANT]
+> Le micro ne fonctionne qu'en **HTTPS** (ou sur `localhost`) : les navigateurs
+> le refusent aux pages non sécurisées.
 
-Prérequis : [Git](https://git-scm.com) et [Bun](https://bun.sh) 1.3 ou plus.
+<p align="right"><a href="#readme-top">↑ haut de page</a></p>
+
+## <a name="installer"></a>4. 🚀 Installer
+
+**Démarrage rapide** — prérequis : [Git](https://git-scm.com) et
+[Bun](https://bun.sh) 1.3 ou plus.
 
 ```sh
 git clone https://github.com/vant0m/shy-safari.git
@@ -92,42 +133,84 @@ bun install
 bun run dev      # http://localhost:5173
 ```
 
+**Pour aller plus loin**
+
 - Lancement local pas à pas : [lancer-en-local.md](lancer-en-local.md)
-- Héberger votre copie (Cloudflare, autres hébergeurs, domaine, accès) :
+- Héberger votre copie (Cloudflare, autres hébergeurs, domaine, connexion) :
   [hebergement.md](hebergement.md)
 - Un sous-domaine avec connexion et synchronisation, pas à pas :
   [deploiement-pas-a-pas.md](deploiement-pas-a-pas.md)
-- Variables de build : `PUBLIC_SITE_URL` (adresse du site), `CF_BEACON_TOKEN`
-  (statistiques de visite, facultatif), `DEV_ALLOWED_HOSTS`, `BUILD_VERSION`
-  — voir [hebergement.md](hebergement.md#avant-de-commencer).
 
-## 5. Utilisation
+<details>
+<summary>Variables de build</summary>
 
-1. Ouvrez la page, choisissez une scène si vous le souhaitez, puis appuyez sur
-   **Commencer**. Autorisez le micro : le son est mesuré sur l'ordinateur,
-   jamais enregistré ni envoyé.
-2. Laissez la classe travailler. Le premier animal arrive après 10 à 20
+| Variable            | Effet                                                                                      |
+| ------------------- | ------------------------------------------------------------------------------------------ |
+| `PUBLIC_SITE_URL`   | Adresse du site (liens canoniques, sitemap, aide). Par défaut `https://www.shysafari.com`. |
+| `CF_BEACON_TOKEN`   | Ajoute Cloudflare Web Analytics. Laissez vide pour n'en avoir aucune.                      |
+| `DEV_ALLOWED_HOSTS` | Noms d'hôte acceptés par le serveur de dev derrière un tunnel ou un proxy.                 |
+| `BUILD_VERSION`     | Nom de version du build (par défaut : le commit git).                                      |
+
+</details>
+
+<p align="right"><a href="#readme-top">↑ haut de page</a></p>
+
+## <a name="utiliser"></a>5. 🎮 Utiliser
+
+1. Ouvrez la page, choisissez une scène, appuyez sur **Commencer** et
+   autorisez le micro.
+2. Laissez la classe travailler : le premier animal arrive après 10 à 20
    secondes de calme, puis environ un toutes les quelques minutes de calme.
-3. Bougez la souris pour afficher les commandes. **Réglages** fixe l'objectif
+3. Bougez la souris pour afficher les commandes ; **Réglages** fixe l'objectif
    de volume, la fréquence d'arrivée et ce qui se passe quand c'est trop fort.
 
-Fonctions principales :
+### Neuf scènes
 
-- **Neuf scènes**, chacune avec ses animaux, son ambiance et sa « météo » quand
-  c'est trop fort.
-- **Classes** — une par groupe, avec ses animaux, sa collection, ses notes,
-  son minuteur, ses réglages et ses statistiques.
-- **Collection** — tous les animaux aperçus par une classe ; rares et
-  légendaires mis en valeur.
-- **Notes** et **minuteur** intégrés au décor ; la sonnerie du minuteur ne
-  compte jamais comme du bruit.
-- **Statistiques** — temps calme, arrivées et niveau sonore au fil de la
-  journée, par classe.
-- **Exporter / Importer** toutes les classes, et **synchronisation**
-  facultative entre ordinateurs.
-- **Fenêtre flottante** au-dessus de vos diapositives.
+Chacune avec ses animaux, son ambiance et sa « météo » quand c'est trop fort —
+ici le récif, l'espace, l'Arctique et la vallée enchantée.
 
-## 6. Fonctionnement
+<img src="../images/scenes.png" alt="Quatre scènes : récif de corail, espace profond, Arctique, vallée enchantée" width="720">
+
+### Créatures légendaires
+
+Une par scène, environ une arrivée sur deux cents, au plus une fois par
+séance — et elle arrive sous un arc-en-ciel.
+
+<img src="../images/legendary.gif" alt="Pégase, la créature légendaire de la vallée enchantée, dans son anneau arc-en-ciel" width="320">
+
+### Notes et minuteur
+
+Des consignes intégrées au décor, et un compte à rebours dont la sonnerie ne
+compte jamais comme du bruit.
+
+<img src="../images/notes-timer.png" alt="Une note suspendue dans le récif et un minuteur en cours" width="720">
+
+### Collection et statistiques
+
+Tous les animaux aperçus par une classe, et des statistiques par classe :
+temps calme, arrivées, niveau sonore au fil de la journée face à l'objectif,
+comparatif des classes.
+
+<img src="../images/collection.png" alt="La Collection des animaux de la savane" width="720">
+
+<img src="../images/statistics.png" alt="Statistiques d'une classe sur sept jours" width="720">
+
+### Classes, sauvegarde et synchronisation
+
+Une classe par groupe, chacune avec ses animaux, ses notes, ses réglages et
+ses statistiques ; exportez-les toutes dans un fichier et réimportez-les.
+
+<img src="../images/classes.png" alt="Le panneau Classes avec export et import" width="720">
+
+> [!TIP]
+> Un établissement qui héberge sa copie peut activer la **synchronisation** :
+> les enseignants se connectent avec un code reçu par e-mail et retrouvent
+> leurs classes sur n'importe quel ordinateur
+> ([guide](deploiement-pas-a-pas.md)).
+
+<p align="right"><a href="#readme-top">↑ haut de page</a></p>
+
+## <a name="fonctionnement"></a>6. ⚙️ Fonctionnement
 
 ```mermaid
 flowchart LR
@@ -141,24 +224,35 @@ flowchart LR
   worker <--> d1[("Base D1")]
 ```
 
+<details>
+<summary>Modules clés</summary>
+
 | Chemin                            | Rôle                                                    |
 | --------------------------------- | ------------------------------------------------------- |
+| `src/lib/app.svelte.ts`           | Câblage : micro → surveillance de la salle → séance     |
 | `src/lib/noise/loudState.ts`      | Décision « trop fort », lente à entrer, rapide à sortir |
 | `src/lib/session/arrivalClock.ts` | Temps calme accumulé, mis en pause sans remise à zéro   |
 | `src/lib/session/roll.ts`         | Tirage pondéré par rareté (60 / 30 / 10 / 0,5)          |
 | `src/lib/scenes/`                 | Les scènes : animaux, dessins SVG, ambiance             |
+| `src/lib/stats/`                  | Statistiques par classe                                 |
 | `src/lib/sync/`, `worker/`        | Synchronisation facultative et son Worker Cloudflare    |
 
-- **Données :** tout reste dans le `localStorage` du navigateur, par classe,
-  sauf si une copie active la synchronisation
-  ([ADR 0015](../adr/0015-sync-through-cloudflare.md)).
-- **Détails :** [fonctionnement.md](fonctionnement.md) (écoute, règles « trop
-  fort », arrivées, stockage, modules clés).
-- **Décisions :** [ADR](../adr/README.md) (en anglais) · **Vocabulaire :**
-  [CONTEXT.md](../../CONTEXT.md) · **Règles de dessin :**
-  [svg-art-brief.md](../svg-art-brief.md).
+</details>
 
-## 7. Historique des versions
+- **Données :** dans le `localStorage` du navigateur, par classe, sauf si une
+  copie active la synchronisation
+  ([ADR 0015](../adr/0015-sync-through-cloudflare.md)).
+- **Plus :** [fonctionnement.md](fonctionnement.md) ·
+  [décisions (ADR, en anglais)](../adr/README.md) ·
+  [vocabulaire](../../CONTEXT.md) · [règles de dessin](../svg-art-brief.md)
+
+> [!NOTE]
+> Le son du micro est mesuré dans le navigateur, jamais enregistré ni envoyé,
+> avec ou sans synchronisation.
+
+<p align="right"><a href="#readme-top">↑ haut de page</a></p>
+
+## <a name="versions"></a>7. 🗓️ Historique des versions
 
 Les versions suivent [SemVer](https://semver.org/lang/fr/) ; tous les
 changements sont dans l'[historique des versions](CHANGELOG.md)
@@ -169,20 +263,39 @@ changements sont dans l'[historique des versions](CHANGELOG.md)
 | [1.0.0](CHANGELOG.md#100--2026-11-17) | 2026-11-17 | Vallée enchantée, légendaires, réglages et statistiques par classe, export/import, synchro facultative, documentation |
 | [0.0.1](CHANGELOG.md#001--2026-11)    | 2026-11    | Prototype de l'EdTech-a-thon : sept scènes et Pumpkin Hollow, classes, notes, minuteur                                |
 
-## 8. Crédits et licence
+<p align="right"><a href="#readme-top">↑ haut de page</a></p>
+
+## <a name="credits"></a>8. 🙏 Crédits et licence
 
 - **Projet et auteurs d'origine :** créé pendant l'EdTech-a-thon 2026 par
   [Duncan A. Johnson](https://github.com/DuncanAJohnson) et
   [Elliot Roe](https://github.com/ElliotRoe), publié sur
   [teacherdotdev/shy-safari](https://github.com/teacherdotdev/shy-safari). Ce
   dépôt est un fork qui s'appuie sur leur travail.
-- **Contributeurs :** voir le
-  [graphe des contributeurs](https://github.com/vant0m/shy-safari/graphs/contributors).
 - **Licence :** Apache 2.0 — voir [LICENSE.txt](../../LICENSE.txt) et
   [NOTICE](../../NOTICE).
 
-### Contribuer
+**Contributeurs**
 
-Avant de commiter : `bun run check && bun test && bun run lint && bun run build`.
-Les commits suivent [Conventional Commits](https://www.conventionalcommits.org/fr/) ;
-voir [AGENTS.md](../../AGENTS.md) pour les notes du projet.
+[![Contributeurs](https://contrib.rocks/image?repo=vant0m/shy-safari)][contributors]
+
+**Contribuer** — avant de commiter :
+`bun run check && bun test && bun run lint && bun run build`. Les commits
+suivent [Conventional Commits](https://www.conventionalcommits.org/fr/) ; notes
+du projet dans [AGENTS.md](../../AGENTS.md).
+
+<p align="right"><a href="#readme-top">↑ haut de page</a></p>
+
+[badge-typecheck]: https://img.shields.io/github/actions/workflow/status/vant0m/shy-safari/typecheck.yml?branch=main&label=typecheck&style=flat-square
+[badge-tests]: https://img.shields.io/github/actions/workflow/status/vant0m/shy-safari/tests.yml?branch=main&label=tests&style=flat-square
+[badge-lint]: https://img.shields.io/github/actions/workflow/status/vant0m/shy-safari/lint.yml?branch=main&label=lint&style=flat-square
+[badge-build]: https://img.shields.io/github/actions/workflow/status/vant0m/shy-safari/build.yml?branch=main&label=build&style=flat-square
+[badge-version]: https://img.shields.io/github/v/tag/vant0m/shy-safari?label=version&sort=semver&style=flat-square
+[badge-license]: https://img.shields.io/github/license/vant0m/shy-safari?label=licence&style=flat-square
+[badge-commit]: https://img.shields.io/github/last-commit/vant0m/shy-safari?label=dernier%20commit&style=flat-square
+[ci-typecheck]: https://github.com/vant0m/shy-safari/actions/workflows/typecheck.yml
+[ci-tests]: https://github.com/vant0m/shy-safari/actions/workflows/tests.yml
+[ci-lint]: https://github.com/vant0m/shy-safari/actions/workflows/lint.yml
+[ci-build]: https://github.com/vant0m/shy-safari/actions/workflows/build.yml
+[commits]: https://github.com/vant0m/shy-safari/commits
+[contributors]: https://github.com/vant0m/shy-safari/graphs/contributors

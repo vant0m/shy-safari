@@ -5,6 +5,27 @@ Les changements notables du projet. Format inspiré de
 [SemVer](https://semver.org/lang/fr/). Version anglaise de référence :
 [../../CHANGELOG.md](../../CHANGELOG.md).
 
+## [Non publié]
+
+### Ajouté
+
+- Workflows GitHub Actions, un par vérification (typecheck, tests, lint,
+  build), chacun avec son badge dans le README.
+- Captures et GIF du README dans `docs/images/`, et
+  `docs/fr/fonctionnement.md` (anglais : `docs/how-it-works.md`).
+
+### Modifié
+
+- README (et son miroir français) restructuré : en-tête centré avec logo,
+  badges et GIF de la scène ; sections numérotées avec emoji ; principes en
+  tête ; une image par fonction ; détails repliables ; encadrés GitHub ;
+  contributeurs ; liens « haut de page ».
+
+### Corrigé
+
+- Le README ne dit plus que rien ne s'enfuit quand c'est trop fort : par
+  défaut, les animaux s'enfuient (ADR 0003).
+
 ## [1.0.0] — 2026-11-17
 
 Première version maintenue pour un hébergement durable, à partir du prototype
