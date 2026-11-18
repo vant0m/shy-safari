@@ -199,7 +199,7 @@ bun run dev      # http://localhost:5173
 <table align="center">
 <tr>
 <td align="center" width="50%">
-<b>🌍 Nine Scenes, plus Halloween and Christmas</b><br>
+<b>🌍 Eight Scenes, plus Halloween and Christmas</b><br>
 <a href="docs/images/scenes.png"><img src="docs/images/scenes.png" alt="Four Scenes: coral reef, deep space, Arctic, enchanted valley" width="380"></a><br>
 <sub>Each with its own animals, ambience and "too loud" weather.</sub>
 </td>

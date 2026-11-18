@@ -204,7 +204,7 @@ bun run dev      # http://localhost:5173
 <table align="center">
 <tr>
 <td align="center" width="50%">
-<b>🌍 Neuf scènes, plus Halloween et Noël</b><br>
+<b>🌍 Huit scènes, plus Halloween et Noël</b><br>
 <a href="../images/scenes.png"><img src="../images/scenes.png" alt="Quatre scènes : récif de corail, espace profond, Arctique, vallée enchantée" width="380"></a><br>
 <sub>Chacune avec ses animaux, son ambiance et sa « météo » quand c'est trop fort.</sub>
 </td>

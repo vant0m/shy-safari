@@ -18,8 +18,11 @@
   initial-value: 1;
 }
 
+/* Keeps the stage's own filter transition (routes/layout.css). */
 .scene-stage[data-scene="christmas"] {
-  transition: --christmas-light 2.4s ease;
+  transition:
+    filter 1400ms ease,
+    --christmas-light 2.4s ease;
 }
 
 /* A window's glow wavers a little, like a fire inside: slow and uneven,

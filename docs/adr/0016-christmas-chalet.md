@@ -1,6 +1,6 @@
 # The Christmas chalet: a second limited-time Scene, as an Advent calendar
 
-For Christmas there is an eleventh Scene, the Christmas chalet: a snowy
+For Christmas there is a tenth Scene, the Christmas chalet: a snowy
 clearing at the foot of a mountain at the blue hour, with a log chalet whose
 windows glow gold, smoke rising from its chimney, fine snow falling behind
 the Creatures and big slow flakes in front, a garland of lights strung
