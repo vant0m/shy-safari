@@ -30,6 +30,8 @@
   const scene = SCENES[sceneId];
   // svelte-ignore state_referenced_locally
   const NEWCOMERS = limitedOf(sceneId)?.calendar.newcomers ?? [];
+  // svelte-ignore state_referenced_locally
+  const title = limitedOf(sceneId)?.previewTitle ?? "preview.title";
 
   /** Opening animals first, then each Newcomer on its day. */
   const lineup = scene.roster
@@ -68,11 +70,11 @@
     class="relative flex max-h-full w-full max-w-4xl flex-col rounded-xl bg-white shadow-xl"
     role="dialog"
     aria-modal="true"
-    aria-label={t("preview.title")}
+    aria-label={t(title)}
   >
     <div class="p-4 pr-12 pb-3 sm:p-6 sm:pr-14 sm:pb-4">
       <h1 class="text-xl font-semibold text-slate-900">
-        {t("preview.title")}
+        {t(title)}
       </h1>
       <button
         class="absolute top-3 right-3 grid size-8 place-items-center rounded-full text-slate-400 hover:bg-slate-100 hover:text-slate-600 sm:top-4 sm:right-4"

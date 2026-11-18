@@ -14,6 +14,14 @@ import {
   type Rect,
 } from "./noteArt";
 import ArcticAmbient from "./arctic/AmbientLife.svelte";
+import ChristmasAmbient from "./christmas/AmbientLife.svelte";
+import { CHRISTMAS_ARRIVALS } from "./christmas/arrivals";
+import * as christmasArt from "./christmas/artwork";
+import { CHRISTMAS_CALENDAR } from "./christmas/calendar";
+import christmasIcon from "./christmas/icon.svg";
+import { CHRISTMAS_NOTE } from "./christmas/note";
+import { CHRISTMAS_ROSTER } from "./christmas/roster";
+import { isOpen as limitedIsOpen } from "./limited/calendar";
 import * as arcticArt from "./arctic/artwork";
 import arcticIcon from "./arctic/icon.svg";
 import { ARCTIC_NOTE } from "./arctic/note";
@@ -287,6 +295,27 @@ export const SCENES: Record<SceneId, SceneDef> = {
     // The finale: every jack-o'-lantern flares and the moon brightens as he
     // comes, and the patch stays lit warmer while he's here (entrance.css).
     welcomes: ["jack-o-lantern"],
+  },
+  christmas: {
+    id: "christmas",
+    icon: christmasIcon,
+    roster: CHRISTMAS_ROSTER,
+    creatureArt: christmasArt.CREATURE_ART,
+    listeningArt: christmasArt.LISTENING_ART,
+    ambientArt: christmasArt.AMBIENT_ART,
+    Ambient: ChristmasAmbient,
+    depthFade: false,
+    // The animals and people run; the decorations and the sleigh fade away
+    // (`CreatureDef.departure`).
+    departure: "run",
+    whilePaused: "listen",
+    note: CHRISTMAS_NOTE,
+    openOn: (day) => limitedIsOpen(CHRISTMAS_CALENDAR, day),
+    isNew: true,
+    arrivals: CHRISTMAS_ARRIVALS,
+    // The finale: the tree lights up and its star glows as Father Christmas
+    // comes, and stays lit while he's here (christmas/entrance.css).
+    welcomes: ["santa"],
   },
 };
 

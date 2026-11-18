@@ -1,7 +1,7 @@
 /**
- * What day it is on this computer, for the one Scene that cares: Pumpkin
- * Hollow, which is only open for a few weeks and grows by the day
- * (`scenes/limited/calendar.ts`).
+ * What day it is on this computer, for the Scenes that care: the
+ * limited-time ones, Pumpkin Hollow and the Christmas chalet, which are only
+ * open for a few weeks and grow by the day (`scenes/limited/calendar.ts`).
  *
  * Unknown (null) until the page is running in a browser: the page is
  * prerendered with no idea of the date, and hydration must find exactly the

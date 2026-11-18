@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <defs><clipPath id="icon-christmas-tile"><rect width="48" height="48" rx="11"/></clipPath></defs>
+  <g clip-path="url(#icon-christmas-tile)">
+    <rect width="48" height="48" fill="#2c4680"/>
+    <path d="M14 30 L30 12 L48 28 V34 H14 Z" fill="#a9b7dc"/>
+    <path d="M26.5 16 L30 12 L34 15.6 L31.6 17 L30 15.6 L28.4 17.4 Z" fill="#f4f7fc"/>
+    <path d="M0 33c12-3 30-3 48-1v16H0Z" fill="#dfe8f5"/>
+    <path d="M6 34 V25 H22 V34 Z" fill="#8a5a3b"/>
+    <path d="M3.5 26 L14 17 L24.5 26 Z" fill="#f4f7fc"/>
+    <rect x="17.5" y="17.5" width="3" height="6" fill="#7a5a4a"/>
+    <rect x="9" y="27.5" width="4.5" height="4" fill="#ffd166"/>
+    <rect x="15" y="27.5" width="4" height="6.5" fill="#5a3a2c"/>
+    <path d="M38 13 L44 24 H40.5 L45 31 H31 L35.5 24 H32 Z" fill="#2e7d5b"/>
+    <rect x="37" y="31" width="2" height="3" fill="#6e4a36"/>
+    <circle cx="38" cy="12.5" r="1.8" fill="#ffd166"/>
+    <circle cx="36" cy="22" r="1.1" fill="#ff5d73"/>
+    <circle cx="40" cy="27" r="1.1" fill="#ffd166"/>
+    <circle cx="35" cy="28.5" r="1.1" fill="#5aa9e6"/>
+    <circle cx="8" cy="8" r="0.9" fill="#ffffff"/>
+    <circle cx="22" cy="5" r="0.9" fill="#ffffff"/>
+    <circle cx="27" cy="38" r="1.1" fill="#ffffff"/>
+    <circle cx="5" cy="41" r="0.9" fill="#ffffff"/>
+    <circle cx="44" cy="40" r="1" fill="#ffffff"/>
+  </g>
+</svg>

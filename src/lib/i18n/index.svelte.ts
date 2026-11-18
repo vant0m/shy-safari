@@ -69,6 +69,8 @@ const en = {
     "scene.mythical.hint": "Unicorns, dragons and mermaids",
     "scene.halloween.name": "Halloween",
     "scene.halloween.hint": "Bats, ghosts and jack-o'-lanterns",
+    "scene.christmas.name": "Christmas",
+    "scene.christmas.hint": "Reindeer, elves and twinkling lights",
     "hollow.limited": "Limited time",
     "hollow.daily": "A new animal every school day",
     "hollow.closesIn": "Leaves in {days} days",
@@ -76,6 +78,9 @@ const en = {
     "hollow.newToday": "Someone new is in the pumpkin patch today…",
     "hollow.signClosesIn": "The pumpkin patch closes in {days} days",
     "hollow.signLastDay": "Last day in the pumpkin patch",
+    "chalet.newToday": "Someone new is at the chalet today…",
+    "chalet.signClosesIn": "The chalet closes in {days} days",
+    "chalet.signLastDay": "Last day at the chalet",
     "collection.unlocksInDays": "Unlocks in {days}\u00a0days",
     "collection.unlocksIn": "Unlocks in {time}",
     "collection.comingSoon": "Coming soon",
@@ -260,6 +265,8 @@ const en = {
     "settings.advanced": "Advanced",
     "settings.previewHalloween": "Preview Halloween characters",
     "preview.title": "Halloween characters",
+    "settings.previewChristmas": "Preview Christmas characters",
+    "preview.titleChristmas": "Christmas characters",
     "preview.opening": "Out from the start",
     "preview.unlocks": "Unlocks {date}",
     "settings.savedNote":
@@ -591,6 +598,23 @@ const en = {
     "howling-wolf": "Howling wolf",
     "great-boo": "The Great Boo",
     "jack-o-lantern": "Jack O. Lantern",
+    "european-robin": "Robin",
+    snowman: "Snowman",
+    gingerbread: "Gingerbread man",
+    candle: "Candle",
+    "candy-cane": "Candy cane",
+    bauble: "Bauble",
+    cracker: "Christmas cracker",
+    stocking: "Christmas stocking",
+    "elf-gift": "Elf with a present",
+    "elf-list": "Elf with the list",
+    "reindeer-comet": "Comet",
+    "reindeer-cupid": "Cupid",
+    "reindeer-blitzen": "Blitzen",
+    "mrs-claus": "Mrs Claus",
+    sleigh: "Sleigh",
+    rudolph: "Rudolph",
+    santa: "Father Christmas",
   },
   // One line about each prehistoric Creature, shown in the collection.
   facts: {
@@ -741,6 +765,40 @@ const en = {
       "People have been shouting “Boo!” to make each other jump since at least the 1700s.",
     "jack-o-lantern":
       "The first jack-o’-lanterns were carved from turnips in Ireland; in America, pumpkins took over.",
+    "european-robin":
+      "In winter, robins fluff up their feathers to keep warm, which makes them look as round as a ball.",
+    snowman:
+      "Fresh snow is mostly air, often more than nine parts in ten, which is why it is so light.",
+    gingerbread:
+      "Gingerbread has been baked for hundreds of years, and gingerbread people were already a treat in Tudor England.",
+    candle:
+      "Before electric lights, people lit real candles on their Christmas trees, with a bucket of water close by.",
+    "candy-cane":
+      "Candy canes were plain white for a long time: the red stripes only came in around 1900.",
+    bauble:
+      "Glass baubles were first blown in the 1800s in Lauscha, a small town in Germany.",
+    cracker:
+      "Christmas crackers were invented in London in the 1840s by a sweet-maker called Tom Smith.",
+    stocking:
+      "Many children hang up a stocking for small presents; in some countries they put out their shoes instead.",
+    "elf-gift":
+      "In the stories, Father Christmas’s elves make the toys in a workshop at the North Pole.",
+    "elf-list":
+      "Elves come from old folk tales of northern Europe, long before they went to work for Father Christmas.",
+    "reindeer-comet":
+      "Reindeer are the only deer whose females grow antlers too.",
+    "reindeer-cupid":
+      "Reindeer hooves change with the seasons: soft in summer, and hard-edged in winter to grip the ice.",
+    "reindeer-blitzen":
+      "Reindeer feet make a clicking sound as they walk, which helps a herd keep together in a snowstorm.",
+    "mrs-claus":
+      "Mrs Claus first appeared in stories in the 1800s; before that, Father Christmas was usually on his own.",
+    sleigh:
+      "Before cars, horses pulled sleighs along snowy roads, with bells so that people could hear them coming.",
+    rudolph:
+      "Rudolph was made up in 1939, for a story book that an American shop gave away to children.",
+    santa:
+      "Father Christmas has many names: Santa Claus, Père Noël, Papá Noel, Babbo Natale…",
   },
 } as const;
 
@@ -864,6 +922,8 @@ const es = {
     "scene.mythical.hint": "Unicornios, dragones y sirenas",
     "scene.halloween.name": "Halloween",
     "scene.halloween.hint": "Murciélagos, fantasmas y calabazas",
+    "scene.christmas.name": "Navidad",
+    "scene.christmas.hint": "Renos, elfos y lucecitas",
     "hollow.limited": "Por tiempo limitado",
     "hollow.daily": "Un animal nuevo cada día de clase",
     "hollow.closesIn": "Se va en {days} días",
@@ -871,6 +931,9 @@ const es = {
     "hollow.newToday": "Hoy hay alguien nuevo entre las calabazas…",
     "hollow.signClosesIn": "Las calabazas se despiden en {days} días",
     "hollow.signLastDay": "Último día entre las calabazas",
+    "chalet.newToday": "Hoy hay alguien nuevo en el chalet…",
+    "chalet.signClosesIn": "El chalet cierra en {days} días",
+    "chalet.signLastDay": "Último día en el chalet",
     "collection.unlocksInDays": "Se desbloquea en {days}\u00a0días",
     "collection.unlocksIn": "Se desbloquea en {time}",
     "collection.comingSoon": "Muy pronto",
@@ -1058,6 +1121,8 @@ const es = {
     "settings.advanced": "Avanzado",
     "settings.previewHalloween": "Ver los personajes de Halloween",
     "preview.title": "Personajes de Halloween",
+    "settings.previewChristmas": "Ver los personajes de Navidad",
+    "preview.titleChristmas": "Personajes de Navidad",
     "preview.opening": "Desde el principio",
     "preview.unlocks": "Se desbloquea el {date}",
     "settings.savedNote":
@@ -1424,6 +1489,23 @@ const es = {
     "howling-wolf": "Lobo aullador",
     "great-boo": "El Gran Bu",
     "jack-o-lantern": "Jack O. Lantern",
+    "european-robin": "Petirrojo",
+    snowman: "Muñeco de nieve",
+    gingerbread: "Galleta de jengibre",
+    candle: "Vela",
+    "candy-cane": "Bastón de caramelo",
+    bauble: "Bola de Navidad",
+    cracker: "Cracker navideño",
+    stocking: "Calcetín de Navidad",
+    "elf-gift": "Elfo con un regalo",
+    "elf-list": "Elfo con la lista",
+    "reindeer-comet": "Cometa",
+    "reindeer-cupid": "Cupido",
+    "reindeer-blitzen": "Relámpago",
+    "mrs-claus": "Mamá Noel",
+    sleigh: "Trineo",
+    rudolph: "Rodolfo",
+    santa: "Papá Noel",
   },
   facts: {
     "white-lion":
@@ -1572,6 +1654,40 @@ const es = {
       "La gente lleva gritando «¡Bu!» para asustarse desde por lo menos el siglo XVIII.",
     "jack-o-lantern":
       "Las primeras linternas de Halloween se tallaban en nabos en Irlanda; en América las sustituyeron las calabazas.",
+    "european-robin":
+      "En invierno, los petirrojos ahuecan las plumas para no pasar frío, y parecen redondos como una pelota.",
+    snowman:
+      "La nieve recién caída es casi todo aire, a menudo más de nueve partes de cada diez: por eso pesa tan poco.",
+    gingerbread:
+      "El pan de jengibre se hornea desde hace cientos de años, y las figuritas de jengibre ya eran un capricho en la Inglaterra de los Tudor.",
+    candle:
+      "Antes de las luces eléctricas, se encendían velas de verdad en los árboles de Navidad, con un cubo de agua cerca.",
+    "candy-cane":
+      "Los bastones de caramelo fueron blancos durante mucho tiempo: las rayas rojas llegaron hacia 1900.",
+    bauble:
+      "Las primeras bolas de cristal se soplaron en el siglo XIX en Lauscha, un pueblecito de Alemania.",
+    cracker:
+      "Los crackers navideños los inventó en Londres, hacia 1840, un confitero llamado Tom Smith.",
+    stocking:
+      "Muchos niños cuelgan un calcetín para los regalitos; en otros países dejan los zapatos.",
+    "elf-gift":
+      "En los cuentos, los elfos de Papá Noel fabrican los juguetes en un taller del Polo Norte.",
+    "elf-list":
+      "Los elfos vienen de viejas leyendas del norte de Europa, mucho antes de trabajar para Papá Noel.",
+    "reindeer-comet":
+      "Los renos son los únicos ciervos en los que las hembras también tienen cuernas.",
+    "reindeer-cupid":
+      "Las pezuñas del reno cambian con las estaciones: blandas en verano y de borde duro en invierno para agarrarse al hielo.",
+    "reindeer-blitzen":
+      "Las patas de los renos hacen clic al andar, y eso ayuda a la manada a no separarse en una tormenta de nieve.",
+    "mrs-claus":
+      "Mamá Noel apareció en los cuentos en el siglo XIX; antes, Papá Noel solía ir solo.",
+    sleigh:
+      "Antes de los coches, los caballos tiraban de trineos por los caminos nevados, con cascabeles para que se les oyera llegar.",
+    rudolph:
+      "Rodolfo se inventó en 1939, para un cuento que una tienda estadounidense regalaba a los niños.",
+    santa:
+      "Papá Noel tiene muchos nombres: Santa Claus, Père Noël, Babbo Natale, San Nicolás…",
   },
 } satisfies Language;
 
@@ -1632,6 +1748,8 @@ const fr = {
     "scene.mythical.hint": "Licornes, dragons et sirènes",
     "scene.halloween.name": "Halloween",
     "scene.halloween.hint": "Chauves-souris, fantômes et citrouilles",
+    "scene.christmas.name": "Noël",
+    "scene.christmas.hint": "Rennes, lutins et guirlandes",
     "hollow.limited": "Édition limitée",
     "hollow.daily": "Un nouvel animal chaque jour d’école",
     "hollow.closesIn": "Part dans {days} jours",
@@ -1639,6 +1757,9 @@ const fr = {
     "hollow.newToday": "Quelqu’un de nouveau est arrivé parmi les citrouilles…",
     "hollow.signClosesIn": "Les citrouilles s’en vont dans {days} jours",
     "hollow.signLastDay": "Dernier jour parmi les citrouilles",
+    "chalet.newToday": "Quelqu’un de nouveau est arrivé au chalet…",
+    "chalet.signClosesIn": "Le chalet ferme dans {days} jours",
+    "chalet.signLastDay": "Dernier jour au chalet",
     "collection.unlocksInDays": "Débloqué dans {days}\u00a0jours",
     "collection.unlocksIn": "Débloqué dans {time}",
     "collection.comingSoon": "Bientôt",
@@ -1827,6 +1948,8 @@ const fr = {
     "settings.advanced": "Avancé",
     "settings.previewHalloween": "Voir les personnages d’Halloween",
     "preview.title": "Personnages d’Halloween",
+    "settings.previewChristmas": "Voir les personnages de Noël",
+    "preview.titleChristmas": "Personnages de Noël",
     "preview.opening": "Là dès le début",
     "preview.unlocks": "Débloqué le {date}",
     "settings.savedNote":
@@ -2195,6 +2318,23 @@ const fr = {
     "howling-wolf": "Loup hurleur",
     "great-boo": "Le Grand Bouh",
     "jack-o-lantern": "Jack O. Lantern",
+    "european-robin": "Rouge-gorge",
+    snowman: "Bonhomme de neige",
+    gingerbread: "Bonhomme en pain d’épice",
+    candle: "Bougie",
+    "candy-cane": "Sucre d’orge",
+    bauble: "Boule de Noël",
+    cracker: "Diablotin",
+    stocking: "Chaussette de Noël",
+    "elf-gift": "Lutin au cadeau",
+    "elf-list": "Lutin à la liste",
+    "reindeer-comet": "Comète",
+    "reindeer-cupid": "Cupidon",
+    "reindeer-blitzen": "Éclair",
+    "mrs-claus": "Mère Noël",
+    sleigh: "Traîneau",
+    rudolph: "Rudolph",
+    santa: "Père Noël",
   },
   facts: {
     "white-lion":
@@ -2345,6 +2485,40 @@ const fr = {
       "On crie « Bouh ! » pour se faire sursauter depuis au moins le XVIIIe siècle.",
     "jack-o-lantern":
       "Les premières lanternes d’Halloween étaient taillées dans des navets en Irlande ; en Amérique, la citrouille les a remplacés.",
+    "european-robin":
+      "En hiver, le rouge-gorge gonfle ses plumes pour garder sa chaleur : il devient rond comme une balle.",
+    snowman:
+      "La neige fraîche, c’est surtout de l’air, souvent plus de neuf parts sur dix : voilà pourquoi elle est si légère.",
+    gingerbread:
+      "On cuit du pain d’épice depuis des centaines d’années, et les bonshommes en pain d’épice régalaient déjà l’Angleterre des Tudor.",
+    candle:
+      "Avant les guirlandes électriques, on allumait de vraies bougies sur le sapin, avec un seau d’eau à côté.",
+    "candy-cane":
+      "Les sucres d’orge en canne sont longtemps restés tout blancs : les rayures rouges sont arrivées vers 1900.",
+    bauble:
+      "Les premières boules de Noël en verre ont été soufflées au XIXe siècle à Lauscha, une petite ville d’Allemagne.",
+    cracker:
+      "Les diablotins (crackers) ont été inventés à Londres vers 1840 par un confiseur, Tom Smith.",
+    stocking:
+      "Beaucoup d’enfants suspendent une chaussette pour les petits cadeaux ; en France, on dépose plutôt ses souliers.",
+    "elf-gift":
+      "Dans les histoires, les lutins du Père Noël fabriquent les jouets dans un atelier au pôle Nord.",
+    "elf-list":
+      "Les lutins viennent de vieux contes d’Europe du Nord, bien avant de travailler pour le Père Noël.",
+    "reindeer-comet":
+      "Le renne est le seul cerf dont les femelles ont aussi des bois.",
+    "reindeer-cupid":
+      "Les sabots du renne changent avec les saisons : tendres en été, à bord dur en hiver pour s’agripper à la glace.",
+    "reindeer-blitzen":
+      "Les pattes des rennes font un petit clic quand ils marchent : ça aide le troupeau à rester groupé dans le blizzard.",
+    "mrs-claus":
+      "La Mère Noël apparaît dans les histoires au XIXe siècle ; avant, le Père Noël était le plus souvent seul.",
+    sleigh:
+      "Avant les voitures, des chevaux tiraient les traîneaux sur les routes enneigées, avec des grelots pour qu’on les entende arriver.",
+    rudolph:
+      "Rudolph a été inventé en 1939, pour un livre qu’un magasin américain offrait aux enfants.",
+    santa:
+      "Le Père Noël a beaucoup de noms : Santa Claus, Papá Noel, Babbo Natale, saint Nicolas…",
   },
 } satisfies Language;
 

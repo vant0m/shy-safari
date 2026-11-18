@@ -7,6 +7,7 @@
 
 import type { UiKey } from "$lib/i18n/index.svelte";
 import type { SceneId } from "../types";
+import { CHRISTMAS_CALENDAR } from "../christmas/calendar";
 import { HALLOWEEN_CALENDAR } from "../halloween/calendar";
 import type { LimitedCalendar } from "./calendar";
 
@@ -16,6 +17,8 @@ export interface LimitedConfig {
   sign: { newToday: UiKey; closesIn: UiKey; lastDay: UiKey };
   /** The Settings button that lines up every character before the class sees them. */
   preview: UiKey;
+  /** The title over that line-up. */
+  previewTitle: UiKey;
 }
 
 export const LIMITED: Partial<Record<SceneId, LimitedConfig>> = {
@@ -27,6 +30,17 @@ export const LIMITED: Partial<Record<SceneId, LimitedConfig>> = {
       lastDay: "hollow.signLastDay",
     },
     preview: "settings.previewHalloween",
+    previewTitle: "preview.title",
+  },
+  christmas: {
+    calendar: CHRISTMAS_CALENDAR,
+    sign: {
+      newToday: "chalet.newToday",
+      closesIn: "chalet.signClosesIn",
+      lastDay: "chalet.signLastDay",
+    },
+    preview: "settings.previewChristmas",
+    previewTitle: "preview.titleChristmas",
   },
 };
 

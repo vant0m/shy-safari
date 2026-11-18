@@ -6,6 +6,7 @@
 import { describe, expect, it } from "bun:test";
 import { ARCTIC_ROSTER } from "./arctic/roster";
 import { FOREST_ROSTER } from "./forest/roster";
+import { CHRISTMAS_ROSTER } from "./christmas/roster";
 import { HALLOWEEN_ROSTER } from "./halloween/roster";
 import { JUNGLE_ROSTER } from "./jungle/roster";
 import { MYTHICAL_ROSTER } from "./mythical/roster";
@@ -38,5 +39,9 @@ describe("Legendary Creatures", () => {
 
   it("leaves Pumpkin Hollow without one, since it draws its own arrivals", () => {
     expect(legends(HALLOWEEN_ROSTER)).toHaveLength(0);
+  });
+
+  it("leaves the Christmas chalet without one, for the same reason", () => {
+    expect(legends(CHRISTMAS_ROSTER)).toHaveLength(0);
   });
 });

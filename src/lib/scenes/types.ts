@@ -15,7 +15,8 @@ export type SceneId =
   | "jungle"
   | "arctic"
   | "mythical"
-  | "halloween";
+  | "halloween"
+  | "christmas";
 
 export const SCENE_IDS: SceneId[] = [
   "savanna",
@@ -26,8 +27,9 @@ export const SCENE_IDS: SceneId[] = [
   "jungle",
   "arctic",
   "mythical",
-  // Only on offer for a few weeks a year (`scenes/halloween/calendar.ts`).
+  // Only on offer for a few weeks a year (`scenes/limited/calendar.ts`).
   "halloween",
+  "christmas",
 ];
 
 /** What a first visit, and the prerendered page, shows. */

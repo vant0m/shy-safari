@@ -1,7 +1,7 @@
 <script lang="ts">
   /**
    * A small wooden plaque in a limited-time Scene (nailed to the oak in
-   * Pumpkin Hollow, hung on the chalet at Christmas), for the class to read:
+   * Pumpkin Hollow, hung from the garland at Christmas), for the class to read:
    * on the day a Newcomer unlocks, that someone new is about (until the class
    * has spotted it), and after the big day how many days the Scene has left.
    * It says nothing on other days.
@@ -75,10 +75,11 @@
     box-shadow: 0 0.25em 0 #2b2b3a40;
   }
 
-  /* At Christmas: hung by the chalet door, under its snowy eaves. */
+  /* At Christmas: hung from the garland at the left, above the chalet,
+     clear of the clearing where everyone walks. */
   .sign-christmas {
-    left: 30%;
-    top: 44%;
+    left: 2.5%;
+    top: 20%;
     transform: rotate(1.5deg);
     border-color: #5a3a24;
     background: #7a4a2c;

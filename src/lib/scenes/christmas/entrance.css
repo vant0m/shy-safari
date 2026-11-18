@@ -1,0 +1,50 @@
+/* Father Christmas's entrance, the finale (`welcomes` in scenes/index.ts).
+   When he comes the tree lights up, its star glows and the chalet's windows
+   swell a little warmer; while he's here it all stays lit. The stage says
+   when (`data-welcome`, scenes/welcome.ts): "arriving" as he comes, "here"
+   after that and after a refresh, and nothing once he starts to fade away
+   or after Reset.
+
+   Gentle fades only, never a flash: this is up on a projector all day, in
+   front of photosensitive students. Too Loud wins: while the Scene is murky
+   the lights stay out, and they come back when the room settles. */
+
+.christmas-tree-light,
+.christmas-star-glow {
+  transition: opacity 3s ease;
+}
+
+.scene-stage[data-scene="christmas"][data-welcome] .christmas-tree-light {
+  opacity: var(--christmas-light);
+  animation: christmas-twinkle-bulb 4.5s ease-in-out infinite;
+}
+
+.scene-stage[data-scene="christmas"][data-welcome]
+  .christmas-tree-light.christmas-bulb-1 {
+  animation-delay: -1.5s;
+}
+
+.scene-stage[data-scene="christmas"][data-welcome]
+  .christmas-tree-light.christmas-bulb-2 {
+  animation-delay: -3s;
+}
+
+.scene-stage[data-scene="christmas"][data-welcome] .christmas-star-glow {
+  opacity: calc(0.9 * var(--christmas-light));
+}
+
+.scene-stage[data-scene="christmas"][data-welcome] .christmas-star {
+  fill: #ffd166;
+}
+
+/* Too Loud wins. */
+.scene-stage[data-scene="christmas"][data-murky="true"] .christmas-tree-light,
+.scene-stage[data-scene="christmas"][data-murky="true"] .christmas-star-glow {
+  opacity: 0.12;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scene-stage[data-scene="christmas"][data-welcome] .christmas-tree-light {
+    animation: none;
+  }
+}
