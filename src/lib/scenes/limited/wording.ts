@@ -1,19 +1,22 @@
 /**
- * What the menus and the Scene's sign say about Pumpkin Hollow on a given
- * day: that something new comes every school day, or how long is left.
+ * What the menus and the Collection say about a limited-time Scene on a
+ * given day: that something new comes every school day, how long is left,
+ * or when a Newcomer unlocks.
  */
 
 import { t, type UiKey } from "$lib/i18n/index.svelte";
 import type { SceneId } from "$lib/scenes/types";
-import { daysLeft, hollowPhase, untilUnlock } from "./calendar";
+import { daysLeft, phase, untilUnlock } from "./calendar";
+import { limitedOf } from "./registry";
 
 /** A Scene's hint in a menu, under its name. */
 export function sceneHint(id: SceneId, day: string | null): string {
-  if (id === "halloween") {
-    const phase = hollowPhase(day);
-    if (phase === "unlocking") return t("hollow.daily");
-    if (phase === "countdown") {
-      const days = daysLeft(day!);
+  const limited = limitedOf(id);
+  if (limited) {
+    const now = phase(limited.calendar, day);
+    if (now === "unlocking") return t("hollow.daily");
+    if (now === "countdown") {
+      const days = daysLeft(limited.calendar, day!);
       return days === 1 ? t("hollow.lastDay") : t("hollow.closesIn", { days });
     }
   }
@@ -22,7 +25,7 @@ export function sceneHint(id: SceneId, day: string | null): string {
 
 /** Whether a Scene is only on offer for a while, for a badge in the menus. */
 export function isLimited(id: SceneId): boolean {
-  return id === "halloween";
+  return limitedOf(id) !== undefined;
 }
 
 /**

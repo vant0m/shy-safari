@@ -10,7 +10,7 @@
   import { t, type UiKey } from "$lib/i18n/index.svelte";
   import { availableScenes, type SceneId } from "$lib/scenes";
   import { newScenes } from "$lib/scenes/newScenes.svelte";
-  import { isLimited, sceneHint } from "$lib/scenes/halloween/wording";
+  import { isLimited, sceneHint } from "$lib/scenes/limited/wording";
   import { today } from "$lib/today.svelte";
 
   let {

@@ -23,7 +23,8 @@
     type VolumeGoalPreset,
   } from "$lib/settings/settings.svelte";
   import Calibration from "./Calibration.svelte";
-  import HalloweenPreview from "./HalloweenPreview.svelte";
+  import { limitedOf } from "$lib/scenes/limited/registry";
+  import LimitedPreview from "./LimitedPreview.svelte";
   import LevelMeter from "./LevelMeter.svelte";
 
   let { app, onclose }: { app: App; onclose: () => void } = $props();
@@ -254,7 +255,7 @@
       >
         {tIn(app.scene.id, "settings.summon")}
       </button>
-      {#if app.scene.id === "halloween"}
+      {#if limitedOf(app.scene.id)}
         <details class="group">
           <summary
             class="flex w-fit cursor-pointer list-none items-center gap-1 text-xs font-medium text-slate-500 hover:text-slate-700 [&::-webkit-details-marker]:hidden"
@@ -273,7 +274,7 @@
             class="mt-2 rounded-md border border-slate-400 px-3 py-1.5 text-sm font-medium hover:bg-slate-50"
             onclick={() => (previewOpen = true)}
           >
-            {t("settings.previewHalloween")}
+            {t(limitedOf(app.scene.id)!.preview)}
           </button>
         </details>
       {/if}
@@ -285,6 +286,9 @@
   </aside>
 
   {#if previewOpen}
-    <HalloweenPreview onclose={() => (previewOpen = false)} />
+    <LimitedPreview
+      sceneId={app.scene.id}
+      onclose={() => (previewOpen = false)}
+    />
   {/if}
 </div>

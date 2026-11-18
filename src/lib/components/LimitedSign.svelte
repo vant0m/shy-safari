@@ -1,9 +1,10 @@
 <script lang="ts">
   /**
-   * A small wooden plaque nailed to the oak in Pumpkin Hollow, for the
-   * class to read: on the day a Newcomer unlocks, that someone new is about
-   * (until the class has spotted it), and after Halloween how many days the
-   * patch has left. It says nothing on other days.
+   * A small wooden plaque in a limited-time Scene (nailed to the oak in
+   * Pumpkin Hollow, hung on the chalet at Christmas), for the class to read:
+   * on the day a Newcomer unlocks, that someone new is about (until the class
+   * has spotted it), and after the big day how many days the Scene has left.
+   * It says nothing on other days.
    *
    * Part of the world, like a Note: Creatures pass behind it and Too Loud
    * clouds it with the rest of the Scene. It never moves faster than a slow
@@ -13,32 +14,37 @@
   import { t } from "$lib/i18n/index.svelte";
   import {
     daysLeft,
-    hollowPhase,
+    phase,
     todaysNewcomer,
-  } from "$lib/scenes/halloween/calendar";
+  } from "$lib/scenes/limited/calendar";
+  import type { LimitedConfig } from "$lib/scenes/limited/registry";
+  import type { SceneId } from "$lib/scenes/types";
   import { sightings } from "$lib/session/sightings.svelte";
   import { today } from "$lib/today.svelte";
   import { fade } from "svelte/transition";
 
+  let { sceneId, limited }: { sceneId: SceneId; limited: LimitedConfig } =
+    $props();
+
   const message = $derived.by(() => {
     const day = today.day;
-    const phase = hollowPhase(day);
-    if (phase === "countdown") {
-      const days = daysLeft(day!);
+    const now = phase(limited.calendar, day);
+    if (now === "countdown") {
+      const days = daysLeft(limited.calendar, day!);
       return days === 1
-        ? t("hollow.signLastDay")
-        : t("hollow.signClosesIn", { days });
+        ? t(limited.sign.lastDay)
+        : t(limited.sign.closesIn, { days });
     }
-    if (phase !== "unlocking") return null;
-    const newcomer = todaysNewcomer(day);
-    if (!newcomer || sightings.count("halloween", newcomer) > 0) return null;
-    return t("hollow.newToday");
+    if (now !== "unlocking") return null;
+    const newcomer = todaysNewcomer(limited.calendar, day);
+    if (!newcomer || sightings.count(sceneId, newcomer) > 0) return null;
+    return t(limited.sign.newToday);
   });
 </script>
 
 {#if message}
   <div
-    class="hollow-sign pointer-events-none absolute"
+    class="hollow-sign sign-{sceneId} pointer-events-none absolute"
     role="status"
     transition:fade={{ duration: 1200 }}
   >
@@ -67,6 +73,18 @@
     line-height: 1.3;
     text-align: center;
     box-shadow: 0 0.25em 0 #2b2b3a40;
+  }
+
+  /* At Christmas: hung by the chalet door, under its snowy eaves. */
+  .sign-christmas {
+    left: 30%;
+    top: 44%;
+    transform: rotate(1.5deg);
+    border-color: #5a3a24;
+    background: #7a4a2c;
+    box-shadow:
+      0 -0.35em 0 #f4f7fb,
+      0 0.25em 0 #2b2b3a40;
   }
 
   .hollow-sign-nail {

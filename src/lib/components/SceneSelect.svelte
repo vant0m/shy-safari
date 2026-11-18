@@ -13,7 +13,7 @@
   import type { SceneId } from "$lib/scenes";
   import { newScenes } from "$lib/scenes/newScenes.svelte";
   import SceneMenu from "./SceneMenu.svelte";
-  import { sceneHint } from "$lib/scenes/halloween/wording";
+  import { sceneHint } from "$lib/scenes/limited/wording";
   import { today } from "$lib/today.svelte";
 
   let { app }: { app: App } = $props();

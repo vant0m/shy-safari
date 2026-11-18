@@ -12,19 +12,24 @@
 
 <script lang="ts">
   /**
-   * Every Pumpkin Hollow character lined up, in the order they arrive, so a
+   * Every character of a limited-time Scene lined up, in the order they arrive, so a
    * teacher can check them all before the class sees any. Unlike the
    * collection, nothing is locked or hidden: the point is to see what is
    * coming.
    */
 
   import { SCENES } from "$lib/scenes";
-  import { NEWCOMERS } from "$lib/scenes/halloween/calendar";
+  import { limitedOf } from "$lib/scenes/limited/registry";
+  import type { SceneId } from "$lib/scenes/types";
   import { creatureName, current, t } from "$lib/i18n/index.svelte";
 
-  let { onclose }: { onclose: () => void } = $props();
+  let { sceneId, onclose }: { sceneId: SceneId; onclose: () => void } =
+    $props();
 
-  const scene = SCENES.halloween;
+  // svelte-ignore state_referenced_locally
+  const scene = SCENES[sceneId];
+  // svelte-ignore state_referenced_locally
+  const NEWCOMERS = limitedOf(sceneId)?.calendar.newcomers ?? [];
 
   /** Opening animals first, then each Newcomer on its day. */
   const lineup = scene.roster
@@ -97,7 +102,7 @@
           class="flex min-w-0 flex-col items-center rounded-lg border border-slate-200 p-3 text-center"
         >
           <img
-            src={artUrl(`halloween/${slug}`, scene.creatureArt[slug])}
+            src={artUrl(`${sceneId}/${slug}`, scene.creatureArt[slug])}
             alt=""
             draggable="false"
             class="h-28 w-full object-contain sm:h-40"

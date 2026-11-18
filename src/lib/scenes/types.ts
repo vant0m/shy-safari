@@ -87,7 +87,7 @@ export interface CreatureDef {
 /**
  * A Scene that decides for itself who may arrive and how the next one is
  * chosen, rather than rolling its whole Roster: Pumpkin Hollow, whose Roster
- * grows by the day (`scenes/halloween/arrivals.ts`). Every other Scene rolls.
+ * grows by the day (`scenes/limited/arrivals.ts`). Every other Scene rolls.
  */
 export interface Arrivals {
   /** The part of the Roster that can arrive now. */

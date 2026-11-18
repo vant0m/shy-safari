@@ -14,7 +14,8 @@
   import type { CreatureInstance } from "$lib/session/session.svelte";
   import { welcomeFor } from "$lib/scenes/welcome";
   import Creature from "./Creature.svelte";
-  import HollowSign from "./HollowSign.svelte";
+  import { limitedOf } from "$lib/scenes/limited/registry";
+  import LimitedSign from "./LimitedSign.svelte";
 
   let {
     scene,
@@ -96,8 +97,8 @@
     />
   {/each}
 
-  {#if scene.id === "halloween"}
-    <HollowSign />
+  {#if limitedOf(scene.id)}
+    <LimitedSign sceneId={scene.id} limited={limitedOf(scene.id)!} />
   {/if}
 
   <!-- One veil over the whole Scene, never a per-Creature effect. -->

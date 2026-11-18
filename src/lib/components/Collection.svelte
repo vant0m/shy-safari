@@ -25,8 +25,9 @@
     todaysNewcomer,
     unlockDay,
     unlockedSlugs,
-  } from "$lib/scenes/halloween/calendar";
-  import { unlocksIn } from "$lib/scenes/halloween/wording";
+  } from "$lib/scenes/limited/calendar";
+  import { limitedOf } from "$lib/scenes/limited/registry";
+  import { unlocksIn } from "$lib/scenes/limited/wording";
   import { today } from "$lib/today.svelte";
   import {
     RARITY_TIERS,
@@ -78,13 +79,14 @@
   );
 
   /**
-   * In Pumpkin Hollow, Creatures the calendar has yet to unlock (or whose
+   * In a limited-time Scene, Creatures the calendar has yet to unlock (or whose
    * artwork has yet to land) show as a card saying which day they come,
    * with nothing of them shown, not even a silhouette.
    */
   const locked = $derived.by(() => {
-    if (sceneId !== "halloween") return new Set<string>();
-    const unlocked = unlockedSlugs(today.day);
+    const limited = limitedOf(sceneId);
+    if (!limited) return new Set<string>();
+    const unlocked = unlockedSlugs(limited.calendar, today.day);
     return new Set(
       scene.roster
         .filter(
@@ -96,7 +98,9 @@
   });
 
   const newToday = $derived(
-    sceneId === "halloween" ? todaysNewcomer(today.day) : null,
+    limitedOf(sceneId)
+      ? todaysNewcomer(limitedOf(sceneId)!.calendar, today.day)
+      : null,
   );
 
   /**
@@ -104,7 +108,8 @@
    * for one already due whose artwork is not in yet, "Coming soon".
    */
   function comesOn(slug: string) {
-    const day = unlockDay(slug);
+    const limited = limitedOf(sceneId);
+    const day = limited ? unlockDay(limited.calendar, slug) : null;
     return day && today.day !== null && today.now !== null && day > today.day
       ? unlocksIn(day, today.day, today.now)
       : t("collection.comingSoon");

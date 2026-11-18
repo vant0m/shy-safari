@@ -19,7 +19,7 @@ import arcticIcon from "./arctic/icon.svg";
 import { ARCTIC_NOTE } from "./arctic/note";
 import { ARCTIC_ROSTER } from "./arctic/roster";
 import ForestAmbient from "./forest/AmbientLife.svelte";
-import { availableToday, drawToday } from "./halloween/arrivals";
+import { HALLOWEEN_ARRIVALS } from "./halloween/arrivals";
 import HalloweenAmbient from "./halloween/AmbientLife.svelte";
 import * as halloweenArt from "./halloween/artwork";
 import { isOpen } from "./halloween/calendar";
@@ -283,7 +283,7 @@ export const SCENES: Record<SceneId, SceneDef> = {
     note: HALLOWEEN_NOTE,
     openOn: isOpen,
     isNew: true,
-    arrivals: { available: availableToday, draw: drawToday },
+    arrivals: HALLOWEEN_ARRIVALS,
     // The finale: every jack-o'-lantern flares and the moon brightens as he
     // comes, and the patch stays lit warmer while he's here (entrance.css).
     welcomes: ["jack-o-lantern"],
