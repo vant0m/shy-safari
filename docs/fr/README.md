@@ -1,151 +1,188 @@
-# Shy Safari — documentation en français
+# Shy Safari
+
+Un sonomètre de classe tout en douceur : des animaux timides sortent au
+vidéoprojecteur tant que la salle reste calme.
+
+[English](../../README.md) · [Site en ligne](https://www.shysafari.com) · [Historique des versions](CHANGELOG.md)
+
+- [0. État](#0-état)
+- [1. Ce que fait l'application](#1-ce-que-fait-lapplication)
+- [2. Contexte](#2-contexte)
+- [3. Technologies](#3-technologies)
+- [4. Installation](#4-installation)
+- [5. Utilisation](#5-utilisation)
+- [6. Fonctionnement](#6-fonctionnement)
+- [7. Historique des versions](#7-historique-des-versions)
+- [8. Crédits et licence](#8-crédits-et-licence)
+
+## 0. État
+
+[![Typecheck](https://github.com/vant0m/shy-safari/actions/workflows/typecheck.yml/badge.svg)](https://github.com/vant0m/shy-safari/actions/workflows/typecheck.yml)
+[![Tests](https://github.com/vant0m/shy-safari/actions/workflows/tests.yml/badge.svg)](https://github.com/vant0m/shy-safari/actions/workflows/tests.yml)
+[![Lint](https://github.com/vant0m/shy-safari/actions/workflows/lint.yml/badge.svg)](https://github.com/vant0m/shy-safari/actions/workflows/lint.yml)
+[![Build](https://github.com/vant0m/shy-safari/actions/workflows/build.yml/badge.svg)](https://github.com/vant0m/shy-safari/actions/workflows/build.yml)
+[![Version](https://img.shields.io/github/v/tag/vant0m/shy-safari?label=version&sort=semver)](CHANGELOG.md)
+[![Licence](https://img.shields.io/github/license/vant0m/shy-safari?label=licence)](../../LICENSE.txt)
+[![Dernier commit](https://img.shields.io/github/last-commit/vant0m/shy-safari?label=dernier%20commit)](https://github.com/vant0m/shy-safari/commits)
+
+**Dernière version : [v1.0.0](CHANGELOG.md#100--2026-11-17) (17/11/2026).**
+
+## 1. Ce que fait l'application
 
 Une scène paisible au vidéoprojecteur — savane, récif de corail, espace
-profond, préhistoire, forêt, jungle, Arctique, vallée enchantée — où des
-animaux timides sortent
-tant que la classe reste calme. Si la salle devient trop bruyante, ils restent
-cachés (ou s'enfuient, selon le réglage) jusqu'au retour du calme.
+profond, préhistoire, forêt, jungle, Arctique ou vallée enchantée — où des
+animaux sortent tant que la classe reste calme. Si la salle devient trop
+bruyante, ils se cachent ou s'enfuient jusqu'au retour du calme. Tout se passe
+dans le navigateur, rien à installer.
 
-C'est l'inverse d'un sonomètre : pas de score, pas d'aiguille, pas de voyant
-rouge. Rien ne rend le bruit plus intéressant que le calme.
+![La savane avec quelques animaux](../../static/og-image.png)
 
-- [Utilisation en classe](#utilisation-en-classe)
-- [Comment l'app juge le bruit](#comment-lapp-juge-le-bruit)
-- [Données et vie privée](#données-et-vie-privée)
-- [Développer](#développer)
-- [Héberger](#héberger)
+## 2. Contexte
 
-## Utilisation en classe
+- **Le problème :** les sonomètres de classe récompensent le bruit. Une
+  aiguille qui s'agite ou un voyant rouge rendent le bruit plus intéressant
+  que le calme.
+- **L'approche :** l'inverse d'un sonomètre. Pas de score, pas d'aiguille, pas
+  de voyant : une salle calme est peu à peu récompensée par une scène vivante,
+  avec des animaux communs, des rares et un légendaire par scène.
+- **Origine :** un prototype créé en trois jours à l'EdTech-a-thon 2026 par
+  [Duncan A. Johnson](https://github.com/DuncanAJohnson) et
+  [Elliot Roe](https://github.com/ElliotRoe)
+  ([teacherdotdev/shy-safari](https://github.com/teacherdotdev/shy-safari)),
+  désormais maintenu pour un hébergement durable par des établissements.
+- **Principes :** rien ne doit rendre le bruit plus amusant que le calme
+  ([ADR 0001](../adr/0001-nothing-is-taken-away.md)) ; le son du micro ne
+  quitte jamais l'appareil ; aucun compte nécessaire ; les données d'un
+  établissement restent les siennes.
 
-1. Ouvrez la page, choisissez une scène si vous le souhaitez, puis appuyez
-   sur **Commencer**. Le navigateur demande le micro : le son est mesuré sur
-   l'ordinateur, jamais enregistré ni envoyé.
-2. La classe commence à gagner des animaux : le premier arrive après 10 à 20
-   secondes de calme, puis environ un toutes les quelques minutes de travail
-   calme. Certains sont rares.
-3. Bougez la souris pour faire apparaître les commandes. **Réglages**
-   regroupe tout : scène, micro, seuil « trop fort », rythme d'arrivée.
+## 3. Technologies
 
-**Classes.** Créez une classe par groupe (« 6e B », « CM2 »…). Chaque classe
-garde ses propres animaux dans chaque scène, sa Collection, ses Notes, son
-Minuteur **et ses propres réglages** : objectif de volume, fréquence
-d'arrivée, réaction au bruit et dernière scène utilisée. Le micro et sa
-calibration appartiennent à la salle et restent communs. Changer de classe ne
-mélange jamais rien ; supprimer une classe efface tout ce qu'elle gardait.
+| Technologie                             | Version | Rôle                                         | Liens                                                                                                            |
+| --------------------------------------- | ------- | -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Bun                                     | ≥ 1.3   | Runtime, gestionnaire de paquets, tests      | [site](https://bun.sh) · [GitHub](https://github.com/oven-sh/bun)                                                |
+| TypeScript                              | 6       | Langage                                      | [site](https://www.typescriptlang.org) · [GitHub](https://github.com/microsoft/TypeScript)                       |
+| Svelte                                  | 5.56    | Interface                                    | [site](https://svelte.dev) · [GitHub](https://github.com/sveltejs/svelte)                                        |
+| SvelteKit + adapter-static              | 2.63    | Framework, build statique prérendu           | [doc](https://svelte.dev/docs/kit) · [GitHub](https://github.com/sveltejs/kit)                                   |
+| Vite                                    | 8       | Outil de build                               | [site](https://vite.dev) · [GitHub](https://github.com/vitejs/vite)                                              |
+| Tailwind CSS                            | 4.3     | Styles                                       | [site](https://tailwindcss.com) · [GitHub](https://github.com/tailwindlabs/tailwindcss)                          |
+| ESLint · Prettier                       | 10 · 3  | Analyse, formatage                           | [ESLint](https://eslint.org) · [Prettier](https://prettier.io)                                                   |
+| Cloudflare Workers (fichiers statiques) | —       | Hébergement                                  | [doc](https://developers.cloudflare.com/workers/static-assets/)                                                  |
+| Wrangler                                | 4.162   | Outil en ligne de commande Cloudflare        | [doc](https://developers.cloudflare.com/workers/wrangler/) · [GitHub](https://github.com/cloudflare/workers-sdk) |
+| Cloudflare Access · D1 _(facultatif)_   | —       | Connexion, synchronisation entre ordinateurs | [Access](https://developers.cloudflare.com/cloudflare-one/) · [D1](https://developers.cloudflare.com/d1/)        |
 
-**Sauvegarde.** Dans le panneau Classes, « Exporter toutes les classes »
-enregistre un fichier JSON ; « Importer un fichier… » le restaure sur un autre
-ordinateur, navigateur ou adresse (cela remplace tout, sauf le micro et sa
-calibration).
+**Compatibilité**
 
-**Rareté.** Communs 60, peu communs 30, rares 10 et légendaires 0,5 (environ
-0,5 % des arrivées). Chaque scène cache un animal légendaire (lion blanc,
-dragon de mer feuillu, soucoupe volante, Torosaurus, cerf blanc, panthère
-noire, orque blanche, Pégase) : il arrive au plus une fois par séance, sous un
-arc-en-ciel.
+- Chrome, Edge, Firefox ou Safari récents, sur l'ordinateur relié au
+  vidéoprojecteur. La fenêtre flottante (Picture-in-Picture) demande Chrome ou
+  Edge.
+- Un micro, et **HTTPS** (ou `localhost`) : les navigateurs ne donnent le
+  micro qu'aux pages sécurisées.
+- Interface en anglais, espagnol et français.
+- Fonctionne sans aucun serveur ; la synchronisation entre ordinateurs demande
+  Cloudflare Access et D1 (offres gratuites).
 
-**Statistiques.** Le bouton en forme de graphique affiche, par classe : temps
-calme, part du temps sous l'objectif, arrivées, fuites, niveau sonore moyen au
-fil de la journée (comparé à l'objectif) et un comparatif de toutes les
-classes. Réservé à l'enseignant, conservé 180 jours sur cet ordinateur. Le
-niveau est l'échelle 0–100 du sonomètre, pas des décibels.
+## 4. Installation
 
-**Synchronisation (facultative).** Déployée avec `wrangler.sync.jsonc`
-derrière Cloudflare Access, une copie enregistre les classes de chaque
-enseignant sur son compte Cloudflare, sous son e-mail : il les retrouve sur
-tout ordinateur. Les modifications faites sur deux ordinateurs sont
-fusionnées ; une question n'est posée que si les deux ont changé la même
-chose. Guide : [deploiement-pas-a-pas.md](deploiement-pas-a-pas.md).
-
-**Accès réservé.** Il se règle devant le site, pas dans l'app : Cloudflare
-Access avec un code envoyé par e-mail, configuré par l'administrateur de
-l'hébergement (voir [hebergement.md](hebergement.md)).
-
-**Notes.** Écrivez ou dessinez une consigne qui s'intègre au décor (un nuage
-dans la savane, un panneau sur le récif…).
-
-**Minuteur.** Un compte à rebours déplaçable ; sa sonnerie n'est jamais
-comptée comme du bruit.
-
-**Fenêtre flottante.** La scène peut flotter au-dessus de vos diapositives
-(Picture-in-Picture).
-
-## Comment l'app juge le bruit
-
-L'enseignant fixe un **Objectif de volume** : Silence, Travail individuel,
-Travail à deux, ou n'importe où entre les deux en faisant glisser la ligne du
-sonomètre.
-
-Dépasser la ligne n'arrête rien instantanément : le bruit au-dessus de
-l'objectif remplit un « seau », d'autant plus vite que l'on est loin
-au-dessus (environ six secondes juste au-dessus, une seconde très
-au-dessus). Les moments calmes le vident. Une porte qui claque ou un livre qui
-tombe ne coûte donc rien. Le retour au calme ne prend que trois secondes.
-
-Quand c'est trop fort, la scène se voile (brume, eau trouble, interférences,
-blizzard…). Par défaut, les animaux déjà sortis commencent à s'enfuir ; dans
-les réglages, on peut choisir que la scène se mette simplement en pause.
-
-La **calibration** est facultative : cinq secondes de silence, cinq secondes
-de conversation normale, et le sonomètre s'adapte à votre salle et à votre
-micro.
-
-## Données et vie privée
-
-Par défaut, il n'y a ni compte ni serveur applicatif. Classes, animaux,
-Collection, Notes, Minuteur et réglages sont stockés dans le `localStorage` du
-navigateur, sur cet ordinateur et pour cette adresse uniquement (sauf si votre
-établissement a activé la synchronisation : voir ci-dessus). Une fenêtre de navigation
-privée oublie tout à la fermeture. Le son du micro n'est jamais enregistré ni
-transmis.
-
-## Développer
-
-Guide pas à pas complet : **[lancer-en-local.md](lancer-en-local.md)**.
-
-Prérequis : [Bun](https://bun.sh) 1.3 ou plus (sous Windows :
-`powershell -c "irm bun.sh/install.ps1 | iex"`).
+Prérequis : [Git](https://git-scm.com) et [Bun](https://bun.sh) 1.3 ou plus.
 
 ```sh
-bun install      # une fois, puis après chaque changement de bun.lock
-bun run dev      # serveur de dev sur http://localhost:5173
-
-bun run check    # vérification TypeScript / Svelte
-bun test         # tests unitaires
-bun run lint     # prettier --check + eslint (bun run format corrige le style)
-bun run build    # build statique de production dans build/
+git clone https://github.com/vant0m/shy-safari.git
+cd shy-safari
+bun install
+bun run dev      # http://localhost:5173
 ```
 
-Pile technique : Svelte 5 + SvelteKit (prérendu statique, `adapter-static`),
-Tailwind CSS, TypeScript. Chaque scène est du SVG dans le DOM (pas de canvas),
-chaque animal un élément animé en CSS.
+- Lancement local pas à pas : [lancer-en-local.md](lancer-en-local.md)
+- Héberger votre copie (Cloudflare, autres hébergeurs, domaine, accès) :
+  [hebergement.md](hebergement.md)
+- Un sous-domaine avec connexion et synchronisation, pas à pas :
+  [deploiement-pas-a-pas.md](deploiement-pas-a-pas.md)
+- Variables de build : `PUBLIC_SITE_URL` (adresse du site), `CF_BEACON_TOKEN`
+  (statistiques de visite, facultatif), `DEV_ALLOWED_HOSTS`, `BUILD_VERSION`
+  — voir [hebergement.md](hebergement.md#avant-de-commencer).
 
-Repères dans le code :
+## 5. Utilisation
 
-| Fichier                             | Rôle                                                       |
-| ----------------------------------- | ---------------------------------------------------------- |
-| `src/lib/noise/loudState.ts`        | Hystérésis « lent à entrer, rapide à sortir ».             |
-| `src/lib/session/arrivalClock.ts`   | Le temps calme accumulé, mis en pause et non remis à zéro. |
-| `src/lib/session/roll.ts`           | Le tirage pondéré par rareté.                              |
-| `src/lib/scenes/index.ts`           | Le registre des scènes.                                    |
-| `src/lib/classes/classes.svelte.ts` | Les classes et leurs clés de stockage.                     |
-| `src/lib/i18n/index.svelte.ts`      | Tous les textes (en / es / fr).                            |
+1. Ouvrez la page, choisissez une scène si vous le souhaitez, puis appuyez sur
+   **Commencer**. Autorisez le micro : le son est mesuré sur l'ordinateur,
+   jamais enregistré ni envoyé.
+2. Laissez la classe travailler. Le premier animal arrive après 10 à 20
+   secondes de calme, puis environ un toutes les quelques minutes de calme.
+3. Bougez la souris pour afficher les commandes. **Réglages** fixe l'objectif
+   de volume, la fréquence d'arrivée et ce qui se passe quand c'est trop fort.
 
-Le vocabulaire du code est défini dans [`CONTEXT.md`](../../CONTEXT.md) et les
-décisions d'architecture dans [`docs/adr/`](../adr/) (en anglais).
+Fonctions principales :
 
-## Héberger
+- **Neuf scènes**, chacune avec ses animaux, son ambiance et sa « météo » quand
+  c'est trop fort.
+- **Classes** — une par groupe, avec ses animaux, sa collection, ses notes,
+  son minuteur, ses réglages et ses statistiques.
+- **Collection** — tous les animaux aperçus par une classe ; rares et
+  légendaires mis en valeur.
+- **Notes** et **minuteur** intégrés au décor ; la sonnerie du minuteur ne
+  compte jamais comme du bruit.
+- **Statistiques** — temps calme, arrivées et niveau sonore au fil de la
+  journée, par classe.
+- **Exporter / Importer** toutes les classes, et **synchronisation**
+  facultative entre ordinateurs.
+- **Fenêtre flottante** au-dessus de vos diapositives.
 
-Voir le guide complet : **[hebergement.md](hebergement.md)** (Cloudflare,
-domaine personnalisé, accès réservé par Cloudflare Access sans création de
-compte pour les enseignants, autres hébergeurs).
+## 6. Fonctionnement
 
-## Crédits et licence
+```mermaid
+flowchart LR
+  mic["Micro<br/>(Web Audio, sur l'appareil)"] --> monitor["RoomMonitor<br/>noise/loudState.ts"]
+  monitor -->|Calme / Trop fort| session["Séance<br/>arrivalClock.ts · roll.ts"]
+  session --> scene["Scène<br/>SVG dans le DOM"]
+  session --> store[("localStorage<br/>par classe")]
+  stats["Statistiques<br/>stats/"] --> store
+  store <-->|"synchro facultative"| worker["Worker de synchro<br/>/api/*"]
+  access{{"Cloudflare Access<br/>(connexion)"}} --> worker
+  worker <--> d1[("Base D1")]
+```
 
-Shy Safari a été créé pendant l'EdTech-a-thon 2026 par
-[Duncan A. Johnson](https://github.com/DuncanAJohnson) et
-[Elliot Roe](https://github.com/ElliotRoe), et publié sur
-[teacherdotdev/shy-safari](https://github.com/teacherdotdev/shy-safari). Cette
-copie s'appuie sur leur travail ; l'[historique des versions](CHANGELOG.md)
-liste les changements depuis. Licence Apache 2.0
-([`LICENSE.txt`](../../LICENSE.txt)) ; voir [`NOTICE`](../../NOTICE).
+| Chemin                            | Rôle                                                    |
+| --------------------------------- | ------------------------------------------------------- |
+| `src/lib/noise/loudState.ts`      | Décision « trop fort », lente à entrer, rapide à sortir |
+| `src/lib/session/arrivalClock.ts` | Temps calme accumulé, mis en pause sans remise à zéro   |
+| `src/lib/session/roll.ts`         | Tirage pondéré par rareté (60 / 30 / 10 / 0,5)          |
+| `src/lib/scenes/`                 | Les scènes : animaux, dessins SVG, ambiance             |
+| `src/lib/sync/`, `worker/`        | Synchronisation facultative et son Worker Cloudflare    |
+
+- **Données :** tout reste dans le `localStorage` du navigateur, par classe,
+  sauf si une copie active la synchronisation
+  ([ADR 0015](../adr/0015-sync-through-cloudflare.md)).
+- **Détails :** [fonctionnement.md](fonctionnement.md) (écoute, règles « trop
+  fort », arrivées, stockage, modules clés).
+- **Décisions :** [ADR](../adr/README.md) (en anglais) · **Vocabulaire :**
+  [CONTEXT.md](../../CONTEXT.md) · **Règles de dessin :**
+  [svg-art-brief.md](../svg-art-brief.md).
+
+## 7. Historique des versions
+
+Les versions suivent [SemVer](https://semver.org/lang/fr/) ; tous les
+changements sont dans l'[historique des versions](CHANGELOG.md)
+([Keep a Changelog](https://keepachangelog.com/fr/)).
+
+| Version                               | Date       | Points forts                                                                                                          |
+| ------------------------------------- | ---------- | --------------------------------------------------------------------------------------------------------------------- |
+| [1.0.0](CHANGELOG.md#100--2026-11-17) | 2026-11-17 | Vallée enchantée, légendaires, réglages et statistiques par classe, export/import, synchro facultative, documentation |
+| [0.0.1](CHANGELOG.md#001--2026-11)    | 2026-11    | Prototype de l'EdTech-a-thon : sept scènes et Pumpkin Hollow, classes, notes, minuteur                                |
+
+## 8. Crédits et licence
+
+- **Projet et auteurs d'origine :** créé pendant l'EdTech-a-thon 2026 par
+  [Duncan A. Johnson](https://github.com/DuncanAJohnson) et
+  [Elliot Roe](https://github.com/ElliotRoe), publié sur
+  [teacherdotdev/shy-safari](https://github.com/teacherdotdev/shy-safari). Ce
+  dépôt est un fork qui s'appuie sur leur travail.
+- **Contributeurs :** voir le
+  [graphe des contributeurs](https://github.com/vant0m/shy-safari/graphs/contributors).
+- **Licence :** Apache 2.0 — voir [LICENSE.txt](../../LICENSE.txt) et
+  [NOTICE](../../NOTICE).
+
+### Contribuer
+
+Avant de commiter : `bun run check && bun test && bun run lint && bun run build`.
+Les commits suivent [Conventional Commits](https://www.conventionalcommits.org/fr/) ;
+voir [AGENTS.md](../../AGENTS.md) pour les notes du projet.

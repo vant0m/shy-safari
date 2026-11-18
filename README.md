@@ -1,208 +1,182 @@
 # Shy Safari
 
-A calm scene on the classroom projector — a savanna, a coral reef, deep
-space, the age of dinosaurs, a woodland clearing, the jungle, the Arctic or an enchanted valley — where animals (or, in deep space, sightings
-through a telescope) come out the longer the room stays quiet. The animals are shy: if the room is too loud,
-they stay hidden until it is calm again.
+A calm classroom noise monitor: shy animals come out on the projector while
+the room stays quiet.
 
-It is the opposite of a noise meter. There is no bouncing, no score, no red
-warning light — nothing that makes being loud more interesting than being
-quiet. The class starts with an empty scene. The first animal comes out
-after 10–20 quiet seconds, as a taste of what is coming; after that, every few
-minutes of quiet working brings another one. Some of them are rare, and each
-scene hides one legendary creature that comes in about one arrival in two
-hundred, with a rainbow.
+[Français](docs/fr/README.md) · [Live site](https://www.shysafari.com) · [Changelog](CHANGELOG.md)
 
-French documentation: [docs/fr/README.md](docs/fr/README.md).
+- [0. Status](#0-status)
+- [1. What it does](#1-what-it-does)
+- [2. Background](#2-background)
+- [3. Tech stack](#3-tech-stack)
+- [4. Installation](#4-installation)
+- [5. Usage](#5-usage)
+- [6. How it works](#6-how-it-works)
+- [7. Version history](#7-version-history)
+- [8. Credits and license](#8-credits-and-license)
 
-## What a teacher does
+## 0. Status
 
-1. Open the page and press **Start listening**. The browser asks for the
-   microphone; audio is measured on the computer and never recorded or sent
-   anywhere.
-   Pick **Savanna** (zebras, giraffes, lions), **Coral reef** (fish,
-   turtles, sharks), **Deep space** (satellites, comets, galaxies),
-   **Prehistoric** (T. rex, Triceratops, feathered raptors), **Forest**
-   (squirrels, foxes, deer), **Jungle** (sloths, toucans, jaguars) or
-   **Arctic** (polar bears, seals, narwhals) or the **Enchanted valley**
-   (unicorns, dragons, mermaids) first if you like. Deep space and
-   the prehistoric scene are drawn to appeal to older students too.
-2. Press **Start**. The class begins earning animals.
-3. Move the mouse to bring up the controls. **Settings** has everything:
-   which scene, which microphone, how loud is too loud, and how often animals
-   arrive. Each scene keeps its own animals, so switching never loses any.
+[![Typecheck](https://github.com/vant0m/shy-safari/actions/workflows/typecheck.yml/badge.svg)](https://github.com/vant0m/shy-safari/actions/workflows/typecheck.yml)
+[![Tests](https://github.com/vant0m/shy-safari/actions/workflows/tests.yml/badge.svg)](https://github.com/vant0m/shy-safari/actions/workflows/tests.yml)
+[![Lint](https://github.com/vant0m/shy-safari/actions/workflows/lint.yml/badge.svg)](https://github.com/vant0m/shy-safari/actions/workflows/lint.yml)
+[![Build](https://github.com/vant0m/shy-safari/actions/workflows/build.yml/badge.svg)](https://github.com/vant0m/shy-safari/actions/workflows/build.yml)
+[![Version](https://img.shields.io/github/v/tag/vant0m/shy-safari?label=version&sort=semver)](CHANGELOG.md)
+[![License](https://img.shields.io/github/license/vant0m/shy-safari)](LICENSE.txt)
+[![Last commit](https://img.shields.io/github/last-commit/vant0m/shy-safari)](https://github.com/vant0m/shy-safari/commits)
 
-That is the whole app. Nothing to install, and no account or sign-in
-needed — unless a school chooses to add one (see below).
+**Latest version: [v1.0.0](CHANGELOG.md#100--2026-11-17) (2026-11-17).**
 
-## Classes, backups and statistics
+## 1. What it does
 
-- **Classes.** A teacher who sees several groups names a class for each
-  ("2nd period"). Each class keeps its own animals in every scene, its own
-  Collection, Notes and Timer, **and its own settings**: volume goal, arrival
-  rate, what happens when it is too loud, and the scene it was last on. The
-  microphone and its calibration belong to the room and are shared
-  ([docs/adr/0010](docs/adr/0010-settings-per-class.md)).
-- **Export / Import.** The Classes panel saves every class to a JSON file
-  and restores it on another computer, browser or address. Import replaces
-  what is there and keeps this computer's microphone settings
-  ([docs/adr/0011](docs/adr/0011-backup-export-import.md)).
-- **Rarity.** Common 60, uncommon 30, rare 10 and legendary 0.5 (about
-  0.5% of arrivals). A rare comes at most once while it is on screen; a
-  legendary at most once per session, and it arrives under a rainbow
-  ([docs/adr/0012](docs/adr/0012-legendary-tier.md)).
-- **Statistics.** The chart button opens each class's quiet time, share of
-  time under the goal, arrivals, creatures that ran away, the average noise
-  level through the day against the goal, and a comparison of every class.
-  Teacher-facing only, kept on this computer for 180 days
-  ([docs/adr/0014](docs/adr/0014-class-statistics.md)).
-- **Sync (optional).** A copy deployed with `wrangler.sync.jsonc`
-  behind Cloudflare Access saves each teacher's classes in a D1 database
-  under their sign-in e-mail, so they follow them to any computer;
-  changes made on two computers are merged, and the teacher is asked only
-  when both changed the same thing
-  ([docs/adr/0015](docs/adr/0015-sync-through-cloudflare.md),
-  [docs/deploy-step-by-step.md](docs/deploy-step-by-step.md)).
-- **Access control** is done in front of the site, not in it: Cloudflare
-  Access with e-mailed one-time codes, set up by whoever administers the
-  hosting ([docs/hosting.md](docs/hosting.md#restricting-access-with-cloudflare-access),
-  [docs/adr/0013](docs/adr/0013-access-via-cloudflare-access.md)).
+A calm scene on the classroom projector — a savanna, a coral reef, deep space,
+the age of dinosaurs, a forest, the jungle, the Arctic or an enchanted valley —
+where animals come out the longer the room stays quiet. If the room gets too
+loud, they hide or run away until it is calm again. It runs in the browser;
+nothing to install.
 
-## How it decides the room is too loud
+![The savanna with a few animals out](static/og-image.png)
 
-The teacher sets a **Volume Goal** — Silent, Independent or Partner work, or
-anywhere in between by dragging the line on the meter. While the room stays
-under it, animals arrive. To watch the room's level live without opening
-Settings, turn on **Show on screen** beside the Noise Meter: it stays at the
-top of the scene until you turn it off.
+## 2. Background
 
-Going over the line does not instantly stop anything. Noise over the goal
-fills up a bucket, and the further over, the faster it fills: just over the
-line takes about **six seconds** to pause arrivals, far over takes about
-**one second**. Quiet moments drain the bucket again, so a knock at the door or
-a dropped book costs the class nothing. Recovery takes only **three seconds**,
-because a class that settles down should be rewarded immediately rather than
-serve a sentence.
+- **The problem:** classroom noise meters reward noise. A bouncing needle or a
+  red light makes being loud more interesting than being quiet.
+- **The approach:** the opposite of a noise meter. No score, no needle, no
+  warning light: a quiet room is slowly rewarded with a living scene, and
+  common animals, rare ones and one legendary per scene keep it worth waiting
+  for.
+- **Origin:** a prototype built in three days at the 2026 EdTech-a-thon by
+  [Duncan A. Johnson](https://github.com/DuncanAJohnson) and
+  [Elliot Roe](https://github.com/ElliotRoe)
+  ([teacherdotdev/shy-safari](https://github.com/teacherdotdev/shy-safari)),
+  now maintained for long-term hosting by schools.
+- **Principles:** nothing that makes noise more fun than quiet
+  ([ADR 0001](docs/adr/0001-nothing-is-taken-away.md)); microphone audio
+  never leaves the device; no account needed; a school's data stays its own.
 
-When the room is too loud, the whole scene slowly clouds over — a dusty haze
-on the savanna, murky water on the reef, interference in deep space, mist off the river in the
-prehistoric scene, fog between the trees in the forest, a tropical downpour in the jungle, a whiteout of blowing snow in the Arctic. That is
-the only signal the class sees. The shy animals simply wait to come out:
-nothing already out runs away, nothing gets startled, and progress
-toward the next animal pauses rather than resetting — a loud spell costs
-exactly the time it lasted. This is deliberate; see
-[docs/adr/0001](docs/adr/0001-nothing-is-taken-away.md).
+## 3. Tech stack
 
-**Calibration** is optional. The app works on a sensible default, and
-calibrating — five seconds of silence, five seconds of normal talking — makes
-the meter match your room and your microphone.
+| Technology                          | Version | Role                                    | Links                                                                                                             |
+| ----------------------------------- | ------- | --------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Bun                                 | ≥ 1.3   | Runtime, package manager, test runner   | [site](https://bun.sh) · [GitHub](https://github.com/oven-sh/bun)                                                 |
+| TypeScript                          | 6       | Language                                | [site](https://www.typescriptlang.org) · [GitHub](https://github.com/microsoft/TypeScript)                        |
+| Svelte                              | 5.56    | UI                                      | [site](https://svelte.dev) · [GitHub](https://github.com/sveltejs/svelte)                                         |
+| SvelteKit + adapter-static          | 2.63    | App framework, prerendered static build | [docs](https://svelte.dev/docs/kit) · [GitHub](https://github.com/sveltejs/kit)                                   |
+| Vite                                | 8       | Build tool                              | [site](https://vite.dev) · [GitHub](https://github.com/vitejs/vite)                                               |
+| Tailwind CSS                        | 4.3     | Styling                                 | [site](https://tailwindcss.com) · [GitHub](https://github.com/tailwindlabs/tailwindcss)                           |
+| ESLint · Prettier                   | 10 · 3  | Lint, formatting                        | [ESLint](https://eslint.org) · [Prettier](https://prettier.io)                                                    |
+| Cloudflare Workers (static assets)  | —       | Hosting                                 | [docs](https://developers.cloudflare.com/workers/static-assets/)                                                  |
+| Wrangler                            | 4.162   | Cloudflare CLI                          | [docs](https://developers.cloudflare.com/workers/wrangler/) · [GitHub](https://github.com/cloudflare/workers-sdk) |
+| Cloudflare Access · D1 _(optional)_ | —       | Sign-in, sync between computers         | [Access](https://developers.cloudflare.com/cloudflare-one/) · [D1](https://developers.cloudflare.com/d1/)         |
 
-## Running it locally
+**Compatibility**
 
-A step-by-step guide, from installing the tools to testing the production
-build, is in [docs/running-locally.md](docs/running-locally.md) (French:
-[docs/fr/lancer-en-local.md](docs/fr/lancer-en-local.md)). The short version:
+- Recent Chrome, Edge, Firefox or Safari, on the computer connected to the
+  projector. Floating the Scene over other windows (Picture-in-Picture) needs
+  Chrome or Edge.
+- A microphone, and **HTTPS** (or `localhost`): browsers only give the
+  microphone to secure pages.
+- Interface in English, Spanish and French.
+- Works with no server at all; sync between computers needs Cloudflare Access
+  and D1 (free plans).
 
-You need [Bun](https://bun.sh) 1.3 or newer (it is both the runtime and the
-package manager here). On Windows, `powershell -c "irm bun.sh/install.ps1 | iex"`;
-on macOS or Linux, `curl -fsSL https://bun.sh/install | bash`.
+## 4. Installation
+
+Prerequisites: [Git](https://git-scm.com) and [Bun](https://bun.sh) 1.3 or newer.
 
 ```sh
-bun install      # once, and after every pull that changes bun.lock
-bun run dev      # dev server on http://localhost:5173
+git clone https://github.com/vant0m/shy-safari.git
+cd shy-safari
+bun install
+bun run dev      # http://localhost:5173
 ```
 
-The microphone only works in a secure context: `localhost` counts, but a dev
-server opened from another machine by IP address does not. To reach the dev
-server through a tunnel or reverse proxy, list its hostname in
-`DEV_ALLOWED_HOSTS` (comma-separated).
+- Step-by-step local setup: [docs/running-locally.md](docs/running-locally.md)
+- Hosting your own copy (Cloudflare, other static hosts, domain, access):
+  [docs/hosting.md](docs/hosting.md)
+- A subdomain with sign-in and sync, step by step:
+  [docs/deploy-step-by-step.md](docs/deploy-step-by-step.md)
+- Build variables: `PUBLIC_SITE_URL` (the site's address), `CF_BEACON_TOKEN`
+  (analytics, optional), `DEV_ALLOWED_HOSTS`, `BUILD_VERSION` — see
+  [docs/hosting.md](docs/hosting.md#before-you-start).
 
-Before committing:
+## 5. Usage
 
-```sh
-bun run check    # svelte-check / TypeScript
-bun test         # unit tests
-bun run lint     # prettier --check + eslint (bun run format fixes formatting)
-bun run build    # static production build into build/
+1. Open the page, pick a Scene if you like, and press **Start**. Allow the
+   microphone: audio is measured on the computer, never recorded or sent.
+2. Let the class work. The first animal comes after 10–20 quiet seconds, then
+   about one every few minutes of quiet.
+3. Move the mouse to show the controls. **Settings** sets the volume goal,
+   the arrival rate and what happens when it gets too loud.
+
+Main features:
+
+- **Nine Scenes**, each with its own animals, ambience and "too loud" weather.
+- **Classes** — one per group, each with its own animals, collection, notes,
+  timer, settings and statistics.
+- **Collection** — every animal a class has spotted; rare and legendary ones
+  stand out.
+- **Notes** and a **Timer** drawn into the Scene; the Timer's chime never
+  counts as noise.
+- **Statistics** — quiet time, arrivals and the noise level through the day,
+  per class.
+- **Export / Import** of all classes, and optional **sync** between computers.
+- **Float** the Scene over your slides.
+
+## 6. How it works
+
+```mermaid
+flowchart LR
+  mic["Microphone<br/>(Web Audio, on device)"] --> monitor["RoomMonitor<br/>noise/loudState.ts"]
+  monitor -->|Quiet / Too Loud| session["Session<br/>arrivalClock.ts · roll.ts"]
+  session --> scene["Scene<br/>SVG in the DOM"]
+  session --> store[("localStorage<br/>per Class")]
+  stats["Statistics<br/>stats/"] --> store
+  store <-->|"optional sync"| worker["Sync Worker<br/>/api/*"]
+  access{{"Cloudflare Access<br/>(sign-in)"}} --> worker
+  worker <--> d1[("D1 database")]
 ```
 
-`bun run build && bunx wrangler dev` serves the built site the way the
-Cloudflare Worker does, `_headers` and `_redirects` included. It does not
-simulate what is configured in front of the Worker, such as Cloudflare Access
-or redirect rules.
+| Path                              | Role                                              |
+| --------------------------------- | ------------------------------------------------- |
+| `src/lib/noise/loudState.ts`      | Slow-in, fast-out "too loud" decision             |
+| `src/lib/session/arrivalClock.ts` | Banking quiet time; pausing rather than resetting |
+| `src/lib/session/roll.ts`         | Weighted rarity roll (60 / 30 / 10 / 0.5)         |
+| `src/lib/scenes/`                 | The Scenes: rosters, SVG artwork, ambience        |
+| `src/lib/sync/`, `worker/`        | Optional sync and its Cloudflare Worker           |
 
-## Hosting it
+- **Data:** everything stays in the browser's `localStorage`, per class,
+  unless a copy turns on sync ([ADR 0015](docs/adr/0015-sync-through-cloudflare.md)).
+- **Details:** [docs/how-it-works.md](docs/how-it-works.md) (listening, the
+  "too loud" rules, arrivals, storage, every key module).
+- **Decisions:** [docs/adr/](docs/adr/README.md) · **Vocabulary:**
+  [CONTEXT.md](CONTEXT.md) · **Artwork rules:**
+  [docs/svg-art-brief.md](docs/svg-art-brief.md).
 
-The build is plain static files, so it can live on any static host. The
-reference setup is Cloudflare Workers static assets (`wrangler.jsonc`), which
-is free and needs no server code. **[docs/hosting.md](docs/hosting.md)** walks
-through deploying your own copy, using your own domain, protecting it with a
-login (Cloudflare Access, no accounts for teachers to create) and the other
-hosts it works on. A French version is in
-[docs/fr/hebergement.md](docs/fr/hebergement.md).
+## 7. Version history
 
-Two things to keep in mind whatever the host:
+Versions follow [Semantic Versioning](https://semver.org/); every change is in
+[CHANGELOG.md](CHANGELOG.md) ([Keep a Changelog](https://keepachangelog.com/)).
 
-- **One address only.** Every class's animals, Collection, Notes and settings
-  live in the browser's `localStorage`, which belongs to one exact origin.
-  `example.com` and `www.example.com` are two different stores, so pick one
-  canonical address and redirect the other to it.
-- **HTTPS is required**, because browsers only give the microphone to secure
-  pages.
+| Version                               | Date       | Highlights                                                                                                   |
+| ------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------ |
+| [1.0.0](CHANGELOG.md#100--2026-11-17) | 2026-11-17 | Enchanted valley, legendary creatures, settings and statistics per class, export/import, optional sync, docs |
+| [0.0.1](CHANGELOG.md#001--2026-11)    | 2026-11    | EdTech-a-thon prototype: seven Scenes and Pumpkin Hollow, classes, notes, timer                              |
 
-Build-time variables (all optional):
+## 8. Credits and license
 
-| Variable          | Effect                                                                                                                                                                             |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `PUBLIC_SITE_URL` | The site's canonical address, e.g. `https://noise.example.org`. Used for canonical links, the sitemap, social previews and the help text. Defaults to `https://www.shysafari.com`. |
-| `CF_BEACON_TOKEN` | Adds Cloudflare Web Analytics. Leave unset for no analytics at all.                                                                                                                |
+- **Original project and authors:** created during the 2026 EdTech-a-thon by
+  [Duncan A. Johnson](https://github.com/DuncanAJohnson) and
+  [Elliot Roe](https://github.com/ElliotRoe), published at
+  [teacherdotdev/shy-safari](https://github.com/teacherdotdev/shy-safari).
+  This repository is a fork that builds on their work.
+- **Contributors:** see the
+  [contributors graph](https://github.com/vant0m/shy-safari/graphs/contributors).
+- **License:** Apache License 2.0 — see [LICENSE.txt](LICENSE.txt) and
+  [NOTICE](NOTICE).
 
-## How it is put together
+### Contributing
 
-Svelte 5 and SvelteKit, prerendered to static files with Tailwind for styling.
-By default there is no backend: settings live in `localStorage` and nothing
-leaves the device. The optional sync Worker (`worker/`, `migrations/`) is
-the only server code, and only runs where a copy turns it on.
-
-Each scene is SVG in the DOM rather than video or canvas
-([docs/adr/0002](docs/adr/0002-svg-dom-scene.md)), so each animal is an
-ordinary element that CSS animates.
-
-The three decisions that matter most are pure functions with unit tests, so
-they can be checked without a microphone or a ten-second wait:
-
-- `src/lib/noise/loudState.ts` — the slow-in, fast-out hysteresis.
-- `src/lib/session/arrivalClock.ts` — banking quiet time, and pausing rather
-  than resetting.
-- `src/lib/session/roll.ts` — the weighted rarity roll.
-- `src/lib/settings/stored.ts` — the room / class split of the settings.
-- `src/lib/backup/backup.ts` — export and import.
-- `src/lib/stats/statsData.ts` — recording and summing statistics.
-
-## Documentation
-
-- [`CHANGELOG.md`](CHANGELOG.md) — what changed, version by version.
-
-- [`CONTEXT.md`](CONTEXT.md) — the vocabulary the code uses (Scene, Creature,
-  Class, Too Loud…).
-- [`docs/hosting.md`](docs/hosting.md) — deploying, domains, access control.
-- [`docs/deploy-step-by-step.md`](docs/deploy-step-by-step.md) — a subdomain
-  with sign-in and sync, step by step.
-- [`docs/adr/`](docs/adr/README.md) — architecture decisions and why they were made.
-- [`docs/svg-art-brief.md`](docs/svg-art-brief.md) — the rules every piece of
-  artwork follows.
-- [`docs/fr/`](docs/fr/) — French documentation for teachers and hosts.
-
-The art brief started with the reef; the savanna, the forest, the jungle and
-the Arctic follow its style rules, and deep space, the prehistoric scene, the
-forest, the jungle and the Arctic each have their own section there.
-
-## Credits and license
-
-Shy Safari was created during the 2026 EdTech-a-thon by
-[Duncan A. Johnson](https://github.com/DuncanAJohnson) and
-[Elliot Roe](https://github.com/ElliotRoe), and published at
-[teacherdotdev/shy-safari](https://github.com/teacherdotdev/shy-safari). This
-copy builds on their work; [`CHANGELOG.md`](CHANGELOG.md) lists what changed
-since. Licensed under the Apache License 2.0 ([`LICENSE.txt`](LICENSE.txt));
-see [`NOTICE`](NOTICE).
+Before committing: `bun run check && bun test && bun run lint && bun run build`.
+Commits follow [Conventional Commits](https://www.conventionalcommits.org/);
+see [AGENTS.md](AGENTS.md) for project notes.
