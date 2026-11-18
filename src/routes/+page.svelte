@@ -11,6 +11,7 @@
   import { sync } from "$lib/sync/sync.svelte";
   import { stats } from "$lib/stats/stats.svelte";
   import ControlBar from "$lib/components/ControlBar.svelte";
+  import DebugPanel from "$lib/components/DebugPanel.svelte";
   import MicBlocked from "$lib/components/MicBlocked.svelte";
   import NotesLayer from "$lib/components/notes/NotesLayer.svelte";
   import Scene from "$lib/components/Scene.svelte";
@@ -645,6 +646,10 @@
     {/if}
 
     <InfoDrawer bind:open={infoOpen} />
+    <!-- Development only (`bun run dev`): the debug menu. -->
+    {#if import.meta.env.DEV}
+      <DebugPanel {app} />
+    {/if}
     {#if classesOpen}
       <ClassesPanel {app} onclose={() => (classesOpen = false)} />
     {/if}

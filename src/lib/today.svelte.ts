@@ -9,17 +9,19 @@
  * overnight moves on to the next day right at midnight, and the Collection
  * can count down to the next Newcomer.
  *
- * In development `?today=2026-10-30` pretends it is that day, for walking
- * the calendar without waiting for it.
+ * In development `?today=2026-10-30`, or the day set in the debug menu
+ * (`debug/debug.svelte.ts`), pretends it is that day, for walking the
+ * calendar without waiting for it.
  */
 
 import { browser, dev } from "$app/environment";
+import { debug } from "$lib/debug/debug.svelte";
 import { isDay, localDay } from "$lib/scenes/limited/calendar";
 
 function override(): string | null {
   if (!dev) return null;
   const asked = new URLSearchParams(location.search).get("today");
-  return asked && isDay(asked) ? asked : null;
+  return asked && isDay(asked) ? asked : debug.dayOverride;
 }
 
 class Today {

@@ -208,6 +208,16 @@ export class Session {
     this.#save();
   }
 
+  /**
+   * The next arrival at once, as if the quiet time had just been banked,
+   * for the debug menu. It is chosen exactly as a real one is.
+   */
+  arriveNow(intervalMs: number) {
+    if (!this.running) return;
+    this.#clock = createArrivalClock(intervalMs, this.#random);
+    this.#arrive();
+  }
+
   #scareSome(firstWave: boolean) {
     const staying = this.creatures.filter(
       (creature) => !this.fleeing.includes(creature.id),

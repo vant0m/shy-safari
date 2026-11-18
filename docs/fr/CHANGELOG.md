@@ -19,6 +19,10 @@ Les changements notables du projet. Format inspiré de
   noms et anecdotes en anglais, espagnol et français
   ([ADR 0016](../adr/0016-christmas-chalet.md)).
 - `dangle`, un mouvement pour les décorations suspendues à une guirlande.
+- Un menu debug, avec `bun run dev` uniquement : faux micro réglable à la
+  main, date simulée, horloge des arrivées accélérée et arrivées à la
+  demande ([lancer-en-local.md](lancer-en-local.md)). Il est absent des
+  versions de production.
 - Workflows GitHub Actions, un par vérification (typecheck, tests, lint,
   build), chacun avec son badge dans le README.
 - Captures et GIF du README dans `docs/images/`, et

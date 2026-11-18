@@ -18,6 +18,10 @@ All notable changes to this project are documented here. The format follows
   one mark and Rudolph, with names and facts in English, Spanish and French
   ([ADR 0016](docs/adr/0016-christmas-chalet.md)).
 - `dangle`, a motion for ornaments hanging from a garland.
+- A debug menu under `bun run dev` only: a fake microphone with a level
+  set by hand, a pretend date, a faster arrival clock and arrivals on
+  demand ([docs/running-locally.md](docs/running-locally.md)). It is left
+  out of production builds.
 - GitHub Actions workflows, one per check (typecheck, tests, lint, build),
   each with its own README badge.
 - README screenshots and GIFs in `docs/images/`, and `docs/how-it-works.md`

@@ -8,6 +8,7 @@
  * teacher's trust in the tool.
  */
 
+import { debug } from "$lib/debug/debug.svelte";
 import { cancelFrame, requestFrame } from "$lib/frames";
 import { applyCalibration, type Calibration } from "./calibration";
 
@@ -69,11 +70,44 @@ export class Microphone {
     this.status = "off";
   }
 
+  /**
+   * A pretend microphone for the debug menu: no permission prompt, and a
+   * level set by hand, smoothed exactly as a real one is so Too Loud comes
+   * and goes as it would in a room. Only ever reached under `bun run dev`.
+   */
+  #startFake(): boolean {
+    this.activeDeviceId = "debug";
+    this.status = "on";
+    let frame = 0;
+    let smoothed = 0;
+    let lastTick = performance.now();
+    let lastPublished = 0;
+    const measure = () => {
+      const now = performance.now();
+      const elapsed = Math.min(250, now - lastTick);
+      smoothed +=
+        (debug.level - smoothed) * (1 - Math.exp(-elapsed / SMOOTHING_MS));
+      lastTick = now;
+      if (now - lastPublished >= PUBLISH_INTERVAL_MS) {
+        this.rawLevel = smoothed;
+        this.unsmoothedLevel = debug.level;
+        lastPublished = now;
+      }
+      frame = requestFrame(measure);
+    };
+    measure();
+    this.#teardown = () => cancelFrame(frame);
+    return true;
+  }
+
   async start(deviceId: string): Promise<boolean> {
     const generation = ++this.#generation;
     this.#teardown();
     this.#teardown = () => {};
     this.status = "starting";
+
+    // The debug menu's stand-in (development only, `debug/debug.svelte.ts`).
+    if (debug.micIsFake) return this.#startFake();
 
     const AudioContextClass =
       typeof window === "undefined"

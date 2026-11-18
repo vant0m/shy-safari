@@ -7,6 +7,7 @@
 
 import { CHIME_MS, playChime } from "$lib/audio/chime";
 import { Microphone, SMOOTHING_MS } from "$lib/audio/microphone.svelte";
+import { debug } from "$lib/debug/debug.svelte";
 import { classes } from "$lib/classes/classes.svelte";
 import { cancelFrame, requestFrame } from "$lib/frames";
 import { notes } from "$lib/notes/notes.svelte";
@@ -236,7 +237,8 @@ export class App {
           now,
         );
         this.session.tick(
-          delta,
+          // Sped up from the debug menu, under `bun run dev` only.
+          delta * debug.timeScale,
           this.monitor.state === "quiet",
           settings.arrivalIntervalMs,
           settings.loudResponse === "flee",

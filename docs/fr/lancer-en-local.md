@@ -104,6 +104,29 @@ Le stockage local est propre à chaque adresse : les données de
 `localhost:5173` (dev) et de `localhost:4173` (production, étape 6) sont
 séparées.
 
+### Le menu debug (sans micro)
+
+Avec `bun run dev` uniquement, un bouton jaune en forme d'insecte apparaît
+en bas à gauche. Il ouvre un petit panneau :
+
+- **Fake microphone** (faux micro) : cochez-le et l'app ne demande plus le
+  micro. Le curseur, ou **Silent / Calm / Too loud** (silence, calme, trop
+  fort), règle le niveau sonore ; la ligne dessous affiche le niveau,
+  l'objectif de la classe et si la salle est jugée calme ou trop bruyante,
+  pour voir l'effet « trop fort » arriver et repartir.
+- **Date** : faites comme si on était un autre jour, pour ouvrir les
+  tableaux à durée limitée (Halloween, Noël) et parcourir leur calendrier.
+  **Real date** revient à la vraie date. Même effet que `?today=2026-12-18`
+  dans l'adresse.
+- **Arrivals** (arrivées) : horloge des arrivées 10 ou 60 fois plus rapide,
+  arrivée suivante **tout de suite** (**Arrival now**, tirée comme une vraie,
+  nouveaux venus compris), ou **tout le monde dehors** (**Everyone out**).
+
+Les choix sont gardés dans ce navigateur sous `shy-safari-debug`, hors des
+données de l'app : ils ne sont jamais exportés ni synchronisés. Le menu
+n'existe pas du tout dans la version de production (`bun run build`) :
+l'app hébergée utilise toujours le vrai micro et la vraie date.
+
 ## Étape 6 — Tester la version de production
 
 C'est la version qui est réellement mise en ligne : des fichiers statiques

@@ -84,6 +84,27 @@ with **Ctrl + C**.
 Local storage belongs to one address: `localhost:5173` (dev) and
 `localhost:4173` (production, step 6) keep separate data.
 
+### The debug menu (no microphone needed)
+
+Under `bun run dev` only, a yellow bug button sits at the bottom left. It
+opens a small panel:
+
+- **Fake microphone**: tick it and the app never asks for the microphone.
+  The slider, or **Silent / Calm / Too loud**, sets the room's level; the
+  line under it shows the level, the class's volume goal and whether the
+  room counts as quiet or too loud, so you can watch Too Loud come and go.
+- **Date**: pretend it is another day, to open the limited-time Scenes
+  (Halloween, Christmas) and walk their calendars. **Real date** goes back.
+  It does the same as `?today=2026-12-18` in the address.
+- **Arrivals**: run the arrival clock 10 or 60 times faster, bring the
+  next arrival **now** (chosen exactly as a real one, Newcomers included),
+  or bring **everyone out**.
+
+The choices are kept in this browser under `shy-safari-debug`, outside the
+app's data, so they are never exported or synced. The menu is not part of
+the production build (`bun run build`) at all: the hosted app always uses
+the real microphone and the real date.
+
 ## Step 6 — Test the production build
 
 This is what actually goes online: static files in `build/`.
