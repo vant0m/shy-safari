@@ -23,19 +23,26 @@ _A classroom noise monitor that rewards quiet. Shout, and the animals hide._
 
 </div>
 
----
+<details>
+<summary><kbd>Table of contents</kbd></summary>
 
-- [0. 🚦 Status](#status)
-- [1. ✨ What it does](#what-it-does)
-- [2. 📖 Background](#background)
-- [3. 🧰 Tech stack](#tech-stack)
-- [4. 🚀 Install](#install)
-- [5. 🎮 Usage](#usage)
-- [6. ⚙️ How it works](#how-it-works)
-- [7. 🗓️ Version history](#version-history)
-- [8. 🙏 Credits & license](#credits)
+- [🚦 Status](#status)
+- [✨ What it does](#what-it-does)
+- [📖 Background](#background)
+- [🧰 Tech stack](#tech-stack)
+- [🚀 Install](#install)
+  - [Prerequisites](#prerequisites)
+  - [Quick start](#quick-start)
+  - [Going further](#going-further)
+  - [Build variables](#build-variables)
+- [🎮 Usage](#usage)
+- [⚙️ How it works](#how-it-works)
+- [🗓️ Version history](#version-history)
+- [🙏 Credits & license](#credits)
 
-## <a name="status"></a>0. 🚦 Status
+</details>
+
+## <a name="status"></a>🚦 Status
 
 | Check                            | State                                                                 |
 | -------------------------------- | --------------------------------------------------------------------- |
@@ -43,9 +50,13 @@ _A classroom noise monitor that rewards quiet. Shout, and the animals hide._
 | Latest version                   | **[v1.0.0](CHANGELOG.md#100--2026-11-17)** — 2026-11-17               |
 | Live                             | [www.shysafari.com](https://www.shysafari.com) (the original project) |
 
-<p align="right"><a href="#readme-top">↑ back to top</a></p>
+<div align="right">
 
-## <a name="what-it-does"></a>1. ✨ What it does
+[![][back-to-top]](#readme-top)
+
+</div>
+
+## <a name="what-it-does"></a>✨ What it does
 
 A calm scene on the classroom projector — a savanna, a coral reef, deep space,
 the age of dinosaurs, a forest, the jungle, the Arctic or an enchanted valley —
@@ -62,9 +73,13 @@ to install.
 - **A school's data stays its own.** In the browser by default; on its own
   Cloudflare account if it turns sync on.
 
-<p align="right"><a href="#readme-top">↑ back to top</a></p>
+<div align="right">
 
-## <a name="background"></a>2. 📖 Background
+[![][back-to-top]](#readme-top)
+
+</div>
+
+## <a name="background"></a>📖 Background
 
 - **The problem:** classroom noise meters reward noise — a bouncing needle or
   a red light makes being loud more interesting than being quiet.
@@ -77,9 +92,13 @@ to install.
   ([teacherdotdev/shy-safari](https://github.com/teacherdotdev/shy-safari)),
   now maintained for long-term hosting by schools.
 
-<p align="right"><a href="#readme-top">↑ back to top</a></p>
+<div align="right">
 
-## <a name="tech-stack"></a>3. 🧰 Tech stack
+[![][back-to-top]](#readme-top)
+
+</div>
+
+## <a name="tech-stack"></a>🧰 Tech stack
 
 | Technology                 | Version | Role                                    | Links                                                                           |
 | -------------------------- | ------- | --------------------------------------- | ------------------------------------------------------------------------------- |
@@ -89,7 +108,7 @@ to install.
 | Cloudflare Workers         | —       | Hosting (static assets, optional sync)  | [docs](https://developers.cloudflare.com/workers/static-assets/)                |
 
 <details>
-<summary>All tools and services</summary>
+<summary>🔹 <b>All tools and services</b></summary>
 
 | Technology                          | Version | Role                            | Links                                                                                                             |
 | ----------------------------------- | ------- | ------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
@@ -115,12 +134,24 @@ to install.
 > The microphone only works on **HTTPS** (or `localhost`): browsers refuse it to
 > insecure pages.
 
-<p align="right"><a href="#readme-top">↑ back to top</a></p>
+<div align="right">
 
-## <a name="install"></a>4. 🚀 Install
+[![][back-to-top]](#readme-top)
 
-**Quick start** — prerequisites: [Git](https://git-scm.com) and
-[Bun](https://bun.sh) 1.3 or newer.
+</div>
+
+## <a name="install"></a>🚀 Install
+
+### <a name="prerequisites"></a>Prerequisites
+
+| Tool                    | Version                                         | Windows                                         | macOS / Linux                               | Link                                               |
+| ----------------------- | ----------------------------------------------- | ----------------------------------------------- | ------------------------------------------- | -------------------------------------------------- |
+| Git                     | any recent                                      | `winget install Git.Git`                        | `brew install git` · `apt install git`      | [git-scm.com](https://git-scm.com)                 |
+| Bun                     | ≥ 1.3                                           | `powershell -c "irm bun.sh/install.ps1 \| iex"` | `curl -fsSL https://bun.sh/install \| bash` | [bun.sh](https://bun.sh)                           |
+| Browser                 | recent Chrome, Edge, Firefox or Safari          | —                                               | —                                           | —                                                  |
+| Cloudflare _(optional)_ | free account; Wrangler comes with `bun install` | —                                               | —                                           | [dash.cloudflare.com](https://dash.cloudflare.com) |
+
+### <a name="quick-start"></a>Quick start
 
 ```sh
 git clone https://github.com/vant0m/shy-safari.git
@@ -129,7 +160,7 @@ bun install
 bun run dev      # http://localhost:5173
 ```
 
-**Going further**
+### <a name="going-further"></a>Going further
 
 - Step-by-step local setup: [docs/running-locally.md](docs/running-locally.md)
 - Hosting your own copy (Cloudflare, other static hosts, domain, sign-in):
@@ -137,8 +168,10 @@ bun run dev      # http://localhost:5173
 - A subdomain with sign-in and sync, step by step:
   [docs/deploy-step-by-step.md](docs/deploy-step-by-step.md)
 
+### <a name="build-variables"></a>Build variables
+
 <details>
-<summary>Build variables</summary>
+<summary>🔹 <b>Show the variables</b></summary>
 
 | Variable            | Effect                                                                                         |
 | ------------------- | ---------------------------------------------------------------------------------------------- |
@@ -149,9 +182,13 @@ bun run dev      # http://localhost:5173
 
 </details>
 
-<p align="right"><a href="#readme-top">↑ back to top</a></p>
+<div align="right">
 
-## <a name="usage"></a>5. 🎮 Usage
+[![][back-to-top]](#readme-top)
+
+</div>
+
+## <a name="usage"></a>🎮 Usage
 
 1. Open the page, pick a Scene, press **Start** and allow the microphone.
 2. Let the class work: the first animal comes after 10–20 quiet seconds, then
@@ -159,52 +196,57 @@ bun run dev      # http://localhost:5173
 3. Move the mouse to show the controls; **Settings** sets the volume goal, the
    arrival rate and what happens when it gets too loud.
 
-### Nine Scenes
-
-Each with its own animals, ambience and "too loud" weather — here the reef,
-deep space, the Arctic and the enchanted valley.
-
-<img src="docs/images/scenes.png" alt="Four Scenes: coral reef, deep space, Arctic, enchanted valley" width="720">
-
-### Legendary creatures
-
-One per Scene, about one arrival in two hundred, at most once a session —
-and it arrives under a rainbow.
-
-<img src="docs/images/legendary.gif" alt="Pegasus, the enchanted valley's legendary creature, in its rainbow ring" width="320">
-
-### Notes and Timer
-
-Instructions drawn into the Scene, and a countdown whose chime never counts as
-noise.
-
-<img src="docs/images/notes-timer.png" alt="A note hanging in the reef and a running timer" width="720">
-
-### Collection and statistics
-
-Every animal a class has spotted, and per-class statistics: quiet time,
-arrivals, the noise level through the day against the goal, and a comparison
-of every class.
-
-<img src="docs/images/collection.png" alt="The Collection of the savanna's animals" width="720">
-
-<img src="docs/images/statistics.png" alt="Statistics for a class over seven days" width="720">
-
-### Classes, backups and sync
-
-One class per group, each with its own animals, notes, settings and
-statistics; export and import them all as a file.
-
-<img src="docs/images/classes.png" alt="The Classes panel with export and import" width="720">
+<table align="center">
+<tr>
+<td align="center" width="50%">
+<b>🌍 Nine Scenes</b><br>
+<a href="docs/images/scenes.png"><img src="docs/images/scenes.png" alt="Four Scenes: coral reef, deep space, Arctic, enchanted valley" width="380"></a><br>
+<sub>Each with its own animals, ambience and "too loud" weather.</sub>
+</td>
+<td align="center" width="50%">
+<b>🌈 Legendary creatures</b><br>
+<a href="docs/images/legendary.gif"><img src="docs/images/legendary.gif" alt="Pegasus, the enchanted valley's legendary creature, in its rainbow ring" width="260"></a><br>
+<sub>One per Scene, about one arrival in two hundred, under a rainbow.</sub>
+</td>
+</tr>
+<tr>
+<td align="center" width="50%">
+<b>📝 Notes and Timer</b><br>
+<a href="docs/images/notes-timer.png"><img src="docs/images/notes-timer.png" alt="A note hanging in the reef and a running timer" width="380"></a><br>
+<sub>Instructions drawn into the Scene; the chime never counts as noise.</sub>
+</td>
+<td align="center" width="50%">
+<b>🗂️ Collection</b><br>
+<a href="docs/images/collection.png"><img src="docs/images/collection.png" alt="The Collection of the savanna's animals" width="380"></a><br>
+<sub>Every animal a class has spotted; rare and legendary ones stand out.</sub>
+</td>
+</tr>
+<tr>
+<td align="center" width="50%">
+<b>📊 Statistics</b><br>
+<a href="docs/images/statistics.png"><img src="docs/images/statistics.png" alt="Statistics for a class over seven days" width="380"></a><br>
+<sub>Quiet time, arrivals and noise through the day, every class compared.</sub>
+</td>
+<td align="center" width="50%">
+<b>👥 Classes, backups and sync</b><br>
+<a href="docs/images/classes.png"><img src="docs/images/classes.png" alt="The Classes panel with export and import" width="380"></a><br>
+<sub>One class per group; export and import them all as a file.</sub>
+</td>
+</tr>
+</table>
 
 > [!TIP]
 > A school hosting its own copy can turn on **sync**: teachers sign in with an
 > e-mailed code and find their classes on any computer
 > ([guide](docs/deploy-step-by-step.md)).
 
-<p align="right"><a href="#readme-top">↑ back to top</a></p>
+<div align="right">
 
-## <a name="how-it-works"></a>6. ⚙️ How it works
+[![][back-to-top]](#readme-top)
+
+</div>
+
+## <a name="how-it-works"></a>⚙️ How it works
 
 ```mermaid
 flowchart LR
@@ -219,7 +261,7 @@ flowchart LR
 ```
 
 <details>
-<summary>Key modules</summary>
+<summary>🔹 <b>Key modules</b></summary>
 
 | Path                              | Role                                              |
 | --------------------------------- | ------------------------------------------------- |
@@ -243,9 +285,13 @@ flowchart LR
 > Microphone audio is measured in the browser and never recorded or sent
 > anywhere, with or without sync.
 
-<p align="right"><a href="#readme-top">↑ back to top</a></p>
+<div align="right">
 
-## <a name="version-history"></a>7. 🗓️ Version history
+[![][back-to-top]](#readme-top)
+
+</div>
+
+## <a name="version-history"></a>🗓️ Version history
 
 Versions follow [Semantic Versioning](https://semver.org/); every change is in
 [CHANGELOG.md](CHANGELOG.md) ([Keep a Changelog](https://keepachangelog.com/)).
@@ -255,9 +301,13 @@ Versions follow [Semantic Versioning](https://semver.org/); every change is in
 | [1.0.0](CHANGELOG.md#100--2026-11-17) | 2026-11-17 | Enchanted valley, legendary creatures, settings and statistics per class, export/import, optional sync, docs |
 | [0.0.1](CHANGELOG.md#001--2026-11)    | 2026-11    | EdTech-a-thon prototype: seven Scenes and Pumpkin Hollow, classes, notes, timer                              |
 
-<p align="right"><a href="#readme-top">↑ back to top</a></p>
+<div align="right">
 
-## <a name="credits"></a>8. 🙏 Credits & license
+[![][back-to-top]](#readme-top)
+
+</div>
+
+## <a name="credits"></a>🙏 Credits & license
 
 - **Original project and authors:** created during the 2026 EdTech-a-thon by
   [Duncan A. Johnson](https://github.com/DuncanAJohnson) and
@@ -276,7 +326,11 @@ Versions follow [Semantic Versioning](https://semver.org/); every change is in
 [Conventional Commits](https://www.conventionalcommits.org/); project notes in
 [AGENTS.md](AGENTS.md).
 
-<p align="right"><a href="#readme-top">↑ back to top</a></p>
+<div align="right">
+
+[![][back-to-top]](#readme-top)
+
+</div>
 
 [badge-typecheck]: https://img.shields.io/github/actions/workflow/status/vant0m/shy-safari/typecheck.yml?branch=main&label=typecheck&style=flat-square
 [badge-tests]: https://img.shields.io/github/actions/workflow/status/vant0m/shy-safari/tests.yml?branch=main&label=tests&style=flat-square
@@ -291,3 +345,4 @@ Versions follow [Semantic Versioning](https://semver.org/); every change is in
 [ci-build]: https://github.com/vant0m/shy-safari/actions/workflows/build.yml
 [commits]: https://github.com/vant0m/shy-safari/commits
 [contributors]: https://github.com/vant0m/shy-safari/graphs/contributors
+[back-to-top]: https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square

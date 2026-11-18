@@ -23,19 +23,26 @@ _Un sonomètre de classe qui récompense le calme. Criez, et les animaux se cach
 
 </div>
 
----
+<details>
+<summary><kbd>Sommaire</kbd></summary>
 
-- [0. 🚦 État](#etat)
-- [1. ✨ Ce que fait l'application](#presentation)
-- [2. 📖 Contexte](#contexte)
-- [3. 🧰 Technologies](#technologies)
-- [4. 🚀 Installer](#installer)
-- [5. 🎮 Utiliser](#utiliser)
-- [6. ⚙️ Fonctionnement](#fonctionnement)
-- [7. 🗓️ Historique des versions](#versions)
-- [8. 🙏 Crédits et licence](#credits)
+- [🚦 État](#etat)
+- [✨ Ce que fait l'application](#presentation)
+- [📖 Contexte](#contexte)
+- [🧰 Technologies](#technologies)
+- [🚀 Installer](#installer)
+  - [Prérequis](#prerequis)
+  - [Démarrage rapide](#demarrage-rapide)
+  - [Pour aller plus loin](#aller-plus-loin)
+  - [Variables de build](#variables)
+- [🎮 Utiliser](#utiliser)
+- [⚙️ Fonctionnement](#fonctionnement)
+- [🗓️ Historique des versions](#versions)
+- [🙏 Crédits et licence](#credits)
 
-## <a name="etat"></a>0. 🚦 État
+</details>
+
+## <a name="etat"></a>🚦 État
 
 | Vérification                     | État                                                                 |
 | -------------------------------- | -------------------------------------------------------------------- |
@@ -43,9 +50,13 @@ _Un sonomètre de classe qui récompense le calme. Criez, et les animaux se cach
 | Dernière version                 | **[v1.0.0](CHANGELOG.md#100--2026-11-17)** — 17/11/2026              |
 | En ligne                         | [www.shysafari.com](https://www.shysafari.com) (le projet d'origine) |
 
-<p align="right"><a href="#readme-top">↑ haut de page</a></p>
+<div align="right">
 
-## <a name="presentation"></a>1. ✨ Ce que fait l'application
+[![][back-to-top]](#readme-top)
+
+</div>
+
+## <a name="presentation"></a>✨ Ce que fait l'application
 
 Une scène paisible au vidéoprojecteur — savane, récif de corail, espace
 profond, préhistoire, forêt, jungle, Arctique ou vallée enchantée — où des
@@ -65,9 +76,13 @@ navigateur, rien à installer.
   par défaut ; sur son propre compte Cloudflare s'il active la
   synchronisation.
 
-<p align="right"><a href="#readme-top">↑ haut de page</a></p>
+<div align="right">
 
-## <a name="contexte"></a>2. 📖 Contexte
+[![][back-to-top]](#readme-top)
+
+</div>
+
+## <a name="contexte"></a>📖 Contexte
 
 - **Le problème :** les sonomètres de classe récompensent le bruit — une
   aiguille qui s'agite ou un voyant rouge rendent le bruit plus intéressant
@@ -81,9 +96,13 @@ navigateur, rien à installer.
   ([teacherdotdev/shy-safari](https://github.com/teacherdotdev/shy-safari)),
   désormais maintenu pour un hébergement durable par des établissements.
 
-<p align="right"><a href="#readme-top">↑ haut de page</a></p>
+<div align="right">
 
-## <a name="technologies"></a>3. 🧰 Technologies
+[![][back-to-top]](#readme-top)
+
+</div>
+
+## <a name="technologies"></a>🧰 Technologies
 
 | Technologie                | Version | Rôle                                      | Liens                                                                          |
 | -------------------------- | ------- | ----------------------------------------- | ------------------------------------------------------------------------------ |
@@ -93,7 +112,7 @@ navigateur, rien à installer.
 | Cloudflare Workers         | —       | Hébergement (fichiers statiques, synchro) | [doc](https://developers.cloudflare.com/workers/static-assets/)                |
 
 <details>
-<summary>Tous les outils et services</summary>
+<summary>🔹 <b>Tous les outils et services</b></summary>
 
 | Technologie                           | Version | Rôle                                  | Liens                                                                                                            |
 | ------------------------------------- | ------- | ------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
@@ -119,12 +138,24 @@ navigateur, rien à installer.
 > Le micro ne fonctionne qu'en **HTTPS** (ou sur `localhost`) : les navigateurs
 > le refusent aux pages non sécurisées.
 
-<p align="right"><a href="#readme-top">↑ haut de page</a></p>
+<div align="right">
 
-## <a name="installer"></a>4. 🚀 Installer
+[![][back-to-top]](#readme-top)
 
-**Démarrage rapide** — prérequis : [Git](https://git-scm.com) et
-[Bun](https://bun.sh) 1.3 ou plus.
+</div>
+
+## <a name="installer"></a>🚀 Installer
+
+### <a name="prerequis"></a>Prérequis
+
+| Outil                     | Version                                                  | Windows                                         | macOS / Linux                               | Lien                                               |
+| ------------------------- | -------------------------------------------------------- | ----------------------------------------------- | ------------------------------------------- | -------------------------------------------------- |
+| Git                       | récente                                                  | `winget install Git.Git`                        | `brew install git` · `apt install git`      | [git-scm.com](https://git-scm.com)                 |
+| Bun                       | ≥ 1.3                                                    | `powershell -c "irm bun.sh/install.ps1 \| iex"` | `curl -fsSL https://bun.sh/install \| bash` | [bun.sh](https://bun.sh)                           |
+| Navigateur                | Chrome, Edge, Firefox ou Safari récent                   | —                                               | —                                           | —                                                  |
+| Cloudflare _(facultatif)_ | compte gratuit ; Wrangler est installé par `bun install` | —                                               | —                                           | [dash.cloudflare.com](https://dash.cloudflare.com) |
+
+### <a name="demarrage-rapide"></a>Démarrage rapide
 
 ```sh
 git clone https://github.com/vant0m/shy-safari.git
@@ -133,7 +164,7 @@ bun install
 bun run dev      # http://localhost:5173
 ```
 
-**Pour aller plus loin**
+### <a name="aller-plus-loin"></a>Pour aller plus loin
 
 - Lancement local pas à pas : [lancer-en-local.md](lancer-en-local.md)
 - Héberger votre copie (Cloudflare, autres hébergeurs, domaine, connexion) :
@@ -141,8 +172,10 @@ bun run dev      # http://localhost:5173
 - Un sous-domaine avec connexion et synchronisation, pas à pas :
   [deploiement-pas-a-pas.md](deploiement-pas-a-pas.md)
 
+### <a name="variables"></a>Variables de build
+
 <details>
-<summary>Variables de build</summary>
+<summary>🔹 <b>Afficher les variables</b></summary>
 
 | Variable            | Effet                                                                                      |
 | ------------------- | ------------------------------------------------------------------------------------------ |
@@ -153,9 +186,13 @@ bun run dev      # http://localhost:5173
 
 </details>
 
-<p align="right"><a href="#readme-top">↑ haut de page</a></p>
+<div align="right">
 
-## <a name="utiliser"></a>5. 🎮 Utiliser
+[![][back-to-top]](#readme-top)
+
+</div>
+
+## <a name="utiliser"></a>🎮 Utiliser
 
 1. Ouvrez la page, choisissez une scène, appuyez sur **Commencer** et
    autorisez le micro.
@@ -164,43 +201,44 @@ bun run dev      # http://localhost:5173
 3. Bougez la souris pour afficher les commandes ; **Réglages** fixe l'objectif
    de volume, la fréquence d'arrivée et ce qui se passe quand c'est trop fort.
 
-### Neuf scènes
-
-Chacune avec ses animaux, son ambiance et sa « météo » quand c'est trop fort —
-ici le récif, l'espace, l'Arctique et la vallée enchantée.
-
-<img src="../images/scenes.png" alt="Quatre scènes : récif de corail, espace profond, Arctique, vallée enchantée" width="720">
-
-### Créatures légendaires
-
-Une par scène, environ une arrivée sur deux cents, au plus une fois par
-séance — et elle arrive sous un arc-en-ciel.
-
-<img src="../images/legendary.gif" alt="Pégase, la créature légendaire de la vallée enchantée, dans son anneau arc-en-ciel" width="320">
-
-### Notes et minuteur
-
-Des consignes intégrées au décor, et un compte à rebours dont la sonnerie ne
-compte jamais comme du bruit.
-
-<img src="../images/notes-timer.png" alt="Une note suspendue dans le récif et un minuteur en cours" width="720">
-
-### Collection et statistiques
-
-Tous les animaux aperçus par une classe, et des statistiques par classe :
-temps calme, arrivées, niveau sonore au fil de la journée face à l'objectif,
-comparatif des classes.
-
-<img src="../images/collection.png" alt="La Collection des animaux de la savane" width="720">
-
-<img src="../images/statistics.png" alt="Statistiques d'une classe sur sept jours" width="720">
-
-### Classes, sauvegarde et synchronisation
-
-Une classe par groupe, chacune avec ses animaux, ses notes, ses réglages et
-ses statistiques ; exportez-les toutes dans un fichier et réimportez-les.
-
-<img src="../images/classes.png" alt="Le panneau Classes avec export et import" width="720">
+<table align="center">
+<tr>
+<td align="center" width="50%">
+<b>🌍 Neuf scènes</b><br>
+<a href="../images/scenes.png"><img src="../images/scenes.png" alt="Quatre scènes : récif de corail, espace profond, Arctique, vallée enchantée" width="380"></a><br>
+<sub>Chacune avec ses animaux, son ambiance et sa « météo » quand c'est trop fort.</sub>
+</td>
+<td align="center" width="50%">
+<b>🌈 Créatures légendaires</b><br>
+<a href="../images/legendary.gif"><img src="../images/legendary.gif" alt="Pégase, la créature légendaire de la vallée enchantée, dans son anneau arc-en-ciel" width="260"></a><br>
+<sub>Une par scène, environ une arrivée sur deux cents, sous un arc-en-ciel.</sub>
+</td>
+</tr>
+<tr>
+<td align="center" width="50%">
+<b>📝 Notes et minuteur</b><br>
+<a href="../images/notes-timer.png"><img src="../images/notes-timer.png" alt="Une note suspendue dans le récif et un minuteur en cours" width="380"></a><br>
+<sub>Des consignes intégrées au décor ; la sonnerie ne compte jamais comme du bruit.</sub>
+</td>
+<td align="center" width="50%">
+<b>🗂️ Collection</b><br>
+<a href="../images/collection.png"><img src="../images/collection.png" alt="La Collection des animaux de la savane" width="380"></a><br>
+<sub>Tous les animaux aperçus par une classe ; rares et légendaires mis en valeur.</sub>
+</td>
+</tr>
+<tr>
+<td align="center" width="50%">
+<b>📊 Statistiques</b><br>
+<a href="../images/statistics.png"><img src="../images/statistics.png" alt="Statistiques d'une classe sur sept jours" width="380"></a><br>
+<sub>Temps calme, arrivées et bruit au fil de la journée, classes comparées.</sub>
+</td>
+<td align="center" width="50%">
+<b>👥 Classes, sauvegarde et synchro</b><br>
+<a href="../images/classes.png"><img src="../images/classes.png" alt="Le panneau Classes avec export et import" width="380"></a><br>
+<sub>Une classe par groupe ; exportez-les toutes dans un fichier.</sub>
+</td>
+</tr>
+</table>
 
 > [!TIP]
 > Un établissement qui héberge sa copie peut activer la **synchronisation** :
@@ -208,9 +246,13 @@ ses statistiques ; exportez-les toutes dans un fichier et réimportez-les.
 > leurs classes sur n'importe quel ordinateur
 > ([guide](deploiement-pas-a-pas.md)).
 
-<p align="right"><a href="#readme-top">↑ haut de page</a></p>
+<div align="right">
 
-## <a name="fonctionnement"></a>6. ⚙️ Fonctionnement
+[![][back-to-top]](#readme-top)
+
+</div>
+
+## <a name="fonctionnement"></a>⚙️ Fonctionnement
 
 ```mermaid
 flowchart LR
@@ -225,7 +267,7 @@ flowchart LR
 ```
 
 <details>
-<summary>Modules clés</summary>
+<summary>🔹 <b>Modules clés</b></summary>
 
 | Chemin                            | Rôle                                                    |
 | --------------------------------- | ------------------------------------------------------- |
@@ -250,9 +292,13 @@ flowchart LR
 > Le son du micro est mesuré dans le navigateur, jamais enregistré ni envoyé,
 > avec ou sans synchronisation.
 
-<p align="right"><a href="#readme-top">↑ haut de page</a></p>
+<div align="right">
 
-## <a name="versions"></a>7. 🗓️ Historique des versions
+[![][back-to-top]](#readme-top)
+
+</div>
+
+## <a name="versions"></a>🗓️ Historique des versions
 
 Les versions suivent [SemVer](https://semver.org/lang/fr/) ; tous les
 changements sont dans l'[historique des versions](CHANGELOG.md)
@@ -263,9 +309,13 @@ changements sont dans l'[historique des versions](CHANGELOG.md)
 | [1.0.0](CHANGELOG.md#100--2026-11-17) | 2026-11-17 | Vallée enchantée, légendaires, réglages et statistiques par classe, export/import, synchro facultative, documentation |
 | [0.0.1](CHANGELOG.md#001--2026-11)    | 2026-11    | Prototype de l'EdTech-a-thon : sept scènes et Pumpkin Hollow, classes, notes, minuteur                                |
 
-<p align="right"><a href="#readme-top">↑ haut de page</a></p>
+<div align="right">
 
-## <a name="credits"></a>8. 🙏 Crédits et licence
+[![][back-to-top]](#readme-top)
+
+</div>
+
+## <a name="credits"></a>🙏 Crédits et licence
 
 - **Projet et auteurs d'origine :** créé pendant l'EdTech-a-thon 2026 par
   [Duncan A. Johnson](https://github.com/DuncanAJohnson) et
@@ -284,7 +334,11 @@ changements sont dans l'[historique des versions](CHANGELOG.md)
 suivent [Conventional Commits](https://www.conventionalcommits.org/fr/) ; notes
 du projet dans [AGENTS.md](../../AGENTS.md).
 
-<p align="right"><a href="#readme-top">↑ haut de page</a></p>
+<div align="right">
+
+[![][back-to-top]](#readme-top)
+
+</div>
 
 [badge-typecheck]: https://img.shields.io/github/actions/workflow/status/vant0m/shy-safari/typecheck.yml?branch=main&label=typecheck&style=flat-square
 [badge-tests]: https://img.shields.io/github/actions/workflow/status/vant0m/shy-safari/tests.yml?branch=main&label=tests&style=flat-square
@@ -299,3 +353,4 @@ du projet dans [AGENTS.md](../../AGENTS.md).
 [ci-build]: https://github.com/vant0m/shy-safari/actions/workflows/build.yml
 [commits]: https://github.com/vant0m/shy-safari/commits
 [contributors]: https://github.com/vant0m/shy-safari/graphs/contributors
+[back-to-top]: https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square
