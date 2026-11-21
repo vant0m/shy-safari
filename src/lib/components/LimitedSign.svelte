@@ -63,11 +63,11 @@
     box-shadow: 0 0.25em 0 #2b2b3a40;
   }
 
-  /* At Christmas: hung from the garland at the left, above the chalet,
-     clear of the clearing where everyone walks. */
+  /* At Christmas: up in the night sky at the left, clear of the snow where
+     everyone walks. */
   .sign-christmas {
-    left: 2.5%;
-    top: 20%;
+    left: 3%;
+    top: 14%;
     transform: rotate(1.5deg);
     border-color: #5a3a24;
     background: #7a4a2c;

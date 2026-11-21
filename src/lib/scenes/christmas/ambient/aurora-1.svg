@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" preserveAspectRatio="none">
+<defs>
+<linearGradient id="christmas-aurora-1-glow" x1="0" y1="0" x2="0" y2="280" gradientUnits="userSpaceOnUse"><stop offset="0.1" stop-color="#7ee8b8" stop-opacity="0"/><stop offset="0.55" stop-color="#7ee8b8" stop-opacity="0.22"/><stop offset="0.85" stop-color="#7ee8b8" stop-opacity="0.55"/><stop offset="1" stop-color="#c6f8de" stop-opacity="0.8"/></linearGradient>
+</defs>
+<path d="M0 0 L1200 0 L1200 200 C 1120 230, 1040 170, 940 262 C 860 292, 780 232, 700 210 C 620 240, 540 180, 460 252 C 380 282, 300 222, 220 196 C 140 226, 60 166, 0 236 Z" fill="url(#christmas-aurora-1-glow)"/>
+</svg>

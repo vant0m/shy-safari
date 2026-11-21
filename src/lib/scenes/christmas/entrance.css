@@ -15,7 +15,7 @@
 }
 
 /* Lit steadily, not twinkling: an animation would override the opacity and
-   skip the fade, so the lights would jump on. The garland's bulbs twinkle. */
+   skip the fade, so the lights would jump on. The string lights twinkle. */
 .scene-stage[data-scene="christmas"][data-welcome] .christmas-tree-light {
   opacity: var(--christmas-light);
 }

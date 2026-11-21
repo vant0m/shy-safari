@@ -1,7 +1,7 @@
 <script lang="ts">
   /**
    * A Note at the Christmas chalet: a painted board in a wooden frame,
-   * hanging from the garland on two red ribbons, with snow lying along its
+   * hanging from above on two red ribbons, with snow lying along its
    * top and a sprig of holly on its corner. The same board as the reef's
    * (`scenes/noteArt.ts`), so the words sit on one plain, pale surface that
    * reads from the back of the room; the snow and the holly stay on the frame.

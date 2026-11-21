@@ -1,5 +1,5 @@
 /* The Christmas chalet's own styles: its Ambient Life, the lights in its
-   backdrop, its page colour and its Too Loud "lights out". Its Creatures are
+   village, its page colour and its Too Loud "lights out". Its Creatures are
    drawn in the savanna's style and move their parts with the shared
    keyframes (routes/layout.css, scenes/savanna/creatures.css). Every class
    and keyframe here is prefixed `christmas-`, so nothing leaks into another
@@ -7,8 +7,8 @@
 
 /* --- Lights ------------------------------------------------------------- */
 
-/* How brightly every light in the clearing shines, the chalet's windows and
-   the string lights: 1 normally, turned right down when Too Loud puts the
+/* How brightly every light in the village shines, the windows, the lantern
+   and the string lights: 1 normally, turned right down when Too Loud puts the
    lights out (below). Registered so it can fade, and the twinkle's keyframes
    are multiplied by it, so a bulb dims even while Too Loud holds its
    twinkle still. */
@@ -88,6 +88,52 @@
 
 /* --- Ambient Life -------------------------------------------------------- */
 
+/* The northern lights breathe and their folds shift, slowly. The wrapper
+   fades them out for Too Loud; the sway is on the inside, since an animated
+   opacity would override the fade. */
+@keyframes christmas-aurora-sway {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: skewX(-4deg) scaleY(0.94);
+  }
+  50% {
+    opacity: 1;
+    transform: skewX(3deg) scaleY(1.04);
+  }
+}
+
+.christmas-aurora {
+  z-index: 0;
+  /* A little wider than the world, so the sway's skew never shows a
+     curtain's slanted end. */
+  left: calc(var(--world-left) - 4 * var(--wu));
+  width: calc(108 * var(--wu));
+  transition: opacity 3s ease;
+}
+
+.christmas-aurora-sway {
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 100%;
+  will-change: opacity, transform;
+  animation: christmas-aurora-sway ease-in-out infinite;
+}
+
+.christmas-aurora-sway > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Everything standing on the snow, placed by AmbientLife.svelte. */
+.christmas-piece > svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
 /* The snow, as on the sea ice (scenes/arctic/scene.css). */
 @keyframes christmas-snowfall {
   from {
@@ -107,8 +153,7 @@
 }
 
 /* Smoke leaves the chimney, swells as it rises and drifts off with the
-   breeze, and is gone well below the garland: one puff after another,
-   17.5 seconds each. */
+   breeze, then is gone: one puff after another, 17.5 seconds each. */
 @keyframes christmas-puff {
   0% {
     opacity: 0;
@@ -129,7 +174,7 @@
 }
 
 .christmas-smoke {
-  z-index: 0;
+  position: absolute;
   width: 0;
   height: 0;
   transition: opacity 2.4s ease;
@@ -142,7 +187,7 @@
   width: calc(2.6 * var(--wu));
   opacity: 0;
   transform-origin: 50% 100%;
-  animation: christmas-puff 17.5s ease-out infinite;
+  animation: christmas-puff 17.5s linear infinite;
 }
 
 /* A few stars swell and fade, never flash. */
@@ -181,33 +226,35 @@
 
 html:has(.scene-stage[data-scene="christmas"]),
 html:has(.scene-stage[data-scene="christmas"]) body {
-  background: #d3def1;
+  background: #7f9bd0;
 }
 
 /* Before the Scene mounts, a rough copy of its backdrop, so a reload of a
    saved Christmas chalet doesn't flash the savanna (see app.html). */
 html[data-scene="christmas"]:not(:has(.scene-stage)) body {
   background: linear-gradient(
-    #16244a 0%,
-    #2c4680 28%,
-    #5f79b4 48%,
-    #24385e 56%,
-    #1d2f50 59%,
-    #b7c6e4 60%,
-    #e4ebf7 100%
+    #0a1230 0%,
+    #132a5a 30%,
+    #203763 50%,
+    #142748 58%,
+    #4d6da6 59%,
+    #7f9bd0 75%,
+    #aec2e6 100%
   );
 }
 
-/* Too Loud: the lights go out. The windows and the string lights fade
-   right down, the chimney stops smoking, and the blue hour turns to night.
-   Nothing flashes and every Creature stays in plain sight: the chalet just
-   goes quiet and dark, waiting for the room to settle. */
+/* Too Loud: the village goes to sleep. The windows, the lantern and the
+   string lights fade right down, the northern lights fade away and the
+   chimney stops smoking. Nothing flashes and every Creature stays in plain
+   sight: the village just goes quiet and dark, waiting for the room to
+   settle. */
 .scene-stage[data-scene="christmas"][data-murky="true"] {
   --christmas-light: 0.18;
   filter: saturate(0.65) brightness(0.8);
 }
 
-.scene-stage[data-scene="christmas"][data-murky="true"] .christmas-smoke {
+.scene-stage[data-scene="christmas"][data-murky="true"] .christmas-smoke,
+.scene-stage[data-scene="christmas"][data-murky="true"] .christmas-aurora {
   opacity: 0;
 }
 
@@ -226,7 +273,7 @@ html[data-scene="christmas"]:not(:has(.scene-stage)) body {
 
 /* When Creatures run away the freeze and the bolting carry the message, so
    the dark is only a hint (the veil's own opacity is set in layout.css):
-   the lights still go out, but the clearing stays lighter. */
+   the lights still go out, but the village stays lighter. */
 .scene-stage[data-scene="christmas"][data-scares="true"][data-murky="true"] {
   filter: saturate(0.85) brightness(0.92);
 }
@@ -234,7 +281,8 @@ html[data-scene="christmas"]:not(:has(.scene-stage)) body {
 @media (prefers-reduced-motion: reduce) {
   .christmas-window-glow,
   .christmas-bulb,
-  .christmas-star-twinkle {
+  .christmas-star-twinkle,
+  .christmas-aurora-sway {
     animation: none;
   }
 

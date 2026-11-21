@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 20 308 220">
+<defs><radialGradient id="christmas-chalet-small-glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#ffd166" stop-opacity="0.75"/><stop offset="1" stop-color="#ffd166" stop-opacity="0"/></radialGradient><radialGradient id="christmas-chalet-small-pool" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#ffd98a" stop-opacity="0.5"/><stop offset="1" stop-color="#ffd98a" stop-opacity="0"/></radialGradient></defs>
+<ellipse class="christmas-pool" cx="150" cy="234" rx="160" ry="18" fill="url(#christmas-chalet-small-pool)"/>
+<path d="M30 120 L270 120 L270 234 L30 234 Z" fill="#5e3e2b"/>
+<path d="M30 139 L270 139 L270 142 L30 142 Z" fill="#2b2b3a" opacity="0.2"/>
+<path d="M30 155 L270 155 L270 158 L30 158 Z" fill="#2b2b3a" opacity="0.2"/>
+<path d="M30 171 L270 171 L270 174 L30 174 Z" fill="#2b2b3a" opacity="0.2"/>
+<path d="M30 187 L270 187 L270 190 L30 190 Z" fill="#2b2b3a" opacity="0.2"/>
+<path d="M30 203 L270 203 L270 206 L30 206 Z" fill="#2b2b3a" opacity="0.2"/>
+<path d="M30 219 L270 219 L270 222 L30 222 Z" fill="#2b2b3a" opacity="0.2"/>
+<path d="M30 235 L270 235 L270 238 L30 238 Z" fill="#2b2b3a" opacity="0.2"/>
+<path d="M30 120 L100 120 L100 234 L30 234 Z" fill="#0b1433" opacity="0.2"/>
+<path d="M8 134 L150 34 L292 134 L276 142 L150 58 L24 142 Z" fill="#3d2a20"/>
+<path d="M0 132 C60 90 110 56 150 24 C190 56 240 90 300 132 C292 140 284 138 276 134 C230 102 190 76 150 50 C110 76 70 102 24 134 C16 140 6 140 0 132 Z" fill="#e6eefb"/>
+<path d="M0 132 C60 90 110 56 150 24 C110 66 70 100 26 128 Z" fill="#9fb3da" opacity="0.5"/>
+<path d="M206 62 L228 62 L228 104 L206 104 Z" fill="#4d4140"/><path d="M202 56 C210 48 224 48 232 56 L232 60 L202 60 Z" fill="#e6eefb"/>
+<ellipse class="christmas-window-glow" cx="80.0" cy="178.0" rx="52.800000000000004" ry="40" fill="url(#christmas-chalet-small-glow)"/>
+<rect x="50" y="152" width="60" height="52" rx="3" fill="#3d2a20"/>
+<rect class="christmas-window" x="56" y="158" width="48" height="40" fill="#ffcf6b"/>
+<rect x="56" y="182.0" width="48" height="16.0" fill="#ff9f43" opacity="0.4"/>
+<path d="M77.5 158 h5 v40 h-5 Z M56 175.5 h48 v5 h-48 Z" fill="#3d2a20"/>
+<path d="M46 204 h68 v5 c-6 6 -56 6 -68 0 Z" fill="#e6eefb"/>
+<path d="M168 234 L168 168 C168 154 210 154 210 168 L210 234 Z" fill="#3d2a20"/>
+<path d="M174 234 L174 170 C174 160 204 160 204 170 L204 234 Z" fill="#5a3a28"/>
+<circle class="christmas-window-glow" cx="240" cy="180" r="22" fill="url(#christmas-chalet-small-glow)"/>
+<rect x="228" y="168" width="24" height="24" rx="2" fill="#3d2a20"/><rect class="christmas-window" x="232" y="172" width="16" height="16" fill="#ffcf6b"/>
+<path d="M10 232 C80 222 140 228 168 234 L160 240 L6 240 Z M210 234 C240 226 270 224 296 232 L298 240 L210 240 Z" fill="#e6eefb"/>
+<circle class="christmas-bulb christmas-bulb-0" cx="20.8" cy="137.1" r="4.6" fill="#ff5d73"/>
+<circle class="christmas-bulb christmas-bulb-1" cx="34.4" cy="127.3" r="4.6" fill="#ffd166"/>
+<circle class="christmas-bulb christmas-bulb-2" cx="48.0" cy="117.5" r="4.6" fill="#5dd39e"/>
+<circle class="christmas-bulb christmas-bulb-0" cx="61.6" cy="107.7" r="4.6" fill="#5aa9e6"/>
+<circle class="christmas-bulb christmas-bulb-1" cx="75.2" cy="97.9" r="4.6" fill="#ff5d73"/>
+<circle class="christmas-bulb christmas-bulb-2" cx="88.8" cy="88.1" r="4.6" fill="#ffd166"/>
+<circle class="christmas-bulb christmas-bulb-0" cx="102.4" cy="78.3" r="4.6" fill="#5dd39e"/>
+<circle class="christmas-bulb christmas-bulb-1" cx="116.0" cy="68.5" r="4.6" fill="#5aa9e6"/>
+<circle class="christmas-bulb christmas-bulb-2" cx="129.6" cy="58.7" r="4.6" fill="#ff5d73"/>
+<circle class="christmas-bulb christmas-bulb-0" cx="143.2" cy="48.9" r="4.6" fill="#ffd166"/>
+<circle class="christmas-bulb christmas-bulb-1" cx="156.8" cy="48.9" r="4.6" fill="#5dd39e"/>
+<circle class="christmas-bulb christmas-bulb-2" cx="170.4" cy="58.7" r="4.6" fill="#5aa9e6"/>
+<circle class="christmas-bulb christmas-bulb-0" cx="184.0" cy="68.5" r="4.6" fill="#ff5d73"/>
+<circle class="christmas-bulb christmas-bulb-1" cx="197.6" cy="78.3" r="4.6" fill="#ffd166"/>
+<circle class="christmas-bulb christmas-bulb-2" cx="211.2" cy="88.1" r="4.6" fill="#5dd39e"/>
+<circle class="christmas-bulb christmas-bulb-0" cx="224.8" cy="97.9" r="4.6" fill="#5aa9e6"/>
+<circle class="christmas-bulb christmas-bulb-1" cx="238.4" cy="107.7" r="4.6" fill="#ff5d73"/>
+<circle class="christmas-bulb christmas-bulb-2" cx="252.0" cy="117.5" r="4.6" fill="#ffd166"/>
+<circle class="christmas-bulb christmas-bulb-0" cx="265.6" cy="127.3" r="4.6" fill="#5dd39e"/>
+<circle class="christmas-bulb christmas-bulb-1" cx="279.2" cy="137.1" r="4.6" fill="#5aa9e6"/>
+</svg>

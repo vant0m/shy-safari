@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 330">
+<defs><radialGradient id="christmas-xmas-tree-glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#ffd166" stop-opacity="0.75"/><stop offset="1" stop-color="#ffd166" stop-opacity="0"/></radialGradient><radialGradient id="christmas-xmas-tree-pool" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#ffd98a" stop-opacity="0.5"/><stop offset="1" stop-color="#ffd98a" stop-opacity="0"/></radialGradient></defs>
+<ellipse cx="100" cy="326" rx="86" ry="8" fill="#0b1433" opacity="0.25"/>
+<path d="M90 296 L110 296 L110 322 L90 322 Z" fill="#5a3a28"/>
+<path d="M100.0 30.0 C114.4 67.8 135.9 98.0 147.9 105.6 Q100.0 92.0 52.1 105.6 C64.1 98.0 85.6 67.8 100.0 30.0Z M100.0 73.2 C117.9 113.7 144.7 146.1 159.7 154.2 Q100.0 139.6 40.3 154.2 C55.3 146.1 82.1 113.7 100.0 73.2Z M100.0 116.4 C121.4 159.6 153.6 194.2 171.4 202.8 Q100.0 187.2 28.6 202.8 C46.4 194.2 78.6 159.6 100.0 116.4Z M100.0 159.6 C125.0 205.5 162.4 242.2 183.2 251.4 Q100.0 234.9 16.8 251.4 C37.6 242.2 75.0 205.5 100.0 159.6Z M100.0 202.8 C128.5 251.4 171.2 290.3 195.0 300.0 Q100.0 282.5 5.0 300.0 C28.8 290.3 71.5 251.4 100.0 202.8Z" fill="#2e7d5b"/>
+<path d="M54.5 104.6 Q100.0 85.9 145.5 104.6 Q100.0 98.8 54.5 104.6Z M43.3 153.2 Q100.0 133.1 156.7 153.2 Q100.0 146.9 43.3 153.2Z M32.1 201.8 Q100.0 180.3 167.9 201.8 Q100.0 195.0 32.1 201.8Z M20.9 250.4 Q100.0 227.5 179.1 250.4 Q100.0 243.1 20.9 250.4Z M9.8 299.0 Q100.0 274.7 190.2 299.0 Q100.0 291.3 9.8 299.0Z" fill="#e6eefb"/>
+<path d="M58 122 Q100 144 142 130" stroke="#ffd166" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.9"/>
+<path d="M50 168 Q100 190 150 176" stroke="#ffd166" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.9"/>
+<path d="M42 215 Q100 237 158 223" stroke="#ffd166" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.9"/>
+<path d="M34 261 Q100 283 166 269" stroke="#ffd166" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.9"/>
+<circle cx="80" cy="120" r="7.5" fill="#d62839"/><circle cx="78" cy="118" r="2.4" fill="#ffffff" opacity="0.6"/>
+<circle cx="122" cy="150" r="7.5" fill="#5aa9e6"/><circle cx="120" cy="148" r="2.4" fill="#ffffff" opacity="0.6"/>
+<circle cx="70" cy="190" r="7.5" fill="#ffd166"/><circle cx="68" cy="188" r="2.4" fill="#ffffff" opacity="0.6"/>
+<circle cx="134" cy="214" r="7.5" fill="#d62839"/><circle cx="132" cy="212" r="2.4" fill="#ffffff" opacity="0.6"/>
+<circle cx="96" cy="240" r="7.5" fill="#c084fc"/><circle cx="94" cy="238" r="2.4" fill="#ffffff" opacity="0.6"/>
+<circle cx="56" cy="262" r="7.5" fill="#5aa9e6"/><circle cx="54" cy="260" r="2.4" fill="#ffffff" opacity="0.6"/>
+<circle cx="140" cy="270" r="7.5" fill="#ffd166"/><circle cx="138" cy="268" r="2.4" fill="#ffffff" opacity="0.6"/>
+<circle class="christmas-tree-light christmas-bulb-0" cx="100" cy="70" r="4.4" fill="#fff3c4"/>
+<circle class="christmas-tree-light christmas-bulb-1" cx="88" cy="98" r="4.4" fill="#fff3c4"/>
+<circle class="christmas-tree-light christmas-bulb-2" cx="114" cy="104" r="4.4" fill="#fff3c4"/>
+<circle class="christmas-tree-light christmas-bulb-0" cx="76" cy="140" r="4.4" fill="#fff3c4"/>
+<circle class="christmas-tree-light christmas-bulb-1" cx="104" cy="132" r="4.4" fill="#fff3c4"/>
+<circle class="christmas-tree-light christmas-bulb-2" cx="128" cy="172" r="4.4" fill="#fff3c4"/>
+<circle class="christmas-tree-light christmas-bulb-0" cx="90" cy="170" r="4.4" fill="#fff3c4"/>
+<circle class="christmas-tree-light christmas-bulb-1" cx="60" cy="216" r="4.4" fill="#fff3c4"/>
+<circle class="christmas-tree-light christmas-bulb-2" cx="112" cy="196" r="4.4" fill="#fff3c4"/>
+<circle class="christmas-tree-light christmas-bulb-0" cx="146" cy="244" r="4.4" fill="#fff3c4"/>
+<circle class="christmas-tree-light christmas-bulb-1" cx="80" cy="230" r="4.4" fill="#fff3c4"/>
+<circle class="christmas-tree-light christmas-bulb-2" cx="118" cy="258" r="4.4" fill="#fff3c4"/>
+<circle class="christmas-tree-light christmas-bulb-0" cx="44" cy="282" r="4.4" fill="#fff3c4"/>
+<circle class="christmas-tree-light christmas-bulb-1" cx="98" cy="284" r="4.4" fill="#fff3c4"/>
+<circle class="christmas-tree-light christmas-bulb-2" cx="156" cy="290" r="4.4" fill="#fff3c4"/>
+<circle class="christmas-tree-light christmas-bulb-0" cx="72" cy="296" r="4.4" fill="#fff3c4"/>
+<circle class="christmas-star-glow" cx="100" cy="30" r="46" fill="url(#christmas-xmas-tree-glow)"/>
+<path class="christmas-star" d="M100.0 12.0 L104.7 23.5 L117.1 24.4 L107.6 32.5 L110.6 44.6 L100.0 38.0 L89.4 44.6 L92.4 32.5 L82.9 24.4 L95.3 23.5 Z" fill="#e0b84f"/>
+<rect x="34" y="300" width="34" height="26" rx="2" fill="#d62839"/>
+<rect x="48.0" y="300" width="6" height="26" fill="#ffd166"/><rect x="34" y="310" width="34" height="5" fill="#ffd166"/>
+<rect x="70" y="306" width="28" height="20" rx="2" fill="#5aa9e6"/>
+<rect x="81.0" y="306" width="6" height="20" fill="#f4f1de"/><rect x="70" y="314" width="28" height="5" fill="#f4f1de"/>
+<rect x="128" y="296" width="38" height="30" rx="2" fill="#2e8b57"/>
+<rect x="144.0" y="296" width="6" height="30" fill="#d62839"/><rect x="128" y="308" width="38" height="5" fill="#d62839"/>
+</svg>

@@ -1,6 +1,6 @@
 /**
  * How a Note looks at the Christmas chalet: the reef's painted board in a
- * wooden frame, hung from the garland on red ribbons, with snow along its top
+ * wooden frame, hung from above on red ribbons, with snow along its top
  * and a sprig of holly on its corner (`christmas/NoteArt.svelte`).
  */
 
@@ -14,7 +14,7 @@ export const CHRISTMAS_NOTE: NoteLook = {
   // The painted board; the wooden frame round it is the border.
   surface: (width, height) => rectOf(signShape(width, height).panel),
   inks: { dark: "#4a2c17", ...PEN_COLOURS },
-  // In the sky under the garland, between the chalet on the left and the
-  // tree on the right, over the mountain.
-  home: { x: 0.36, y: 0.2, width: 0.36, height: 0.28 },
+  // In the night sky over the valley, under the northern lights and above
+  // the chalets and the fir trees at either side.
+  home: { x: 0.31, y: 0.1, width: 0.38, height: 0.3 },
 };
