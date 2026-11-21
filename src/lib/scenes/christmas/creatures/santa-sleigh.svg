@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -4 420 190">
+<defs><clipPath id="santa-sleigh-seat"><rect x="-10" y="-10" width="200" height="140"/></clipPath></defs>
+<path d="M216 74 L356 92 L356 95.5 L216 78 Z M150 84 L218 74 L218 77.5 L150 88 Z" fill="#7a5236"/>
+<svg x="250" y="0" width="170" height="139" viewBox="18 -14 152 124" overflow="visible">
+<path d="M37 64 C29 57 23 58 25 65 C27 70 32 70 37 67 Z" fill="#f4ead8"/>
+<path d="M48 84 L56 88 L42 102 L28 106 L26 100 L38 96 Z M60 86 L67 89 L54 104 L40 110 L38 104 L50 99 Z" fill="#9a6a44"/>
+<path d="M48 84 L56 88 L42 102 L28 106 L26 100 L38 96 Z" fill="#2b2b3a" opacity="0.3"/>
+<path d="M27.5 100 L26 106.6 L21 107.6 L22 101 Z M39.5 104 L38 110.6 L33 111.6 L34 105 Z" fill="#3d3550"/>
+<path d="M34 66 C34 56 46 52 62 52 L96 52 C110 52 116 60 116 72 C116 86 106 94 92 94 L56 94 C42 94 34 84 34 74 Z" fill="#9a6a44"/>
+<path d="M42 84 C54 92 96 92 110 84 C106 92 98 96 90 96 L58 96 C50 96 44 90 42 84 Z" fill="#e8d5b5"/>
+<path d="M34 66 C34 56 46 52 62 52 C50 56 44 64 44 74 C44 82 48 90 56 94 C42 94 34 84 34 74 Z" fill="#2b2b3a" opacity="0.12"/>
+<path d="M96 86 L103 86 L112 98 L120 96 L121 102 L110 105 Z M104 84 L111 84 L121 95 L130 93 L131 99 L119 102 Z" fill="#9a6a44"/>
+<path d="M96 86 L103 86 L112 98 L120 96 L121 102 L110 105 Z" fill="#2b2b3a" opacity="0.3"/>
+<path d="M120 96 L126 95 L127 101 L121 102 Z M130 93 L136 92 L137 98 L131 99 Z" fill="#3d3550"/>
+<path d="M100 56 C104 44 110 36 116 32 L128 40 C124 48 118 58 114 70 Z" fill="#9a6a44"/>
+<path d="M114 70 C118 60 122 50 128 42 L131 46 C127 56 123 66 119 74 Z" fill="#e8d5b5"/>
+<path d="M99 54 C105 58 113 62 122 62 L120 68 C111 68 103 64 97 60 Z" fill="#d62839"/>
+<circle cx="113" cy="69" r="4.2" fill="#ffd166"/>
+<path d="M110.6 69.6 L115.4 69.6 L115.4 70.6 L110.6 70.6 Z" fill="#2b2b3a" opacity="0.4"/>
+<path d="M118 20 C114 12 112 4 114 -4 C115 -7 118 -7 117 -4 C116 2 118 8 121 14 Z M115 6 C111 4 107 0 106 -4 C105 -7 108 -7 109 -4 C110 -1 113 2 116 4 Z" fill="#b08d58"/>
+<path d="M124 20 C121 10 122 0 128 -8 C130 -11 133 -10 131 -7 C127 -1 126 6 127 12 C130 8 134 4 138 2 C141 1 142 4 139 5 C135 7 131 11 128 16 L127 20 Z M125.5 2 C121 -2 118 -6 117 -10 C116 -13 119 -13 120 -10 C121 -6 124 -3 127 0 Z" fill="#d9b77e"/>
+<g class="part-ears" style="transform-box:fill-box;transform-origin:100% 60%">
+<path d="M116 26 C108 21 100 21 95 23 C99 30 108 32 116 32 Z" fill="#9a6a44"/>
+<path d="M113 27 C107 25 102 25 99 25.6 C102 28.6 108 29.6 113 29.6 Z" fill="#ff7a8a" opacity="0.45"/>
+</g>
+<path d="M112 34 C112 22 122 16 132 18 C140 20 146 26 150 30 C154 34 152 40 146 42 C140 44 134 44 128 46 C118 48 112 44 112 34 Z" fill="#9a6a44"/>
+<path d="M112 34 C112 22 122 16 132 18 C124 22 120 28 120 36 C120 40 122 44 126 46 C118 47 112 43 112 34 Z" fill="#2b2b3a" opacity="0.12"/>
+<path d="M136 38 C140 36 146 36 150 34 C152 38 148 42 142 43 C138 43.6 135 41 136 38 Z" fill="#e8d5b5"/>
+
+<defs><radialGradient id="santa-sleigh-glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#ff5d73" stop-opacity="0.8"/><stop offset="1" stop-color="#ff5d73" stop-opacity="0"/></radialGradient></defs>
+<g class="part-pulse"><circle cx="149.5" cy="32.5" r="15" fill="url(#santa-sleigh-glow)"/></g>
+<circle cx="149.5" cy="32.5" r="5.4" fill="#e5383b"/><circle cx="148" cy="31" r="1.6" fill="#ffffff" opacity="0.7"/>
+<circle cx="128" cy="28" r="4" fill="#2b2b3a"/>
+<circle cx="126.8" cy="26.6" r="1.3" fill="#ffffff"/>
+<ellipse cx="133" cy="37" rx="3.4" ry="2.1" fill="#ff7a8a" opacity="0.55"/>
+<path d="M141 41 C142.6 43.6 146 43.6 147.6 41.6 C146 42.2 143 42.2 141 41 Z" fill="#2b2b3a"/>
+</svg>
+<svg x="92" y="31" width="110" height="130.5" viewBox="0 4 182 216" overflow="visible">
+<g clip-path="url(#santa-sleigh-seat)">
+<path d="M72 170 L94 170 L92 198 L72 198 Z M104 170 L126 170 L126 198 L106 198 Z" fill="#b21f30"/>
+<path d="M70 196 L93 196 L94 216 L66 216 C61 216 61 206 70 204 Z M104 196 L127 196 L135 204 C143 206 143 216 137 216 L104 216 Z" fill="#3d3550"/>
+<path d="M56 96 C56 74 76 64 100 64 C126 64 144 76 146 100 L150 168 C150 180 50 180 50 168 Z" fill="#d62839"/>
+<path d="M56 96 C56 74 76 64 100 64 C84 70 74 84 72 100 L68 176 C58 175 50 172 50 168 Z" fill="#2b2b3a" opacity="0.14"/>
+<path d="M96 70 L106 70 L106 160 L96 160 Z" fill="#f4f1de"/>
+<path d="M48 164 C48 158 152 158 152 164 L152 174 C152 182 48 182 48 174 Z" fill="#f4f1de"/>
+<path d="M48 172 C48 178 152 178 152 172 L152 174 C152 182 48 182 48 174 Z" fill="#a9b7dc" opacity="0.5"/>
+<path d="M52 128 L150 128 L151 140 L51 140 Z" fill="#3d3550"/>
+<path d="M92 126 L110 126 L110 142 L92 142 Z M96 130 L106 130 L106 138 L96 138 Z" fill="#ffd166" fill-rule="evenodd"/>
+<path d="M62 88 C50 94 42 108 44 120 L56 121 C56 111 62 104 68 100 Z" fill="#d62839"/>
+<path d="M62 88 C50 94 42 108 44 120 L50 120 C50 110 56 100 66 94 Z" fill="#2b2b3a" opacity="0.15"/>
+<path d="M42 116 L58 118 L57 126 L41 124 Z" fill="#f4f1de"/>
+<circle cx="49" cy="130" r="8" fill="#2e8b57"/>
+<g class="part-arms" style="transform-box:fill-box;transform-origin:0% 100%">
+<path d="M134 82 C150 74 160 60 162 46 L174 48 C174 68 162 86 144 98 Z" fill="#d62839"/>
+<path d="M158 44 L176 46 L175 54 L157 52 Z" fill="#f4f1de"/>
+<path d="M166 22 C174 22 178 30 177 38 C176 44 170 46 164 44 C158 42 156 36 158 30 L156 24 C156 20 160 20 161 24 L162 28 C162 24 163 22 166 22 Z" fill="#2e8b57"/>
+</g>
+<path d="M112 30 C126 30 136 42 136 54 C136 66 126 76 112 76 C98 76 88 66 88 54 C88 42 98 30 112 30 Z" fill="#f4c7a1"/>
+<path d="M88 56 C86 82 98 102 116 104 C134 102 144 82 140 56 C134 68 124 72 116 72 C106 72 94 68 88 56 Z" fill="#f4f1de"/>
+<path d="M88 56 C86 82 98 102 116 104 C104 98 96 86 96 70 Z" fill="#a9b7dc" opacity="0.5"/>
+<path d="M104 66 C108 59 116 59 119 64 C122 59 131 59 134 66 C130 72 122 72 119 68 C116 72 108 72 104 66 Z" fill="#ffffff"/>
+<circle cx="121" cy="60" r="5" fill="#e8a37f"/>
+<circle cx="111" cy="50" r="4.2" fill="#2b2b3a"/>
+<circle cx="109.8" cy="48.6" r="1.4" fill="#ffffff"/>
+<circle cx="129" cy="50" r="4.2" fill="#2b2b3a"/>
+<circle cx="127.8" cy="48.6" r="1.4" fill="#ffffff"/>
+<path d="M105 43 C108 40 114 40 116 42 L115 44 C112 43 108 43 106 45 Z M124 42 C127 40 132 40 134 43 L133 45 C131 43 128 43 125 44 Z" fill="#ffffff"/>
+<path d="M88 40 C90 20 108 8 126 12 C138 14 144 26 142 38 Z" fill="#d62839"/>
+<path d="M98 22 C82 12 66 16 60 30 C66 28 76 28 88 36 Z" fill="#d62839"/>
+<path d="M98 22 C82 12 66 16 60 30 C70 22 82 22 92 30 Z" fill="#2b2b3a" opacity="0.15"/>
+<circle cx="59" cy="32" r="8" fill="#f4f1de"/>
+<path d="M84 36 C104 29 126 29 146 36 L146 46 C126 39 104 39 84 46 Z" fill="#f4f1de"/>
+<path d="M84 44 C104 37 126 37 146 44 L146 46 C126 39 104 39 84 46 Z" fill="#a9b7dc" opacity="0.5"/>
+</g>
+</svg>
+<svg x="0" y="60" width="240" height="125" viewBox="6 2 192 100" overflow="visible">
+<path d="M24 42 C18 22 36 6 58 8 C80 6 94 22 90 42 Z" fill="#a8744d"/>
+<path d="M24 42 C18 22 36 6 58 8 C44 12 36 24 38 42 Z" fill="#2b2b3a" opacity="0.15"/>
+<path d="M52 10 C54 6 62 6 64 10 C62 13 54 13 52 10 Z" fill="#7a5236"/>
+<path d="M64 22 L84 22 L84 42 L64 42 Z" fill="#5aa9e6"/>
+<path d="M72 22 L76 22 L76 42 L72 42 Z M64 30 L84 30 L84 34 L64 34 Z" fill="#f4f1de"/>
+<path d="M88 30 L104 26 L108 42 L92 44 Z" fill="#2e8b57"/>
+<path d="M95.5 28 L99 27 L102.6 43 L99 43.4 Z" fill="#ffd166"/>
+<path d="M30 76 L36 76 L36 92 L30 92 Z M78 76 L84 76 L84 92 L78 92 Z M124 74 L130 74 L130 92 L124 92 Z" fill="#c39a3a"/>
+<path d="M12 92 L150 92 C168 92 182 84 186 72 C188 66 196 66 195 73 C192 88 172 99 150 99 L12 99 C7 99 7 92 12 92 Z" fill="#e0b84f"/>
+<path d="M12 96 L150 96 C170 96 186 88 194 76 C192 90 172 99 150 99 L12 99 C9 99 8 97 12 96 Z" fill="#2b2b3a" opacity="0.15"/>
+<path d="M20 54 L20 22 C20 14 34 14 36 22 L42 40 L20 60 Z" fill="#b21f30"/>
+<path d="M20 40 L130 40 C150 40 160 30 166 18 C170 10 180 10 182 18 C184 28 176 40 166 52 C156 66 140 76 120 76 L40 76 C28 76 20 66 20 54 Z" fill="#d62839"/>
+<path d="M20 54 C20 66 28 76 40 76 L120 76 C134 76 146 72 156 64 C144 70 132 72 120 72 L44 72 C34 72 26 66 24 56 Z" fill="#2b2b3a" opacity="0.16"/>
+<path d="M36 44 L136 44 C150 44 160 36 166 26 L170 28 C162 42 150 50 136 50 L36 50 Z" fill="#ffd166"/>
+<path d="M176 14 C182 14 184 22 180 26 C178 22 176 20 172 18 Z" fill="#ffd166"/>
+<circle cx="150" cy="60" r="4" fill="#ffd166"/>
+<circle cx="160" cy="54" r="4" fill="#ffd166"/>
+<path d="M148 61 L152 61 L152 62 L148 62 Z M158 55 L162 55 L162 56 L158 56 Z" fill="#2b2b3a" opacity="0.4"/>
+<circle cx="104" cy="58" r="4.4" fill="#2b2b3a"/>
+<circle cx="102.8" cy="56.6" r="1.4" fill="#ffffff"/>
+<circle cx="122" cy="58" r="4.4" fill="#2b2b3a"/>
+<circle cx="120.8" cy="56.6" r="1.4" fill="#ffffff"/>
+<ellipse cx="97" cy="67" rx="4" ry="2.4" fill="#ff7a8a" opacity="0.75"/>
+<ellipse cx="129" cy="67" rx="4" ry="2.4" fill="#ff7a8a" opacity="0.75"/>
+<path d="M108 66 C110 70.6 116 70.6 118 66 C116 67.2 110 67.2 108 66 Z" fill="#2b2b3a"/>
+</svg>
+</svg>

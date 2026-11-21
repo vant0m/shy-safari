@@ -596,6 +596,10 @@ const en = {
     "reindeer-comet": "Comet",
     "reindeer-cupid": "Cupid",
     "reindeer-blitzen": "Blitzen",
+    "reindeer-dasher": "Dasher",
+    "reindeer-dancer": "Dancer",
+    "reindeer-donner": "Donner",
+    "santa-sleigh": "Father Christmas’s sleigh",
     "mrs-claus": "Mrs Claus",
     sleigh: "Sleigh",
     rudolph: "Rudolph",
@@ -776,6 +780,14 @@ const en = {
       "Reindeer hooves change with the seasons: soft in summer, and hard-edged in winter to grip the ice.",
     "reindeer-blitzen":
       "Reindeer feet make a clicking sound as they walk, which helps a herd keep together in a snowstorm.",
+    "reindeer-dasher":
+      "A reindeer can run at up to about 80 km an hour, and calves can run within a day of being born.",
+    "reindeer-dancer":
+      "Reindeer are strong swimmers: their hollow hairs trap air and help them float.",
+    "reindeer-donner":
+      "In winter a reindeer’s eyes turn from gold to deep blue, to see better in the long dark.",
+    "santa-sleigh":
+      "Only when Rudolph, Father Christmas and the sleigh are all here together does the sleigh set off.",
     "mrs-claus":
       "Mrs Claus first appeared in stories in the 1800s; before that, Father Christmas was usually on his own.",
     sleigh:
@@ -1472,6 +1484,10 @@ const es = {
     "reindeer-comet": "Cometa",
     "reindeer-cupid": "Cupido",
     "reindeer-blitzen": "Relámpago",
+    "reindeer-dasher": "Brioso",
+    "reindeer-dancer": "Bailarín",
+    "reindeer-donner": "Trueno",
+    "santa-sleigh": "Trineo de Papá Noel",
     "mrs-claus": "Mamá Noel",
     sleigh: "Trineo",
     rudolph: "Rodolfo",
@@ -1650,6 +1666,14 @@ const es = {
       "Las pezuñas del reno cambian con las estaciones: blandas en verano y de borde duro en invierno para agarrarse al hielo.",
     "reindeer-blitzen":
       "Las patas de los renos hacen clic al andar, y eso ayuda a la manada a no separarse en una tormenta de nieve.",
+    "reindeer-dasher":
+      "Un reno puede correr a unos 80 km por hora, y las crías corren al día de nacer.",
+    "reindeer-dancer":
+      "Los renos nadan muy bien: sus pelos huecos guardan aire y les ayudan a flotar.",
+    "reindeer-donner":
+      "En invierno, los ojos del reno pasan de dorados a azul intenso, para ver mejor en la larga oscuridad.",
+    "santa-sleigh":
+      "Solo cuando Rodolfo, Papá Noel y el trineo están juntos, el trineo emprende el vuelo.",
     "mrs-claus":
       "Mamá Noel apareció en los cuentos en el siglo XIX; antes, Papá Noel solía ir solo.",
     sleigh:
@@ -2286,6 +2310,10 @@ const fr = {
     "reindeer-comet": "Comète",
     "reindeer-cupid": "Cupidon",
     "reindeer-blitzen": "Éclair",
+    "reindeer-dasher": "Tornade",
+    "reindeer-dancer": "Danseur",
+    "reindeer-donner": "Tonnerre",
+    "santa-sleigh": "Traîneau du Père Noël",
     "mrs-claus": "Mère Noël",
     sleigh: "Traîneau",
     rudolph: "Rudolph",
@@ -2466,6 +2494,14 @@ const fr = {
       "Les sabots du renne changent avec les saisons : tendres en été, à bord dur en hiver pour s’agripper à la glace.",
     "reindeer-blitzen":
       "Les pattes des rennes font un petit clic quand ils marchent : ça aide le troupeau à rester groupé dans le blizzard.",
+    "reindeer-dasher":
+      "Un renne peut courir à près de 80 km/h, et les petits courent dès le lendemain de leur naissance.",
+    "reindeer-dancer":
+      "Les rennes nagent très bien : leurs poils creux retiennent l’air et les aident à flotter.",
+    "reindeer-donner":
+      "En hiver, les yeux du renne passent du doré au bleu profond, pour mieux voir dans la longue nuit.",
+    "santa-sleigh":
+      "Le traîneau ne s’envole que lorsque Rudolph, le Père Noël et le traîneau sont tous là ensemble.",
     "mrs-claus":
       "La Mère Noël apparaît dans les histoires au XIXe siècle ; avant, le Père Noël était le plus souvent seul.",
     sleigh:

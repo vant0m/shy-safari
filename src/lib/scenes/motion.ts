@@ -56,7 +56,12 @@ export type MotionStyle =
    * Arctic: swims along the open water between the ice, surfaced, with long
    * rests. Drawn from the waterline up, so its feet are the waterline.
    */
-  | "paddle";
+  | "paddle"
+  /**
+   * Christmas: long, banking passes high across the night sky, always above
+   * the rooftops, like a sleigh and its reindeer.
+   */
+  | "flyover";
 
 interface Region {
   xMin: number;
@@ -242,6 +247,19 @@ export const MOTION_PROFILES: Record<MotionStyle, MotionProfile> = {
     agility: 0.35,
     reachX: 1,
     reachY: 0.6,
+    restChance: 0,
+    rest: [0, 0],
+    pulse: 0,
+    flips: true,
+    tilts: true,
+    ground: false,
+  },
+  flyover: {
+    region: { xMin: 0.06, xMax: 0.94, yMin: 0.05, yMax: 0.28 },
+    speed: 0.028,
+    agility: 0.4,
+    reachX: 1,
+    reachY: 0.7,
     restChance: 0,
     rest: [0, 0],
     pulse: 0,

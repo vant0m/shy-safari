@@ -1,7 +1,7 @@
 /**
- * Every always-on Scene has exactly one Legendary Creature; the limited-time
- * Scenes, Pumpkin Hollow and the Christmas chalet, have none
- * (docs/adr/0012-legendary-tier.md).
+ * Every always-on Scene has exactly one Legendary Creature
+ * (docs/adr/0012-legendary-tier.md). Pumpkin Hollow has none; the Christmas
+ * chalet's only forms, from its three Rares (docs/adr/0016-christmas-chalet.md).
  */
 
 import { describe, expect, it } from "bun:test";
@@ -42,7 +42,9 @@ describe("Legendary Creatures", () => {
     expect(legends(HALLOWEEN_ROSTER)).toHaveLength(0);
   });
 
-  it("leaves the Christmas chalet without one, for the same reason", () => {
-    expect(legends(CHRISTMAS_ROSTER)).toHaveLength(0);
+  it("gives the Christmas chalet one that forms rather than arrives", () => {
+    const found = legends(CHRISTMAS_ROSTER);
+    expect(found).toHaveLength(1);
+    expect(found[0].formedFrom?.length).toBe(3);
   });
 });

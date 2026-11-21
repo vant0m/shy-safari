@@ -10,6 +10,15 @@
 <path d="M30 219 L270 219 L270 222 L30 222 Z" fill="#2b2b3a" opacity="0.2"/>
 <path d="M30 235 L270 235 L270 238 L30 238 Z" fill="#2b2b3a" opacity="0.2"/>
 <path d="M30 120 L100 120 L100 234 L30 234 Z" fill="#0b1433" opacity="0.2"/>
+<path d="M24 126 L150 48 L276 126 L276 122 L24 122 Z" fill="#6b4630"/>
+<path d="M105 85 L195 85 L195 88 L105 88 Z" fill="#2b2b3a" opacity="0.2"/>
+<path d="M82 99 L218 99 L218 102 L82 102 Z" fill="#2b2b3a" opacity="0.2"/>
+<path d="M60 113 L240 113 L240 116 L60 116 Z" fill="#2b2b3a" opacity="0.2"/>
+<path d="M37 127 L263 127 L263 130 L37 130 Z" fill="#2b2b3a" opacity="0.2"/>
+<path d="M24 126 L150 48 L110 126 Z" fill="#0b1433" opacity="0.18"/>
+<circle class="christmas-window-glow" cx="150" cy="96" r="24" fill="url(#christmas-chalet-small-glow)"/>
+<circle cx="150" cy="96" r="14" fill="#3d2a20"/><circle class="christmas-window" cx="150" cy="96" r="10" fill="#ffcf6b"/>
+<path d="M148.6 86 h2.8 v20 h-2.8 Z M140 94.6 h20 v2.8 h-20 Z" fill="#3d2a20"/>
 <path d="M8 134 L150 34 L292 134 L276 142 L150 58 L24 142 Z" fill="#3d2a20"/>
 <path d="M0 132 C60 90 110 56 150 24 C190 56 240 90 300 132 C292 140 284 138 276 134 C230 102 190 76 150 50 C110 76 70 102 24 134 C16 140 6 140 0 132 Z" fill="#e6eefb"/>
 <path d="M0 132 C60 90 110 56 150 24 C110 66 70 100 26 128 Z" fill="#9fb3da" opacity="0.5"/>

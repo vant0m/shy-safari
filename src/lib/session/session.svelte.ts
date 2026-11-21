@@ -16,6 +16,7 @@ import {
   createArrivalClock,
   type ArrivalClock,
 } from "./arrivalClock";
+import { findCombo, isFormed } from "./combos";
 import { isUnique, rollCreature } from "./roll";
 import {
   advanceScareClock,
@@ -68,6 +69,11 @@ export class Session {
    * arrival counter. Only Reset lowers it: one that Runs Away still came.
    */
   arrived = $state(0);
+  /**
+   * The Creature that has just formed from others (`session/combos.ts`),
+   * until the Scene has celebrated it; `at` tells one forming from the next.
+   */
+  formed = $state<{ slug: string; at: number } | null>(null);
 
   #clock: ArrivalClock;
   #scare: ScareClock = createScareClock();
@@ -202,6 +208,27 @@ export class Session {
     this.creatures = [...this.creatures, ...added];
     this.newestId = null;
     this.#save();
+    this.#formCombos();
+  }
+
+  /**
+   * Bring these Creatures out at once, for the debug menu: like "Bring out
+   * every animal", for a chosen few. Rares already here are skipped.
+   */
+  summon(slugs: string[]) {
+    const present = this.creatures.map((creature) => creature.def.slug);
+    const defs = this.#available().filter(
+      (def) =>
+        slugs.includes(def.slug) &&
+        (!isUnique(def.tier) || !present.includes(def.slug)),
+    );
+    this.creatures = [
+      ...this.creatures,
+      ...defs.map((def) => this.#place(def)),
+    ];
+    this.newestId = null;
+    this.#save();
+    this.#formCombos();
   }
 
   /**
@@ -240,9 +267,48 @@ export class Session {
     );
   }
 
-  /** Who can arrive: the whole Roster, in every Scene. */
+  /**
+   * Who can arrive: the whole Roster, in every Scene, except the Creatures
+   * that only ever form from others (`session/combos.ts`).
+   */
   #available(): CreatureDef[] {
-    return this.#roster;
+    return this.#roster.filter((def) => !isFormed(def));
+  }
+
+  /**
+   * Form any Creature whose parts are all here: they leave and it takes
+   * their place, counted as an arrival. Says so in `formed`, for the Scene
+   * to celebrate (Father Christmas's sleigh ride).
+   */
+  #formCombos() {
+    const combo = findCombo(
+      this.#roster,
+      this.creatures,
+      this.fleeing,
+      this.#legends,
+    );
+    if (!combo) return;
+    const instance = this.#place(combo.def);
+    this.creatures = [
+      ...this.creatures.filter((creature) => !combo.ids.includes(creature.id)),
+      instance,
+    ];
+    this.newestId = instance.id;
+    this.#counted(combo.def);
+    this.formed = { slug: combo.def.slug, at: Date.now() };
+  }
+
+  /** Book an arrival: the counter, the Collection, the statistics. */
+  #counted(def: CreatureDef) {
+    this.arrived += 1;
+    this.#save();
+    saveArrived(this.arrived);
+    sightings.record(this.#sceneId, def.slug);
+    stats.arrived(def.tier);
+    if (def.tier === "legendary") {
+      this.#legends = [...this.#legends, def.slug];
+      saveLegends(this.#sceneId, this.#legends);
+    }
   }
 
   #arrive() {
@@ -258,15 +324,8 @@ export class Session {
     const instance = this.#place(def);
     this.creatures = [...this.creatures, instance];
     this.newestId = instance.id;
-    this.arrived += 1;
-    this.#save();
-    saveArrived(this.arrived);
-    sightings.record(this.#sceneId, def.slug);
-    stats.arrived(def.tier);
-    if (def.tier === "legendary") {
-      this.#legends = [...this.#legends, def.slug];
-      saveLegends(this.#sceneId, this.#legends);
-    }
+    this.#counted(def);
+    this.#formCombos();
   }
 
   /** Anywhere from far to near, unless its motion keeps it to some depths. */

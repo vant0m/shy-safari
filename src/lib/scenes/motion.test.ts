@@ -72,6 +72,18 @@ describe("stepMotion", () => {
   });
 });
 
+describe("flyover", () => {
+  it("keeps a Christmas flier high in the sky, above the rooftops", () => {
+    const random = seeded(5);
+    const sleigh = createMotion("flyover", 0.5, 0.2, 0.5, footprint, random);
+    for (let t = 0; t < 600; t += 1 / 30) {
+      stepMotion(sleigh, "flyover", 0.5, footprint, 1 / 30, random);
+      expect(sleigh.y).toBeLessThanOrEqual(0.28 + 1e-6);
+      expect(sleigh.y).toBeGreaterThanOrEqual(0.05 - 1e-6);
+    }
+  });
+});
+
 describe("createMotion", () => {
   it("never shows a one-sided Creature mirrored", () => {
     for (let seed = 1; seed < 40; seed++) {

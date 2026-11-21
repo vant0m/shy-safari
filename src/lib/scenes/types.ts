@@ -84,4 +84,9 @@ export interface CreatureDef {
   departure?: DepartureStyle;
   /** The part-* classes actually present in the artwork. */
   parts: AnimatablePart[];
+  /**
+   * Never arrives by the roll: forms when every one of these is on screen at
+   * once, and they leave in its place (`session/combos.ts`).
+   */
+  formedFrom?: string[];
 }
