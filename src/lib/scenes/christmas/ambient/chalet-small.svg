@@ -31,6 +31,7 @@
 <path d="M46 204 h68 v5 c-6 6 -56 6 -68 0 Z" fill="#e6eefb"/>
 <path d="M168 234 L168 168 C168 154 210 154 210 168 L210 234 Z" fill="#3d2a20"/>
 <path d="M174 234 L174 170 C174 160 204 160 204 170 L204 234 Z" fill="#5a3a28"/>
+<circle cx="198" cy="204" r="3" fill="#ffd166"/>
 <circle class="christmas-window-glow" cx="240" cy="180" r="22" fill="url(#christmas-chalet-small-glow)"/>
 <rect x="228" y="168" width="24" height="24" rx="2" fill="#3d2a20"/><rect class="christmas-window" x="232" y="172" width="16" height="16" fill="#ffcf6b"/>
 <path d="M10 232 C80 222 140 228 168 234 L160 240 L6 240 Z M210 234 C240 226 270 224 296 232 L298 240 L210 240 Z" fill="#e6eefb"/>

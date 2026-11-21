@@ -40,7 +40,13 @@
   }[] = [
     // The back of the snowfield.
     { x: 3, base: 35, size: 4, art: "fir-snow" },
-    { x: 12, base: 34, size: 18, art: "chalet-small" },
+    {
+      x: 12,
+      base: 34,
+      size: 18,
+      art: "chalet-small",
+      smoke: { x: 0.72, y: 0.15 },
+    },
     { x: 32, base: 35, size: 3.5, art: "fir-snow" },
     { x: 44, base: 36, size: 3, art: "fir-snow" },
     { x: 60, base: 35, size: 3.5, art: "fir-snow" },
