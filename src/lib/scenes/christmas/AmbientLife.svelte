@@ -27,7 +27,9 @@
    * width, in hundredths of the world's width; `base` is how far up from the
    * bottom of the Scene it stands (the snowfield runs from about 37% at the
    * back to the bottom edge). `smoke` marks the chimney, as fractions of the
-   * piece's own box.
+   * piece's own box. Sizes keep to the shared scale at each piece's depth: a
+   * chalet's door is about a tenth taller than a person beside it, the lamp
+   * about 3m, the Christmas tree about 3.5m, the fence about 1.1m.
    */
   const ground: {
     x: number;
@@ -38,8 +40,8 @@
   }[] = [
     // The back of the snowfield.
     { x: 3, base: 35, size: 4, art: "fir-snow" },
-    { x: 13, base: 34, size: 13, art: "chalet-small" },
-    { x: 29, base: 35, size: 3.5, art: "fir-snow" },
+    { x: 12, base: 34, size: 18, art: "chalet-small" },
+    { x: 32, base: 35, size: 3.5, art: "fir-snow" },
     { x: 44, base: 36, size: 3, art: "fir-snow" },
     { x: 60, base: 35, size: 3.5, art: "fir-snow" },
     { x: 89, base: 35, size: 4, art: "fir-snow" },
@@ -47,9 +49,9 @@
     { x: 31, base: 22, size: 7, art: "drift" },
     { x: 55, base: 24, size: 6, art: "xmas-tree" },
     {
-      x: 63,
+      x: 62,
       base: 21,
-      size: 25,
+      size: 27,
       art: "chalet-big",
       smoke: { x: 0.78, y: 0.11 },
     },
