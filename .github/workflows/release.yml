@@ -1,0 +1,68 @@
+name: Release
+
+# Publishes the GitHub Release page for a version: its notes, taken from
+# CHANGELOG.md (scripts/release-notes.ts), and the built site as a zip, ready
+# for any static host without Bun. Runs when a `v*` tag is pushed; "Run
+# workflow" publishes (or refreshes) one for a tag that already exists.
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag to publish, e.g. v1.1.0"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      TAG: ${{ github.event_name == 'push' && github.ref_name || inputs.tag }}
+    steps:
+      # The default branch, for the notes helper and the latest CHANGELOG.md,
+      # which holds every version's notes.
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+      # The tagged version itself, which is what gets built.
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.TAG }}
+          path: release-src
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.4
+
+      - name: Version
+        run: echo "VERSION=${TAG#v}" >> "$GITHUB_ENV"
+
+      - name: Build the site
+        working-directory: release-src
+        run: |
+          bun install --frozen-lockfile
+          BUILD_VERSION="$VERSION" bun run build
+
+      - name: Zip it
+        run: |
+          (cd release-src/build && zip -qr "$GITHUB_WORKSPACE/shy-safari-$VERSION.zip" .)
+          ls -l "shy-safari-$VERSION.zip"
+
+      - name: Notes from CHANGELOG.md
+        run: bun scripts/release-notes.ts "$VERSION" > notes.md
+
+      - name: Publish the Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view "$TAG" > /dev/null 2>&1; then
+            gh release edit "$TAG" --title "Shy Safari $VERSION" --notes-file notes.md
+            gh release upload "$TAG" "shy-safari-$VERSION.zip" --clobber
+          else
+            gh release create "$TAG" "shy-safari-$VERSION.zip" \
+              --title "Shy Safari $VERSION" \
+              --notes-file notes.md \
+              --verify-tag
+          fi

@@ -36,5 +36,22 @@ what changed since.
 bun run check && bun test && bun run lint && bun run build
 ```
 
+## Releasing
+
+Versions follow SemVer. For version `X.Y.Z`:
+
+1. Bump `version` in `package.json`.
+2. In `CHANGELOG.md` and `docs/fr/CHANGELOG.md`, turn the Unreleased section
+   into `## [X.Y.Z] — YYYY-MM-DD` (with a one-line summary), open a new empty
+   Unreleased, and add the `[X.Y.Z]: …/compare/vPREV...vX.Y.Z` link.
+3. Update the version rows in `README.md` and `docs/fr/README.md`.
+4. Commit (`chore(release): X.Y.Z`), then tag it, signed:
+   `git tag -s vX.Y.Z -m "Shy Safari X.Y.Z"`.
+5. Push `main` and the tag. `.github/workflows/release.yml` then publishes
+   the GitHub Release page: the version's notes from `CHANGELOG.md`
+   (`scripts/release-notes.ts`) and `shy-safari-X.Y.Z.zip`, the built site.
+   Check that the Release is there; "Run workflow" on it, with the tag,
+   publishes or refreshes one.
+
 Decisions and their reasons live in `docs/adr/`; the vocabulary the code uses
 is in `CONTEXT.md`.

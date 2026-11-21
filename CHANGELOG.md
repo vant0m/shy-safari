@@ -7,6 +7,12 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- A GitHub Release page for every version, published by
+  `.github/workflows/release.yml` when a `v*` tag is pushed: the version's
+  notes from this file and the built site as `shy-safari-X.Y.Z.zip`.
+
 ## [1.1.0] — 2026-11-21
 
 A Christmas Scene with a Legendary that forms from three Rares, one scale

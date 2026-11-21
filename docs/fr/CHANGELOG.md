@@ -7,6 +7,12 @@ Les changements notables du projet. Format inspiré de
 
 ## [Non publié]
 
+### Ajouté
+
+- Une page Release GitHub pour chaque version, publiée par
+  `.github/workflows/release.yml` quand un tag `v*` est poussé : les notes de
+  la version tirées du CHANGELOG et le site compilé, `shy-safari-X.Y.Z.zip`.
+
 ## [1.1.0] — 2026-11-21
 
 Un tableau de Noël avec un légendaire qui se forme à partir de trois rares,

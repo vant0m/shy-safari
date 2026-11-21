@@ -194,6 +194,12 @@ limits: [ADR 0015](adr/0015-sync-through-cloudflare.md).
 Any host that serves static files over HTTPS works. Build with
 `PUBLIC_SITE_URL` set, then publish the `build/` folder.
 
+No Bun? Each version's
+[Release page](https://github.com/vant0m/shy-safari/releases) has the site
+already built, `shy-safari-X.Y.Z.zip`: unzip it and publish its contents. It
+is built without `PUBLIC_SITE_URL`, so link previews have no picture; build it
+yourself for those.
+
 - **Netlify**: build command `bun run build`, publish directory `build`.
   `static/_headers` and `static/_redirects` use Netlify's format and are
   picked up as they are.

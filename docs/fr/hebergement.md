@@ -203,6 +203,12 @@ Conception et limites : [ADR 0015](../adr/0015-sync-through-cloudflare.md).
 Tout hébergeur qui sert des fichiers statiques en HTTPS convient. Compilez
 avec `PUBLIC_SITE_URL`, puis publiez le dossier `build/`.
 
+Pas de Bun ? La
+[page Release](https://github.com/vant0m/shy-safari/releases) de chaque
+version propose le site déjà compilé, `shy-safari-X.Y.Z.zip` : décompressez-le
+et publiez son contenu. Il est compilé sans `PUBLIC_SITE_URL`, donc les aperçus
+de lien n'ont pas d'image ; compilez-le vous-même pour cela.
+
 - **Netlify** : build command `bun run build`, publish directory `build`.
   `static/_headers` et `static/_redirects` sont au format Netlify et sont pris
   en compte tels quels.
