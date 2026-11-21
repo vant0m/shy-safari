@@ -21,13 +21,6 @@
 
   import type { App } from "$lib/app.svelte";
   import { isAvailable, SCENES } from "$lib/scenes";
-  import {
-    todaysNewcomer,
-    unlockDay,
-    unlockedSlugs,
-  } from "$lib/scenes/limited/calendar";
-  import { limitedOf } from "$lib/scenes/limited/registry";
-  import { unlocksIn } from "$lib/scenes/limited/wording";
   import { today } from "$lib/today.svelte";
   import {
     RARITY_TIERS,
@@ -78,43 +71,6 @@
     ),
   );
 
-  /**
-   * In a limited-time Scene, Creatures the calendar has yet to unlock (or whose
-   * artwork has yet to land) show as a card saying which day they come,
-   * with nothing of them shown, not even a silhouette.
-   */
-  const locked = $derived.by(() => {
-    const limited = limitedOf(sceneId);
-    if (!limited) return new Set<string>();
-    const unlocked = unlockedSlugs(limited.calendar, today.day);
-    return new Set(
-      scene.roster
-        .filter(
-          (def) =>
-            !unlocked.includes(def.slug) || !(def.slug in scene.creatureArt),
-        )
-        .map((def) => def.slug),
-    );
-  });
-
-  const newToday = $derived(
-    limitedOf(sceneId)
-      ? todaysNewcomer(limitedOf(sceneId)!.calendar, today.day)
-      : null,
-  );
-
-  /**
-   * "Unlocks in 3 days", counting down by the second on the day before, or,
-   * for one already due whose artwork is not in yet, "Coming soon".
-   */
-  function comesOn(slug: string) {
-    const limited = limitedOf(sceneId);
-    const day = limited ? unlockDay(limited.calendar, slug) : null;
-    return day && today.day !== null && today.now !== null && day > today.day
-      ? unlocksIn(day, today.day, today.now)
-      : t("collection.comingSoon");
-  }
-
   const seen = $derived(
     scene.roster.filter((def) => sightings.count(sceneId, def.slug) > 0).length,
   );
@@ -150,11 +106,8 @@
           {tIn(sceneId, "collection.spotted", {
             class: className(classes.current.name),
             seen,
-            total: scene.roster.length - locked.size,
+            total: scene.roster.length,
           })}
-          {#if locked.size > 0}
-            · {t("collection.toCome", { count: locked.size })}
-          {/if}
         </p>
       </div>
       <div
@@ -232,61 +185,38 @@
             >
               {#each defs as def (def.slug)}
                 {@const count = sightings.count(sceneId, def.slug)}
-                {#if locked.has(def.slug)}
-                  <li
-                    class="flex min-w-0 flex-col items-center justify-center rounded-lg border border-dashed border-slate-300 bg-slate-50 p-2 text-center"
+                <!-- A Creature with a fact to tell shows it on hover. -->
+                <li
+                  title={creatureFact(def.slug)}
+                  class="flex min-w-0 flex-col items-center rounded-lg border p-2 text-center {CARD_STYLE[
+                    tier
+                  ]}"
+                >
+                  <div
+                    class="flex h-12 w-full items-center justify-center"
+                    class:unseen={count === 0}
                   >
-                    <div
-                      class="flex h-12 w-full items-center justify-center text-3xl font-semibold text-slate-300"
-                      aria-hidden="true"
-                    >
-                      ?
-                    </div>
-                    <span
-                      class="mt-1 text-sm font-medium text-slate-500 tabular-nums"
-                      >{comesOn(def.slug)}</span
-                    >
-                  </li>
-                {:else}
-                  <!-- A Creature with a fact to tell shows it on hover. -->
-                  <li
-                    title={creatureFact(def.slug)}
-                    class="flex min-w-0 flex-col items-center rounded-lg border p-2 text-center {CARD_STYLE[
-                      tier
-                    ]}"
+                    <img
+                      src={artUrl(
+                        `${sceneId}/${def.slug}`,
+                        scene.creatureArt[def.slug],
+                      )}
+                      alt=""
+                      draggable="false"
+                      class="size-full object-contain"
+                    />
+                  </div>
+                  <!-- Long names break at their soft hyphens (see i18n) to fit the card. -->
+                  <span
+                    class="mt-1 max-w-full text-sm font-medium break-words hyphens-auto text-slate-800"
+                    >{creatureName(def.slug)}</span
                   >
-                    <div
-                      class="flex h-12 w-full items-center justify-center"
-                      class:unseen={count === 0}
-                    >
-                      <img
-                        src={artUrl(
-                          `${sceneId}/${def.slug}`,
-                          scene.creatureArt[def.slug],
-                        )}
-                        alt=""
-                        draggable="false"
-                        class="size-full object-contain"
-                      />
-                    </div>
-                    <!-- Long names break at their soft hyphens (see i18n) to fit the card. -->
-                    <span
-                      class="mt-1 max-w-full text-sm font-medium break-words hyphens-auto text-slate-800"
-                      >{creatureName(def.slug)}</span
-                    >
-                    <span class="text-xs text-slate-500">
-                      {count === 0
-                        ? tIn(sceneId, "collection.notSeen")
-                        : tIn(sceneId, "collection.seen", { count })}
-                    </span>
-                    {#if def.slug === newToday}
-                      <span
-                        class="mt-1 rounded-full bg-orange-100 px-2 py-px text-[0.7rem] font-semibold text-orange-800"
-                        >{t("collection.newToday")}</span
-                      >
-                    {/if}
-                  </li>
-                {/if}
+                  <span class="text-xs text-slate-500">
+                    {count === 0
+                      ? tIn(sceneId, "collection.notSeen")
+                      : tIn(sceneId, "collection.seen", { count })}
+                  </span>
+                </li>
               {/each}
             </ul>
           </section>

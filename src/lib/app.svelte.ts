@@ -86,7 +86,7 @@ export class App {
   useScene(id: SceneId) {
     settings.scene = id;
     this.#sceneId = id;
-    this.session.useScene(id, SCENES[id].roster, SCENES[id].arrivals);
+    this.session.useScene(id, SCENES[id].roster);
   }
 
   /**

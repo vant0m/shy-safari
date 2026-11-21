@@ -10,7 +10,7 @@
  */
 
 import { MOTION_PROFILES } from "$lib/scenes/motion";
-import type { Arrivals, CreatureDef } from "$lib/scenes/types";
+import type { CreatureDef } from "$lib/scenes/types";
 import {
   advanceArrivalClock,
   createArrivalClock,
@@ -74,7 +74,6 @@ export class Session {
   #nextId = 1;
   #random: () => number;
   #roster: CreatureDef[];
-  #arrivals: Arrivals | undefined;
   #sceneId: string;
   /** Legendary Creatures that have come this Session in this Scene. */
   #legends: string[] = [];
@@ -84,11 +83,9 @@ export class Session {
     roster: CreatureDef[],
     intervalMs: number,
     random: () => number = Math.random,
-    arrivals?: Arrivals,
   ) {
     this.#sceneId = sceneId;
     this.#roster = roster;
-    this.#arrivals = arrivals;
     this.#random = random;
     this.#clock = createArrivalClock(intervalMs, random);
   }
@@ -115,10 +112,9 @@ export class Session {
    * earned. The arrival clock carries on: progress towards the next Creature
    * was earned by the room, not by the Scene.
    */
-  useScene(sceneId: string, roster: CreatureDef[], arrivals?: Arrivals) {
+  useScene(sceneId: string, roster: CreatureDef[]) {
     this.#sceneId = sceneId;
     this.#roster = roster;
-    this.#arrivals = arrivals;
     this.restore();
   }
 
@@ -244,9 +240,9 @@ export class Session {
     );
   }
 
-  /** Who can arrive now: the whole Roster, unless the Scene says otherwise. */
+  /** Who can arrive: the whole Roster, in every Scene. */
   #available(): CreatureDef[] {
-    return this.#arrivals?.available(this.#roster) ?? this.#roster;
+    return this.#roster;
   }
 
   #arrive() {
@@ -256,9 +252,7 @@ export class Session {
       ...this.#legends,
     ];
     const available = this.#available();
-    const def = this.#arrivals
-      ? this.#arrivals.draw(available, present, this.#random)
-      : rollCreature(available, present, this.#random);
+    const def = rollCreature(available, present, this.#random);
     if (!def) return;
 
     const instance = this.#place(def);

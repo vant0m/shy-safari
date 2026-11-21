@@ -1,13 +1,12 @@
 /**
  * What day it is on this computer, for the Scenes that care: the
  * limited-time ones, Pumpkin Hollow and the Christmas chalet, which are only
- * open for a few weeks and grow by the day (`scenes/limited/calendar.ts`).
+ * open for a few weeks a year (`scenes/limited/calendar.ts`).
  *
  * Unknown (null) until the page is running in a browser: the page is
  * prerendered with no idea of the date, and hydration must find exactly the
  * Scenes it was rendered with. Checked again every second, so a tab left open
- * overnight moves on to the next day right at midnight, and the Collection
- * can count down to the next Newcomer.
+ * overnight moves on to the next day right at midnight.
  *
  * In development `?today=2026-10-30`, or the day set in the debug menu
  * (`debug/debug.svelte.ts`), pretends it is that day, for walking the

@@ -15,7 +15,6 @@ import {
 } from "./noteArt";
 import ArcticAmbient from "./arctic/AmbientLife.svelte";
 import ChristmasAmbient from "./christmas/AmbientLife.svelte";
-import { CHRISTMAS_ARRIVALS } from "./christmas/arrivals";
 import * as christmasArt from "./christmas/artwork";
 import { CHRISTMAS_CALENDAR } from "./christmas/calendar";
 import christmasIcon from "./christmas/icon.svg";
@@ -27,10 +26,9 @@ import arcticIcon from "./arctic/icon.svg";
 import { ARCTIC_NOTE } from "./arctic/note";
 import { ARCTIC_ROSTER } from "./arctic/roster";
 import ForestAmbient from "./forest/AmbientLife.svelte";
-import { HALLOWEEN_ARRIVALS } from "./halloween/arrivals";
 import HalloweenAmbient from "./halloween/AmbientLife.svelte";
 import * as halloweenArt from "./halloween/artwork";
-import { isOpen } from "./halloween/calendar";
+import { HALLOWEEN_CALENDAR } from "./halloween/calendar";
 import halloweenIcon from "./halloween/icon.svg";
 import { HALLOWEEN_NOTE } from "./halloween/note";
 import { HALLOWEEN_ROSTER } from "./halloween/roster";
@@ -68,7 +66,7 @@ import * as spaceArt from "./space/artwork";
 import spaceIcon from "./space/icon.svg";
 import { SPACE_NOTE } from "./space/note";
 import { SPACE_ROSTER } from "./space/roster";
-import type { Arrivals, CreatureDef, SceneId } from "./types";
+import type { CreatureDef, SceneId } from "./types";
 
 export type { SceneId };
 
@@ -131,8 +129,6 @@ export interface SceneDef {
    * teacher has opened one with this Scene in it (`newScenes.svelte.ts`).
    */
   isNew?: boolean;
-  /** Who may arrive and how they are chosen, if not a roll of the Roster. */
-  arrivals?: Arrivals;
   /**
    * Creatures, by slug, the Scene itself answers to: while one is here the
    * stage carries `data-welcome` (`scenes/welcome.ts`), and the Scene's CSS
@@ -289,9 +285,8 @@ export const SCENES: Record<SceneId, SceneDef> = {
     departure: "run",
     whilePaused: "listen",
     note: HALLOWEEN_NOTE,
-    openOn: isOpen,
+    openOn: (day) => limitedIsOpen(HALLOWEEN_CALENDAR, day),
     isNew: true,
-    arrivals: HALLOWEEN_ARRIVALS,
     // The finale: every jack-o'-lantern flares and the moon brightens as he
     // comes, and the patch stays lit warmer while he's here (entrance.css).
     welcomes: ["jack-o-lantern"],
@@ -312,7 +307,6 @@ export const SCENES: Record<SceneId, SceneDef> = {
     note: CHRISTMAS_NOTE,
     openOn: (day) => limitedIsOpen(CHRISTMAS_CALENDAR, day),
     isNew: true,
-    arrivals: CHRISTMAS_ARRIVALS,
     // The finale: the tree lights up and its star glows as Father Christmas
     // comes, and stays lit while he's here (christmas/entrance.css).
     welcomes: ["santa"],

@@ -1,12 +1,10 @@
 /**
  * The Pumpkin Hollow Roster: every Creature that can appear in this Scene,
- * once the calendar has unlocked it (`halloween/calendar.ts`).
+ * all of them from the first day it is open (`halloween/calendar.ts`).
  *
- * A hillside pumpkin patch on Halloween eve. It opens with seven real animals
- * people link with Halloween, then a Newcomer every school day, each a little
- * more exciting than the last: Uncommon magical critters in the first week, Rare
- * big friendly monsters in the second, and the giant Jack O. Lantern on the last
- * school day before Halloween. Spooky-cute, never scary.
+ * A hillside pumpkin patch on Halloween eve: real animals people link with
+ * Halloween as Commons, magical critters as Uncommons, and big friendly
+ * monsters as Rares, Jack O. Lantern among them. Spooky-cute, never scary.
  *
  * Slugs match the SVG filenames in `./creatures/`, and are unique across every
  * Scene, since names and facts are filed by slug. `width` is against a
@@ -62,7 +60,7 @@ export const HALLOWEEN_ROSTER: CreatureDef[] = [
     parts: ["part-tail", "part-ears"],
   },
 
-  // Uncommon: the first week's Newcomers.
+  // Uncommon: magical critters.
   {
     slug: "little-ghost",
     tier: "uncommon",
@@ -101,7 +99,7 @@ export const HALLOWEEN_ROSTER: CreatureDef[] = [
     parts: ["part-arms", "part-tail"],
   },
 
-  // Rare: the second week's, one each per Session at most.
+  // Rare: one each per Session at most.
   {
     slug: "vampire",
     tier: "rare",

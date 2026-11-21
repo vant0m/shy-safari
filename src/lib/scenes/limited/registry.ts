@@ -1,6 +1,6 @@
 /**
  * The limited-time Scenes, and what each needs beyond the shared rules: its
- * calendar and the words on its sign. Kept apart from `scenes/index.ts` so the
+ * dates and the words on its sign. Kept apart from `scenes/index.ts` so the
  * menus, the Collection and the sign can ask "is this Scene limited, and
  * how?" without importing every Scene's artwork.
  */
@@ -13,38 +13,18 @@ import type { LimitedCalendar } from "./calendar";
 
 export interface LimitedConfig {
   calendar: LimitedCalendar;
-  /** Its hint in the menus while the calendar is unlocking. */
-  daily: UiKey;
-  /** What the Scene's sign says: a Newcomer today, days left, last day. */
-  sign: { newToday: UiKey; closesIn: UiKey; lastDay: UiKey };
-  /** The Settings button that lines up every character before the class sees them. */
-  preview: UiKey;
-  /** The title over that line-up. */
-  previewTitle: UiKey;
+  /** What the Scene's sign says after its big day: days left, last day. */
+  sign: { closesIn: UiKey; lastDay: UiKey };
 }
 
 export const LIMITED: Partial<Record<SceneId, LimitedConfig>> = {
   halloween: {
     calendar: HALLOWEEN_CALENDAR,
-    daily: "hollow.daily",
-    sign: {
-      newToday: "hollow.newToday",
-      closesIn: "hollow.signClosesIn",
-      lastDay: "hollow.signLastDay",
-    },
-    preview: "settings.previewHalloween",
-    previewTitle: "preview.title",
+    sign: { closesIn: "hollow.signClosesIn", lastDay: "hollow.signLastDay" },
   },
   christmas: {
     calendar: CHRISTMAS_CALENDAR,
-    daily: "chalet.daily",
-    sign: {
-      newToday: "chalet.newToday",
-      closesIn: "chalet.signClosesIn",
-      lastDay: "chalet.signLastDay",
-    },
-    preview: "settings.previewChristmas",
-    previewTitle: "preview.titleChristmas",
+    sign: { closesIn: "chalet.signClosesIn", lastDay: "chalet.signLastDay" },
   },
 };
 

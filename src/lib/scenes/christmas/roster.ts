@@ -1,12 +1,11 @@
 /**
  * The Christmas chalet Roster: every Creature that can appear in this
- * Scene, once the Advent calendar has unlocked it (`christmas/calendar.ts`).
+ * Scene, all of them from the first day it is open (`christmas/calendar.ts`).
  *
- * A snowy clearing at the foot of a mountain at the blue hour, with a warm
- * chalet. It opens with four Commons, then a Newcomer every school day:
- * Christmas decorations come to life, elves, three of Father Christmas's
- * reindeer (each told apart by one mark), Mrs Claus, then the Rares: the
- * sleigh, Rudolph and, on the last day of term, Father Christmas himself.
+ * A snowy Christmas village at night under the northern lights: winter
+ * animals and Christmas decorations come to life as Commons; elves, three of
+ * Father Christmas's reindeer (each told apart by one mark) and Mrs Claus as
+ * Uncommons; the sleigh, Rudolph and Father Christmas himself as Rares.
  * Cosy and gentle; nothing in it is religious.
  *
  * Slugs match the SVG filenames in `./creatures/`, and are unique across every
@@ -19,7 +18,7 @@
 import type { CreatureDef } from "$lib/scenes/types";
 
 export const CHRISTMAS_ROSTER: CreatureDef[] = [
-  // Common: the opening four, then the first week's Newcomers.
+  // Common: winter animals and decorations come to life.
   {
     slug: "european-robin",
     tier: "common",
@@ -82,7 +81,7 @@ export const CHRISTMAS_ROSTER: CreatureDef[] = [
     departure: "fade",
     parts: ["part-fin"],
   },
-  // Uncommon: the second week's.
+  // Uncommon: elves, reindeer and Mrs Claus.
   {
     slug: "elf-gift",
     tier: "uncommon",
@@ -125,7 +124,7 @@ export const CHRISTMAS_ROSTER: CreatureDef[] = [
     motion: "trot",
     parts: ["part-tail", "part-ears"],
   },
-  // Rare: the last week's, one each per Session at most.
+  // Rare: one each per Session at most.
   {
     slug: "sleigh",
     tier: "rare",

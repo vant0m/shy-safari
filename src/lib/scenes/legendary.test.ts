@@ -1,6 +1,7 @@
 /**
- * Every always-on Scene has exactly one Legendary Creature; Pumpkin Hollow,
- * which chooses its own arrivals, has none (docs/adr/0012-legendary-tier.md).
+ * Every always-on Scene has exactly one Legendary Creature; the limited-time
+ * Scenes, Pumpkin Hollow and the Christmas chalet, have none
+ * (docs/adr/0012-legendary-tier.md).
  */
 
 import { describe, expect, it } from "bun:test";
@@ -37,7 +38,7 @@ describe("Legendary Creatures", () => {
     });
   }
 
-  it("leaves Pumpkin Hollow without one, since it draws its own arrivals", () => {
+  it("leaves Pumpkin Hollow without one", () => {
     expect(legends(HALLOWEEN_ROSTER)).toHaveLength(0);
   });
 

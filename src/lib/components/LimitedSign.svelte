@@ -1,10 +1,9 @@
 <script lang="ts">
   /**
    * A small wooden plaque in a limited-time Scene (nailed to the oak in
-   * Pumpkin Hollow, hung from the garland at Christmas), for the class to read:
-   * on the day a Newcomer unlocks, that someone new is about (until the class
-   * has spotted it), and after the big day how many days the Scene has left.
-   * It says nothing on other days.
+   * Pumpkin Hollow, hung up at the Christmas chalet), for the class to read
+   * after the big day how many days the Scene has left. It says nothing
+   * before then.
    *
    * Part of the world, like a Note: Creatures pass behind it and Too Loud
    * clouds it with the rest of the Scene. It never moves faster than a slow
@@ -12,14 +11,9 @@
    */
 
   import { t } from "$lib/i18n/index.svelte";
-  import {
-    daysLeft,
-    phase,
-    todaysNewcomer,
-  } from "$lib/scenes/limited/calendar";
+  import { daysLeft, phase } from "$lib/scenes/limited/calendar";
   import type { LimitedConfig } from "$lib/scenes/limited/registry";
   import type { SceneId } from "$lib/scenes/types";
-  import { sightings } from "$lib/session/sightings.svelte";
   import { today } from "$lib/today.svelte";
   import { fade } from "svelte/transition";
 
@@ -28,17 +22,11 @@
 
   const message = $derived.by(() => {
     const day = today.day;
-    const now = phase(limited.calendar, day);
-    if (now === "countdown") {
-      const days = daysLeft(limited.calendar, day!);
-      return days === 1
-        ? t(limited.sign.lastDay)
-        : t(limited.sign.closesIn, { days });
-    }
-    if (now !== "unlocking") return null;
-    const newcomer = todaysNewcomer(limited.calendar, day);
-    if (!newcomer || sightings.count(sceneId, newcomer) > 0) return null;
-    return t(limited.sign.newToday);
+    if (phase(limited.calendar, day) !== "countdown") return null;
+    const days = daysLeft(limited.calendar, day!);
+    return days === 1
+      ? t(limited.sign.lastDay)
+      : t(limited.sign.closesIn, { days });
   });
 </script>
 
