@@ -7,6 +7,12 @@ Les changements notables du projet. Format inspiré de
 
 ## [Non publié]
 
+## [1.1.0] — 2026-11-21
+
+Un tableau de Noël avec un légendaire qui se forme à partir de trois rares,
+une seule échelle pour toutes les créatures, et un menu debug pour tester
+l'app sans micro.
+
 ### Ajouté
 
 - **Chalet de Noël**, un second tableau à durée limitée (du 1er décembre

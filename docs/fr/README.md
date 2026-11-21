@@ -47,7 +47,7 @@ _Un sonomètre de classe qui récompense le calme. Criez, et les animaux se cach
 | Vérification                     | État                                                                 |
 | -------------------------------- | -------------------------------------------------------------------- |
 | Typecheck · Tests · Lint · Build | voir les badges ci-dessus (GitHub Actions, un workflow chacun)       |
-| Dernière version                 | **[v1.0.0](CHANGELOG.md#100--2026-11-17)** — 17/11/2026              |
+| Dernière version                 | **[v1.1.0](CHANGELOG.md#110--2026-11-21)** — 21/11/2026              |
 | En ligne                         | [www.shysafari.com](https://www.shysafari.com) (le projet d'origine) |
 
 <div align="right">
@@ -308,6 +308,7 @@ changements sont dans l'[historique des versions](CHANGELOG.md)
 
 | Version                               | Date       | Points forts                                                                                                          |
 | ------------------------------------- | ---------- | --------------------------------------------------------------------------------------------------------------------- |
+| [1.1.0](CHANGELOG.md#110--2026-11-21) | 2026-11-21 | Village de Noël, balade en traîneau du Père Noël, une seule échelle pour toutes les créatures, menu debug             |
 | [1.0.0](CHANGELOG.md#100--2026-11-17) | 2026-11-17 | Vallée enchantée, légendaires, réglages et statistiques par classe, export/import, synchro facultative, documentation |
 | [0.0.1](CHANGELOG.md#001--2026-11)    | 2026-11    | Prototype de l'EdTech-a-thon : sept scènes et Pumpkin Hollow, classes, notes, minuteur                                |
 

@@ -47,7 +47,7 @@ _A classroom noise monitor that rewards quiet. Shout, and the animals hide._
 | Check                            | State                                                                 |
 | -------------------------------- | --------------------------------------------------------------------- |
 | Typecheck · Tests · Lint · Build | see the badges above (GitHub Actions, one workflow each)              |
-| Latest version                   | **[v1.0.0](CHANGELOG.md#100--2026-11-17)** — 2026-11-17               |
+| Latest version                   | **[v1.1.0](CHANGELOG.md#110--2026-11-21)** — 2026-11-21               |
 | Live                             | [www.shysafari.com](https://www.shysafari.com) (the original project) |
 
 <div align="right">
@@ -300,6 +300,7 @@ Versions follow [Semantic Versioning](https://semver.org/); every change is in
 
 | Version                               | Date       | Highlights                                                                                                   |
 | ------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------ |
+| [1.1.0](CHANGELOG.md#110--2026-11-21) | 2026-11-21 | Christmas village, Father Christmas's sleigh ride, one scale for every Creature, debug menu                  |
 | [1.0.0](CHANGELOG.md#100--2026-11-17) | 2026-11-17 | Enchanted valley, legendary creatures, settings and statistics per class, export/import, optional sync, docs |
 | [0.0.1](CHANGELOG.md#001--2026-11)    | 2026-11    | EdTech-a-thon prototype: seven Scenes and Pumpkin Hollow, classes, notes, timer                              |
 

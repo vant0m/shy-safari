@@ -7,6 +7,12 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+## [1.1.0] — 2026-11-21
+
+A Christmas Scene with a Legendary that forms from three Rares, one scale
+for every Creature, and a debug menu for trying the app without a
+microphone.
+
 ### Added
 
 - **Christmas chalet**, a second limited-time Scene (1 December 2026 to
@@ -119,5 +125,7 @@ The EdTech-a-thon prototype, as published at
 seven Scenes and the limited-time Pumpkin Hollow, Classes, Notes, the Timer,
 the Noise Meter, floating over other tabs, English, Spanish and French.
 
+[Unreleased]: https://github.com/vant0m/shy-safari/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/vant0m/shy-safari/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/vant0m/shy-safari/compare/351b79c...v1.0.0
 [0.0.1]: https://github.com/teacherdotdev/shy-safari
