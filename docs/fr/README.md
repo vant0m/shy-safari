@@ -59,7 +59,8 @@ _Un sonomètre de classe qui récompense le calme. Criez, et les animaux se cach
 ## <a name="presentation"></a>✨ Ce que fait l'application
 
 Une scène paisible au vidéoprojecteur — savane, récif de corail, espace
-profond, préhistoire, forêt, jungle, Arctique ou vallée enchantée — où des
+profond, préhistoire, forêt, jungle, Arctique ou vallée enchantée, plus un
+champ de citrouilles pour Halloween et un village de Noël en décembre — où des
 animaux sortent tant que la classe reste calme. Si c'est trop bruyant, ils se
 cachent ou s'enfuient jusqu'au retour du calme. Tout se passe dans le
 navigateur, rien à installer.
@@ -88,8 +89,8 @@ navigateur, rien à installer.
   aiguille qui s'agite ou un voyant rouge rendent le bruit plus intéressant
   que le calme.
 - **L'approche :** l'inverse d'un sonomètre. Une salle calme est peu à peu
-  récompensée par une scène vivante ; animaux communs, rares et un légendaire
-  par scène donnent envie d'attendre.
+  récompensée par une scène vivante ; animaux communs, rares et légendaires
+  donnent envie d'attendre.
 - **Origine :** un prototype créé en trois jours à l'EdTech-a-thon 2026 par
   [Duncan A. Johnson](https://github.com/DuncanAJohnson) et
   [Elliot Roe](https://github.com/ElliotRoe)
@@ -166,7 +167,8 @@ bun run dev      # http://localhost:5173
 
 ### <a name="aller-plus-loin"></a>Pour aller plus loin
 
-- Lancement local pas à pas : [lancer-en-local.md](lancer-en-local.md)
+- Lancement local pas à pas, et le menu debug pour tester sans micro :
+  [lancer-en-local.md](lancer-en-local.md)
 - Héberger votre copie (Cloudflare, autres hébergeurs, domaine, connexion) :
   [hebergement.md](hebergement.md)
 - Un sous-domaine avec connexion et synchronisation, pas à pas :
@@ -211,7 +213,7 @@ bun run dev      # http://localhost:5173
 <td align="center" width="50%">
 <b>🌈 Créatures légendaires</b><br>
 <a href="../images/legendary.gif"><img src="../images/legendary.gif" alt="Pégase, la créature légendaire de la vallée enchantée, dans son anneau arc-en-ciel" width="260"></a><br>
-<sub>Une par scène, environ une arrivée sur deux cents, sous un arc-en-ciel.</sub>
+<sub>Environ une arrivée sur deux cents, sous un arc-en-ciel ; à Noël, le traîneau se forme à partir de trois rares.</sub>
 </td>
 </tr>
 <tr>

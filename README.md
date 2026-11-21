@@ -59,7 +59,8 @@ _A classroom noise monitor that rewards quiet. Shout, and the animals hide._
 ## <a name="what-it-does"></a>✨ What it does
 
 A calm scene on the classroom projector — a savanna, a coral reef, deep space,
-the age of dinosaurs, a forest, the jungle, the Arctic or an enchanted valley —
+the age of dinosaurs, a forest, the jungle, the Arctic or an enchanted valley,
+plus a pumpkin patch around Halloween and a Christmas village in December —
 where animals come out the longer the room stays quiet. If it gets too loud,
 they hide or run away until it is calm again. It runs in the browser; nothing
 to install.
@@ -84,8 +85,8 @@ to install.
 - **The problem:** classroom noise meters reward noise — a bouncing needle or
   a red light makes being loud more interesting than being quiet.
 - **The approach:** the opposite of a noise meter. A quiet room is slowly
-  rewarded with a living scene; common animals, rare ones and one legendary
-  per scene keep it worth waiting for.
+  rewarded with a living scene; common animals, rare ones and a legendary
+  one keep it worth waiting for.
 - **Origin:** a prototype built in three days at the 2026 EdTech-a-thon by
   [Duncan A. Johnson](https://github.com/DuncanAJohnson) and
   [Elliot Roe](https://github.com/ElliotRoe)
@@ -162,7 +163,8 @@ bun run dev      # http://localhost:5173
 
 ### <a name="going-further"></a>Going further
 
-- Step-by-step local setup: [docs/running-locally.md](docs/running-locally.md)
+- Step-by-step local setup, and the debug menu to try it without a
+  microphone: [docs/running-locally.md](docs/running-locally.md)
 - Hosting your own copy (Cloudflare, other static hosts, domain, sign-in):
   [docs/hosting.md](docs/hosting.md)
 - A subdomain with sign-in and sync, step by step:
@@ -206,7 +208,7 @@ bun run dev      # http://localhost:5173
 <td align="center" width="50%">
 <b>🌈 Legendary creatures</b><br>
 <a href="docs/images/legendary.gif"><img src="docs/images/legendary.gif" alt="Pegasus, the enchanted valley's legendary creature, in its rainbow ring" width="260"></a><br>
-<sub>One per Scene, about one arrival in two hundred, under a rainbow.</sub>
+<sub>About one arrival in two hundred, under a rainbow; at Christmas, the sleigh forms from three Rares.</sub>
 </td>
 </tr>
 <tr>
