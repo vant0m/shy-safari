@@ -53,3 +53,21 @@ export function findCombo(
   }
   return null;
 }
+
+/**
+ * The Creatures that are here inside a formed one: while Father Christmas's
+ * sleigh is on screen, Rudolph, Father Christmas and the sleigh count as here
+ * too, so none of them arrives a second time beside it.
+ */
+export function partsOnScreen(
+  roster: readonly CreatureDef[],
+  creatures: readonly { def: { slug: string } }[],
+): string[] {
+  return roster
+    .filter(
+      (def) =>
+        isFormed(def) &&
+        creatures.some((creature) => creature.def.slug === def.slug),
+    )
+    .flatMap((def) => def.formedFrom!);
+}

@@ -48,6 +48,12 @@ Les changements notables du projet. Format inspiré de
 
 ### Corrigé
 
+- Les scintillements d'un rare et le halo arc-en-ciel d'un légendaire ne
+  disparaissent plus quand la classe change de tableau puis revient, ni au
+  rechargement : ils continuent le temps qu'il leur restait (une minute,
+  trois pour un légendaire).
+- Une fois le traîneau du Père Noël formé, Rudolph, le Père Noël et le
+  traîneau ne reviennent plus à côté de lui.
 - Le README ne dit plus que rien ne s'enfuit quand c'est trop fort : par
   défaut, les animaux s'enfuient (ADR 0003).
 

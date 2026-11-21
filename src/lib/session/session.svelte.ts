@@ -16,7 +16,7 @@ import {
   createArrivalClock,
   type ArrivalClock,
 } from "./arrivalClock";
-import { findCombo, isFormed } from "./combos";
+import { findCombo, isFormed, partsOnScreen } from "./combos";
 import { isUnique, rollCreature } from "./roll";
 import {
   advanceScareClock,
@@ -48,10 +48,11 @@ export interface CreatureInstance {
   spawnX: number;
   spawnY: number;
   /**
-   * Brought back from before a refresh or a Scene switch rather than just
-   * arrived, so it comes back plain instead of glistening all over again.
+   * When it arrived (`Date.now()`), so it glistens for its first minute (a
+   * Legendary for three) even across a Scene switch or a refresh, and no
+   * longer (`session/glisten.ts`). Unknown for one saved before this was kept.
    */
-  restored?: boolean;
+  arrivedAt?: number;
 }
 
 export class Session {
@@ -200,7 +201,7 @@ export class Session {
    * most once.
    */
   summonAll() {
-    const present = this.creatures.map((creature) => creature.def.slug);
+    const present = this.#onScreen();
     const defs = this.#available().filter(
       (def) => !isUnique(def.tier) || !present.includes(def.slug),
     );
@@ -216,7 +217,7 @@ export class Session {
    * every animal", for a chosen few. Rares already here are skipped.
    */
   summon(slugs: string[]) {
-    const present = this.creatures.map((creature) => creature.def.slug);
+    const present = this.#onScreen();
     const defs = this.#available().filter(
       (def) =>
         slugs.includes(def.slug) &&
@@ -298,6 +299,14 @@ export class Session {
     this.formed = { slug: combo.def.slug, at: Date.now() };
   }
 
+  /** Who is here, counting everyone inside a formed Creature. */
+  #onScreen(): string[] {
+    return [
+      ...this.creatures.map((creature) => creature.def.slug),
+      ...partsOnScreen(this.#roster, this.creatures),
+    ];
+  }
+
   /** Book an arrival: the counter, the Collection, the statistics. */
   #counted(def: CreatureDef) {
     this.arrived += 1;
@@ -312,11 +321,9 @@ export class Session {
   }
 
   #arrive() {
-    // A Legendary that has come this Session counts as here, even once gone.
-    const present = [
-      ...this.creatures.map((creature) => creature.def.slug),
-      ...this.#legends,
-    ];
+    // A Legendary that has come this Session counts as here, even once gone,
+    // and so does everyone inside a formed Creature that is here.
+    const present = [...this.#onScreen(), ...this.#legends];
     const available = this.#available();
     const def = rollCreature(available, present, this.#random);
     if (!def) return;
@@ -341,6 +348,7 @@ export class Session {
       depth: this.#depth(def),
       spawnX: this.#random(),
       spawnY: this.#random(),
+      arrivedAt: Date.now(),
     };
   }
 }

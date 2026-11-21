@@ -46,6 +46,11 @@ All notable changes to this project are documented here. The format follows
 
 ### Fixed
 
+- A Rare's sparkles and a Legendary's rainbow halo no longer vanish when
+  the class switches Scene and comes back, or the page reloads: they carry on
+  for the time they had left (one minute, three for a Legendary).
+- Once Father Christmas's sleigh has formed, Rudolph, Father Christmas and
+  the sleigh no longer arrive again beside it.
 - The README no longer says nothing runs away when it is too loud: animals
   run away by default (ADR 0003).
 

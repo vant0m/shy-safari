@@ -23,6 +23,7 @@
    * flat sheet of stickers.
    */
 
+  import { glistenLeft } from "$lib/session/glisten";
   import { onMount } from "svelte";
   import { fade } from "svelte/transition";
   import {
@@ -118,17 +119,21 @@
 
   /**
    * An Uncommon or Rare Creature glistens for its first minute in the Scene,
-   * so the class notices it, then settles down to look like everyone else.
-   * One brought back from before a refresh has had its minute already.
+   * so the class notices it, a Legendary for three, then each settles down to
+   * look like everyone else. Counted from its arrival, so coming back to the
+   * Scene or a refresh carries on with the time it had left
+   * (`session/glisten.ts`).
    */
-  const GLISTEN_MS = 60_000;
-  /** A Legendary is a once-in-many-Sessions event: it shimmers for longer. */
-  const LEGEND_GLISTEN_MS = 180_000;
+  // Only the values it mounts with matter: the timer below takes it from there.
+  // svelte-ignore state_referenced_locally
+  const glistenMs = glistenLeft(
+    creature.def.tier,
+    creature.arrivedAt,
+    Date.now(),
+  );
   const legendary = $derived(creature.def.tier === "legendary");
   const SETTLE_MS = 2000;
-  // Only the value it mounts with matters: the timer below takes it from there.
-  // svelte-ignore state_referenced_locally
-  let glistening = $state(!creature.restored);
+  let glistening = $state(glistenMs > 0);
 
   /**
    * Has turned to listen. Each Creature turns a moment after the pause, the
@@ -178,10 +183,7 @@
     resize.observe(scene);
     resize.observe(swimmer);
 
-    const settle = setTimeout(
-      () => (glistening = false),
-      creature.def.tier === "legendary" ? LEGEND_GLISTEN_MS : GLISTEN_MS,
-    );
+    const settle = setTimeout(() => (glistening = false), glistenMs);
 
     const state =
       motions.get(creature) ??

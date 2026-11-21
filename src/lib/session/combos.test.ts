@@ -1,7 +1,7 @@
 import { describe, expect, it } from "bun:test";
 import { CHRISTMAS_ROSTER } from "$lib/scenes/christmas/roster";
 import type { CreatureDef } from "$lib/scenes/types";
-import { findCombo, isFormed } from "./combos";
+import { findCombo, isFormed, partsOnScreen } from "./combos";
 import { rollCreature } from "./roll";
 
 const here = (...slugs: string[]) =>
@@ -44,6 +44,20 @@ describe("formed Creatures", () => {
         ["santa-sleigh"],
       ),
     ).toBeNull();
+  });
+
+  it("keeps Rudolph, Father Christmas and the sleigh from coming again beside it", () => {
+    const parts = partsOnScreen(
+      CHRISTMAS_ROSTER,
+      here("snowman", "santa-sleigh"),
+    );
+    expect(parts.sort()).toEqual(["rudolph", "santa", "sleigh"]);
+    const rares = CHRISTMAS_ROSTER.filter(
+      (def) => def.tier === "rare" && !isFormed(def),
+    );
+    for (let i = 0; i < 200; i++) {
+      expect(rollCreature(rares, parts, Math.random)).toBeNull();
+    }
   });
 
   it("is never brought by the roll", () => {

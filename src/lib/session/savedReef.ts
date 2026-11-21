@@ -29,6 +29,8 @@ interface SavedCreature {
   depth: number;
   spawnX: number;
   spawnY: number;
+  /** When it arrived; missing from reefs saved before it was kept. */
+  arrivedAt?: number;
 }
 
 export function loadReef(
@@ -41,10 +43,20 @@ export function loadReef(
     if (!raw) return [];
     const saved = JSON.parse(raw) as SavedCreature[];
     if (!Array.isArray(saved)) return [];
-    return saved.flatMap(({ id, slug, depth, spawnX, spawnY }) => {
+    return saved.flatMap(({ id, slug, depth, spawnX, spawnY, arrivedAt }) => {
       // A Creature since dropped from the Roster just does not come back.
       const def = roster.find((candidate) => candidate.slug === slug);
-      return def ? [{ id, def, depth, spawnX, spawnY, restored: true }] : [];
+      if (!def) return [];
+      return [
+        {
+          id,
+          def,
+          depth,
+          spawnX,
+          spawnY,
+          arrivedAt: typeof arrivedAt === "number" ? arrivedAt : undefined,
+        },
+      ];
     });
   } catch {
     return [];
@@ -59,12 +71,13 @@ export function saveReef(sceneId: string, creatures: CreatureInstance[]) {
       return;
     }
     const saved: SavedCreature[] = creatures.map(
-      ({ id, def, depth, spawnX, spawnY }) => ({
+      ({ id, def, depth, spawnX, spawnY, arrivedAt }) => ({
         id,
         slug: def.slug,
         depth,
         spawnX,
         spawnY,
+        arrivedAt,
       }),
     );
     localStorage.setItem(storageKey(sceneId), JSON.stringify(saved));
