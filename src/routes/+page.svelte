@@ -273,6 +273,9 @@
         scares={settings.loudResponse === "flee"}
         fleeing={app.session.fleeing}
         ondepart={(id) => app.session.depart(id)}
+        formed={app.session.formed}
+        onridestart={(ms) => app.suspendJudging(ms)}
+        onrideend={() => app.endRide()}
       />
       <!-- Over the Scene, so the animals pass behind the words. Keyed by
          Class, so nothing stays chosen from the last class's Notes. -->

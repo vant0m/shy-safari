@@ -191,6 +191,23 @@ export class App {
     this.session.reset(settings.arrivalIntervalMs);
   }
 
+  /**
+   * Stop judging the room for a while (Father Christmas's sleigh ride): the
+   * room is neither heard nor can it turn Too Loud, and no time is banked
+   * towards an arrival, as while the chime rings.
+   */
+  suspendJudging(ms: number) {
+    this.#hushUntil = performance.now() + ms;
+    this.monitor.reset();
+  }
+
+  /** The Scene's ride is over: judge the room again, afresh. */
+  endRide() {
+    this.session.formed = null;
+    this.#hushUntil = 0;
+    this.monitor.reset();
+  }
+
   #ring() {
     playChime();
     this.#hushUntil = performance.now() + CHIME_MS + CHIME_ECHO_MS;

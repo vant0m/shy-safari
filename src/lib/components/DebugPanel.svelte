@@ -178,6 +178,34 @@
           <p class="text-xs text-slate-500">Press Start to run a Session.</p>
         {/if}
       </fieldset>
+
+      {#if app.scene.ride}
+        <fieldset class="space-y-2">
+          <legend
+            class="text-xs font-semibold tracking-wide text-slate-500 uppercase"
+          >
+            Sleigh ride
+          </legend>
+          <div class="flex gap-1">
+            <button
+              class="flex-1 rounded-md border border-slate-300 px-2 py-1 text-xs hover:bg-slate-50"
+              onclick={() => app.session.summon(["rudolph", "santa", "sleigh"])}
+              >The 3 Rares</button
+            >
+            <button
+              class="flex-1 rounded-md border border-slate-300 px-2 py-1 text-xs hover:bg-slate-50"
+              onclick={() =>
+                (app.session.formed = {
+                  slug: app.scene.ride!.slug,
+                  at: Date.now(),
+                })}>Replay the ride</button
+            >
+          </div>
+          <p class="text-xs text-slate-500">
+            The 3 Rares form the Legendary and play the ride, once a Session.
+          </p>
+        </fieldset>
+      {/if}
     </section>
   {/if}
 

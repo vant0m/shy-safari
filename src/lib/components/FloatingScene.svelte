@@ -67,6 +67,9 @@
     scares={settings.loudResponse === "flee"}
     fleeing={app.session.fleeing}
     ondepart={(id) => app.session.depart(id)}
+    formed={app.session.formed}
+    onridestart={(ms) => app.suspendJudging(ms)}
+    onrideend={() => app.endRide()}
   />
 
   {#if app.paused || settings.showMeter}

@@ -292,3 +292,13 @@ html[data-scene="christmas"]:not(:has(.scene-stage)) body {
     display: none;
   }
 }
+
+/* Father Christmas's sleigh ride (christmas/SleighRide.svelte): the Notes
+   step aside with the rest of the village while the sleigh flies. */
+html:has(.scene-stage[data-scene="christmas"]) .notes-layer {
+  transition: opacity 1.4s ease;
+}
+
+html:has(.scene-stage[data-ride="true"]) .notes-layer {
+  opacity: 0;
+}

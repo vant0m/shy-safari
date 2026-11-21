@@ -15,6 +15,7 @@ import {
 } from "./noteArt";
 import ArcticAmbient from "./arctic/AmbientLife.svelte";
 import ChristmasAmbient from "./christmas/AmbientLife.svelte";
+import SleighRide from "./christmas/SleighRide.svelte";
 import * as christmasArt from "./christmas/artwork";
 import { CHRISTMAS_CALENDAR } from "./christmas/calendar";
 import christmasIcon from "./christmas/icon.svg";
@@ -135,6 +136,16 @@ export interface SceneDef {
    * does the rest. Pumpkin Hollow's patch lights up for Jack O. Lantern.
    */
   welcomes?: string[];
+  /**
+   * A celebration the Scene plays when this Creature forms from others
+   * (`CreatureDef.formedFrom`): Father Christmas's sleigh ride. It calls
+   * `onstart` with its length, so the room is not judged meanwhile, and
+   * `onend` when it is over.
+   */
+  ride?: {
+    slug: string;
+    Ride: Component<{ onstart: (ms: number) => void; onend: () => void }>;
+  };
 }
 
 export const SCENES: Record<SceneId, SceneDef> = {
@@ -309,7 +320,10 @@ export const SCENES: Record<SceneId, SceneDef> = {
     isNew: true,
     // The finale: the tree lights up and its star glows as Father Christmas
     // comes, and stays lit while he's here (christmas/entrance.css).
-    welcomes: ["santa"],
+    welcomes: ["santa", "santa-sleigh"],
+    // When Rudolph, Father Christmas and the sleigh form the Legendary, the
+    // village gives way to the starry sky for the sleigh ride.
+    ride: { slug: "santa-sleigh", Ride: SleighRide },
   },
 };
 

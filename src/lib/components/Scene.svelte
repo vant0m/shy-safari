@@ -27,6 +27,9 @@
     scares,
     fleeing,
     ondepart,
+    formed = null,
+    onridestart = () => {},
+    onrideend = () => {},
   }: {
     scene: SceneDef;
     creatures: CreatureInstance[];
@@ -48,7 +51,18 @@
     fleeing: number[];
     /** A fleeing Creature has run out of sight, or faded away. */
     ondepart: (id: number) => void;
+    /** A Creature that has just formed from others (`session/combos.ts`). */
+    formed?: { slug: string; at: number } | null;
+    /** The Scene's celebration of it has started, for so long. */
+    onridestart?: (ms: number) => void;
+    /** …and is over. */
+    onrideend?: () => void;
   } = $props();
+
+  /** The Scene celebrates this forming, if it has a ride for it. */
+  const ride = $derived(
+    scene.ride && formed?.slug === scene.ride.slug ? formed : null,
+  );
 
   /** One the Scene answers to is here, or has just come. */
   const welcome = $derived(
@@ -63,6 +77,7 @@
   data-frozen={frozen}
   data-scares={scares}
   data-welcome={welcome}
+  data-ride={ride !== null}
 >
   <!--
     The whole landscape in one piece of artwork. It sits inside the container
@@ -99,6 +114,12 @@
 
   {#if limitedOf(scene.id)}
     <LimitedSign sceneId={scene.id} limited={limitedOf(scene.id)!} />
+  {/if}
+
+  {#if ride && scene.ride}
+    {#key ride.at}
+      <scene.ride.Ride onstart={onridestart} onend={onrideend} />
+    {/key}
   {/if}
 
   <!-- One veil over the whole Scene, never a per-Creature effect. -->

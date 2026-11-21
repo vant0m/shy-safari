@@ -255,7 +255,7 @@ export const MOTION_PROFILES: Record<MotionStyle, MotionProfile> = {
     ground: false,
   },
   flyover: {
-    region: { xMin: 0.06, xMax: 0.94, yMin: 0.05, yMax: 0.28 },
+    region: { xMin: 0.06, xMax: 0.94, yMin: 0.1, yMax: 0.3 },
     speed: 0.028,
     agility: 0.4,
     reachX: 1,
