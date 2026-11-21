@@ -13,10 +13,14 @@ All notable changes to this project are documented here. The format follows
   8 January 2027): a Christmas village at night under the northern lights,
   with chalets, lit fir trees, a lamp post, a candy-striped fence, chimney
   smoke and falling snow. Father Christmas lights the tree; Too Loud puts
-  the village's lights out and fades the aurora. Seventeen Creatures,
-  including three reindeer told apart by one mark and Rudolph, with names
-  and facts in English, Spanish and French
+  the village's lights out and fades the aurora. Twenty-one Creatures,
+  including six reindeer told apart by one mark and Rudolph, with names and
+  facts in English, Spanish and French
   ([ADR 0016](docs/adr/0016-christmas-chalet.md)).
+- **Father Christmas's sleigh**, a Legendary that forms when Rudolph, Father
+  Christmas and the sleigh are all on screen, celebrated by the sleigh ride:
+  the sleigh loops across the starry sky leaving a golden trail. The room is
+  not judged while it plays.
 - A debug menu under `bun run dev` only: a fake microphone with a level
   set by hand, a pretend date, a faster arrival clock and arrivals on
   demand ([docs/running-locally.md](docs/running-locally.md)). It is left

@@ -120,6 +120,9 @@ en bas à gauche. Il ouvre un petit panneau :
   dans l'adresse.
 - **Arrivals** (arrivées) : horloge des arrivées 10 ou 60 fois plus rapide,
   arrivée suivante **tout de suite** (**Arrival now**, tirée comme une vraie), ou **tout le monde dehors** (**Everyone out**).
+- **Sleigh ride** (Noël uniquement) : **The 3 Rares** fait venir Rudolph, le
+  Père Noël et le traîneau, qui forment le légendaire et lancent la balade
+  (une fois par séance) ; **Replay the ride** la rejoue.
 
 Les choix sont gardés dans ce navigateur sous `shy-safari-debug`, hors des
 données de l'app : ils ne sont jamais exportés ni synchronisés. Le menu

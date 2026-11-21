@@ -56,16 +56,34 @@ Class earned in it is deleted.
   Scene's `welcomes`. While he is here the tree's lights fade in and its star
   glows (`christmas/entrance.css`), as Pumpkin Hollow's lanterns do for Jack
   O. Lantern.
-- **Three named reindeer, each told apart by one mark**, rather than all
-  nine. Nine near-identical reindeer would crowd a Roster of seventeen.
+- **Six named reindeer, each told apart by one mark.**
   - Comet has a white star on his muzzle.
   - Cupid has a heart on her flank.
   - Blitzen has a darker coat with a lightning bolt.
+  - Dasher has speed streaks along his flank.
+  - Dancer has white socks and a red bow on an antler.
+  - Donner has a storm-grey coat with a cloud.
   - Each wears a different coloured collar. Rudolph, a Rare, flies with his
     glowing nose.
 - **Decorations wear the signature face** and fade away rather than run.
   The bauble, the stocking and the cracker float.
-- **No Legendary**, like Pumpkin Hollow.
+- **A Legendary that forms rather than arrives.** When the three Rares,
+  Rudolph, Father Christmas and the sleigh, are all here at once, they leave
+  and Father Christmas's sleigh, pulled by Rudolph, takes their place.
+  - It is never rolled (`CreatureDef.formedFrom`, `session/combos.ts`).
+  - It counts as an arrival and, like any Legendary, comes at most once a
+    Session.
+  - The Scene celebrates with **the sleigh ride** (`christmas/SleighRide.svelte`,
+    about 13 seconds): the village gives way to the starry sky and the
+    falling snow, and the sleigh sweeps in from the front, loops twice and
+    flies off small towards the mountains, leaving a golden trail that
+    sparkles and fades. Then the village comes back with the Legendary above
+    the rooftops.
+  - The room is not judged while the ride plays (`App.suspendJudging`, the
+    chime's hush), so a class cheering cannot make the village go dark.
+  - Slow fades only; with reduced motion it is a short, still crossfade.
+- **Fliers keep above the rooftops**: Rudolph, the sleigh and the Legendary
+  use `flyover`, which stays in the top third of the sky.
 - **Nothing religious.** The Scene has Father Christmas, reindeer, elves,
   decorations and winter animals only.
 

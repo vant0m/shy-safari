@@ -99,6 +99,9 @@ opens a small panel:
 - **Arrivals**: run the arrival clock 10 or 60 times faster, bring the
   next arrival **now** (chosen exactly as a real one),
   or bring **everyone out**.
+- **Sleigh ride** (Christmas only): **The 3 Rares** brings Rudolph, Father
+  Christmas and the sleigh, which form the Legendary and play the ride (once a
+  Session); **Replay the ride** plays it again.
 
 The choices are kept in this browser under `shy-safari-debug`, outside the
 app's data, so they are never exported or synced. The menu is not part of

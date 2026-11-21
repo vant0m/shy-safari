@@ -762,9 +762,14 @@ the night snow is blue (`#4d6da6` at the back to `#aec2e6` at the front).
 - **Decorations wear the signature face** and fade rather than run; the
   bauble, the stocking and the cracker float.
 - **The reindeer share one drawing**; each is told apart by one mark (a star
-  on the muzzle, a heart on the flank, a lightning bolt on a darker coat) and
-  its collar's colour. Rudolph flies with his legs tucked and his nose glowing
+  on the muzzle, a heart on the flank, a lightning bolt on a darker coat,
+  speed streaks, white socks and a bow, a cloud on a storm-grey coat) and its
+  collar's colour. Rudolph flies with his legs tucked and his nose glowing
   (`part-pulse`).
+- **Father Christmas's sleigh** (`santa-sleigh`, the Legendary) is assembled
+  from the sleigh, Father Christmas and Rudolph's own drawings, so the three
+  read as the same characters: Father Christmas sits in the sleigh waving,
+  and Rudolph pulls it on reins. The sleigh ride shows it large.
 - **Nothing religious** and nothing that echoes a copyrighted Christmas
   character: Rudolph is drawn as a plain brown reindeer with a red nose.
 - **The Note** is the reef's painted board, hung from above on red ribbons,

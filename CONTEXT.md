@@ -41,6 +41,14 @@ January. Its whole Roster can arrive from the first day it is open. After
 its big day it counts down the days it has left, and then it is gone from every menu and
 from the Collection, though nothing a Class earned in it is deleted.
 
+## Formed Creature
+
+A Creature that never arrives by the roll and instead forms when every
+Creature it is made of is on screen at once; they leave in its place. The
+Christmas chalet's Legendary, Father Christmas's sleigh, forms from Rudolph,
+Father Christmas and the sleigh, and the Scene celebrates with the sleigh
+ride.
+
 ## Rarity Tier
 
 How likely a Creature is to be the next one to arrive: Common, Uncommon,

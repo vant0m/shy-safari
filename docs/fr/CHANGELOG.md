@@ -14,9 +14,13 @@ Les changements notables du projet. Format inspiré de
   boréales, avec chalets, sapins illuminés, lampadaire, clôture en sucre
   d'orge, fumée de cheminée et neige qui tombe. Le Père Noël allume le
   sapin ; « trop fort » éteint les lumières du village et l'aurore.
-  Dix-sept créatures, dont trois rennes reconnaissables à un signe et
+  Vingt et une créatures, dont six rennes reconnaissables à un signe et
   Rudolph, avec noms et anecdotes en anglais, espagnol et français
   ([ADR 0016](../adr/0016-christmas-chalet.md)).
+- **Traîneau du Père Noël**, un légendaire qui se forme quand Rudolph, le
+  Père Noël et le traîneau sont tous à l'écran, fêté par la balade en
+  traîneau : il fait des boucles dans le ciel étoilé en laissant une traînée
+  dorée. La salle n'est pas jugée pendant ce temps.
 - Un menu debug, avec `bun run dev` uniquement : faux micro réglable à la
   main, date simulée, horloge des arrivées accélérée et arrivées à la
   demande ([lancer-en-local.md](lancer-en-local.md)). Il est absent des
