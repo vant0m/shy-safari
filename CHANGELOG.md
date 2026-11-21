@@ -9,15 +9,14 @@ All notable changes to this project are documented here. The format follows
 
 ### Added
 
-- **Christmas chalet**, a second limited-time Scene run as an Advent
-  calendar (1 December 2026 to 8 January 2027): a snowy clearing at the blue
-  hour with a glowing chalet, chimney smoke, falling snow and a garland of
-  lights. Four Commons, then one Newcomer per school day up to Father
-  Christmas on Friday 18 December, who lights the tree; Too Loud puts the
-  lights out. Seventeen Creatures, including three reindeer told apart by
-  one mark and Rudolph, with names and facts in English, Spanish and French
+- **Christmas chalet**, a second limited-time Scene (1 December 2026 to
+  8 January 2027): a Christmas village at night under the northern lights,
+  with chalets, lit fir trees, a lamp post, a candy-striped fence, chimney
+  smoke and falling snow. Father Christmas lights the tree; Too Loud puts
+  the village's lights out and fades the aurora. Seventeen Creatures,
+  including three reindeer told apart by one mark and Rudolph, with names
+  and facts in English, Spanish and French
   ([ADR 0016](docs/adr/0016-christmas-chalet.md)).
-- `dangle`, a motion for ornaments hanging from a garland.
 - A debug menu under `bun run dev` only: a fake microphone with a level
   set by hand, a pretend date, a faster arrival clock and arrivals on
   demand ([docs/running-locally.md](docs/running-locally.md)). It is left
@@ -29,9 +28,13 @@ All notable changes to this project are documented here. The format follows
 
 ### Changed
 
-- The limited-time Scene rules (calendar, Newcomer arrivals, sign, menu
-  wording, character preview) are shared in `src/lib/scenes/limited/`
-  instead of being Pumpkin Hollow's own. Halloween behaves as before.
+- Limited-time Scenes (Pumpkin Hollow, the Christmas chalet) stay seasonal
+  but have their whole Roster from the first day: no more daily unlock,
+  Newcomer guarantee, locked Collection cards or character preview. Their
+  rules are shared in `src/lib/scenes/limited/`.
+- One scale for every Creature (a person about 100px tall at the 1920px
+  reference): Halloween's and Christmas's sizes fixed, Jack O. Lantern and
+  Father Christmas now person-sized; checked by a proportions test.
 - README (and its French mirror) restructured: centred masthead with logo,
   badges and a living-scene GIF; numbered sections with emoji; principles up
   front; one picture per feature; collapsible details; GitHub alerts;

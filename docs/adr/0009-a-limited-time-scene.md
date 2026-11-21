@@ -1,5 +1,11 @@
 # Pumpkin Hollow is a Scene for a few weeks a year, and it grows by the day
 
+> [!NOTE]
+> **Superseded in part (2026-11-21)** by
+> [ADR 0016](0016-christmas-chalet.md): limited-time Scenes stay seasonal,
+> but their whole Roster can arrive from the first day. ~~The daily unlock,
+> the Newcomers and their guarantee~~ below are no longer how it works.
+
 For Halloween there is an eighth Scene, Pumpkin Hollow: a pumpkin patch
 under a harvest moon. It is only on offer from Sunday 18 October to
 Saturday 7 November 2026 (`scenes/halloween/calendar.ts`). It opens with

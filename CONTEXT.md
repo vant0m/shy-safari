@@ -30,28 +30,16 @@ Creature in every other way.
 
 The full list of Creatures a Scene can produce. The Roster is fixed; the
 number of Creatures _present_ is not, because common Creatures can arrive more
-than once. The one exception is a Limited-time Scene, whose Roster grows by
-one Newcomer on each Unlock Day.
+than once.
 
 ## Limited-time Scene
 
 A Scene that is only on offer for a while: Pumpkin Hollow, from the Sunday
 before the two weeks up to Halloween until a week after it, and the
 Christmas chalet, from the first day of Advent until the first week of
-January. It opens with part of its Roster and gains the rest on Unlock
-Days. After its big day it counts down the days it has left, and then it is gone from every menu and
+January. Its whole Roster can arrive from the first day it is open. After
+its big day it counts down the days it has left, and then it is gone from every menu and
 from the Collection, though nothing a Class earned in it is deleted.
-
-## Unlock Day
-
-A school day on which a Limited-time Scene adds one Creature to its Roster,
-by the teacher's computer's own calendar.
-
-## Newcomer
-
-The Creature an Unlock Day adds. It is certain to arrive within a Class's
-first six arrivals in that Scene that day, and until the Class has spotted
-it, that promise carries over to the next days.
 
 ## Rarity Tier
 

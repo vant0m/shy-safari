@@ -63,9 +63,9 @@ salle n'est pas jugée.
   10, légendaires 0,5. Un rare vient au plus une fois tant qu'il est à l'écran,
   un légendaire au plus une fois par séance
   ([ADR 0012](../adr/0012-legendary-tier.md)). Les tableaux à durée limitée,
-  Pumpkin Hollow et le chalet de Noël, choisissent leurs arrivées selon le
-  calendrier ([ADR 0009](../adr/0009-a-limited-time-scene.md),
-  [ADR 0016](../adr/0016-christmas-chalet.md)).
+  Pumpkin Hollow et le chalet de Noël, ne sont proposés que quelques semaines
+  par an, avec toutes leurs créatures dès le premier jour et sans légendaire
+  ([ADR 0016](../adr/0016-christmas-chalet.md)).
 
 ## Dessiner la scène
 

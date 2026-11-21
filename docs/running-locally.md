@@ -94,10 +94,10 @@ opens a small panel:
   line under it shows the level, the class's volume goal and whether the
   room counts as quiet or too loud, so you can watch Too Loud come and go.
 - **Date**: pretend it is another day, to open the limited-time Scenes
-  (Halloween, Christmas) and walk their calendars. **Real date** goes back.
+  (Halloween, Christmas) or see their countdown. **Real date** goes back.
   It does the same as `?today=2026-12-18` in the address.
 - **Arrivals**: run the arrival clock 10 or 60 times faster, bring the
-  next arrival **now** (chosen exactly as a real one, Newcomers included),
+  next arrival **now** (chosen exactly as a real one),
   or bring **everyone out**.
 
 The choices are kept in this browser under `shy-safari-debug`, outside the

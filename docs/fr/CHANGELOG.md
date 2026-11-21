@@ -9,16 +9,14 @@ Les changements notables du projet. Format inspiré de
 
 ### Ajouté
 
-- **Chalet de Noël**, un second tableau à durée limitée en forme de
-  calendrier de l'Avent (du 1er décembre 2026 au 8 janvier 2027) : une
-  clairière enneigée à l'heure bleue, un chalet aux fenêtres dorées, de la
-  fumée, de la neige et une guirlande lumineuse. Quatre créatures communes,
-  puis un nouveau venu par jour d'école jusqu'au Père Noël le vendredi
-  18 décembre, qui allume le sapin ; « trop fort » éteint les lumières. Dix-sept
-  créatures, dont trois rennes reconnaissables à un signe et Rudolph, avec
-  noms et anecdotes en anglais, espagnol et français
+- **Chalet de Noël**, un second tableau à durée limitée (du 1er décembre
+  2026 au 8 janvier 2027) : un village de Noël la nuit sous les aurores
+  boréales, avec chalets, sapins illuminés, lampadaire, clôture en sucre
+  d'orge, fumée de cheminée et neige qui tombe. Le Père Noël allume le
+  sapin ; « trop fort » éteint les lumières du village et l'aurore.
+  Dix-sept créatures, dont trois rennes reconnaissables à un signe et
+  Rudolph, avec noms et anecdotes en anglais, espagnol et français
   ([ADR 0016](../adr/0016-christmas-chalet.md)).
-- `dangle`, un mouvement pour les décorations suspendues à une guirlande.
 - Un menu debug, avec `bun run dev` uniquement : faux micro réglable à la
   main, date simulée, horloge des arrivées accélérée et arrivées à la
   demande ([lancer-en-local.md](lancer-en-local.md)). Il est absent des
@@ -30,10 +28,15 @@ Les changements notables du projet. Format inspiré de
 
 ### Modifié
 
-- Les règles des tableaux à durée limitée (calendrier, arrivées des
-  nouveaux venus, panneau, textes des menus, aperçu des personnages) sont
-  partagées dans `src/lib/scenes/limited/` au lieu d'être propres à
-  Pumpkin Hollow. Halloween se comporte comme avant.
+- Les tableaux à durée limitée (Pumpkin Hollow, chalet de Noël) restent
+  saisonniers mais toutes leurs créatures peuvent arriver dès le premier
+  jour : plus de déblocage quotidien, de nouveau venu garanti, de cartes
+  verrouillées dans la Collection ni d'aperçu des personnages. Leurs règles
+  sont partagées dans `src/lib/scenes/limited/`.
+- Une seule échelle pour toutes les créatures (une personne mesure environ
+  100 px sur la référence de 1920 px) : tailles corrigées pour Halloween et
+  Noël, Jack O. Lantern et le Père Noël à taille humaine ; vérifié par un
+  test des proportions.
 - README (et son miroir français) restructuré : en-tête centré avec logo,
   badges et GIF de la scène ; sections numérotées avec emoji ; principes en
   tête ; une image par fonction ; détails repliables ; encadrés GitHub ;

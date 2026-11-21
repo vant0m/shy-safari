@@ -523,6 +523,23 @@ snowfield, and a far skein of geese in silhouette. Too Loud is a whiteout:
 the Scene pales and wind-blown streaks of snow cross it
 (`arctic/scene.css`).
 
+## One scale
+
+Every Creature is drawn on one scale: a person is about **100px tall**
+against the 1920px-wide reference Scene, about 55px a metre, as on the
+savanna. The Roster `width` is what sets it: a Creature's height is its width
+times its viewBox's height over its width, and on screen it is then drawn at
+0.7 (far) to 1.4 (near) of that by its depth.
+
+- Big things keep to the scale: a reindeer with its antlers is about 108px
+  tall, Father Christmas, the vampire and Jack O. Lantern about 100px.
+- Small things are drawn bigger than life so they stay readable (at least
+  about 22px tall), but never taller than an elf (58px), and in their real
+  order: a mouse is smaller than a cat.
+- Scenery is sized the same way at the depth it stands: a chalet's door is a
+  little taller than a person standing beside it.
+- `src/lib/scenes/proportions.test.ts` checks the limited-time Scenes.
+
 ## 14. Pumpkin Hollow
 
 A hillside pumpkin patch on Halloween eve, just after dusk: a few big rows
@@ -721,34 +738,34 @@ backdrop's with `mythical-backdrop-`.
 
 ## 16. The Christmas chalet
 
-A snowy clearing at the foot of a mountain at the blue hour
-(`src/lib/scenes/christmas/`): a log chalet with glowing windows, a wreath
-and string lights on the left, a big Christmas tree on the right, a far fir
-forest along the back of the clearing and a garland of lights strung
-straight across the top. It is drawn in the §1 style, eye, blush and all,
-and follows §2 as written; ids are prefixed with the slug (§2.5), and the
-backdrop's with `christmas-backdrop-`. Christmas reds `#d62839`, greens
-`#2e8b57` and gold `#ffd166` / `#e0b84f` join the palette.
+A Christmas village at night under the northern lights
+(`src/lib/scenes/christmas/`). It is drawn in the §1 style, eye, blush and
+all, and follows §2 as written; ids are prefixed with the slug (§2.5), and
+the backdrop's and scenery's with `christmas-<file>-`. Christmas reds
+`#d62839`, greens `#2e8b57` and gold `#ffd166` / `#e0b84f` join the palette;
+the night snow is blue (`#4d6da6` at the back to `#aec2e6` at the front).
 
-- **The backdrop reuses the shared bands.** The clearing is the savanna's
-  plain; Father Christmas walks the back of it (`stride`), and the bauble and
-  the stocking hang from the garland (`dangle`, `GARLAND` in
-  `scenes/motion.ts`), so their artwork starts at the top of the viewBox with
-  the hook or loop and swings from there (`part-fin`).
-- **The lights are classes in the backdrop**, not separate art:
-  `christmas-window`, `christmas-window-glow`, `christmas-bulb` (in three
+- **The backdrop is only what is far away**: the night sky and its stars,
+  two ranges of jagged snowy mountains, a town glowing far down the valley,
+  a far fir forest and the snowfield with a path winding through it. The
+  northern lights are two curtains over it (`aurora-1`, `aurora-2`).
+- **Everything standing on the snow is scenery placed by depth** in
+  `christmas/AmbientLife.svelte`, as on the savanna: two chalets, two big lit
+  fir trees framing the edges, the Christmas tree, a lamp post, a
+  candy-striped fence, small snowy firs and drifts. Each is drawn with its
+  foot on the bottom of its viewBox and sized to §"One scale".
+- **The lights are classes inside the artwork**: `christmas-window`,
+  `christmas-window-glow`, `christmas-pool`, `christmas-bulb` (in three
   twinkle groups, `christmas-bulb-0` to `-2`), `christmas-tree-light` and
   `christmas-star-glow`. `christmas/scene.css` dims them for Too Loud and
   `christmas/entrance.css` lights the tree for Father Christmas.
-- **Decorations wear the signature face** and fade rather than run.
+- **Decorations wear the signature face** and fade rather than run; the
+  bauble, the stocking and the cracker float.
 - **The reindeer share one drawing**; each is told apart by one mark (a star
   on the muzzle, a heart on the flank, a lightning bolt on a darker coat) and
   its collar's colour. Rudolph flies with his legs tucked and his nose glowing
   (`part-pulse`).
 - **Nothing religious** and nothing that echoes a copyrighted Christmas
   character: Rudolph is drawn as a plain brown reindeer with a red nose.
-- **Ambient Life** is fine snow behind the Creatures, big slow flakes in
-  front, puffs of smoke from the chimney and a few twinkling stars.
-- **The Note** is the reef's painted board, hung from the garland on red
-  ribbons, with snow on its top and a sprig of holly
-  (`christmas/NoteArt.svelte`).
+- **The Note** is the reef's painted board, hung from above on red ribbons,
+  with snow on its top and a sprig of holly (`christmas/NoteArt.svelte`).

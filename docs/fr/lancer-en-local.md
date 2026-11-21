@@ -115,12 +115,11 @@ en bas à gauche. Il ouvre un petit panneau :
   l'objectif de la classe et si la salle est jugée calme ou trop bruyante,
   pour voir l'effet « trop fort » arriver et repartir.
 - **Date** : faites comme si on était un autre jour, pour ouvrir les
-  tableaux à durée limitée (Halloween, Noël) et parcourir leur calendrier.
+  tableaux à durée limitée (Halloween, Noël) ou voir leur compte à rebours.
   **Real date** revient à la vraie date. Même effet que `?today=2026-12-18`
   dans l'adresse.
 - **Arrivals** (arrivées) : horloge des arrivées 10 ou 60 fois plus rapide,
-  arrivée suivante **tout de suite** (**Arrival now**, tirée comme une vraie,
-  nouveaux venus compris), ou **tout le monde dehors** (**Everyone out**).
+  arrivée suivante **tout de suite** (**Arrival now**, tirée comme une vraie), ou **tout le monde dehors** (**Everyone out**).
 
 Les choix sont gardés dans ce navigateur sous `shy-safari-debug`, hors des
 données de l'app : ils ne sont jamais exportés ni synchronisés. Le menu
