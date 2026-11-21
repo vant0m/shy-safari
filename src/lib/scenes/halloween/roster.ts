@@ -8,7 +8,10 @@
  *
  * Slugs match the SVG filenames in `./creatures/`, and are unique across every
  * Scene, since names and facts are filed by slug. `width` is against a
- * 1920px-wide Scene. Ground animals walk the savanna's band among the
+ * 1920px-wide Scene, on the one scale every Scene shares (a person about
+ * 100px tall, docs/svg-art-brief.md): small animals are drawn bigger than
+ * life to stay readable, and Jack O. Lantern is the size of a person. Ground
+ * animals walk the savanna's band among the
  * pumpkins, as in the forest, and the bat and the owl fly over the patch.
  */
 
@@ -19,7 +22,7 @@ export const HALLOWEEN_ROSTER: CreatureDef[] = [
   {
     slug: "harvest-mouse",
     tier: "common",
-    width: 30,
+    width: 38,
     motion: "trot",
     parts: ["part-tail", "part-ears"],
   },
@@ -30,32 +33,32 @@ export const HALLOWEEN_ROSTER: CreatureDef[] = [
     motion: "scuttle",
     parts: ["part-body"],
   },
-  { slug: "toad", tier: "common", width: 38, motion: "hop", parts: [] },
+  { slug: "toad", tier: "common", width: 39, motion: "hop", parts: [] },
   {
     slug: "brown-bat",
-    tier: "common",
-    width: 56,
-    motion: "soar",
-    parts: ["part-wings"],
-  },
-  {
-    slug: "crow",
-    tier: "common",
-    width: 46,
-    motion: "hop",
-    parts: ["part-tail", "part-head"],
-  },
-  {
-    slug: "barn-owl",
     tier: "common",
     width: 58,
     motion: "soar",
     parts: ["part-wings"],
   },
   {
+    slug: "crow",
+    tier: "common",
+    width: 50,
+    motion: "hop",
+    parts: ["part-tail", "part-head"],
+  },
+  {
+    slug: "barn-owl",
+    tier: "common",
+    width: 63,
+    motion: "soar",
+    parts: ["part-wings"],
+  },
+  {
     slug: "black-cat",
     tier: "common",
-    width: 62,
+    width: 47,
     motion: "trot",
     parts: ["part-tail", "part-ears"],
   },
@@ -64,7 +67,7 @@ export const HALLOWEEN_ROSTER: CreatureDef[] = [
   {
     slug: "little-ghost",
     tier: "uncommon",
-    width: 54,
+    width: 57,
     motion: "hover",
     departure: "fade",
     parts: ["part-body"],
@@ -72,7 +75,7 @@ export const HALLOWEEN_ROSTER: CreatureDef[] = [
   {
     slug: "cloudy-moon",
     tier: "uncommon",
-    width: 70,
+    width: 66,
     motion: "drift",
     departure: "fade",
     parts: ["part-body"],
@@ -80,21 +83,21 @@ export const HALLOWEEN_ROSTER: CreatureDef[] = [
   {
     slug: "gourdling",
     tier: "uncommon",
-    width: 74,
+    width: 52,
     motion: "trot",
     parts: ["part-head", "part-ears", "part-tail"],
   },
   {
     slug: "scarecrow",
     tier: "uncommon",
-    width: 110,
+    width: 93,
     motion: "graze",
     parts: ["part-arms", "part-head"],
   },
   {
     slug: "mummy",
     tier: "uncommon",
-    width: 92,
+    width: 108,
     motion: "creep",
     parts: ["part-arms", "part-tail"],
   },
@@ -103,14 +106,14 @@ export const HALLOWEEN_ROSTER: CreatureDef[] = [
   {
     slug: "vampire",
     tier: "rare",
-    width: 80,
+    width: 65,
     motion: "trot",
     parts: ["part-wings"],
   },
   {
     slug: "gargoyle",
     tier: "rare",
-    width: 130,
+    width: 77,
     // Long stops between short walks: it holds still like a statue.
     motion: "graze",
     parts: ["part-tail", "part-wings"],
@@ -118,14 +121,14 @@ export const HALLOWEEN_ROSTER: CreatureDef[] = [
   {
     slug: "howling-wolf",
     tier: "rare",
-    width: 150,
+    width: 72,
     motion: "graze",
     parts: ["part-head", "part-ears", "part-tail"],
   },
   {
     slug: "great-boo",
     tier: "rare",
-    width: 240,
+    width: 154,
     motion: "glide",
     departure: "fade",
     parts: ["part-body", "part-arms"],
@@ -133,8 +136,8 @@ export const HALLOWEEN_ROSTER: CreatureDef[] = [
   {
     slug: "jack-o-lantern",
     tier: "rare",
-    width: 360,
-    motion: "stride",
+    width: 83,
+    motion: "graze",
     departure: "fade",
     parts: ["part-head", "part-arms", "part-pulse"],
   },

@@ -1,7 +1,6 @@
 import { describe, expect, it } from "bun:test";
 import {
   FADE_S,
-  GARLAND,
   MOTION_PROFILES,
   createMotion,
   fadeVisibility,
@@ -69,18 +68,6 @@ describe("stepMotion", () => {
       expect(hanger.y - footprint.height / 2).toBeCloseTo(
         groundLine(0.4, MOTION_PROFILES.hang.band),
       );
-    }
-  });
-  it("hangs Christmas ornaments from the garland, never leaving it", () => {
-    const random = seeded(11);
-    const bauble = createMotion("dangle", 0.3, 0.5, 0.5, footprint, random);
-    for (let t = 0; t < 600; t += 1 / 30) {
-      stepMotion(bauble, "dangle", 0.5, footprint, 1 / 30, random);
-      expect(bauble.y - footprint.height / 2).toBeCloseTo(
-        groundLine(0.5, GARLAND),
-      );
-      expect(bauble.x - footprint.width / 2).toBeGreaterThanOrEqual(0);
-      expect(bauble.x + footprint.width / 2).toBeLessThanOrEqual(1);
     }
   });
 });

@@ -10,9 +10,11 @@
  *
  * Slugs match the SVG filenames in `./creatures/`, and are unique across every
  * Scene, since names and facts are filed by slug. `width` is against a
- * 1920px-wide Scene. Ground Creatures walk the savanna's band across the
- * clearing, the bauble and the stocking hang from the garland across the top
- * (`dangle`), the cracker floats, and Rudolph and the sleigh fly over.
+ * 1920px-wide Scene, on the one scale every Scene shares (a person about
+ * 100px tall, docs/svg-art-brief.md): small things are drawn bigger than life
+ * to stay readable, never bigger than an elf. Ground Creatures walk the
+ * savanna's band, the bauble, the stocking and the cracker float, and
+ * Rudolph and the sleigh fly over.
  */
 
 import type { CreatureDef } from "$lib/scenes/types";
@@ -22,14 +24,14 @@ export const CHRISTMAS_ROSTER: CreatureDef[] = [
   {
     slug: "european-robin",
     tier: "common",
-    width: 34,
+    width: 31,
     motion: "hop",
     parts: ["part-tail"],
   },
   {
     slug: "snowman",
     tier: "common",
-    width: 62,
+    width: 72,
     // Long stops between short shuffles.
     motion: "graze",
     parts: ["part-arms"],
@@ -37,14 +39,14 @@ export const CHRISTMAS_ROSTER: CreatureDef[] = [
   {
     slug: "gingerbread",
     tier: "common",
-    width: 44,
+    width: 31,
     motion: "trot",
     parts: ["part-arms"],
   },
   {
     slug: "candle",
     tier: "common",
-    width: 30,
+    width: 22,
     motion: "graze",
     departure: "fade",
     parts: ["part-pulse"],
@@ -52,7 +54,7 @@ export const CHRISTMAS_ROSTER: CreatureDef[] = [
   {
     slug: "candy-cane",
     tier: "common",
-    width: 34,
+    width: 24,
     motion: "hop",
     departure: "fade",
     parts: [],
@@ -60,15 +62,15 @@ export const CHRISTMAS_ROSTER: CreatureDef[] = [
   {
     slug: "bauble",
     tier: "common",
-    width: 46,
-    motion: "dangle",
+    width: 29,
+    motion: "hover",
     departure: "fade",
     parts: ["part-fin"],
   },
   {
     slug: "cracker",
     tier: "common",
-    width: 76,
+    width: 56,
     motion: "hover",
     departure: "fade",
     parts: ["part-body"],
@@ -76,8 +78,8 @@ export const CHRISTMAS_ROSTER: CreatureDef[] = [
   {
     slug: "stocking",
     tier: "common",
-    width: 44,
-    motion: "dangle",
+    width: 30,
+    motion: "hover",
     departure: "fade",
     parts: ["part-fin"],
   },
@@ -85,42 +87,42 @@ export const CHRISTMAS_ROSTER: CreatureDef[] = [
   {
     slug: "elf-gift",
     tier: "uncommon",
-    width: 58,
+    width: 43,
     motion: "trot",
     parts: ["part-head"],
   },
   {
     slug: "reindeer-comet",
     tier: "uncommon",
-    width: 112,
+    width: 99,
     motion: "graze",
     parts: ["part-tail", "part-ears"],
   },
   {
     slug: "elf-list",
     tier: "uncommon",
-    width: 62,
+    width: 43,
     motion: "trot",
     parts: ["part-head"],
   },
   {
     slug: "reindeer-cupid",
     tier: "uncommon",
-    width: 112,
+    width: 99,
     motion: "graze",
     parts: ["part-tail", "part-ears"],
   },
   {
     slug: "mrs-claus",
     tier: "uncommon",
-    width: 76,
+    width: 68,
     motion: "graze",
     parts: ["part-head"],
   },
   {
     slug: "reindeer-blitzen",
     tier: "uncommon",
-    width: 112,
+    width: 99,
     motion: "trot",
     parts: ["part-tail", "part-ears"],
   },
@@ -128,7 +130,7 @@ export const CHRISTMAS_ROSTER: CreatureDef[] = [
   {
     slug: "sleigh",
     tier: "rare",
-    width: 170,
+    width: 150,
     motion: "glide",
     departure: "fade",
     parts: [],
@@ -136,16 +138,16 @@ export const CHRISTMAS_ROSTER: CreatureDef[] = [
   {
     slug: "rudolph",
     tier: "rare",
-    width: 124,
+    width: 111,
     motion: "soar",
     parts: ["part-ears", "part-pulse"],
   },
   {
     slug: "santa",
     tier: "rare",
-    width: 190,
-    // At the back of the clearing, with long stops to wave.
-    motion: "stride",
+    width: 88,
+    // Long stops to wave, at whatever depth he is: no giant's lane.
+    motion: "graze",
     departure: "fade",
     parts: ["part-arms"],
   },
