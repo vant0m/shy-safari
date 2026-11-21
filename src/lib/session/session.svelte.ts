@@ -83,7 +83,7 @@ export class Session {
   #roster: CreatureDef[];
   #sceneId: string;
   /** Legendary Creatures that have come this Session in this Scene. */
-  #legends: string[] = [];
+  #legends = $state<string[]>([]);
 
   constructor(
     sceneId: string,
@@ -297,6 +297,11 @@ export class Session {
     this.newestId = instance.id;
     this.#counted(combo.def);
     this.formed = { slug: combo.def.slug, at: Date.now() };
+  }
+
+  /** Whether this Legendary has come, or formed, this Session in this Scene. */
+  hasCome(slug: string): boolean {
+    return this.#legends.includes(slug);
   }
 
   /** Who is here, counting everyone inside a formed Creature. */

@@ -202,7 +202,15 @@
             >
           </div>
           <p class="text-xs text-slate-500">
-            The 3 Rares form the Legendary and play the ride, once a Session.
+            {#if app.session.creatures.some((creature) => creature.def.slug === app.scene.ride!.slug)}
+              The sleigh is already here, so the 3 Rares can't come again beside
+              it. Press Reset for a new Session.
+            {:else if app.session.hasCome(app.scene.ride.slug)}
+              The sleigh has already formed this Session. Press Reset for a new
+              Session.
+            {:else}
+              The 3 Rares form the Legendary and play the ride, once a Session.
+            {/if}
           </p>
         </fieldset>
       {/if}
